@@ -1,0 +1,26 @@
+{
+  "name": "zaragoza-map-pwa",
+  "version": "1.0.0",
+  "description": "A Progressive Web App to display a map of Zaragoza with business locations.",
+  "main": "src/app.ts",
+  "scripts": {
+    "build": "tsc",
+    "start": "lite-server",
+    "serve": "lite-server"
+  },
+  "dependencies": {
+    "leaflet": "^1.7.1"
+  },
+  "devDependencies": {
+    "typescript": "^4.5.4",
+    "lite-server": "^2.6.1"
+  },
+  "keywords": [
+    "PWA",
+    "Zaragoza",
+    "map",
+    "businesses"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
+}

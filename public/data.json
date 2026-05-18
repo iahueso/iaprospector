@@ -1,0 +1,32 @@
+{
+  "puntos": [
+    {
+      "id": "wtc",
+      "nombre": "World Trade Center Zaragoza",
+      "coords": [41.6745, -0.8894],
+      "tipo": "Tech Hub",
+      "desc": "Complejo de oficinas corporativas de servicios avanzados y sede de consultoras multinacionales en el Actur."
+    },
+    {
+      "id": "plaza",
+      "nombre": "PLAZA Plataforma Logística",
+      "coords": [41.6441, -0.9934],
+      "tipo": "Logística",
+      "desc": "La mayor plataforma logística de Europa, integrando conexiones aeroportuarias, ferroviarias y de carreteras."
+    },
+    {
+      "id": "i3a",
+      "nombre": "Campus Río Ebro (I3A)",
+      "coords": [41.6833, -0.8885],
+      "tipo": "I+D Académico",
+      "desc": "Instituto de Investigación en Ingeniería de Aragón, referencia en IA, robótica y tecnologías biomédicas."
+    },
+    {
+      "id": "aragonia",
+      "nombre": "Complejo Aragonia",
+      "coords": [41.6346, -0.8997],
+      "tipo": "Corporate & Retail",
+      "desc": "Espacio polivalente diseñado por Rafael Moneo que alberga oficinas de innovación y servicios financieros."
+    }
+  ]
+}
