@@ -3,378 +3,233 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IAHueso Prospector Map - Zaragoza Strategic Hub Mapping</title>
+    <title>IAProspector - Mapa y Empresas V2</title>
     
-    <!-- Leaflet CSS para el mapa interactivo -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" 
-          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
-          
-    <!-- Google Fonts & FontAwesome -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
     <style>
-        :root {
-            --bg-main: #f8fafc;
-            --bg-card: #ffffff;
-            --border-color: #e2e8f0;
-            --text-main: #0f172a;
-            --text-muted: #64748b;
-            --accent: #2563eb;
-            --accent-hover: #1d4ed8;
-            --success: #059669;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: var(--bg-main);
-            color: var(--text-main);
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-        }
-
-        /* Layout responsivo */
-        .app-container {
-            display: flex;
-            flex: 1;
-            height: 100%;
-            position: relative;
-        }
-
-        /* Panel lateral */
-        .sidebar {
-            width: 400px;
-            background-color: var(--bg-card);
-            border-right: 1px solid var(--border-color);
-            display: flex;
-            flex-direction: column;
-            z-index: 10;
-            flex-shrink: 0;
-            box-shadow: 4px 0 20px rgba(0, 0, 0, 0.03);
-        }
-
-        .sidebar-header {
-            padding: 24px;
-            border-bottom: 1px solid var(--border-color);
-            background-color: var(--bg-card);
-        }
-
-        .logo-area {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 8px;
-        }
-
-        .logo-area i {
-            font-size: 24px;
-            color: var(--accent);
-        }
-
-        .logo-area h1 {
-            font-size: 20px;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-        }
-
-        .subtitle {
-            font-size: 13px;
-            color: var(--text-muted);
-            line-height: 1.5;
-        }
-
-        /* Lista de localizaciones scrollable */
-        .location-list {
-            flex: 1;
-            overflow-y: auto;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            background-color: var(--bg-main);
-        }
-
-        /* Tarjeta de ubicación */
-        .location-card {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 16px;
-            cursor: pointer;
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02), 0 1px 2px rgba(0, 0, 0, 0.04);
-        }
-
-        .location-card::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            height: 100%;
-            width: 4px;
-            background-color: transparent;
-            transition: background-color 0.2s;
-        }
-
-        .location-card:hover {
-            transform: translateY(-2px);
-            border-color: var(--accent);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
-        }
-
-        .location-card.active {
-            border-color: var(--accent);
-            background-color: rgba(37, 99, 235, 0.04);
-        }
-
-        .location-card.active::before {
-            background-color: var(--accent);
-        }
-
-        .location-card h3 {
-            font-size: 15px;
-            font-weight: 600;
-            margin-bottom: 6px;
-            color: var(--text-main);
-        }
-
-        .location-card p {
-            font-size: 12px;
-            color: var(--text-muted);
-            line-height: 1.5;
-            margin-bottom: 12px;
-        }
-
-        .card-footer {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .coords-badge {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 11px;
-            background-color: var(--bg-main);
-            border: 1px solid var(--border-color);
-            color: var(--accent);
-            padding: 4px 8px;
-            border-radius: 6px;
-        }
-
-        .type-badge {
-            font-size: 11px;
-            font-weight: 500;
-            color: var(--text-muted);
-            background-color: rgba(0, 0, 0, 0.02);
-            padding: 2px 8px;
-            border-radius: 20px;
-            border: 1px solid var(--border-color);
-        }
-
-        /* Contenedor del mapa */
-        .map-container {
-            flex: 1;
-            height: 100%;
-            position: relative;
-        }
-
-        #map {
-            width: 100%;
-            height: 100%;
-        }
-
-        /* Popups personalizados de Leaflet */
-        .leaflet-popup-content-wrapper {
-            background-color: var(--bg-card) !important;
-            color: var(--text-main) !important;
-            border: 1px solid var(--border-color);
-            border-radius: 12px !important;
-            padding: 6px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08) !important;
-        }
-
-        .leaflet-popup-tip {
-            background-color: var(--bg-card) !important;
-            border: 1px solid var(--border-color);
-        }
-
-        .popup-info h4 {
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--accent);
-            margin-bottom: 4px;
-        }
-
-        .popup-info p {
-            font-size: 11px;
-            color: var(--text-muted);
-            line-height: 1.4;
-            margin-bottom: 8px;
-        }
-
-        .popup-info .popup-coords {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 10px;
-            color: var(--success);
-        }
-
-        /* Ajustes responsivos para móviles */
-        @media (max-width: 768px) {
-            .app-container {
-                flex-direction: column-reverse;
-            }
-            .sidebar {
-                width: 100%;
-                height: 40%;
-                border-right: none;
-                border-top: 1px solid var(--border-color);
-            }
-            .sidebar-header {
-                padding: 16px;
-            }
-            .location-list {
-                padding: 12px;
-                flex-direction: row;
-                overflow-x: auto;
-                overflow-y: hidden;
-            }
-            .location-card {
-                width: 280px;
-                flex-shrink: 0;
-            }
-            .map-container {
-                height: 60%;
-            }
-        }
+        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #f4f7f6; margin: 0; padding: 0; color: #333; }
+        header { background-color: #1e293b; color: white; text-align: center; padding: 1.5rem 1rem; }
+        
+        /* Contenedor del Mapa */
+        #mapa-contenedor { max-width: 1200px; margin: 1.5rem auto; padding: 0 1rem; }
+        #map { id: "map"; height: 400px; width: 100%; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        
+        main { max-width: 1200px; margin: 2rem auto; padding: 0 1rem; }
+        .grid-empresas { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
+        .card { background: white; border-radius: 8px; padding: 1.5rem; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border-left: 5px solid #3b82f6; display: flex; flex-direction: column; justify-content: space-between; }
+        .card h2 { margin-top: 0; color: #1e293b; font-size: 1.3rem; }
+        .badge-ciclo { background-color: #e0f2fe; color: #0369a1; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.85rem; font-weight: bold; display: inline-block; margin-bottom: 1rem; align-self: flex-start; }
+        .descripcion { font-size: 0.95rem; color: #4b5563; line-height: 1.4; margin-bottom: 1rem; }
+        .tags { margin: 1rem 0; }
+        .tag { background: #f1f5f9; color: #475569; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.8rem; margin-right: 0.5rem; display: inline-block; margin-bottom: 0.25rem; }
+        .info-footer { display: flex; justify-content: space-between; font-size: 0.85rem; color: #64748b; border-top: 1px solid #f1f5f9; padding-top: 0.75rem; margin-top: auto; }
     </style>
 </head>
 <body>
+    <header>
+        <h1>IAProspector: Geolocalización de Empresas</h1>
+        <p>Versión 2 - Datos dinámicos desde Google Drive mapeados</p>
+    </header>
 
-    <div class="app-container">
-        <!-- Panel Lateral -->
-        <div class="sidebar">
-            <div class="sidebar-header">
-                <div class="logo-area">
-                    <i class="fa-solid fa-compass-drafting"></i>
-                    <h1>IAHueso Prospector Map</h1>
+    <section id="mapa-contenedor">
+        <div id="map"></div>
+    </section>
+
+    <main>
+        <div class="grid-empresas">
+
+            <div class="card">
+                <div>
+                    <h2>Sin nombre</h2>
+                    <span class="badge-ciclo">No asignado</span>
+                    <p class="descripcion">Sin descripción</p>
                 </div>
-                <p class="subtitle">Ecosistema geoespacial de innovación, tecnología y logística en Zaragoza.</p>
+                <div>
+                    <div class="tags"></div>
+                    <div class="info-footer">
+                        <span>📍 Lat: 0, Lng: 0</span>
+                        <span>👥 Alumnos: <strong>0</strong></span>
+                    </div>
+                </div>
             </div>
-            
-            <div class="location-list" id="locationList">
-                <!-- Se poblará dinámicamente con JavaScript -->
+
+            <div class="card">
+                <div>
+                    <h2>Sin nombre</h2>
+                    <span class="badge-ciclo">No asignado</span>
+                    <p class="descripcion">Sin descripción</p>
+                </div>
+                <div>
+                    <div class="tags"></div>
+                    <div class="info-footer">
+                        <span>📍 Lat: 0, Lng: 0</span>
+                        <span>👥 Alumnos: <strong>0</strong></span>
+                    </div>
+                </div>
             </div>
+
+            <div class="card">
+                <div>
+                    <h2>Sin nombre</h2>
+                    <span class="badge-ciclo">No asignado</span>
+                    <p class="descripcion">Sin descripción</p>
+                </div>
+                <div>
+                    <div class="tags"></div>
+                    <div class="info-footer">
+                        <span>📍 Lat: 0, Lng: 0</span>
+                        <span>👥 Alumnos: <strong>0</strong></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div>
+                    <h2>Sin nombre</h2>
+                    <span class="badge-ciclo">No asignado</span>
+                    <p class="descripcion">Sin descripción</p>
+                </div>
+                <div>
+                    <div class="tags"></div>
+                    <div class="info-footer">
+                        <span>📍 Lat: 0, Lng: 0</span>
+                        <span>👥 Alumnos: <strong>0</strong></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div>
+                    <h2>Sin nombre</h2>
+                    <span class="badge-ciclo">No asignado</span>
+                    <p class="descripcion">Sin descripción</p>
+                </div>
+                <div>
+                    <div class="tags"></div>
+                    <div class="info-footer">
+                        <span>📍 Lat: 0, Lng: 0</span>
+                        <span>👥 Alumnos: <strong>0</strong></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div>
+                    <h2>Sin nombre</h2>
+                    <span class="badge-ciclo">No asignado</span>
+                    <p class="descripcion">Sin descripción</p>
+                </div>
+                <div>
+                    <div class="tags"></div>
+                    <div class="info-footer">
+                        <span>📍 Lat: 0, Lng: 0</span>
+                        <span>👥 Alumnos: <strong>0</strong></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div>
+                    <h2>Sin nombre</h2>
+                    <span class="badge-ciclo">No asignado</span>
+                    <p class="descripcion">Sin descripción</p>
+                </div>
+                <div>
+                    <div class="tags"></div>
+                    <div class="info-footer">
+                        <span>📍 Lat: 0, Lng: 0</span>
+                        <span>👥 Alumnos: <strong>0</strong></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div>
+                    <h2>Sin nombre</h2>
+                    <span class="badge-ciclo">No asignado</span>
+                    <p class="descripcion">Sin descripción</p>
+                </div>
+                <div>
+                    <div class="tags"></div>
+                    <div class="info-footer">
+                        <span>📍 Lat: 0, Lng: 0</span>
+                        <span>👥 Alumnos: <strong>0</strong></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div>
+                    <h2>Sin nombre</h2>
+                    <span class="badge-ciclo">No asignado</span>
+                    <p class="descripcion">Sin descripción</p>
+                </div>
+                <div>
+                    <div class="tags"></div>
+                    <div class="info-footer">
+                        <span>📍 Lat: 0, Lng: 0</span>
+                        <span>👥 Alumnos: <strong>0</strong></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div>
+                    <h2>Sin nombre</h2>
+                    <span class="badge-ciclo">No asignado</span>
+                    <p class="descripcion">Sin descripción</p>
+                </div>
+                <div>
+                    <div class="tags"></div>
+                    <div class="info-footer">
+                        <span>📍 Lat: 0, Lng: 0</span>
+                        <span>👥 Alumnos: <strong>0</strong></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div>
+                    <h2>Sin nombre</h2>
+                    <span class="badge-ciclo">No asignado</span>
+                    <p class="descripcion">Sin descripción</p>
+                </div>
+                <div>
+                    <div class="tags"></div>
+                    <div class="info-footer">
+                        <span>📍 Lat: 0, Lng: 0</span>
+                        <span>👥 Alumnos: <strong>0</strong></span>
+                    </div>
+                </div>
+            </div>
+
         </div>
+    </main>
 
-        <!-- Contenedor del Mapa -->
-        <div class="map-container">
-            <div id="map"></div>
-        </div>
-    </div>
-
-    <!-- Script de Leaflet.js -->
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" 
-            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
-        // Inicializar el mapa centrado en Zaragoza
-        const map = L.map('map', {
-            zoomControl: false
-        }).setView([41.6560, -0.8773], 13);
+        // 1. Inicializar el mapa centrado por defecto en Zaragoza
+        const map = L.map('map').setView([41.65606, -0.87734], 13);
 
-        // Añadir control de zoom personalizado
-        L.control.zoom({ position: 'bottomright' }).addTo(map);
-
-        // Capa clara (Light) para mejor visibilidad
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-            attribution: '© OpenStreetMap contributors, © CARTO',
-            maxZoom: 20
+        # 2. Cargar la capa de mapa visual (OpenStreetMap)
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
         }).addTo(map);
 
-        const marcadores = {};
-        const locationList = document.getElementById('locationList');
+        const datosMarcadores = [];
 
-        // Cargar datos desde JSON
-        fetch('data.json')
-            .then(response => response.json())
-            .then(data => {
-                const puntos = data.puntos;
-                
-                puntos.forEach((punto) => {
-                    // Crear Tarjeta Lateral
-                    const card = document.createElement('div');
-                    card.className = 'location-card';
-                    card.id = `card-${punto.id}`;
-                    card.setAttribute('onclick', `centrarEn(${punto.coords[0]}, ${punto.coords[1]}, 16, '${punto.id}')`);
-                    
-                    card.innerHTML = `
-                        <h3>${punto.nombre}</h3>
-                        <p>${punto.desc}</p>
-                        <div class="card-footer">
-                            <span class="coords-badge">${punto.coords[0].toFixed(4)}, ${punto.coords[1].toFixed(4)}</span>
-                            <span class="type-badge">${punto.tipo}</span>
-                        </div>
-                    `;
-                    locationList.appendChild(card);
+        // 3. Dibujar de forma automática los marcadores en el mapa
+        datosMarcadores.forEach(empresa => {
+            L.marker([empresa.lat, empresa.lng])
+                .addTo(map)
+                .bindPopup(`<b>${empresa.nombre}</b><br>Ciclo: ${empresa.ciclo}`);
+        });
 
-                    // Crear Marcador en el Mapa
-                    const marker = L.marker(punto.coords).addTo(map);
-                    
-                    marker.bindPopup(`
-                        <div class="popup-info">
-                            <h4>${punto.nombre}</h4>
-                            <p>${punto.desc}</p>
-                            <div class="popup-coords"><i class="fa-solid fa-location-crosshairs"></i> ${punto.coords[0]}, ${punto.coords[1]}</div>
-                        </div>
-                    `);
-
-                    // Guardar referencia del marcador
-                    marcadores[punto.id] = marker;
-
-                    // Escuchar el clic sobre el marcador del mapa
-                    marker.on('click', () => {
-                        destacarTarjeta(punto.id);
-                    });
-                });
-            })
-            .catch(error => console.error('Error cargando data.json:', error));
-
-        // Función de navegación interactiva 'flyTo'
-        function centrarEn(lat, lng, zoom, id) {
-            map.flyTo([lat, lng], zoom, {
-                animate: true,
-                duration: 1.5
-            });
-            destacarTarjeta(id);
-            // Abrir el popup del marcador automáticamente tras la animación
-            setTimeout(() => {
-                marcadores[id].openPopup();
-            }, 1200);
-        }
-
-        // 5. Destacar la tarjeta seleccionada de forma visual
-        function destacarTarjeta(id) {
-            document.querySelectorAll('.location-card').forEach(card => {
-                card.classList.remove('active');
-            });
-            const activeCard = document.getElementById(`card-${id}`);
-            if (activeCard) {
-                activeCard.classList.add('active');
-                // Scroll suave de la tarjeta en el contenedor lateral si es necesario
-                activeCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            }
+        // Ajustar el zoom automáticamente si hay empresas mapeadas para que se vean todas
+        if (datosMarcadores.length > 0) {
+            const group = new L.featureGroup(datosMarcadores.map(e => L.marker([e.lat, e.lng])));
+            map.fitBounds(group.getBounds().pad(0.1));
         }
     </script>
 </body>
