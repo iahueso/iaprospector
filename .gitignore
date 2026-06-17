@@ -7,3 +7,30 @@ build/
 *.swp
 *.swo
 .vscode/settings.json
+# Entorno virtual
+envprospector/
+venv/
+.venv/
+
+# Credenciales y configuración privada
+config.py
+credenciales_google.json
+.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Logs
+logs/
+*.log
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Temporales
+*.tmp
+*.bak

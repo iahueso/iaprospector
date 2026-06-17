@@ -1,0 +1,22 @@
+ID,Nombre,Latitud,Longitud,Descripción,Tags,Ciclo Asignado,NAlumnos
+1,TechNova Solutions,-34.6037,-58.3816,Desarrollo de software a medida e inteligencia artificial para finanzas.,"AI, Fintech, Python",DAM,2
+2,PixelCraft Studio,40.4167,-3.7037,Estudio de diseño UX/UI y desarrollo frontend moderno.,"UX/UI, Frontend, React",DAW,1
+3,CyberShield Security,19.4326,-99.1332,Consultoría en ciberseguridad hacking ético y auditorías.,"Cybersecurity, DevOps, Cloud",SMR,3
+4,CloudNexus,37.7749,-122.4194,Migración a la nube y optimización de infraestructura para empresas.,"Cloud, AWS, DevOps",ASIR,2
+5,BioData Lab,41.3851,2.1734,Análisis de datos masivos aplicados a la investigación biomédica.,"Big Data, Python, Biotech",DAM,4
+6,Quantum Code,51.5074,-0.1278,Investigación y desarrollo de algoritmos de computación cuántica.,"Quantum, Q#, Research",DAW,1
+7,DevOps Dynamics,48.8566,2.3522,Automatización de despliegues y gestión de servidores cloud.,"CI/CD, Docker, Kubernetes",ASIR,3
+8,GreenTech Innovation,52.52,13.405,Software para la monitorización y reducción de la huella de carbono.,"IoT, GreenIT, Node.js",DAW,2
+9,DataVibe Analytics,-33.8688,151.2093,Visualización de datos empresariales y cuadros de mando interactivos.,"Business Intelligence, SQL, Tableau",DAM,1
+10,MobileFirst Systems,35.6762,139.6503,Desarrollo exclusivo de aplicaciones móviles nativas de alto rendimiento.,"iOS, Android, Swift, Kotlin",DAM,5
+11,AI Horizon,45.4215,-75.6972,Modelos de lenguaje y automatización mediante redes neuronales.,"Deep Learning, NLP, PyTorch",SMR,2
+12,BlockChain Ledger,-23.5505,-46.6333,Desarrollo de contratos inteligentes y aplicaciones descentralizadas.,"Blockchain, Solidity, Web3",DAW,2
+13,GameForge Studios,43.7001,-79.4163,Estudio independiente de desarrollo de videojuegos y entornos 3D.,"Unity, C#, Gaming, VR",DAM,4
+14,EdTech Virtual,4.711,-74.0721,Plataformas de aprendizaje en línea y educación interactiva.,"E-learning, PHP, LMS",DAW,3
+15,RoboCore Automation,48.1351,11.582,Sistemas embebidos y software para automatización industrial.,"Robotics, C++, IoT",DAM,2
+16,HealthClick,40.7128,-74.006,Aplicaciones de telemedicina e historial clínico digital seguro.,"HealthTech, Java, Security",SMR,1
+17,EcomPulse,34.0522,-118.2437,Optimización de plataformas de comercio electrónico a gran escala.,"E-commerce, Next.js, SEO",DAW,3
+18,NetSentinel,55.7558,37.6173,Monitoreo de redes en tiempo real y prevención de intrusiones.,"Networking, Cisco, Security",ASIR,2
+19,SaaSify Logistics,1.3521,103.8198,Software de gestión de flotas y cadenas de suministro globales.,"SaaS, Go, Logistics",DAW,2
+20,Finix Pay,-22.9068,-43.1729,Pasarelas de pago digitales y procesamiento seguro de transacciones.,"Payments, API, Ruby",DAM,3
+21,hiberus,,,,"consultora tecnológica, TIC, transformación digital, tecnología, empresa española, crecimiento empresarial.",,
