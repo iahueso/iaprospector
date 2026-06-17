@@ -1,347 +1,5 @@
 [
   {
-    "nombre": "TechNova Solutions",
-    "latitud": -34.6037,
-    "longitud": -58.3816,
-    "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España",
-    "descripcion": "Desarrollo de software a medida e inteligencia artificial para finanzas.",
-    "tags": "AI, Fintech, Python",
-    "tags_lista": [
-      "AI",
-      "Fintech",
-      "Python"
-    ],
-    "ciclo": "DAM",
-    "alumnos": "2",
-    "estado_agente": "Sin estado",
-    "fuentes": ""
-  },
-  {
-    "nombre": "PixelCraft Studio",
-    "latitud": 40.4167,
-    "longitud": -3.7037,
-    "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España",
-    "descripcion": "Estudio de diseño UX/UI y desarrollo frontend moderno.",
-    "tags": "UX/UI, Frontend, React",
-    "tags_lista": [
-      "UX/UI",
-      "Frontend",
-      "React"
-    ],
-    "ciclo": "DAW",
-    "alumnos": "1",
-    "estado_agente": "Sin estado",
-    "fuentes": ""
-  },
-  {
-    "nombre": "CyberShield Security",
-    "latitud": 19.4326,
-    "longitud": -99.1332,
-    "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España",
-    "descripcion": "Consultoría en ciberseguridad hacking ético y auditorías.",
-    "tags": "Cybersecurity, DevOps, Cloud",
-    "tags_lista": [
-      "Cybersecurity",
-      "DevOps",
-      "Cloud"
-    ],
-    "ciclo": "SMR",
-    "alumnos": "3",
-    "estado_agente": "Sin estado",
-    "fuentes": ""
-  },
-  {
-    "nombre": "CloudNexus",
-    "latitud": 37.7749,
-    "longitud": -122.4194,
-    "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España",
-    "descripcion": "Migración a la nube y optimización de infraestructura para empresas.",
-    "tags": "Cloud, AWS, DevOps",
-    "tags_lista": [
-      "Cloud",
-      "AWS",
-      "DevOps"
-    ],
-    "ciclo": "ASIR",
-    "alumnos": "2",
-    "estado_agente": "Sin estado",
-    "fuentes": ""
-  },
-  {
-    "nombre": "BioData Lab",
-    "latitud": 41.3851,
-    "longitud": 2.1734,
-    "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España",
-    "descripcion": "Análisis de datos masivos aplicados a la investigación biomédica.",
-    "tags": "Big Data, Python, Biotech",
-    "tags_lista": [
-      "Big Data",
-      "Python",
-      "Biotech"
-    ],
-    "ciclo": "DAM",
-    "alumnos": "4",
-    "estado_agente": "Sin estado",
-    "fuentes": ""
-  },
-  {
-    "nombre": "Quantum Code",
-    "latitud": 51.5074,
-    "longitud": -0.1278,
-    "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España",
-    "descripcion": "Investigación y desarrollo de algoritmos de computación cuántica.",
-    "tags": "Quantum, Q#, Research",
-    "tags_lista": [
-      "Quantum",
-      "Q#",
-      "Research"
-    ],
-    "ciclo": "DAW",
-    "alumnos": "1",
-    "estado_agente": "Sin estado",
-    "fuentes": ""
-  },
-  {
-    "nombre": "DevOps Dynamics",
-    "latitud": 48.8566,
-    "longitud": 2.3522,
-    "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España",
-    "descripcion": "Automatización de despliegues y gestión de servidores cloud.",
-    "tags": "CI/CD, Docker, Kubernetes",
-    "tags_lista": [
-      "CI/CD",
-      "Docker",
-      "Kubernetes"
-    ],
-    "ciclo": "ASIR",
-    "alumnos": "3",
-    "estado_agente": "Sin estado",
-    "fuentes": ""
-  },
-  {
-    "nombre": "GreenTech Innovation",
-    "latitud": 52.52,
-    "longitud": 13.405,
-    "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España",
-    "descripcion": "Software para la monitorización y reducción de la huella de carbono.",
-    "tags": "IoT, GreenIT, Node.js",
-    "tags_lista": [
-      "IoT",
-      "GreenIT",
-      "Node.js"
-    ],
-    "ciclo": "DAW",
-    "alumnos": "2",
-    "estado_agente": "Sin estado",
-    "fuentes": ""
-  },
-  {
-    "nombre": "DataVibe Analytics",
-    "latitud": -33.8688,
-    "longitud": 151.2093,
-    "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España",
-    "descripcion": "Visualización de datos empresariales y cuadros de mando interactivos.",
-    "tags": "Business Intelligence, SQL, Tableau",
-    "tags_lista": [
-      "Business Intelligence",
-      "SQL",
-      "Tableau"
-    ],
-    "ciclo": "DAM",
-    "alumnos": "1",
-    "estado_agente": "Sin estado",
-    "fuentes": ""
-  },
-  {
-    "nombre": "MobileFirst Systems",
-    "latitud": 35.6762,
-    "longitud": 139.6503,
-    "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España",
-    "descripcion": "Desarrollo exclusivo de aplicaciones móviles nativas de alto rendimiento.",
-    "tags": "iOS, Android, Swift, Kotlin",
-    "tags_lista": [
-      "iOS",
-      "Android",
-      "Swift",
-      "Kotlin"
-    ],
-    "ciclo": "DAM",
-    "alumnos": "5",
-    "estado_agente": "Sin estado",
-    "fuentes": ""
-  },
-  {
-    "nombre": "AI Horizon",
-    "latitud": 45.4215,
-    "longitud": -75.6972,
-    "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España",
-    "descripcion": "Modelos de lenguaje y automatización mediante redes neuronales.",
-    "tags": "Deep Learning, NLP, PyTorch",
-    "tags_lista": [
-      "Deep Learning",
-      "NLP",
-      "PyTorch"
-    ],
-    "ciclo": "SMR",
-    "alumnos": "2",
-    "estado_agente": "Sin estado",
-    "fuentes": ""
-  },
-  {
-    "nombre": "BlockChain Ledger",
-    "latitud": -23.5505,
-    "longitud": -46.6333,
-    "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España",
-    "descripcion": "Desarrollo de contratos inteligentes y aplicaciones descentralizadas.",
-    "tags": "Blockchain, Solidity, Web3",
-    "tags_lista": [
-      "Blockchain",
-      "Solidity",
-      "Web3"
-    ],
-    "ciclo": "DAW",
-    "alumnos": "2",
-    "estado_agente": "Sin estado",
-    "fuentes": ""
-  },
-  {
-    "nombre": "GameForge Studios",
-    "latitud": 43.7001,
-    "longitud": -79.4163,
-    "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España",
-    "descripcion": "Estudio independiente de desarrollo de videojuegos y entornos 3D.",
-    "tags": "Unity, C#, Gaming, VR",
-    "tags_lista": [
-      "Unity",
-      "C#",
-      "Gaming",
-      "VR"
-    ],
-    "ciclo": "DAM",
-    "alumnos": "4",
-    "estado_agente": "Sin estado",
-    "fuentes": ""
-  },
-  {
-    "nombre": "EdTech Virtual",
-    "latitud": 4.711,
-    "longitud": -74.0721,
-    "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España",
-    "descripcion": "Plataformas de aprendizaje en línea y educación interactiva.",
-    "tags": "E-learning, PHP, LMS",
-    "tags_lista": [
-      "E-learning",
-      "PHP",
-      "LMS"
-    ],
-    "ciclo": "DAW",
-    "alumnos": "3",
-    "estado_agente": "Sin estado",
-    "fuentes": ""
-  },
-  {
-    "nombre": "RoboCore Automation",
-    "latitud": 48.1351,
-    "longitud": 11.582,
-    "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España",
-    "descripcion": "Sistemas embebidos y software para automatización industrial.",
-    "tags": "Robotics, C++, IoT",
-    "tags_lista": [
-      "Robotics",
-      "C++",
-      "IoT"
-    ],
-    "ciclo": "DAM",
-    "alumnos": "2",
-    "estado_agente": "Sin estado",
-    "fuentes": ""
-  },
-  {
-    "nombre": "HealthClick",
-    "latitud": 40.7128,
-    "longitud": -74.006,
-    "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España",
-    "descripcion": "Aplicaciones de telemedicina e historial clínico digital seguro.",
-    "tags": "HealthTech, Java, Security",
-    "tags_lista": [
-      "HealthTech",
-      "Java",
-      "Security"
-    ],
-    "ciclo": "SMR",
-    "alumnos": "1",
-    "estado_agente": "Sin estado",
-    "fuentes": ""
-  },
-  {
-    "nombre": "EcomPulse",
-    "latitud": 34.0522,
-    "longitud": -118.2437,
-    "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España",
-    "descripcion": "Optimización de plataformas de comercio electrónico a gran escala.",
-    "tags": "E-commerce, Next.js, SEO",
-    "tags_lista": [
-      "E-commerce",
-      "Next.js",
-      "SEO"
-    ],
-    "ciclo": "DAW",
-    "alumnos": "3",
-    "estado_agente": "Sin estado",
-    "fuentes": ""
-  },
-  {
-    "nombre": "NetSentinel",
-    "latitud": 55.7558,
-    "longitud": 37.6173,
-    "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España",
-    "descripcion": "Monitoreo de redes en tiempo real y prevención de intrusiones.",
-    "tags": "Networking, Cisco, Security",
-    "tags_lista": [
-      "Networking",
-      "Cisco",
-      "Security"
-    ],
-    "ciclo": "ASIR",
-    "alumnos": "2",
-    "estado_agente": "Sin estado",
-    "fuentes": ""
-  },
-  {
-    "nombre": "SaaSify Logistics",
-    "latitud": 1.3521,
-    "longitud": 103.8198,
-    "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España",
-    "descripcion": "Software de gestión de flotas y cadenas de suministro globales.",
-    "tags": "SaaS, Go, Logistics",
-    "tags_lista": [
-      "SaaS",
-      "Go",
-      "Logistics"
-    ],
-    "ciclo": "DAW",
-    "alumnos": "2",
-    "estado_agente": "Sin estado",
-    "fuentes": ""
-  },
-  {
-    "nombre": "Finix Pay",
-    "latitud": -22.9068,
-    "longitud": -43.1729,
-    "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España",
-    "descripcion": "Pasarelas de pago digitales y procesamiento seguro de transacciones.",
-    "tags": "Payments, API, Ruby",
-    "tags_lista": [
-      "Payments",
-      "API",
-      "Ruby"
-    ],
-    "ciclo": "DAM",
-    "alumnos": "3",
-    "estado_agente": "Sin estado",
-    "fuentes": ""
-  },
-  {
     "nombre": "Hiberus",
     "latitud": 41.6707881,
     "longitud": -0.8995539,
@@ -407,6 +65,267 @@
     ],
     "ciclo": "DAW",
     "alumnos": "preconfigurada",
+    "estado_agente": "Sin estado",
+    "fuentes": ""
+  },
+  {
+    "nombre": "DXC Technology Zaragoza",
+    "latitud": 41.6549845,
+    "longitud": -0.9908509,
+    "direccion": "DXC.technology, Calle de Bari, 11, 50197 Zaragoza, España",
+    "descripcion": "Empresa tecnológica con un Centro de Excelencia en Zaragoza que impulsa la adopción de IA y Cloud en las principales organizaciones de España.",
+    "tags": "tecnología, IA, Cloud, Zaragoza",
+    "tags_lista": [
+      "tecnología",
+      "IA",
+      "Cloud",
+      "Zaragoza"
+    ],
+    "ciclo": "DAW",
+    "alumnos": "preconfigurada",
+    "estado_agente": "Sin estado",
+    "fuentes": ""
+  },
+  {
+    "nombre": "NTT DATA Zaragoza",
+    "latitud": 40.4866435,
+    "longitud": -3.6623952,
+    "direccion": "NTT Data España, Avenida de la Fuente de la Mora, 1, 28050 Madrid, España",
+    "descripcion": "Empresa de tecnología con sede en Zaragoza que ofrece servicios relacionados con la información y la informática.",
+    "tags": "tecnología, informática, servicios",
+    "tags_lista": [
+      "tecnología",
+      "informática",
+      "servicios"
+    ],
+    "ciclo": "DAW",
+    "alumnos": "preconfigurada",
+    "estado_agente": "Sin estado",
+    "fuentes": ""
+  },
+  {
+    "nombre": "Deloitte Zaragoza",
+    "latitud": 37.3913778,
+    "longitud": -6.0102735,
+    "direccion": "Deloitte, Plaza Alcalde Alfredo Sánchez Monteseirín, 2, 41092 Sevilla, España",
+    "descripcion": "Empresa de consultoría y servicios profesionales con oficina en Zaragoza. Ofrece servicios de auditoría, consultoría y asesoramiento en áreas como tecnología, finanzas y gestión.",
+    "tags": "consultoría, servicios profesionales, tecnología, finanzas, gestión",
+    "tags_lista": [
+      "consultoría",
+      "servicios profesionales",
+      "tecnología",
+      "finanzas",
+      "gestión"
+    ],
+    "ciclo": "DAW",
+    "alumnos": "0",
+    "estado_agente": "Sin estado",
+    "fuentes": ""
+  },
+  {
+    "nombre": "Ingenia",
+    "latitud": 39.9838664,
+    "longitud": -0.0198039,
+    "direccion": "Ingenia, Avenida del Mar, 12003 Castellón de la Plana, España",
+    "descripcion": "Empresa de consultoría informática que ofrece soluciones de gestión, ERP y CRM.",
+    "tags": "consultoria, informatica, gestion, erp, crm",
+    "tags_lista": [
+      "consultoria",
+      "informatica",
+      "gestion",
+      "erp",
+      "crm"
+    ],
+    "ciclo": "DAM",
+    "alumnos": "0",
+    "estado_agente": "Sin estado",
+    "fuentes": ""
+  },
+  {
+    "nombre": "Aratec64",
+    "latitud": 41.65526,
+    "longitud": -0.888438,
+    "direccion": "Calle Aranda, 64, 50003 Zaragoza, España",
+    "descripcion": "Empresa de consultoría informática que ofrece servicios de diseño web, hosting, redes y consultoría informática.",
+    "tags": "consultoria, informatica, diseño web, hosting, redes",
+    "tags_lista": [
+      "consultoria",
+      "informatica",
+      "diseño web",
+      "hosting",
+      "redes"
+    ],
+    "ciclo": "DAW",
+    "alumnos": "0",
+    "estado_agente": "Sin estado",
+    "fuentes": ""
+  },
+  {
+    "nombre": "Empresa de Desarrollo de Software en Zaragoza",
+    "latitud": 41.6442511,
+    "longitud": -0.8856127,
+    "direccion": "Institut Français d'Espagne en Zaragoza, Paseo de Sagasta, 7, 50008 Zaragoza, España",
+    "descripcion": "Desarrollamos webs y apps a medida en Zaragoza, adaptadas a tus necesidades. Potencia tu negocio con soluciones digitales innovadoras.",
+    "tags": "desarrollo de software, desarrollo web, aplicaciones móviles",
+    "tags_lista": [
+      "desarrollo de software",
+      "desarrollo web",
+      "aplicaciones móviles"
+    ],
+    "ciclo": "DAW",
+    "alumnos": "0",
+    "estado_agente": "Sin estado",
+    "fuentes": ""
+  },
+  {
+    "nombre": "ASD Solutions",
+    "latitud": 41.6464797,
+    "longitud": -0.8894298,
+    "direccion": "Voilá Contract Solutions, Calle de Amado Laguna de Rins, 50006 Zaragoza, España",
+    "descripcion": "Diseñamos y desarrollamos software a medida para pymes: aplicaciones web, herramientas internas de gestión, automatización de procesos, integraciones entre sistemas y paneles de control.",
+    "tags": "desarrollo de software, aplicaciones web, automatización de procesos",
+    "tags_lista": [
+      "desarrollo de software",
+      "aplicaciones web",
+      "automatización de procesos"
+    ],
+    "ciclo": "DAW",
+    "alumnos": "0",
+    "estado_agente": "Sin estado",
+    "fuentes": ""
+  },
+  {
+    "nombre": "Ecosistema tech en Zaragoza",
+    "latitud": 41.6442511,
+    "longitud": -0.8856127,
+    "direccion": "Institut Français d'Espagne en Zaragoza, Paseo de Sagasta, 7, 50008 Zaragoza, España",
+    "descripcion": "Eventos tech en Zaragoza. Congreso Web Zaragoza: marketing digital, SEO, analítica. Referente nacional desde hace 10+ ediciones. Tech Shakers: meetups mensuales con charlas de profesionales tech.",
+    "tags": "eventos tech, marketing digital, seo",
+    "tags_lista": [
+      "eventos tech",
+      "marketing digital",
+      "seo"
+    ],
+    "ciclo": "DAW",
+    "alumnos": "0",
+    "estado_agente": "Sin estado",
+    "fuentes": ""
+  },
+  {
+    "nombre": "Q2BSTUDIO",
+    "latitud": 41.646481,
+    "longitud": -0.887553,
+    "direccion": "Zaragoza, AR, España",
+    "descripcion": "Empresa de software especializada en consultoría, ingeniería y desarrollo de software, avalada por la certificación de Micro Focus.",
+    "tags": "software, consultoria, ingenieria, desarrollo",
+    "tags_lista": [
+      "software",
+      "consultoria",
+      "ingenieria",
+      "desarrollo"
+    ],
+    "ciclo": "DAW",
+    "alumnos": "0",
+    "estado_agente": "Sin estado",
+    "fuentes": ""
+  },
+  {
+    "nombre": "NTT DATA",
+    "latitud": 41.6915847,
+    "longitud": -0.9101268,
+    "direccion": "Zaragoza, AR, España",
+    "descripcion": "Consultora de administración empresarial y tecnológicas más grandes de España, con una presencia destacada en el parque tecnológico de Zaragoza.",
+    "tags": "consultoria, administracion, tecnologia",
+    "tags_lista": [
+      "consultoria",
+      "administracion",
+      "tecnologia"
+    ],
+    "ciclo": "DAW",
+    "alumnos": "0",
+    "estado_agente": "Sin estado",
+    "fuentes": ""
+  },
+  {
+    "nombre": "Innovatus",
+    "latitud": 41.6915847,
+    "longitud": -0.9101268,
+    "direccion": "Zaragoza, AR, España",
+    "descripcion": "Centro neurálgico de la innovación y el desarrollo empresarial en la ciudad de Zaragoza, España.",
+    "tags": "innovacion, desarrollo, empresarial",
+    "tags_lista": [
+      "innovacion",
+      "desarrollo",
+      "empresarial"
+    ],
+    "ciclo": "DAW",
+    "alumnos": "0",
+    "estado_agente": "Sin estado",
+    "fuentes": ""
+  },
+  {
+    "nombre": "CaixaBank",
+    "latitud": 41.6410829,
+    "longitud": -0.9096046,
+    "direccion": "Caixabank, Andador del Teniente General Quintana Lacacci, 50009 Zaragoza, España",
+    "descripcion": "Banco con sede en Zaragoza que ofrece servicios financieros a particulares y empresas.",
+    "tags": "banca, finanzas",
+    "tags_lista": [
+      "banca",
+      "finanzas"
+    ],
+    "ciclo": "Otro",
+    "alumnos": "0",
+    "estado_agente": "Sin estado",
+    "fuentes": ""
+  },
+  {
+    "nombre": "Driven",
+    "latitud": 41.6915847,
+    "longitud": -0.9101268,
+    "direccion": "Zaragoza, AR, España",
+    "descripcion": "Empresa de tecnología con sede en Zaragoza que ofrece soluciones de software y consultoría.",
+    "tags": "software, consultoría",
+    "tags_lista": [
+      "software",
+      "consultoría"
+    ],
+    "ciclo": "DAW",
+    "alumnos": "0",
+    "estado_agente": "Sin estado",
+    "fuentes": ""
+  },
+  {
+    "nombre": "Endalia",
+    "latitud": 41.6915847,
+    "longitud": -0.9101268,
+    "direccion": "Zaragoza, AR, España",
+    "descripcion": "Empresa de tecnología con sede en Zaragoza, Aragón. Ofrece servicios de informática y tecnología.",
+    "tags": "software, cloud, datos",
+    "tags_lista": [
+      "software",
+      "cloud",
+      "datos"
+    ],
+    "ciclo": "DAW",
+    "alumnos": "0",
+    "estado_agente": "Sin estado",
+    "fuentes": ""
+  },
+  {
+    "nombre": "Inetum",
+    "latitud": 41.6915847,
+    "longitud": -0.9101268,
+    "direccion": "Zaragoza, AR, España",
+    "descripcion": "Empresa de consultoría informática que ofrece servicios y soluciones en tecnología y datos.",
+    "tags": "software, cloud, datos",
+    "tags_lista": [
+      "software",
+      "cloud",
+      "datos"
+    ],
+    "ciclo": "DAW",
+    "alumnos": "0",
     "estado_agente": "Sin estado",
     "fuentes": ""
   }
