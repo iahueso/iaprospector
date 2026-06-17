@@ -9,40 +9,60 @@
 
     <style>
 
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
             background-color: #f4f7f6;
             margin: 0;
             padding: 0;
             color: #333;
+            height: 100vh;
+            overflow: hidden;
         }
 
         header {
+            height: 82px;
             background-color: #1e293b;
             color: white;
             text-align: center;
-            padding: 1.5rem 1rem;
+            padding: 1rem;
         }
 
         header h1 {
             margin: 0;
-            font-size: 2rem;
+            font-size: 1.7rem;
         }
 
         header p {
-            margin: 0.5rem 0 0 0;
+            margin: 0.35rem 0 0 0;
             color: #cbd5e1;
+            font-size: 0.95rem;
         }
 
-        .barra-info {
-            max-width: 1200px;
-            margin: 1rem auto 0 auto;
-            padding: 0 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 1rem;
-            flex-wrap: wrap;
+        .layout {
+            display: grid;
+            grid-template-columns: 390px 1fr;
+            height: calc(100vh - 82px);
+        }
+
+        .panel-lateral {
+            background: #f8fafc;
+            border-right: 1px solid #cbd5e1;
+            overflow-y: auto;
+            padding: 1rem;
+        }
+
+        .zona-mapa {
+            position: relative;
+            height: 100%;
+        }
+
+        #map {
+            height: 100%;
+            width: 100%;
         }
 
         .contador {
@@ -52,11 +72,12 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
             font-weight: bold;
             color: #1e293b;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
         }
 
         .buscador {
-            flex: 1;
-            min-width: 260px;
+            margin-bottom: 1rem;
         }
 
         .buscador input {
@@ -64,13 +85,11 @@
             padding: 0.75rem 1rem;
             border: 1px solid #cbd5e1;
             border-radius: 8px;
-            font-size: 1rem;
+            font-size: 0.95rem;
         }
 
         .panel-tags {
-            max-width: 1200px;
-            margin: 1rem auto 0 auto;
-            padding: 0 1rem;
+            margin-bottom: 1rem;
         }
 
         .panel-tags h3 {
@@ -82,7 +101,7 @@
         .filtros-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
+            gap: 0.4rem;
         }
 
         .filtro-tag,
@@ -95,9 +114,9 @@
         .filtro-tag {
             background: #e2e8f0;
             color: #334155;
-            padding: 0.4rem 0.7rem;
+            padding: 0.35rem 0.6rem;
             border-radius: 999px;
-            font-size: 0.85rem;
+            font-size: 0.78rem;
             transition: 0.2s;
         }
 
@@ -116,36 +135,23 @@
             color: #991b1b;
         }
 
-        #mapa-seccion {
-            max-width: 1200px;
-            margin: 1.5rem auto;
-            padding: 0 1rem;
-        }
-
-        #map {
-            height: 450px;
-            width: 100%;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-
-        main {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 1rem;
+        .titulo-listado {
+            margin: 1rem 0 0.75rem 0;
+            color: #1e293b;
+            font-size: 1rem;
         }
 
         .grid-empresas {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
         }
 
         .card {
             background: white;
             border-radius: 8px;
-            padding: 1.5rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            padding: 1rem;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.05);
             border-left: 5px solid #3b82f6;
             display: flex;
             flex-direction: column;
@@ -154,8 +160,8 @@
         }
 
         .card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 14px rgba(0,0,0,0.08);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.08);
         }
 
         .card.seleccionada {
@@ -179,53 +185,53 @@
         }
 
         .card h2 {
-            margin-top: 0;
+            margin: 0 0 0.4rem 0;
             color: #1e293b;
-            font-size: 1.25rem;
+            font-size: 1.05rem;
         }
 
         .badge-ciclo {
             background-color: #e0f2fe;
             color: #0369a1;
-            padding: 0.25rem 0.5rem;
+            padding: 0.2rem 0.45rem;
             border-radius: 4px;
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             font-weight: bold;
             display: inline-block;
-            margin-bottom: 1rem;
+            margin-bottom: 0.6rem;
             align-self: flex-start;
         }
 
         .descripcion {
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             color: #4b5563;
-            line-height: 1.4;
-            margin-bottom: 1rem;
+            line-height: 1.35;
+            margin-bottom: 0.6rem;
         }
 
         .direccion {
-            font-size: 0.85rem;
+            font-size: 0.78rem;
             color: #64748b;
-            line-height: 1.4;
+            line-height: 1.3;
         }
 
         .fuentes {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: #64748b;
             word-break: break-word;
         }
 
         .tags {
-            margin: 1rem 0;
+            margin: 0.7rem 0;
         }
 
         .tag {
             background: #f1f5f9;
             color: #475569;
-            padding: 0.25rem 0.55rem;
+            padding: 0.2rem 0.45rem;
             border-radius: 4px;
-            font-size: 0.8rem;
-            margin-right: 0.5rem;
+            font-size: 0.72rem;
+            margin-right: 0.35rem;
             display: inline-block;
             margin-bottom: 0.25rem;
         }
@@ -243,18 +249,18 @@
         .info-footer {
             display: flex;
             justify-content: space-between;
-            gap: 1rem;
-            font-size: 0.8rem;
+            gap: 0.5rem;
+            font-size: 0.7rem;
             color: #64748b;
             border-top: 1px solid #f1f5f9;
-            padding-top: 0.75rem;
+            padding-top: 0.6rem;
             margin-top: auto;
             flex-wrap: wrap;
         }
 
         .estado-footer {
-            margin-top: 0.5rem;
-            font-size: 0.78rem;
+            margin-top: 0.4rem;
+            font-size: 0.7rem;
             color: #64748b;
         }
 
@@ -285,24 +291,35 @@
             box-shadow: 0 3px 12px rgba(127,29,29,0.6);
         }
 
-        footer {
-            text-align: center;
-            color: #64748b;
-            padding: 2rem 1rem;
-            font-size: 0.9rem;
-        }
+        @media (max-width: 900px) {
+            body {
+                height: auto;
+                overflow: auto;
+            }
 
-        @media (max-width: 700px) {
-            header h1 {
-                font-size: 1.5rem;
+            header {
+                height: auto;
+            }
+
+            .layout {
+                display: flex;
+                flex-direction: column;
+                height: auto;
+            }
+
+            .panel-lateral {
+                height: auto;
+                max-height: none;
+                border-right: none;
+                border-bottom: 1px solid #cbd5e1;
+            }
+
+            .zona-mapa {
+                height: 420px;
             }
 
             #map {
-                height: 360px;
-            }
-
-            .grid-empresas {
-                grid-template-columns: 1fr;
+                height: 420px;
             }
         }
 
@@ -315,20 +332,22 @@
         <p>Empresas sincronizadas automáticamente desde Google Sheets</p>
     </header>
 
-    <section class="barra-info">
-        <div class="contador">
-            <span id="contador-empresas">24</span> empresas publicadas · 24 con marcador
-        </div>
+    <div class="layout">
 
-        <div class="buscador">
-            <input type="text" id="busqueda" placeholder="Escribe una empresa o las primeras letras de un tag...">
-        </div>
-    </section>
+        <aside class="panel-lateral">
 
-    <section class="panel-tags">
-        <h3>Tags disponibles</h3>
-        <div class="filtros-tags">
-            <button class="filtro-tag" data-tag="ai">#ai</button>
+            <div class="contador">
+                <span id="contador-empresas">24</span> empresas publicadas · 24 con marcador
+            </div>
+
+            <div class="buscador">
+                <input type="text" id="busqueda" placeholder="Buscar empresa o primeras letras de un tag...">
+            </div>
+
+            <section class="panel-tags">
+                <h3>Tags disponibles</h3>
+                <div class="filtros-tags">
+                    <button class="filtro-tag" data-tag="ai">#ai</button>
 <button class="filtro-tag" data-tag="android">#android</button>
 <button class="filtro-tag" data-tag="api">#api</button>
 <button class="filtro-tag" data-tag="aws">#aws</button>
@@ -394,16 +413,13 @@
 <button class="filtro-tag" data-tag="vr">#vr</button>
 <button class="filtro-tag" data-tag="web3">#web3</button>
 <button class="filtro-tag" data-tag="zaragoza">#zaragoza</button>
-            <button class="filtro-tag limpiar-filtros" id="limpiar-filtros">Limpiar filtros</button>
-        </div>
-    </section>
+                    <button class="filtro-tag limpiar-filtros" id="limpiar-filtros">Limpiar filtros</button>
+                </div>
+            </section>
 
-    <section id="mapa-seccion">
-        <div id="map"></div>
-    </section>
+            <h3 class="titulo-listado">Empresas</h3>
 
-    <main>
-        <div class="grid-empresas" id="grid-empresas">
+            <div class="grid-empresas" id="grid-empresas">
 
             <div class="card tarjeta-clicable" 
                  data-lat="-34.6037" data-lng="-58.3816" data-nombre="TechNova Solutions"
@@ -1052,12 +1068,15 @@
                 </div>
             </div>
 
-        </div>
-    </main>
+            </div>
 
-    <footer>
-        IAProspector · Datos generados desde Google Sheets
-    </footer>
+        </aside>
+
+        <section class="zona-mapa">
+            <div id="map"></div>
+        </section>
+
+    </div>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
