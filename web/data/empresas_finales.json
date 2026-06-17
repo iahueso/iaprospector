@@ -6,6 +6,11 @@
     "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España",
     "descripcion": "Desarrollo de software a medida e inteligencia artificial para finanzas.",
     "tags": "AI, Fintech, Python",
+    "tags_lista": [
+      "AI",
+      "Fintech",
+      "Python"
+    ],
     "ciclo": "DAM",
     "alumnos": "2",
     "estado_agente": "Sin estado",
@@ -18,6 +23,11 @@
     "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España",
     "descripcion": "Estudio de diseño UX/UI y desarrollo frontend moderno.",
     "tags": "UX/UI, Frontend, React",
+    "tags_lista": [
+      "UX/UI",
+      "Frontend",
+      "React"
+    ],
     "ciclo": "DAW",
     "alumnos": "1",
     "estado_agente": "Sin estado",
@@ -30,6 +40,11 @@
     "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España",
     "descripcion": "Consultoría en ciberseguridad hacking ético y auditorías.",
     "tags": "Cybersecurity, DevOps, Cloud",
+    "tags_lista": [
+      "Cybersecurity",
+      "DevOps",
+      "Cloud"
+    ],
     "ciclo": "SMR",
     "alumnos": "3",
     "estado_agente": "Sin estado",
@@ -42,6 +57,11 @@
     "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España",
     "descripcion": "Migración a la nube y optimización de infraestructura para empresas.",
     "tags": "Cloud, AWS, DevOps",
+    "tags_lista": [
+      "Cloud",
+      "AWS",
+      "DevOps"
+    ],
     "ciclo": "ASIR",
     "alumnos": "2",
     "estado_agente": "Sin estado",
@@ -54,6 +74,11 @@
     "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España",
     "descripcion": "Análisis de datos masivos aplicados a la investigación biomédica.",
     "tags": "Big Data, Python, Biotech",
+    "tags_lista": [
+      "Big Data",
+      "Python",
+      "Biotech"
+    ],
     "ciclo": "DAM",
     "alumnos": "4",
     "estado_agente": "Sin estado",
@@ -66,6 +91,11 @@
     "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España",
     "descripcion": "Investigación y desarrollo de algoritmos de computación cuántica.",
     "tags": "Quantum, Q#, Research",
+    "tags_lista": [
+      "Quantum",
+      "Q#",
+      "Research"
+    ],
     "ciclo": "DAW",
     "alumnos": "1",
     "estado_agente": "Sin estado",
@@ -78,6 +108,11 @@
     "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España",
     "descripcion": "Automatización de despliegues y gestión de servidores cloud.",
     "tags": "CI/CD, Docker, Kubernetes",
+    "tags_lista": [
+      "CI/CD",
+      "Docker",
+      "Kubernetes"
+    ],
     "ciclo": "ASIR",
     "alumnos": "3",
     "estado_agente": "Sin estado",
@@ -90,6 +125,11 @@
     "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España",
     "descripcion": "Software para la monitorización y reducción de la huella de carbono.",
     "tags": "IoT, GreenIT, Node.js",
+    "tags_lista": [
+      "IoT",
+      "GreenIT",
+      "Node.js"
+    ],
     "ciclo": "DAW",
     "alumnos": "2",
     "estado_agente": "Sin estado",
@@ -102,6 +142,11 @@
     "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España",
     "descripcion": "Visualización de datos empresariales y cuadros de mando interactivos.",
     "tags": "Business Intelligence, SQL, Tableau",
+    "tags_lista": [
+      "Business Intelligence",
+      "SQL",
+      "Tableau"
+    ],
     "ciclo": "DAM",
     "alumnos": "1",
     "estado_agente": "Sin estado",
@@ -114,6 +159,12 @@
     "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España",
     "descripcion": "Desarrollo exclusivo de aplicaciones móviles nativas de alto rendimiento.",
     "tags": "iOS, Android, Swift, Kotlin",
+    "tags_lista": [
+      "iOS",
+      "Android",
+      "Swift",
+      "Kotlin"
+    ],
     "ciclo": "DAM",
     "alumnos": "5",
     "estado_agente": "Sin estado",
@@ -126,6 +177,11 @@
     "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España",
     "descripcion": "Modelos de lenguaje y automatización mediante redes neuronales.",
     "tags": "Deep Learning, NLP, PyTorch",
+    "tags_lista": [
+      "Deep Learning",
+      "NLP",
+      "PyTorch"
+    ],
     "ciclo": "SMR",
     "alumnos": "2",
     "estado_agente": "Sin estado",
@@ -138,6 +194,11 @@
     "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España",
     "descripcion": "Desarrollo de contratos inteligentes y aplicaciones descentralizadas.",
     "tags": "Blockchain, Solidity, Web3",
+    "tags_lista": [
+      "Blockchain",
+      "Solidity",
+      "Web3"
+    ],
     "ciclo": "DAW",
     "alumnos": "2",
     "estado_agente": "Sin estado",
@@ -150,6 +211,12 @@
     "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España",
     "descripcion": "Estudio independiente de desarrollo de videojuegos y entornos 3D.",
     "tags": "Unity, C#, Gaming, VR",
+    "tags_lista": [
+      "Unity",
+      "C#",
+      "Gaming",
+      "VR"
+    ],
     "ciclo": "DAM",
     "alumnos": "4",
     "estado_agente": "Sin estado",
@@ -162,6 +229,11 @@
     "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España",
     "descripcion": "Plataformas de aprendizaje en línea y educación interactiva.",
     "tags": "E-learning, PHP, LMS",
+    "tags_lista": [
+      "E-learning",
+      "PHP",
+      "LMS"
+    ],
     "ciclo": "DAW",
     "alumnos": "3",
     "estado_agente": "Sin estado",
@@ -174,6 +246,11 @@
     "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España",
     "descripcion": "Sistemas embebidos y software para automatización industrial.",
     "tags": "Robotics, C++, IoT",
+    "tags_lista": [
+      "Robotics",
+      "C++",
+      "IoT"
+    ],
     "ciclo": "DAM",
     "alumnos": "2",
     "estado_agente": "Sin estado",
@@ -186,6 +263,11 @@
     "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España",
     "descripcion": "Aplicaciones de telemedicina e historial clínico digital seguro.",
     "tags": "HealthTech, Java, Security",
+    "tags_lista": [
+      "HealthTech",
+      "Java",
+      "Security"
+    ],
     "ciclo": "SMR",
     "alumnos": "1",
     "estado_agente": "Sin estado",
@@ -198,6 +280,11 @@
     "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España",
     "descripcion": "Optimización de plataformas de comercio electrónico a gran escala.",
     "tags": "E-commerce, Next.js, SEO",
+    "tags_lista": [
+      "E-commerce",
+      "Next.js",
+      "SEO"
+    ],
     "ciclo": "DAW",
     "alumnos": "3",
     "estado_agente": "Sin estado",
@@ -210,6 +297,11 @@
     "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España",
     "descripcion": "Monitoreo de redes en tiempo real y prevención de intrusiones.",
     "tags": "Networking, Cisco, Security",
+    "tags_lista": [
+      "Networking",
+      "Cisco",
+      "Security"
+    ],
     "ciclo": "ASIR",
     "alumnos": "2",
     "estado_agente": "Sin estado",
@@ -222,6 +314,11 @@
     "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España",
     "descripcion": "Software de gestión de flotas y cadenas de suministro globales.",
     "tags": "SaaS, Go, Logistics",
+    "tags_lista": [
+      "SaaS",
+      "Go",
+      "Logistics"
+    ],
     "ciclo": "DAW",
     "alumnos": "2",
     "estado_agente": "Sin estado",
@@ -234,6 +331,11 @@
     "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España",
     "descripcion": "Pasarelas de pago digitales y procesamiento seguro de transacciones.",
     "tags": "Payments, API, Ruby",
+    "tags_lista": [
+      "Payments",
+      "API",
+      "Ruby"
+    ],
     "ciclo": "DAM",
     "alumnos": "3",
     "estado_agente": "Sin estado",
@@ -246,6 +348,11 @@
     "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España",
     "descripcion": "Empresa tecnológica con sede en Zaragoza que ofrece soluciones de tecnología y servicios de consultoría.",
     "tags": "tecnología, consultoría, Zaragoza",
+    "tags_lista": [
+      "tecnología",
+      "consultoría",
+      "Zaragoza"
+    ],
     "ciclo": "DAW",
     "alumnos": "0",
     "estado_agente": "Sin estado",
@@ -258,6 +365,11 @@
     "direccion": "Integra. Estrategia y Tecnología., Gran Vía de Santiago Ramón y Cajal, 23, 50006 Zaragoza, España",
     "descripcion": "Empresa de tecnología con sede en Zaragoza que ofrece servicios de estrategia y tecnología.",
     "tags": "tecnología, estrategia, Zaragoza",
+    "tags_lista": [
+      "tecnología",
+      "estrategia",
+      "Zaragoza"
+    ],
     "ciclo": "DAW",
     "alumnos": "preconfigurada",
     "estado_agente": "Sin estado",
@@ -270,6 +382,11 @@
     "direccion": "imascono, Calle de Felipe Sanclemente, 3, 50001 Zaragoza, España",
     "descripcion": "Empresa de tecnología que ofrece soluciones de realidad extendida y servicios de metaverso para empresas.",
     "tags": "tecnología, realidad extendida, metaverso",
+    "tags_lista": [
+      "tecnología",
+      "realidad extendida",
+      "metaverso"
+    ],
     "ciclo": "DAW",
     "alumnos": "preconfigurada",
     "estado_agente": "Sin estado",
@@ -282,6 +399,12 @@
     "direccion": "Inycom, Calle de Alaún, 8, 50197 Zaragoza, España",
     "descripcion": "Empresa de tecnología e innovación que ofrece soluciones y servicios adaptados a empresas y entidades públicas.",
     "tags": "tecnología, innovación, servicios, empresas",
+    "tags_lista": [
+      "tecnología",
+      "innovación",
+      "servicios",
+      "empresas"
+    ],
     "ciclo": "DAW",
     "alumnos": "preconfigurada",
     "estado_agente": "Sin estado",

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 
     <style>
+
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
             background-color: #f4f7f6;
@@ -66,6 +67,55 @@
             font-size: 1rem;
         }
 
+        .panel-tags {
+            max-width: 1200px;
+            margin: 1rem auto 0 auto;
+            padding: 0 1rem;
+        }
+
+        .panel-tags h3 {
+            margin: 0 0 0.5rem 0;
+            color: #1e293b;
+            font-size: 1rem;
+        }
+
+        .filtros-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .filtro-tag,
+        .tag-boton {
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .filtro-tag {
+            background: #e2e8f0;
+            color: #334155;
+            padding: 0.4rem 0.7rem;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            transition: 0.2s;
+        }
+
+        .filtro-tag:hover {
+            background: #fecaca;
+            color: #7f1d1d;
+        }
+
+        .filtro-tag.activo {
+            background: #7f1d1d;
+            color: white;
+        }
+
+        .limpiar-filtros {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
         #mapa-seccion {
             max-width: 1200px;
             margin: 1.5rem auto;
@@ -106,6 +156,17 @@
         .card:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 14px rgba(0,0,0,0.08);
+        }
+
+        .card.seleccionada {
+            border-left-color: #7f1d1d;
+            background-color: #fef2f2;
+            box-shadow: 0 8px 18px rgba(127,29,29,0.20);
+        }
+
+        .card.coincide-busqueda {
+            border-left-color: #0ea5e9;
+            background-color: #f0f9ff;
         }
 
         .tarjeta-clicable {
@@ -161,12 +222,22 @@
         .tag {
             background: #f1f5f9;
             color: #475569;
-            padding: 0.2rem 0.5rem;
+            padding: 0.25rem 0.55rem;
             border-radius: 4px;
             font-size: 0.8rem;
             margin-right: 0.5rem;
             display: inline-block;
             margin-bottom: 0.25rem;
+        }
+
+        .tag:hover {
+            background: #fecaca;
+            color: #7f1d1d;
+        }
+
+        .tag.activo {
+            background: #7f1d1d;
+            color: white;
         }
 
         .info-footer {
@@ -196,6 +267,24 @@
             margin: 0.25rem 0;
         }
 
+        .marker-normal {
+            width: 16px;
+            height: 16px;
+            background: #2563eb;
+            border: 3px solid white;
+            border-radius: 50%;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.35);
+        }
+
+        .marker-destacado {
+            width: 22px;
+            height: 22px;
+            background: #7f1d1d;
+            border: 4px solid white;
+            border-radius: 50%;
+            box-shadow: 0 3px 12px rgba(127,29,29,0.6);
+        }
+
         footer {
             text-align: center;
             color: #64748b;
@@ -216,6 +305,7 @@
                 grid-template-columns: 1fr;
             }
         }
+
     </style>
 </head>
 <body>
@@ -231,7 +321,80 @@
         </div>
 
         <div class="buscador">
-            <input type="text" id="busqueda" placeholder="Buscar por empresa, ciclo, descripción, tags o estado...">
+            <input type="text" id="busqueda" placeholder="Escribe una empresa o las primeras letras de un tag...">
+        </div>
+    </section>
+
+    <section class="panel-tags">
+        <h3>Tags disponibles</h3>
+        <div class="filtros-tags">
+            <button class="filtro-tag" data-tag="ai">#ai</button>
+<button class="filtro-tag" data-tag="android">#android</button>
+<button class="filtro-tag" data-tag="api">#api</button>
+<button class="filtro-tag" data-tag="aws">#aws</button>
+<button class="filtro-tag" data-tag="big data">#big data</button>
+<button class="filtro-tag" data-tag="biotech">#biotech</button>
+<button class="filtro-tag" data-tag="blockchain">#blockchain</button>
+<button class="filtro-tag" data-tag="business intelligence">#business intelligence</button>
+<button class="filtro-tag" data-tag="c#">#c#</button>
+<button class="filtro-tag" data-tag="c++">#c++</button>
+<button class="filtro-tag" data-tag="ci/cd">#ci/cd</button>
+<button class="filtro-tag" data-tag="cisco">#cisco</button>
+<button class="filtro-tag" data-tag="cloud">#cloud</button>
+<button class="filtro-tag" data-tag="consultoría">#consultoría</button>
+<button class="filtro-tag" data-tag="cybersecurity">#cybersecurity</button>
+<button class="filtro-tag" data-tag="deep learning">#deep learning</button>
+<button class="filtro-tag" data-tag="devops">#devops</button>
+<button class="filtro-tag" data-tag="docker">#docker</button>
+<button class="filtro-tag" data-tag="e-commerce">#e-commerce</button>
+<button class="filtro-tag" data-tag="e-learning">#e-learning</button>
+<button class="filtro-tag" data-tag="empresas">#empresas</button>
+<button class="filtro-tag" data-tag="estrategia">#estrategia</button>
+<button class="filtro-tag" data-tag="fintech">#fintech</button>
+<button class="filtro-tag" data-tag="frontend">#frontend</button>
+<button class="filtro-tag" data-tag="gaming">#gaming</button>
+<button class="filtro-tag" data-tag="go">#go</button>
+<button class="filtro-tag" data-tag="greenit">#greenit</button>
+<button class="filtro-tag" data-tag="healthtech">#healthtech</button>
+<button class="filtro-tag" data-tag="innovación">#innovación</button>
+<button class="filtro-tag" data-tag="ios">#ios</button>
+<button class="filtro-tag" data-tag="iot">#iot</button>
+<button class="filtro-tag" data-tag="java">#java</button>
+<button class="filtro-tag" data-tag="kotlin">#kotlin</button>
+<button class="filtro-tag" data-tag="kubernetes">#kubernetes</button>
+<button class="filtro-tag" data-tag="lms">#lms</button>
+<button class="filtro-tag" data-tag="logistics">#logistics</button>
+<button class="filtro-tag" data-tag="metaverso">#metaverso</button>
+<button class="filtro-tag" data-tag="networking">#networking</button>
+<button class="filtro-tag" data-tag="next.js">#next.js</button>
+<button class="filtro-tag" data-tag="nlp">#nlp</button>
+<button class="filtro-tag" data-tag="node.js">#node.js</button>
+<button class="filtro-tag" data-tag="payments">#payments</button>
+<button class="filtro-tag" data-tag="php">#php</button>
+<button class="filtro-tag" data-tag="python">#python</button>
+<button class="filtro-tag" data-tag="pytorch">#pytorch</button>
+<button class="filtro-tag" data-tag="q#">#q#</button>
+<button class="filtro-tag" data-tag="quantum">#quantum</button>
+<button class="filtro-tag" data-tag="react">#react</button>
+<button class="filtro-tag" data-tag="realidad extendida">#realidad extendida</button>
+<button class="filtro-tag" data-tag="research">#research</button>
+<button class="filtro-tag" data-tag="robotics">#robotics</button>
+<button class="filtro-tag" data-tag="ruby">#ruby</button>
+<button class="filtro-tag" data-tag="saas">#saas</button>
+<button class="filtro-tag" data-tag="security">#security</button>
+<button class="filtro-tag" data-tag="seo">#seo</button>
+<button class="filtro-tag" data-tag="servicios">#servicios</button>
+<button class="filtro-tag" data-tag="solidity">#solidity</button>
+<button class="filtro-tag" data-tag="sql">#sql</button>
+<button class="filtro-tag" data-tag="swift">#swift</button>
+<button class="filtro-tag" data-tag="tableau">#tableau</button>
+<button class="filtro-tag" data-tag="tecnología">#tecnología</button>
+<button class="filtro-tag" data-tag="unity">#unity</button>
+<button class="filtro-tag" data-tag="ux/ui">#ux/ui</button>
+<button class="filtro-tag" data-tag="vr">#vr</button>
+<button class="filtro-tag" data-tag="web3">#web3</button>
+<button class="filtro-tag" data-tag="zaragoza">#zaragoza</button>
+            <button class="filtro-tag limpiar-filtros" id="limpiar-filtros">Limpiar filtros</button>
         </div>
     </section>
 
@@ -242,7 +405,10 @@
     <main>
         <div class="grid-empresas" id="grid-empresas">
 
-            <div class="card tarjeta-clicable" data-lat="-34.6037" data-lng="-58.3816" data-nombre="TechNova Solutions">
+            <div class="card tarjeta-clicable" 
+                 data-lat="-34.6037" data-lng="-58.3816" data-nombre="TechNova Solutions"
+                 data-tags="ai|fintech|python"
+                 data-search="technova solutions desarrollo de software a medida e inteligencia artificial para finanzas. hiberus, andador de berta cáceres flores, 50018 zaragoza, españa ai, fintech, python dam sin estado ">
                 <div>
                     <h2>TechNova Solutions</h2>
                     <span class="badge-ciclo">DAM</span>
@@ -250,12 +416,15 @@
                     <p class="direccion">📍 Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España</p>
                     
                 </div>
+
                 <div>
-                    <div class="tags"><span class="tag">#AI</span><span class="tag">#Fintech</span><span class="tag">#Python</span></div>
+                    <div class="tags"><button class="tag tag-boton" data-tag="ai">#AI</button><button class="tag tag-boton" data-tag="fintech">#Fintech</button><button class="tag tag-boton" data-tag="python">#Python</button></div>
+
                     <div class="info-footer">
                         <span>Lat: -34.6037, Lng: -58.3816</span>
                         <span>👥 Alumnos: <strong>2</strong></span>
                     </div>
+
                     <div class="estado-footer">
                         Estado agente: <strong>Sin estado</strong>
                     </div>
@@ -263,7 +432,10 @@
             </div>
 
 
-            <div class="card tarjeta-clicable" data-lat="40.4167" data-lng="-3.7037" data-nombre="PixelCraft Studio">
+            <div class="card tarjeta-clicable" 
+                 data-lat="40.4167" data-lng="-3.7037" data-nombre="PixelCraft Studio"
+                 data-tags="ux/ui|frontend|react"
+                 data-search="pixelcraft studio estudio de diseño ux/ui y desarrollo frontend moderno. hiberus, andador de berta cáceres flores, 50018 zaragoza, españa ux/ui, frontend, react daw sin estado ">
                 <div>
                     <h2>PixelCraft Studio</h2>
                     <span class="badge-ciclo">DAW</span>
@@ -271,12 +443,15 @@
                     <p class="direccion">📍 Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España</p>
                     
                 </div>
+
                 <div>
-                    <div class="tags"><span class="tag">#UX/UI</span><span class="tag">#Frontend</span><span class="tag">#React</span></div>
+                    <div class="tags"><button class="tag tag-boton" data-tag="ux/ui">#UX/UI</button><button class="tag tag-boton" data-tag="frontend">#Frontend</button><button class="tag tag-boton" data-tag="react">#React</button></div>
+
                     <div class="info-footer">
                         <span>Lat: 40.4167, Lng: -3.7037</span>
                         <span>👥 Alumnos: <strong>1</strong></span>
                     </div>
+
                     <div class="estado-footer">
                         Estado agente: <strong>Sin estado</strong>
                     </div>
@@ -284,7 +459,10 @@
             </div>
 
 
-            <div class="card tarjeta-clicable" data-lat="19.4326" data-lng="-99.1332" data-nombre="CyberShield Security">
+            <div class="card tarjeta-clicable" 
+                 data-lat="19.4326" data-lng="-99.1332" data-nombre="CyberShield Security"
+                 data-tags="cybersecurity|devops|cloud"
+                 data-search="cybershield security consultoría en ciberseguridad hacking ético y auditorías. hiberus, andador de berta cáceres flores, 50018 zaragoza, españa cybersecurity, devops, cloud smr sin estado ">
                 <div>
                     <h2>CyberShield Security</h2>
                     <span class="badge-ciclo">SMR</span>
@@ -292,12 +470,15 @@
                     <p class="direccion">📍 Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España</p>
                     
                 </div>
+
                 <div>
-                    <div class="tags"><span class="tag">#Cybersecurity</span><span class="tag">#DevOps</span><span class="tag">#Cloud</span></div>
+                    <div class="tags"><button class="tag tag-boton" data-tag="cybersecurity">#Cybersecurity</button><button class="tag tag-boton" data-tag="devops">#DevOps</button><button class="tag tag-boton" data-tag="cloud">#Cloud</button></div>
+
                     <div class="info-footer">
                         <span>Lat: 19.4326, Lng: -99.1332</span>
                         <span>👥 Alumnos: <strong>3</strong></span>
                     </div>
+
                     <div class="estado-footer">
                         Estado agente: <strong>Sin estado</strong>
                     </div>
@@ -305,7 +486,10 @@
             </div>
 
 
-            <div class="card tarjeta-clicable" data-lat="37.7749" data-lng="-122.4194" data-nombre="CloudNexus">
+            <div class="card tarjeta-clicable" 
+                 data-lat="37.7749" data-lng="-122.4194" data-nombre="CloudNexus"
+                 data-tags="cloud|aws|devops"
+                 data-search="cloudnexus migración a la nube y optimización de infraestructura para empresas. hiberus, andador de berta cáceres flores, 50018 zaragoza, españa cloud, aws, devops asir sin estado ">
                 <div>
                     <h2>CloudNexus</h2>
                     <span class="badge-ciclo">ASIR</span>
@@ -313,12 +497,15 @@
                     <p class="direccion">📍 Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España</p>
                     
                 </div>
+
                 <div>
-                    <div class="tags"><span class="tag">#Cloud</span><span class="tag">#AWS</span><span class="tag">#DevOps</span></div>
+                    <div class="tags"><button class="tag tag-boton" data-tag="cloud">#Cloud</button><button class="tag tag-boton" data-tag="aws">#AWS</button><button class="tag tag-boton" data-tag="devops">#DevOps</button></div>
+
                     <div class="info-footer">
                         <span>Lat: 37.7749, Lng: -122.4194</span>
                         <span>👥 Alumnos: <strong>2</strong></span>
                     </div>
+
                     <div class="estado-footer">
                         Estado agente: <strong>Sin estado</strong>
                     </div>
@@ -326,7 +513,10 @@
             </div>
 
 
-            <div class="card tarjeta-clicable" data-lat="41.3851" data-lng="2.1734" data-nombre="BioData Lab">
+            <div class="card tarjeta-clicable" 
+                 data-lat="41.3851" data-lng="2.1734" data-nombre="BioData Lab"
+                 data-tags="big data|python|biotech"
+                 data-search="biodata lab análisis de datos masivos aplicados a la investigación biomédica. hiberus, andador de berta cáceres flores, 50018 zaragoza, españa big data, python, biotech dam sin estado ">
                 <div>
                     <h2>BioData Lab</h2>
                     <span class="badge-ciclo">DAM</span>
@@ -334,12 +524,15 @@
                     <p class="direccion">📍 Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España</p>
                     
                 </div>
+
                 <div>
-                    <div class="tags"><span class="tag">#Big Data</span><span class="tag">#Python</span><span class="tag">#Biotech</span></div>
+                    <div class="tags"><button class="tag tag-boton" data-tag="big data">#Big Data</button><button class="tag tag-boton" data-tag="python">#Python</button><button class="tag tag-boton" data-tag="biotech">#Biotech</button></div>
+
                     <div class="info-footer">
                         <span>Lat: 41.3851, Lng: 2.1734</span>
                         <span>👥 Alumnos: <strong>4</strong></span>
                     </div>
+
                     <div class="estado-footer">
                         Estado agente: <strong>Sin estado</strong>
                     </div>
@@ -347,7 +540,10 @@
             </div>
 
 
-            <div class="card tarjeta-clicable" data-lat="51.5074" data-lng="-0.1278" data-nombre="Quantum Code">
+            <div class="card tarjeta-clicable" 
+                 data-lat="51.5074" data-lng="-0.1278" data-nombre="Quantum Code"
+                 data-tags="quantum|q#|research"
+                 data-search="quantum code investigación y desarrollo de algoritmos de computación cuántica. hiberus, andador de berta cáceres flores, 50018 zaragoza, españa quantum, q#, research daw sin estado ">
                 <div>
                     <h2>Quantum Code</h2>
                     <span class="badge-ciclo">DAW</span>
@@ -355,12 +551,15 @@
                     <p class="direccion">📍 Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España</p>
                     
                 </div>
+
                 <div>
-                    <div class="tags"><span class="tag">#Quantum</span><span class="tag">#Q#</span><span class="tag">#Research</span></div>
+                    <div class="tags"><button class="tag tag-boton" data-tag="quantum">#Quantum</button><button class="tag tag-boton" data-tag="q#">#Q#</button><button class="tag tag-boton" data-tag="research">#Research</button></div>
+
                     <div class="info-footer">
                         <span>Lat: 51.5074, Lng: -0.1278</span>
                         <span>👥 Alumnos: <strong>1</strong></span>
                     </div>
+
                     <div class="estado-footer">
                         Estado agente: <strong>Sin estado</strong>
                     </div>
@@ -368,7 +567,10 @@
             </div>
 
 
-            <div class="card tarjeta-clicable" data-lat="48.8566" data-lng="2.3522" data-nombre="DevOps Dynamics">
+            <div class="card tarjeta-clicable" 
+                 data-lat="48.8566" data-lng="2.3522" data-nombre="DevOps Dynamics"
+                 data-tags="ci/cd|docker|kubernetes"
+                 data-search="devops dynamics automatización de despliegues y gestión de servidores cloud. hiberus, andador de berta cáceres flores, 50018 zaragoza, españa ci/cd, docker, kubernetes asir sin estado ">
                 <div>
                     <h2>DevOps Dynamics</h2>
                     <span class="badge-ciclo">ASIR</span>
@@ -376,12 +578,15 @@
                     <p class="direccion">📍 Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España</p>
                     
                 </div>
+
                 <div>
-                    <div class="tags"><span class="tag">#CI/CD</span><span class="tag">#Docker</span><span class="tag">#Kubernetes</span></div>
+                    <div class="tags"><button class="tag tag-boton" data-tag="ci/cd">#CI/CD</button><button class="tag tag-boton" data-tag="docker">#Docker</button><button class="tag tag-boton" data-tag="kubernetes">#Kubernetes</button></div>
+
                     <div class="info-footer">
                         <span>Lat: 48.8566, Lng: 2.3522</span>
                         <span>👥 Alumnos: <strong>3</strong></span>
                     </div>
+
                     <div class="estado-footer">
                         Estado agente: <strong>Sin estado</strong>
                     </div>
@@ -389,7 +594,10 @@
             </div>
 
 
-            <div class="card tarjeta-clicable" data-lat="52.52" data-lng="13.405" data-nombre="GreenTech Innovation">
+            <div class="card tarjeta-clicable" 
+                 data-lat="52.52" data-lng="13.405" data-nombre="GreenTech Innovation"
+                 data-tags="iot|greenit|node.js"
+                 data-search="greentech innovation software para la monitorización y reducción de la huella de carbono. hiberus, andador de berta cáceres flores, 50018 zaragoza, españa iot, greenit, node.js daw sin estado ">
                 <div>
                     <h2>GreenTech Innovation</h2>
                     <span class="badge-ciclo">DAW</span>
@@ -397,12 +605,15 @@
                     <p class="direccion">📍 Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España</p>
                     
                 </div>
+
                 <div>
-                    <div class="tags"><span class="tag">#IoT</span><span class="tag">#GreenIT</span><span class="tag">#Node.js</span></div>
+                    <div class="tags"><button class="tag tag-boton" data-tag="iot">#IoT</button><button class="tag tag-boton" data-tag="greenit">#GreenIT</button><button class="tag tag-boton" data-tag="node.js">#Node.js</button></div>
+
                     <div class="info-footer">
                         <span>Lat: 52.52, Lng: 13.405</span>
                         <span>👥 Alumnos: <strong>2</strong></span>
                     </div>
+
                     <div class="estado-footer">
                         Estado agente: <strong>Sin estado</strong>
                     </div>
@@ -410,7 +621,10 @@
             </div>
 
 
-            <div class="card tarjeta-clicable" data-lat="-33.8688" data-lng="151.2093" data-nombre="DataVibe Analytics">
+            <div class="card tarjeta-clicable" 
+                 data-lat="-33.8688" data-lng="151.2093" data-nombre="DataVibe Analytics"
+                 data-tags="business intelligence|sql|tableau"
+                 data-search="datavibe analytics visualización de datos empresariales y cuadros de mando interactivos. hiberus, andador de berta cáceres flores, 50018 zaragoza, españa business intelligence, sql, tableau dam sin estado ">
                 <div>
                     <h2>DataVibe Analytics</h2>
                     <span class="badge-ciclo">DAM</span>
@@ -418,12 +632,15 @@
                     <p class="direccion">📍 Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España</p>
                     
                 </div>
+
                 <div>
-                    <div class="tags"><span class="tag">#Business Intelligence</span><span class="tag">#SQL</span><span class="tag">#Tableau</span></div>
+                    <div class="tags"><button class="tag tag-boton" data-tag="business intelligence">#Business Intelligence</button><button class="tag tag-boton" data-tag="sql">#SQL</button><button class="tag tag-boton" data-tag="tableau">#Tableau</button></div>
+
                     <div class="info-footer">
                         <span>Lat: -33.8688, Lng: 151.2093</span>
                         <span>👥 Alumnos: <strong>1</strong></span>
                     </div>
+
                     <div class="estado-footer">
                         Estado agente: <strong>Sin estado</strong>
                     </div>
@@ -431,7 +648,10 @@
             </div>
 
 
-            <div class="card tarjeta-clicable" data-lat="35.6762" data-lng="139.6503" data-nombre="MobileFirst Systems">
+            <div class="card tarjeta-clicable" 
+                 data-lat="35.6762" data-lng="139.6503" data-nombre="MobileFirst Systems"
+                 data-tags="ios|android|swift|kotlin"
+                 data-search="mobilefirst systems desarrollo exclusivo de aplicaciones móviles nativas de alto rendimiento. hiberus, andador de berta cáceres flores, 50018 zaragoza, españa ios, android, swift, kotlin dam sin estado ">
                 <div>
                     <h2>MobileFirst Systems</h2>
                     <span class="badge-ciclo">DAM</span>
@@ -439,12 +659,15 @@
                     <p class="direccion">📍 Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España</p>
                     
                 </div>
+
                 <div>
-                    <div class="tags"><span class="tag">#iOS</span><span class="tag">#Android</span><span class="tag">#Swift</span><span class="tag">#Kotlin</span></div>
+                    <div class="tags"><button class="tag tag-boton" data-tag="ios">#iOS</button><button class="tag tag-boton" data-tag="android">#Android</button><button class="tag tag-boton" data-tag="swift">#Swift</button><button class="tag tag-boton" data-tag="kotlin">#Kotlin</button></div>
+
                     <div class="info-footer">
                         <span>Lat: 35.6762, Lng: 139.6503</span>
                         <span>👥 Alumnos: <strong>5</strong></span>
                     </div>
+
                     <div class="estado-footer">
                         Estado agente: <strong>Sin estado</strong>
                     </div>
@@ -452,7 +675,10 @@
             </div>
 
 
-            <div class="card tarjeta-clicable" data-lat="45.4215" data-lng="-75.6972" data-nombre="AI Horizon">
+            <div class="card tarjeta-clicable" 
+                 data-lat="45.4215" data-lng="-75.6972" data-nombre="AI Horizon"
+                 data-tags="deep learning|nlp|pytorch"
+                 data-search="ai horizon modelos de lenguaje y automatización mediante redes neuronales. hiberus, andador de berta cáceres flores, 50018 zaragoza, españa deep learning, nlp, pytorch smr sin estado ">
                 <div>
                     <h2>AI Horizon</h2>
                     <span class="badge-ciclo">SMR</span>
@@ -460,12 +686,15 @@
                     <p class="direccion">📍 Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España</p>
                     
                 </div>
+
                 <div>
-                    <div class="tags"><span class="tag">#Deep Learning</span><span class="tag">#NLP</span><span class="tag">#PyTorch</span></div>
+                    <div class="tags"><button class="tag tag-boton" data-tag="deep learning">#Deep Learning</button><button class="tag tag-boton" data-tag="nlp">#NLP</button><button class="tag tag-boton" data-tag="pytorch">#PyTorch</button></div>
+
                     <div class="info-footer">
                         <span>Lat: 45.4215, Lng: -75.6972</span>
                         <span>👥 Alumnos: <strong>2</strong></span>
                     </div>
+
                     <div class="estado-footer">
                         Estado agente: <strong>Sin estado</strong>
                     </div>
@@ -473,7 +702,10 @@
             </div>
 
 
-            <div class="card tarjeta-clicable" data-lat="-23.5505" data-lng="-46.6333" data-nombre="BlockChain Ledger">
+            <div class="card tarjeta-clicable" 
+                 data-lat="-23.5505" data-lng="-46.6333" data-nombre="BlockChain Ledger"
+                 data-tags="blockchain|solidity|web3"
+                 data-search="blockchain ledger desarrollo de contratos inteligentes y aplicaciones descentralizadas. hiberus, andador de berta cáceres flores, 50018 zaragoza, españa blockchain, solidity, web3 daw sin estado ">
                 <div>
                     <h2>BlockChain Ledger</h2>
                     <span class="badge-ciclo">DAW</span>
@@ -481,12 +713,15 @@
                     <p class="direccion">📍 Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España</p>
                     
                 </div>
+
                 <div>
-                    <div class="tags"><span class="tag">#Blockchain</span><span class="tag">#Solidity</span><span class="tag">#Web3</span></div>
+                    <div class="tags"><button class="tag tag-boton" data-tag="blockchain">#Blockchain</button><button class="tag tag-boton" data-tag="solidity">#Solidity</button><button class="tag tag-boton" data-tag="web3">#Web3</button></div>
+
                     <div class="info-footer">
                         <span>Lat: -23.5505, Lng: -46.6333</span>
                         <span>👥 Alumnos: <strong>2</strong></span>
                     </div>
+
                     <div class="estado-footer">
                         Estado agente: <strong>Sin estado</strong>
                     </div>
@@ -494,7 +729,10 @@
             </div>
 
 
-            <div class="card tarjeta-clicable" data-lat="43.7001" data-lng="-79.4163" data-nombre="GameForge Studios">
+            <div class="card tarjeta-clicable" 
+                 data-lat="43.7001" data-lng="-79.4163" data-nombre="GameForge Studios"
+                 data-tags="unity|c#|gaming|vr"
+                 data-search="gameforge studios estudio independiente de desarrollo de videojuegos y entornos 3d. hiberus, andador de berta cáceres flores, 50018 zaragoza, españa unity, c#, gaming, vr dam sin estado ">
                 <div>
                     <h2>GameForge Studios</h2>
                     <span class="badge-ciclo">DAM</span>
@@ -502,12 +740,15 @@
                     <p class="direccion">📍 Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España</p>
                     
                 </div>
+
                 <div>
-                    <div class="tags"><span class="tag">#Unity</span><span class="tag">#C#</span><span class="tag">#Gaming</span><span class="tag">#VR</span></div>
+                    <div class="tags"><button class="tag tag-boton" data-tag="unity">#Unity</button><button class="tag tag-boton" data-tag="c#">#C#</button><button class="tag tag-boton" data-tag="gaming">#Gaming</button><button class="tag tag-boton" data-tag="vr">#VR</button></div>
+
                     <div class="info-footer">
                         <span>Lat: 43.7001, Lng: -79.4163</span>
                         <span>👥 Alumnos: <strong>4</strong></span>
                     </div>
+
                     <div class="estado-footer">
                         Estado agente: <strong>Sin estado</strong>
                     </div>
@@ -515,7 +756,10 @@
             </div>
 
 
-            <div class="card tarjeta-clicable" data-lat="4.711" data-lng="-74.0721" data-nombre="EdTech Virtual">
+            <div class="card tarjeta-clicable" 
+                 data-lat="4.711" data-lng="-74.0721" data-nombre="EdTech Virtual"
+                 data-tags="e-learning|php|lms"
+                 data-search="edtech virtual plataformas de aprendizaje en línea y educación interactiva. hiberus, andador de berta cáceres flores, 50018 zaragoza, españa e-learning, php, lms daw sin estado ">
                 <div>
                     <h2>EdTech Virtual</h2>
                     <span class="badge-ciclo">DAW</span>
@@ -523,12 +767,15 @@
                     <p class="direccion">📍 Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España</p>
                     
                 </div>
+
                 <div>
-                    <div class="tags"><span class="tag">#E-learning</span><span class="tag">#PHP</span><span class="tag">#LMS</span></div>
+                    <div class="tags"><button class="tag tag-boton" data-tag="e-learning">#E-learning</button><button class="tag tag-boton" data-tag="php">#PHP</button><button class="tag tag-boton" data-tag="lms">#LMS</button></div>
+
                     <div class="info-footer">
                         <span>Lat: 4.711, Lng: -74.0721</span>
                         <span>👥 Alumnos: <strong>3</strong></span>
                     </div>
+
                     <div class="estado-footer">
                         Estado agente: <strong>Sin estado</strong>
                     </div>
@@ -536,7 +783,10 @@
             </div>
 
 
-            <div class="card tarjeta-clicable" data-lat="48.1351" data-lng="11.582" data-nombre="RoboCore Automation">
+            <div class="card tarjeta-clicable" 
+                 data-lat="48.1351" data-lng="11.582" data-nombre="RoboCore Automation"
+                 data-tags="robotics|c++|iot"
+                 data-search="robocore automation sistemas embebidos y software para automatización industrial. hiberus, andador de berta cáceres flores, 50018 zaragoza, españa robotics, c++, iot dam sin estado ">
                 <div>
                     <h2>RoboCore Automation</h2>
                     <span class="badge-ciclo">DAM</span>
@@ -544,12 +794,15 @@
                     <p class="direccion">📍 Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España</p>
                     
                 </div>
+
                 <div>
-                    <div class="tags"><span class="tag">#Robotics</span><span class="tag">#C++</span><span class="tag">#IoT</span></div>
+                    <div class="tags"><button class="tag tag-boton" data-tag="robotics">#Robotics</button><button class="tag tag-boton" data-tag="c++">#C++</button><button class="tag tag-boton" data-tag="iot">#IoT</button></div>
+
                     <div class="info-footer">
                         <span>Lat: 48.1351, Lng: 11.582</span>
                         <span>👥 Alumnos: <strong>2</strong></span>
                     </div>
+
                     <div class="estado-footer">
                         Estado agente: <strong>Sin estado</strong>
                     </div>
@@ -557,7 +810,10 @@
             </div>
 
 
-            <div class="card tarjeta-clicable" data-lat="40.7128" data-lng="-74.006" data-nombre="HealthClick">
+            <div class="card tarjeta-clicable" 
+                 data-lat="40.7128" data-lng="-74.006" data-nombre="HealthClick"
+                 data-tags="healthtech|java|security"
+                 data-search="healthclick aplicaciones de telemedicina e historial clínico digital seguro. hiberus, andador de berta cáceres flores, 50018 zaragoza, españa healthtech, java, security smr sin estado ">
                 <div>
                     <h2>HealthClick</h2>
                     <span class="badge-ciclo">SMR</span>
@@ -565,12 +821,15 @@
                     <p class="direccion">📍 Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España</p>
                     
                 </div>
+
                 <div>
-                    <div class="tags"><span class="tag">#HealthTech</span><span class="tag">#Java</span><span class="tag">#Security</span></div>
+                    <div class="tags"><button class="tag tag-boton" data-tag="healthtech">#HealthTech</button><button class="tag tag-boton" data-tag="java">#Java</button><button class="tag tag-boton" data-tag="security">#Security</button></div>
+
                     <div class="info-footer">
                         <span>Lat: 40.7128, Lng: -74.006</span>
                         <span>👥 Alumnos: <strong>1</strong></span>
                     </div>
+
                     <div class="estado-footer">
                         Estado agente: <strong>Sin estado</strong>
                     </div>
@@ -578,7 +837,10 @@
             </div>
 
 
-            <div class="card tarjeta-clicable" data-lat="34.0522" data-lng="-118.2437" data-nombre="EcomPulse">
+            <div class="card tarjeta-clicable" 
+                 data-lat="34.0522" data-lng="-118.2437" data-nombre="EcomPulse"
+                 data-tags="e-commerce|next.js|seo"
+                 data-search="ecompulse optimización de plataformas de comercio electrónico a gran escala. hiberus, andador de berta cáceres flores, 50018 zaragoza, españa e-commerce, next.js, seo daw sin estado ">
                 <div>
                     <h2>EcomPulse</h2>
                     <span class="badge-ciclo">DAW</span>
@@ -586,12 +848,15 @@
                     <p class="direccion">📍 Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España</p>
                     
                 </div>
+
                 <div>
-                    <div class="tags"><span class="tag">#E-commerce</span><span class="tag">#Next.js</span><span class="tag">#SEO</span></div>
+                    <div class="tags"><button class="tag tag-boton" data-tag="e-commerce">#E-commerce</button><button class="tag tag-boton" data-tag="next.js">#Next.js</button><button class="tag tag-boton" data-tag="seo">#SEO</button></div>
+
                     <div class="info-footer">
                         <span>Lat: 34.0522, Lng: -118.2437</span>
                         <span>👥 Alumnos: <strong>3</strong></span>
                     </div>
+
                     <div class="estado-footer">
                         Estado agente: <strong>Sin estado</strong>
                     </div>
@@ -599,7 +864,10 @@
             </div>
 
 
-            <div class="card tarjeta-clicable" data-lat="55.7558" data-lng="37.6173" data-nombre="NetSentinel">
+            <div class="card tarjeta-clicable" 
+                 data-lat="55.7558" data-lng="37.6173" data-nombre="NetSentinel"
+                 data-tags="networking|cisco|security"
+                 data-search="netsentinel monitoreo de redes en tiempo real y prevención de intrusiones. hiberus, andador de berta cáceres flores, 50018 zaragoza, españa networking, cisco, security asir sin estado ">
                 <div>
                     <h2>NetSentinel</h2>
                     <span class="badge-ciclo">ASIR</span>
@@ -607,12 +875,15 @@
                     <p class="direccion">📍 Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España</p>
                     
                 </div>
+
                 <div>
-                    <div class="tags"><span class="tag">#Networking</span><span class="tag">#Cisco</span><span class="tag">#Security</span></div>
+                    <div class="tags"><button class="tag tag-boton" data-tag="networking">#Networking</button><button class="tag tag-boton" data-tag="cisco">#Cisco</button><button class="tag tag-boton" data-tag="security">#Security</button></div>
+
                     <div class="info-footer">
                         <span>Lat: 55.7558, Lng: 37.6173</span>
                         <span>👥 Alumnos: <strong>2</strong></span>
                     </div>
+
                     <div class="estado-footer">
                         Estado agente: <strong>Sin estado</strong>
                     </div>
@@ -620,7 +891,10 @@
             </div>
 
 
-            <div class="card tarjeta-clicable" data-lat="1.3521" data-lng="103.8198" data-nombre="SaaSify Logistics">
+            <div class="card tarjeta-clicable" 
+                 data-lat="1.3521" data-lng="103.8198" data-nombre="SaaSify Logistics"
+                 data-tags="saas|go|logistics"
+                 data-search="saasify logistics software de gestión de flotas y cadenas de suministro globales. hiberus, andador de berta cáceres flores, 50018 zaragoza, españa saas, go, logistics daw sin estado ">
                 <div>
                     <h2>SaaSify Logistics</h2>
                     <span class="badge-ciclo">DAW</span>
@@ -628,12 +902,15 @@
                     <p class="direccion">📍 Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España</p>
                     
                 </div>
+
                 <div>
-                    <div class="tags"><span class="tag">#SaaS</span><span class="tag">#Go</span><span class="tag">#Logistics</span></div>
+                    <div class="tags"><button class="tag tag-boton" data-tag="saas">#SaaS</button><button class="tag tag-boton" data-tag="go">#Go</button><button class="tag tag-boton" data-tag="logistics">#Logistics</button></div>
+
                     <div class="info-footer">
                         <span>Lat: 1.3521, Lng: 103.8198</span>
                         <span>👥 Alumnos: <strong>2</strong></span>
                     </div>
+
                     <div class="estado-footer">
                         Estado agente: <strong>Sin estado</strong>
                     </div>
@@ -641,7 +918,10 @@
             </div>
 
 
-            <div class="card tarjeta-clicable" data-lat="-22.9068" data-lng="-43.1729" data-nombre="Finix Pay">
+            <div class="card tarjeta-clicable" 
+                 data-lat="-22.9068" data-lng="-43.1729" data-nombre="Finix Pay"
+                 data-tags="payments|api|ruby"
+                 data-search="finix pay pasarelas de pago digitales y procesamiento seguro de transacciones. hiberus, andador de berta cáceres flores, 50018 zaragoza, españa payments, api, ruby dam sin estado ">
                 <div>
                     <h2>Finix Pay</h2>
                     <span class="badge-ciclo">DAM</span>
@@ -649,12 +929,15 @@
                     <p class="direccion">📍 Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España</p>
                     
                 </div>
+
                 <div>
-                    <div class="tags"><span class="tag">#Payments</span><span class="tag">#API</span><span class="tag">#Ruby</span></div>
+                    <div class="tags"><button class="tag tag-boton" data-tag="payments">#Payments</button><button class="tag tag-boton" data-tag="api">#API</button><button class="tag tag-boton" data-tag="ruby">#Ruby</button></div>
+
                     <div class="info-footer">
                         <span>Lat: -22.9068, Lng: -43.1729</span>
                         <span>👥 Alumnos: <strong>3</strong></span>
                     </div>
+
                     <div class="estado-footer">
                         Estado agente: <strong>Sin estado</strong>
                     </div>
@@ -662,7 +945,10 @@
             </div>
 
 
-            <div class="card tarjeta-clicable" data-lat="41.6707881" data-lng="-0.8995539" data-nombre="Hiberus">
+            <div class="card tarjeta-clicable" 
+                 data-lat="41.6707881" data-lng="-0.8995539" data-nombre="Hiberus"
+                 data-tags="tecnología|consultoría|zaragoza"
+                 data-search="hiberus empresa tecnológica con sede en zaragoza que ofrece soluciones de tecnología y servicios de consultoría. hiberus, andador de berta cáceres flores, 50018 zaragoza, españa tecnología, consultoría, zaragoza daw sin estado ">
                 <div>
                     <h2>Hiberus</h2>
                     <span class="badge-ciclo">DAW</span>
@@ -670,12 +956,15 @@
                     <p class="direccion">📍 Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España</p>
                     
                 </div>
+
                 <div>
-                    <div class="tags"><span class="tag">#tecnología</span><span class="tag">#consultoría</span><span class="tag">#Zaragoza</span></div>
+                    <div class="tags"><button class="tag tag-boton" data-tag="tecnología">#tecnología</button><button class="tag tag-boton" data-tag="consultoría">#consultoría</button><button class="tag tag-boton" data-tag="zaragoza">#Zaragoza</button></div>
+
                     <div class="info-footer">
                         <span>Lat: 41.6707881, Lng: -0.8995539</span>
                         <span>👥 Alumnos: <strong>0</strong></span>
                     </div>
+
                     <div class="estado-footer">
                         Estado agente: <strong>Sin estado</strong>
                     </div>
@@ -683,7 +972,10 @@
             </div>
 
 
-            <div class="card tarjeta-clicable" data-lat="41.6457253" data-lng="-0.88851" data-nombre="Integra Tecnología">
+            <div class="card tarjeta-clicable" 
+                 data-lat="41.6457253" data-lng="-0.88851" data-nombre="Integra Tecnología"
+                 data-tags="tecnología|estrategia|zaragoza"
+                 data-search="integra tecnología empresa de tecnología con sede en zaragoza que ofrece servicios de estrategia y tecnología. integra. estrategia y tecnología., gran vía de santiago ramón y cajal, 23, 50006 zaragoza, españa tecnología, estrategia, zaragoza daw sin estado ">
                 <div>
                     <h2>Integra Tecnología</h2>
                     <span class="badge-ciclo">DAW</span>
@@ -691,12 +983,15 @@
                     <p class="direccion">📍 Integra. Estrategia y Tecnología., Gran Vía de Santiago Ramón y Cajal, 23, 50006 Zaragoza, España</p>
                     
                 </div>
+
                 <div>
-                    <div class="tags"><span class="tag">#tecnología</span><span class="tag">#estrategia</span><span class="tag">#Zaragoza</span></div>
+                    <div class="tags"><button class="tag tag-boton" data-tag="tecnología">#tecnología</button><button class="tag tag-boton" data-tag="estrategia">#estrategia</button><button class="tag tag-boton" data-tag="zaragoza">#Zaragoza</button></div>
+
                     <div class="info-footer">
                         <span>Lat: 41.6457253, Lng: -0.88851</span>
                         <span>👥 Alumnos: <strong>preconfigurada</strong></span>
                     </div>
+
                     <div class="estado-footer">
                         Estado agente: <strong>Sin estado</strong>
                     </div>
@@ -704,7 +999,10 @@
             </div>
 
 
-            <div class="card tarjeta-clicable" data-lat="41.6499597" data-lng="-0.8823097" data-nombre="Imascono">
+            <div class="card tarjeta-clicable" 
+                 data-lat="41.6499597" data-lng="-0.8823097" data-nombre="Imascono"
+                 data-tags="tecnología|realidad extendida|metaverso"
+                 data-search="imascono empresa de tecnología que ofrece soluciones de realidad extendida y servicios de metaverso para empresas. imascono, calle de felipe sanclemente, 3, 50001 zaragoza, españa tecnología, realidad extendida, metaverso daw sin estado ">
                 <div>
                     <h2>Imascono</h2>
                     <span class="badge-ciclo">DAW</span>
@@ -712,12 +1010,15 @@
                     <p class="direccion">📍 imascono, Calle de Felipe Sanclemente, 3, 50001 Zaragoza, España</p>
                     
                 </div>
+
                 <div>
-                    <div class="tags"><span class="tag">#tecnología</span><span class="tag">#realidad extendida</span><span class="tag">#metaverso</span></div>
+                    <div class="tags"><button class="tag tag-boton" data-tag="tecnología">#tecnología</button><button class="tag tag-boton" data-tag="realidad extendida">#realidad extendida</button><button class="tag tag-boton" data-tag="metaverso">#metaverso</button></div>
+
                     <div class="info-footer">
                         <span>Lat: 41.6499597, Lng: -0.8823097</span>
                         <span>👥 Alumnos: <strong>preconfigurada</strong></span>
                     </div>
+
                     <div class="estado-footer">
                         Estado agente: <strong>Sin estado</strong>
                     </div>
@@ -725,7 +1026,10 @@
             </div>
 
 
-            <div class="card tarjeta-clicable" data-lat="41.6414212" data-lng="-0.9953924" data-nombre="Inycom">
+            <div class="card tarjeta-clicable" 
+                 data-lat="41.6414212" data-lng="-0.9953924" data-nombre="Inycom"
+                 data-tags="tecnología|innovación|servicios|empresas"
+                 data-search="inycom empresa de tecnología e innovación que ofrece soluciones y servicios adaptados a empresas y entidades públicas. inycom, calle de alaún, 8, 50197 zaragoza, españa tecnología, innovación, servicios, empresas daw sin estado ">
                 <div>
                     <h2>Inycom</h2>
                     <span class="badge-ciclo">DAW</span>
@@ -733,12 +1037,15 @@
                     <p class="direccion">📍 Inycom, Calle de Alaún, 8, 50197 Zaragoza, España</p>
                     
                 </div>
+
                 <div>
-                    <div class="tags"><span class="tag">#tecnología</span><span class="tag">#innovación</span><span class="tag">#servicios</span><span class="tag">#empresas</span></div>
+                    <div class="tags"><button class="tag tag-boton" data-tag="tecnología">#tecnología</button><button class="tag tag-boton" data-tag="innovación">#innovación</button><button class="tag tag-boton" data-tag="servicios">#servicios</button><button class="tag tag-boton" data-tag="empresas">#empresas</button></div>
+
                     <div class="info-footer">
                         <span>Lat: 41.6414212, Lng: -0.9953924</span>
                         <span>👥 Alumnos: <strong>preconfigurada</strong></span>
                     </div>
+
                     <div class="estado-footer">
                         Estado agente: <strong>Sin estado</strong>
                     </div>
@@ -755,7 +1062,8 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
     <script>
-        const empresas = [{"nombre": "TechNova Solutions", "lat": -34.6037, "lng": -58.3816, "ciclo": "DAM", "descripcion": "Desarrollo de software a medida e inteligencia artificial para finanzas.", "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España", "tags": "AI, Fintech, Python", "alumnos": "2"}, {"nombre": "PixelCraft Studio", "lat": 40.4167, "lng": -3.7037, "ciclo": "DAW", "descripcion": "Estudio de diseño UX/UI y desarrollo frontend moderno.", "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España", "tags": "UX/UI, Frontend, React", "alumnos": "1"}, {"nombre": "CyberShield Security", "lat": 19.4326, "lng": -99.1332, "ciclo": "SMR", "descripcion": "Consultoría en ciberseguridad hacking ético y auditorías.", "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España", "tags": "Cybersecurity, DevOps, Cloud", "alumnos": "3"}, {"nombre": "CloudNexus", "lat": 37.7749, "lng": -122.4194, "ciclo": "ASIR", "descripcion": "Migración a la nube y optimización de infraestructura para empresas.", "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España", "tags": "Cloud, AWS, DevOps", "alumnos": "2"}, {"nombre": "BioData Lab", "lat": 41.3851, "lng": 2.1734, "ciclo": "DAM", "descripcion": "Análisis de datos masivos aplicados a la investigación biomédica.", "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España", "tags": "Big Data, Python, Biotech", "alumnos": "4"}, {"nombre": "Quantum Code", "lat": 51.5074, "lng": -0.1278, "ciclo": "DAW", "descripcion": "Investigación y desarrollo de algoritmos de computación cuántica.", "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España", "tags": "Quantum, Q#, Research", "alumnos": "1"}, {"nombre": "DevOps Dynamics", "lat": 48.8566, "lng": 2.3522, "ciclo": "ASIR", "descripcion": "Automatización de despliegues y gestión de servidores cloud.", "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España", "tags": "CI/CD, Docker, Kubernetes", "alumnos": "3"}, {"nombre": "GreenTech Innovation", "lat": 52.52, "lng": 13.405, "ciclo": "DAW", "descripcion": "Software para la monitorización y reducción de la huella de carbono.", "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España", "tags": "IoT, GreenIT, Node.js", "alumnos": "2"}, {"nombre": "DataVibe Analytics", "lat": -33.8688, "lng": 151.2093, "ciclo": "DAM", "descripcion": "Visualización de datos empresariales y cuadros de mando interactivos.", "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España", "tags": "Business Intelligence, SQL, Tableau", "alumnos": "1"}, {"nombre": "MobileFirst Systems", "lat": 35.6762, "lng": 139.6503, "ciclo": "DAM", "descripcion": "Desarrollo exclusivo de aplicaciones móviles nativas de alto rendimiento.", "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España", "tags": "iOS, Android, Swift, Kotlin", "alumnos": "5"}, {"nombre": "AI Horizon", "lat": 45.4215, "lng": -75.6972, "ciclo": "SMR", "descripcion": "Modelos de lenguaje y automatización mediante redes neuronales.", "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España", "tags": "Deep Learning, NLP, PyTorch", "alumnos": "2"}, {"nombre": "BlockChain Ledger", "lat": -23.5505, "lng": -46.6333, "ciclo": "DAW", "descripcion": "Desarrollo de contratos inteligentes y aplicaciones descentralizadas.", "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España", "tags": "Blockchain, Solidity, Web3", "alumnos": "2"}, {"nombre": "GameForge Studios", "lat": 43.7001, "lng": -79.4163, "ciclo": "DAM", "descripcion": "Estudio independiente de desarrollo de videojuegos y entornos 3D.", "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España", "tags": "Unity, C#, Gaming, VR", "alumnos": "4"}, {"nombre": "EdTech Virtual", "lat": 4.711, "lng": -74.0721, "ciclo": "DAW", "descripcion": "Plataformas de aprendizaje en línea y educación interactiva.", "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España", "tags": "E-learning, PHP, LMS", "alumnos": "3"}, {"nombre": "RoboCore Automation", "lat": 48.1351, "lng": 11.582, "ciclo": "DAM", "descripcion": "Sistemas embebidos y software para automatización industrial.", "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España", "tags": "Robotics, C++, IoT", "alumnos": "2"}, {"nombre": "HealthClick", "lat": 40.7128, "lng": -74.006, "ciclo": "SMR", "descripcion": "Aplicaciones de telemedicina e historial clínico digital seguro.", "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España", "tags": "HealthTech, Java, Security", "alumnos": "1"}, {"nombre": "EcomPulse", "lat": 34.0522, "lng": -118.2437, "ciclo": "DAW", "descripcion": "Optimización de plataformas de comercio electrónico a gran escala.", "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España", "tags": "E-commerce, Next.js, SEO", "alumnos": "3"}, {"nombre": "NetSentinel", "lat": 55.7558, "lng": 37.6173, "ciclo": "ASIR", "descripcion": "Monitoreo de redes en tiempo real y prevención de intrusiones.", "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España", "tags": "Networking, Cisco, Security", "alumnos": "2"}, {"nombre": "SaaSify Logistics", "lat": 1.3521, "lng": 103.8198, "ciclo": "DAW", "descripcion": "Software de gestión de flotas y cadenas de suministro globales.", "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España", "tags": "SaaS, Go, Logistics", "alumnos": "2"}, {"nombre": "Finix Pay", "lat": -22.9068, "lng": -43.1729, "ciclo": "DAM", "descripcion": "Pasarelas de pago digitales y procesamiento seguro de transacciones.", "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España", "tags": "Payments, API, Ruby", "alumnos": "3"}, {"nombre": "Hiberus", "lat": 41.6707881, "lng": -0.8995539, "ciclo": "DAW", "descripcion": "Empresa tecnológica con sede en Zaragoza que ofrece soluciones de tecnología y servicios de consultoría.", "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España", "tags": "tecnología, consultoría, Zaragoza", "alumnos": "0"}, {"nombre": "Integra Tecnología", "lat": 41.6457253, "lng": -0.88851, "ciclo": "DAW", "descripcion": "Empresa de tecnología con sede en Zaragoza que ofrece servicios de estrategia y tecnología.", "direccion": "Integra. Estrategia y Tecnología., Gran Vía de Santiago Ramón y Cajal, 23, 50006 Zaragoza, España", "tags": "tecnología, estrategia, Zaragoza", "alumnos": "preconfigurada"}, {"nombre": "Imascono", "lat": 41.6499597, "lng": -0.8823097, "ciclo": "DAW", "descripcion": "Empresa de tecnología que ofrece soluciones de realidad extendida y servicios de metaverso para empresas.", "direccion": "imascono, Calle de Felipe Sanclemente, 3, 50001 Zaragoza, España", "tags": "tecnología, realidad extendida, metaverso", "alumnos": "preconfigurada"}, {"nombre": "Inycom", "lat": 41.6414212, "lng": -0.9953924, "ciclo": "DAW", "descripcion": "Empresa de tecnología e innovación que ofrece soluciones y servicios adaptados a empresas y entidades públicas.", "direccion": "Inycom, Calle de Alaún, 8, 50197 Zaragoza, España", "tags": "tecnología, innovación, servicios, empresas", "alumnos": "preconfigurada"}];
+
+        const empresas = [{"nombre": "TechNova Solutions", "lat": -34.6037, "lng": -58.3816, "ciclo": "DAM", "descripcion": "Desarrollo de software a medida e inteligencia artificial para finanzas.", "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España", "tags": "AI, Fintech, Python", "tags_lista": ["AI", "Fintech", "Python"], "alumnos": "2"}, {"nombre": "PixelCraft Studio", "lat": 40.4167, "lng": -3.7037, "ciclo": "DAW", "descripcion": "Estudio de diseño UX/UI y desarrollo frontend moderno.", "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España", "tags": "UX/UI, Frontend, React", "tags_lista": ["UX/UI", "Frontend", "React"], "alumnos": "1"}, {"nombre": "CyberShield Security", "lat": 19.4326, "lng": -99.1332, "ciclo": "SMR", "descripcion": "Consultoría en ciberseguridad hacking ético y auditorías.", "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España", "tags": "Cybersecurity, DevOps, Cloud", "tags_lista": ["Cybersecurity", "DevOps", "Cloud"], "alumnos": "3"}, {"nombre": "CloudNexus", "lat": 37.7749, "lng": -122.4194, "ciclo": "ASIR", "descripcion": "Migración a la nube y optimización de infraestructura para empresas.", "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España", "tags": "Cloud, AWS, DevOps", "tags_lista": ["Cloud", "AWS", "DevOps"], "alumnos": "2"}, {"nombre": "BioData Lab", "lat": 41.3851, "lng": 2.1734, "ciclo": "DAM", "descripcion": "Análisis de datos masivos aplicados a la investigación biomédica.", "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España", "tags": "Big Data, Python, Biotech", "tags_lista": ["Big Data", "Python", "Biotech"], "alumnos": "4"}, {"nombre": "Quantum Code", "lat": 51.5074, "lng": -0.1278, "ciclo": "DAW", "descripcion": "Investigación y desarrollo de algoritmos de computación cuántica.", "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España", "tags": "Quantum, Q#, Research", "tags_lista": ["Quantum", "Q#", "Research"], "alumnos": "1"}, {"nombre": "DevOps Dynamics", "lat": 48.8566, "lng": 2.3522, "ciclo": "ASIR", "descripcion": "Automatización de despliegues y gestión de servidores cloud.", "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España", "tags": "CI/CD, Docker, Kubernetes", "tags_lista": ["CI/CD", "Docker", "Kubernetes"], "alumnos": "3"}, {"nombre": "GreenTech Innovation", "lat": 52.52, "lng": 13.405, "ciclo": "DAW", "descripcion": "Software para la monitorización y reducción de la huella de carbono.", "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España", "tags": "IoT, GreenIT, Node.js", "tags_lista": ["IoT", "GreenIT", "Node.js"], "alumnos": "2"}, {"nombre": "DataVibe Analytics", "lat": -33.8688, "lng": 151.2093, "ciclo": "DAM", "descripcion": "Visualización de datos empresariales y cuadros de mando interactivos.", "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España", "tags": "Business Intelligence, SQL, Tableau", "tags_lista": ["Business Intelligence", "SQL", "Tableau"], "alumnos": "1"}, {"nombre": "MobileFirst Systems", "lat": 35.6762, "lng": 139.6503, "ciclo": "DAM", "descripcion": "Desarrollo exclusivo de aplicaciones móviles nativas de alto rendimiento.", "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España", "tags": "iOS, Android, Swift, Kotlin", "tags_lista": ["iOS", "Android", "Swift", "Kotlin"], "alumnos": "5"}, {"nombre": "AI Horizon", "lat": 45.4215, "lng": -75.6972, "ciclo": "SMR", "descripcion": "Modelos de lenguaje y automatización mediante redes neuronales.", "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España", "tags": "Deep Learning, NLP, PyTorch", "tags_lista": ["Deep Learning", "NLP", "PyTorch"], "alumnos": "2"}, {"nombre": "BlockChain Ledger", "lat": -23.5505, "lng": -46.6333, "ciclo": "DAW", "descripcion": "Desarrollo de contratos inteligentes y aplicaciones descentralizadas.", "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España", "tags": "Blockchain, Solidity, Web3", "tags_lista": ["Blockchain", "Solidity", "Web3"], "alumnos": "2"}, {"nombre": "GameForge Studios", "lat": 43.7001, "lng": -79.4163, "ciclo": "DAM", "descripcion": "Estudio independiente de desarrollo de videojuegos y entornos 3D.", "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España", "tags": "Unity, C#, Gaming, VR", "tags_lista": ["Unity", "C#", "Gaming", "VR"], "alumnos": "4"}, {"nombre": "EdTech Virtual", "lat": 4.711, "lng": -74.0721, "ciclo": "DAW", "descripcion": "Plataformas de aprendizaje en línea y educación interactiva.", "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España", "tags": "E-learning, PHP, LMS", "tags_lista": ["E-learning", "PHP", "LMS"], "alumnos": "3"}, {"nombre": "RoboCore Automation", "lat": 48.1351, "lng": 11.582, "ciclo": "DAM", "descripcion": "Sistemas embebidos y software para automatización industrial.", "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España", "tags": "Robotics, C++, IoT", "tags_lista": ["Robotics", "C++", "IoT"], "alumnos": "2"}, {"nombre": "HealthClick", "lat": 40.7128, "lng": -74.006, "ciclo": "SMR", "descripcion": "Aplicaciones de telemedicina e historial clínico digital seguro.", "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España", "tags": "HealthTech, Java, Security", "tags_lista": ["HealthTech", "Java", "Security"], "alumnos": "1"}, {"nombre": "EcomPulse", "lat": 34.0522, "lng": -118.2437, "ciclo": "DAW", "descripcion": "Optimización de plataformas de comercio electrónico a gran escala.", "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España", "tags": "E-commerce, Next.js, SEO", "tags_lista": ["E-commerce", "Next.js", "SEO"], "alumnos": "3"}, {"nombre": "NetSentinel", "lat": 55.7558, "lng": 37.6173, "ciclo": "ASIR", "descripcion": "Monitoreo de redes en tiempo real y prevención de intrusiones.", "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España", "tags": "Networking, Cisco, Security", "tags_lista": ["Networking", "Cisco", "Security"], "alumnos": "2"}, {"nombre": "SaaSify Logistics", "lat": 1.3521, "lng": 103.8198, "ciclo": "DAW", "descripcion": "Software de gestión de flotas y cadenas de suministro globales.", "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España", "tags": "SaaS, Go, Logistics", "tags_lista": ["SaaS", "Go", "Logistics"], "alumnos": "2"}, {"nombre": "Finix Pay", "lat": -22.9068, "lng": -43.1729, "ciclo": "DAM", "descripcion": "Pasarelas de pago digitales y procesamiento seguro de transacciones.", "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España", "tags": "Payments, API, Ruby", "tags_lista": ["Payments", "API", "Ruby"], "alumnos": "3"}, {"nombre": "Hiberus", "lat": 41.6707881, "lng": -0.8995539, "ciclo": "DAW", "descripcion": "Empresa tecnológica con sede en Zaragoza que ofrece soluciones de tecnología y servicios de consultoría.", "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España", "tags": "tecnología, consultoría, Zaragoza", "tags_lista": ["tecnología", "consultoría", "Zaragoza"], "alumnos": "0"}, {"nombre": "Integra Tecnología", "lat": 41.6457253, "lng": -0.88851, "ciclo": "DAW", "descripcion": "Empresa de tecnología con sede en Zaragoza que ofrece servicios de estrategia y tecnología.", "direccion": "Integra. Estrategia y Tecnología., Gran Vía de Santiago Ramón y Cajal, 23, 50006 Zaragoza, España", "tags": "tecnología, estrategia, Zaragoza", "tags_lista": ["tecnología", "estrategia", "Zaragoza"], "alumnos": "preconfigurada"}, {"nombre": "Imascono", "lat": 41.6499597, "lng": -0.8823097, "ciclo": "DAW", "descripcion": "Empresa de tecnología que ofrece soluciones de realidad extendida y servicios de metaverso para empresas.", "direccion": "imascono, Calle de Felipe Sanclemente, 3, 50001 Zaragoza, España", "tags": "tecnología, realidad extendida, metaverso", "tags_lista": ["tecnología", "realidad extendida", "metaverso"], "alumnos": "preconfigurada"}, {"nombre": "Inycom", "lat": 41.6414212, "lng": -0.9953924, "ciclo": "DAW", "descripcion": "Empresa de tecnología e innovación que ofrece soluciones y servicios adaptados a empresas y entidades públicas.", "direccion": "Inycom, Calle de Alaún, 8, 50197 Zaragoza, España", "tags": "tecnología, innovación, servicios, empresas", "tags_lista": ["tecnología", "innovación", "servicios", "empresas"], "alumnos": "preconfigurada"}];
 
         const map = L.map('map').setView([41.6488, -0.8891], 12);
 
@@ -765,6 +1073,28 @@
 
         let marcadoresLeaflet = [];
         let marcadoresPorNombre = {};
+        let tagActivo = null;
+
+        const iconoNormal = L.divIcon({
+            className: "",
+            html: '<div class="marker-normal"></div>',
+            iconSize: [22, 22],
+            iconAnchor: [11, 11],
+            popupAnchor: [0, -10]
+        });
+
+        const iconoDestacado = L.divIcon({
+            className: "",
+            html: '<div class="marker-destacado"></div>',
+            iconSize: [30, 30],
+            iconAnchor: [15, 15],
+            popupAnchor: [0, -14]
+        });
+
+        function normalizarTag(tag) {
+            if (!tag) return "";
+            return tag.toLowerCase().replace(/^#/, "").trim();
+        }
 
         function crearPopup(empresa) {
             return `
@@ -779,21 +1109,198 @@
             `;
         }
 
+        function empresaTieneTag(empresa, tag) {
+            if (!tag) return false;
+
+            const tags = empresa.tags_lista || [];
+
+            return tags
+                .map(t => normalizarTag(t))
+                .includes(normalizarTag(tag));
+        }
+
+        function obtenerTagsGlobales() {
+            const tags = new Set();
+
+            empresas.forEach(empresa => {
+                (empresa.tags_lista || []).forEach(tag => {
+                    tags.add(normalizarTag(tag));
+                });
+            });
+
+            return Array.from(tags).sort();
+        }
+
+        function detectarTagDesdeTexto(texto) {
+            const t = normalizarTag(texto);
+
+            if (t.length === 0) {
+                return null;
+            }
+
+            const tags = obtenerTagsGlobales();
+            const tagEncontrado = tags.find(tag => tag.startsWith(t));
+
+            return tagEncontrado || null;
+        }
+
+        function obtenerTagDeResaltado() {
+            const texto = document.getElementById("busqueda").value.toLowerCase().trim();
+
+            if (tagActivo !== null) {
+                return tagActivo;
+            }
+
+            return detectarTagDesdeTexto(texto);
+        }
+
         function pintarMarcadores(lista) {
             marcadoresLeaflet.forEach(m => map.removeLayer(m));
             marcadoresLeaflet = [];
             marcadoresPorNombre = {};
 
+            const tagResaltado = obtenerTagDeResaltado();
+
             lista.forEach(empresa => {
-                const marker = L.marker([empresa.lat, empresa.lng])
-                    .addTo(map)
-                    .bindPopup(crearPopup(empresa));
+                const destacar = tagResaltado !== null && empresaTieneTag(empresa, tagResaltado);
+
+                const marker = L.marker(
+                    [empresa.lat, empresa.lng],
+                    {
+                        icon: destacar ? iconoDestacado : iconoNormal
+                    }
+                )
+                .addTo(map)
+                .bindPopup(crearPopup(empresa));
 
                 marcadoresLeaflet.push(marker);
                 marcadoresPorNombre[empresa.nombre] = marker;
             });
 
             map.setView([41.6488, -0.8891], 12);
+        }
+
+        function obtenerEmpresasVisiblesPorTarjetas() {
+            const tarjetas = document.querySelectorAll(".card");
+            const visibles = [];
+
+            tarjetas.forEach(tarjeta => {
+                if (tarjeta.style.display !== "none") {
+                    const nombre = tarjeta.dataset.nombre;
+                    const empresa = empresas.find(e => e.nombre === nombre);
+
+                    if (empresa) {
+                        visibles.push(empresa);
+                    }
+                }
+            });
+
+            return visibles;
+        }
+
+        function actualizarMarcadoresDesdeTarjetas() {
+            const visibles = obtenerEmpresasVisiblesPorTarjetas();
+            pintarMarcadores(visibles);
+        }
+
+        function aplicarFiltros() {
+            const texto = document.getElementById("busqueda").value.toLowerCase().trim();
+            const tarjetas = document.querySelectorAll(".card");
+
+            const tagDetectadoPorTexto = detectarTagDesdeTexto(texto);
+            const tagFiltroEfectivo = tagActivo !== null ? tagActivo : null;
+            const tagParaResaltar = tagActivo !== null ? tagActivo : tagDetectadoPorTexto;
+
+            let visibles = 0;
+
+            tarjetas.forEach(tarjeta => {
+                const contenido = tarjeta.dataset.search || "";
+                const tags = tarjeta.dataset.tags || "";
+                const listaTags = tags.split("|");
+
+                const coincideTexto = texto === "" || contenido.includes(texto);
+                const coincideTagActivo = tagFiltroEfectivo === null || listaTags.includes(tagFiltroEfectivo);
+
+                if (coincideTexto && coincideTagActivo) {
+                    tarjeta.style.display = "flex";
+                    visibles++;
+
+                    tarjeta.classList.remove("seleccionada");
+                    tarjeta.classList.remove("coincide-busqueda");
+
+                    if (tagParaResaltar !== null && listaTags.includes(tagParaResaltar)) {
+                        tarjeta.classList.add("seleccionada");
+                    } else if (texto !== "") {
+                        tarjeta.classList.add("coincide-busqueda");
+                    }
+
+                } else {
+                    tarjeta.style.display = "none";
+                    tarjeta.classList.remove("coincide-busqueda");
+                    tarjeta.classList.remove("seleccionada");
+                }
+            });
+
+            document.getElementById("contador-empresas").textContent = visibles;
+            actualizarMarcadoresDesdeTarjetas();
+            actualizarTagsActivos(tagParaResaltar);
+        }
+
+        function actualizarTagsActivos(tagParaResaltar = null) {
+            document.querySelectorAll(".tag, .filtro-tag").forEach(boton => {
+                const tag = normalizarTag(boton.dataset.tag);
+
+                if (tagParaResaltar !== null && tag === tagParaResaltar) {
+                    boton.classList.add("activo");
+                } else {
+                    boton.classList.remove("activo");
+                }
+            });
+        }
+
+        function seleccionarTag(tag) {
+            const tagNormalizado = normalizarTag(tag);
+
+            if (tagActivo === tagNormalizado) {
+                tagActivo = null;
+            } else {
+                tagActivo = tagNormalizado;
+            }
+
+            aplicarFiltros();
+        }
+
+        function limpiarFiltros() {
+            tagActivo = null;
+            document.getElementById("busqueda").value = "";
+
+            document.querySelectorAll(".card").forEach(tarjeta => {
+                tarjeta.style.display = "flex";
+                tarjeta.classList.remove("seleccionada");
+                tarjeta.classList.remove("coincide-busqueda");
+            });
+
+            document.querySelectorAll(".tag, .filtro-tag").forEach(tag => {
+                tag.classList.remove("activo");
+            });
+
+            document.getElementById("contador-empresas").textContent = document.querySelectorAll(".card").length;
+            pintarMarcadores(empresas);
+        }
+
+        function activarClickTags() {
+            document.querySelectorAll(".tag-boton, .filtro-tag").forEach(boton => {
+                boton.addEventListener("click", (event) => {
+                    event.stopPropagation();
+                    seleccionarTag(boton.dataset.tag);
+                });
+            });
+
+            const botonLimpiar = document.getElementById("limpiar-filtros");
+
+            if (botonLimpiar) {
+                botonLimpiar.addEventListener("click", limpiarFiltros);
+            }
         }
 
         function activarClickTarjetas() {
@@ -818,41 +1325,12 @@
             });
         }
 
-        function filtrarTarjetas() {
-            const texto = document.getElementById("busqueda").value.toLowerCase().trim();
-            const tarjetas = document.querySelectorAll(".card");
-
-            let visibles = 0;
-            const empresasFiltradas = [];
-
-            tarjetas.forEach((tarjeta) => {
-                const contenido = tarjeta.innerText.toLowerCase();
-
-                if (texto === "" || contenido.includes(texto)) {
-                    tarjeta.style.display = "flex";
-                    visibles++;
-
-                    const nombre = tarjeta.dataset.nombre;
-
-                    const empresaEncontrada = empresas.find(e => e.nombre === nombre);
-
-                    if (empresaEncontrada) {
-                        empresasFiltradas.push(empresaEncontrada);
-                    }
-
-                } else {
-                    tarjeta.style.display = "none";
-                }
-            });
-
-            document.getElementById("contador-empresas").textContent = visibles;
-            pintarMarcadores(empresasFiltradas);
-        }
-
-        document.getElementById("busqueda").addEventListener("input", filtrarTarjetas);
+        document.getElementById("busqueda").addEventListener("input", aplicarFiltros);
 
         pintarMarcadores(empresas);
         activarClickTarjetas();
+        activarClickTags();
+
     </script>
 </body>
 </html>
