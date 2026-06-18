@@ -1,1194 +1,1173 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IAProspector - Mapa de Empresas</title>
 
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <title>Mapa de empresas tecnológicas de Zaragoza</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
 
     <style>
+        
+* {
+    box-sizing: border-box;
+}
 
-        * {
-            box-sizing: border-box;
-        }
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f3f4f6;
+    color: #111827;
+}
 
-        body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background-color: #f4f7f6;
-            margin: 0;
-            padding: 0;
-            color: #333;
-            height: 100vh;
-            overflow: hidden;
-        }
+.cabecera {
+    background: #111827;
+    color: white;
+    padding: 18px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+}
 
-        header {
-            height: 82px;
-            background-color: #1e293b;
-            color: white;
-            text-align: center;
-            padding: 1rem;
-        }
+.cabecera h1 {
+    margin: 0;
+    font-size: 26px;
+}
 
-        header h1 {
-            margin: 0;
-            font-size: 1.7rem;
-        }
+.cabecera p {
+    margin: 6px 0 0 0;
+    color: #d1d5db;
+}
 
-        header p {
-            margin: 0.35rem 0 0 0;
-            color: #cbd5e1;
-            font-size: 0.95rem;
-        }
+.resumen-superior {
+    display: flex;
+    gap: 12px;
+}
 
-        .layout {
-            display: grid;
-            grid-template-columns: 390px 1fr;
-            height: calc(100vh - 82px);
-        }
+.dato-resumen {
+    min-width: 90px;
+    background: #1f2937;
+    border: 1px solid #374151;
+    border-radius: 14px;
+    padding: 12px;
+    text-align: center;
+}
 
-        .panel-lateral {
-            background: #f8fafc;
-            border-right: 1px solid #cbd5e1;
-            overflow-y: auto;
-            padding: 1rem;
-        }
+.dato-resumen span {
+    display: block;
+    font-size: 28px;
+    font-weight: bold;
+}
 
-        .zona-mapa {
-            position: relative;
-            height: 100%;
-        }
+.dato-resumen small {
+    color: #d1d5db;
+    font-size: 13px;
+}
 
-        #map {
-            height: 100%;
-            width: 100%;
-        }
+.layout {
+    height: calc(100vh - 96px);
+    display: grid;
+    grid-template-columns: 390px 1fr;
+    grid-template-areas: "panel mapa";
+}
 
-        .contador {
-            background: white;
-            padding: 0.75rem 1rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            font-weight: bold;
-            color: #1e293b;
-            margin-bottom: 1rem;
-            font-size: 0.9rem;
-        }
+.panel-lateral {
+    grid-area: panel;
+    background: white;
+    border-right: 1px solid #e5e7eb;
+    overflow-y: auto;
+    padding: 18px;
+}
 
-        .buscador {
-            margin-bottom: 1rem;
-        }
+.zona-mapa {
+    grid-area: mapa;
+    min-height: 400px;
+}
 
-        .buscador input {
-            width: 100%;
-            padding: 0.75rem 1rem;
-            border: 1px solid #cbd5e1;
-            border-radius: 8px;
-            font-size: 0.95rem;
-        }
+#map {
+    width: 100%;
+    height: 100%;
+}
 
-        .panel-tags {
-            margin-bottom: 1rem;
-        }
+.bloque-filtros,
+.bloque-tags,
+.bloque-empresas {
+    margin-bottom: 22px;
+}
 
-        .panel-tags h3 {
-            margin: 0 0 0.5rem 0;
-            color: #1e293b;
-            font-size: 1rem;
-        }
+.bloque-filtros h2,
+.bloque-tags h2,
+.bloque-empresas h2 {
+    margin: 0 0 10px 0;
+    font-size: 18px;
+}
 
-        .filtros-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.4rem;
-        }
+#buscador {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    font-size: 15px;
+}
 
-        .filtro-tag,
-        .tag-boton {
-            border: none;
-            cursor: pointer;
-            font-family: inherit;
-        }
+.acciones-filtro {
+    margin-top: 10px;
+}
 
-        .filtro-tag {
-            background: #e2e8f0;
-            color: #334155;
-            padding: 0.35rem 0.6rem;
-            border-radius: 999px;
-            font-size: 0.78rem;
-            transition: 0.2s;
-        }
+#btnLimpiar {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    background: #374151;
+    color: white;
+    cursor: pointer;
+}
 
-        .filtro-tag:hover {
-            background: #fecaca;
-            color: #7f1d1d;
-        }
+#btnLimpiar:hover {
+    background: #111827;
+}
 
-        .filtro-tag.activo {
-            background: #7f1d1d;
-            color: white;
-        }
+.contenedor-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
 
-        .limpiar-filtros {
-            background: #fee2e2;
-            color: #991b1b;
-        }
+.tag-filtro {
+    border: 1px solid #d1d5db;
+    background: #f9fafb;
+    color: #374151;
+    padding: 7px 10px;
+    border-radius: 999px;
+    font-size: 13px;
+    cursor: pointer;
+}
 
-        .titulo-listado {
-            margin: 1rem 0 0.75rem 0;
-            color: #1e293b;
-            font-size: 1rem;
-        }
+.tag-filtro:hover {
+    background: #e5e7eb;
+}
 
-        .grid-empresas {
-            display: flex;
-            flex-direction: column;
-            gap: 0.8rem;
-        }
+.tag-filtro.activo {
+    background: #7f1d1d;
+    color: white;
+    border-color: #7f1d1d;
+}
 
-        .card {
-            background: white;
-            border-radius: 8px;
-            padding: 1rem;
-            box-shadow: 0 3px 6px rgba(0,0,0,0.05);
-            border-left: 5px solid #3b82f6;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: 0.2s ease;
-        }
+.contador-resultados {
+    margin: 0 0 12px 0;
+    color: #6b7280;
+    font-size: 14px;
+}
 
-        .card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.08);
-        }
+.lista-empresas {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
 
-        .card.seleccionada {
-            border-left-color: #7f1d1d;
-            background-color: #fef2f2;
-            box-shadow: 0 8px 18px rgba(127,29,29,0.20);
-        }
+.tarjeta-empresa {
+    border: 1px solid #e5e7eb;
+    background: white;
+    border-radius: 14px;
+    padding: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
 
-        .card.coincide-busqueda {
-            border-left-color: #0ea5e9;
-            background-color: #f0f9ff;
-        }
+.tarjeta-empresa:hover {
+    border-color: #2563eb;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
 
-        .tarjeta-clicable {
-            cursor: pointer;
-        }
+.tarjeta-empresa.destacada {
+    border: 2px solid #7f1d1d;
+    background: #fef2f2;
+    box-shadow: 0 4px 16px rgba(127, 29, 29, 0.18);
+}
 
-        .tarjeta-clicable:hover {
-            border-left-color: #0ea5e9;
-            background-color: #f8fafc;
-        }
+.tarjeta-empresa.oculta {
+    display: none;
+}
 
-        .card h2 {
-            margin: 0 0 0.4rem 0;
-            color: #1e293b;
-            font-size: 1.05rem;
-        }
+.tarjeta-empresa h3 {
+    margin: 0 0 6px 0;
+    font-size: 17px;
+}
 
-        .badge-ciclo {
-            background-color: #e0f2fe;
-            color: #0369a1;
-            padding: 0.2rem 0.45rem;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            font-weight: bold;
-            display: inline-block;
-            margin-bottom: 0.6rem;
-            align-self: flex-start;
-        }
+.tarjeta-empresa p {
+    margin: 4px 0;
+    font-size: 14px;
+    color: #374151;
+}
 
-        .descripcion {
-            font-size: 0.85rem;
-            color: #4b5563;
-            line-height: 1.35;
-            margin-bottom: 0.6rem;
-        }
+.descripcion {
+    line-height: 1.35;
+}
 
-        .direccion {
-            font-size: 0.78rem;
-            color: #64748b;
-            line-height: 1.3;
-        }
+.tags-empresa {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
 
-        .fuentes {
-            font-size: 0.75rem;
-            color: #64748b;
-            word-break: break-word;
-        }
+.tag-empresa {
+    background: #e0f2fe;
+    color: #075985;
+    border-radius: 999px;
+    padding: 4px 8px;
+    font-size: 12px;
+}
 
-        .tags {
-            margin: 0.7rem 0;
-        }
+.tag-empresa.destacado {
+    background: #7f1d1d;
+    color: white;
+}
 
-        .tag {
-            background: #f1f5f9;
-            color: #475569;
-            padding: 0.2rem 0.45rem;
-            border-radius: 4px;
-            font-size: 0.72rem;
-            margin-right: 0.35rem;
-            display: inline-block;
-            margin-bottom: 0.25rem;
-        }
+.marker-normal {
+    width: 16px;
+    height: 16px;
+    background: #2563eb;
+    border: 3px solid white;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.35);
+}
 
-        .tag:hover {
-            background: #fecaca;
-            color: #7f1d1d;
-        }
+.marker-destacado {
+    width: 22px;
+    height: 22px;
+    background: #7f1d1d;
+    border: 4px solid white;
+    border-radius: 50%;
+    box-shadow: 0 3px 12px rgba(127,29,29,0.6);
+}
 
-        .tag.activo {
-            background: #7f1d1d;
-            color: white;
-        }
+/* ============================= */
+/* VERSIÓN MÓVIL */
+/* ============================= */
 
-        .info-footer {
-            display: flex;
-            justify-content: space-between;
-            gap: 0.5rem;
-            font-size: 0.7rem;
-            color: #64748b;
-            border-top: 1px solid #f1f5f9;
-            padding-top: 0.6rem;
-            margin-top: auto;
-            flex-wrap: wrap;
-        }
+@media (max-width: 768px) {
 
-        .estado-footer {
-            margin-top: 0.4rem;
-            font-size: 0.7rem;
-            color: #64748b;
-        }
+    body {
+        background: #f3f4f6;
+    }
 
-        .popup h3 {
-            margin: 0 0 0.5rem 0;
-            color: #1e293b;
-        }
+    .cabecera {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        padding: 12px;
+        flex-direction: row;
+        align-items: center;
+    }
 
-        .popup p {
-            margin: 0.25rem 0;
-        }
+    .cabecera h1 {
+        font-size: 18px;
+        line-height: 1.2;
+    }
 
-        .marker-normal {
-            width: 16px;
-            height: 16px;
-            background: #2563eb;
-            border: 3px solid white;
-            border-radius: 50%;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.35);
-        }
+    .cabecera p {
+        display: none;
+    }
 
-        .marker-destacado {
-            width: 22px;
-            height: 22px;
-            background: #7f1d1d;
-            border: 4px solid white;
-            border-radius: 50%;
-            box-shadow: 0 3px 12px rgba(127,29,29,0.6);
-        }
+    .resumen-superior {
+        gap: 6px;
+    }
 
-        @media (max-width: 900px) {
-            body {
-                height: auto;
-                overflow: auto;
-            }
+    .dato-resumen {
+        min-width: 66px;
+        padding: 8px;
+        border-radius: 10px;
+    }
 
-            header {
-                height: auto;
-            }
+    .dato-resumen span {
+        font-size: 20px;
+    }
 
-            .layout {
-                display: flex;
-                flex-direction: column;
-                height: auto;
-            }
+    .dato-resumen small {
+        font-size: 11px;
+    }
 
-            .panel-lateral {
-                height: auto;
-                max-height: none;
-                border-right: none;
-                border-bottom: 1px solid #cbd5e1;
-            }
+    .layout {
+        height: auto;
+        display: flex;
+        flex-direction: column;
+    }
 
-            .zona-mapa {
-                height: 420px;
-            }
+    .zona-mapa {
+        order: 1;
+        width: 100%;
+        height: 48vh;
+        min-height: 320px;
+        border-bottom: 1px solid #d1d5db;
+    }
 
-            #map {
-                height: 420px;
-            }
-        }
+    #map {
+        height: 100%;
+    }
+
+    .panel-lateral {
+        order: 2;
+        width: 100%;
+        border-right: none;
+        padding: 14px;
+        overflow: visible;
+    }
+
+    .bloque-filtros {
+        position: sticky;
+        top: 68px;
+        z-index: 900;
+        background: #f3f4f6;
+        padding: 10px 0;
+    }
+
+    .bloque-tags {
+        background: white;
+        padding: 14px;
+        border-radius: 14px;
+        border: 1px solid #e5e7eb;
+    }
+
+    .bloque-empresas {
+        background: white;
+        padding: 14px;
+        border-radius: 14px;
+        border: 1px solid #e5e7eb;
+    }
+
+    .contenedor-tags {
+        max-height: 170px;
+        overflow-y: auto;
+        padding-bottom: 4px;
+    }
+
+    .tag-filtro {
+        font-size: 12px;
+        padding: 7px 9px;
+    }
+
+    .lista-empresas {
+        gap: 10px;
+    }
+
+    .tarjeta-empresa {
+        padding: 12px;
+    }
+
+    .tarjeta-empresa h3 {
+        font-size: 16px;
+    }
+
+    .tarjeta-empresa p {
+        font-size: 13px;
+    }
+}
 
     </style>
 </head>
+
 <body>
 
-    <header>
-        <h1>IAProspector: Mapa Tecnológico</h1>
-        <p>Empresas sincronizadas automáticamente desde Google Sheets</p>
+    <header class="cabecera">
+        <div>
+            <h1>Empresas tecnológicas de Zaragoza</h1>
+            <p>Mapa interactivo de empresas, ciclos y tecnologías.</p>
+        </div>
+
+        <div class="resumen-superior">
+            <div class="dato-resumen">
+                <span id="totalEmpresas">19</span>
+                <small>empresas</small>
+            </div>
+
+            <div class="dato-resumen">
+                <span id="totalTags">40</span>
+                <small>tags</small>
+            </div>
+        </div>
     </header>
 
-    <div class="layout">
-
-        <aside class="panel-lateral">
-
-            <div class="contador">
-                <span id="contador-empresas">19</span> empresas publicadas · 19 con marcador
-            </div>
-
-            <div class="buscador">
-                <input type="text" id="busqueda" placeholder="Buscar empresa o primeras letras de un tag...">
-            </div>
-
-            <section class="panel-tags">
-                <h3>Tags disponibles</h3>
-                <div class="filtros-tags">
-                    <button class="filtro-tag" data-tag="administracion">#administracion</button>
-<button class="filtro-tag" data-tag="aplicaciones móviles">#aplicaciones móviles</button>
-<button class="filtro-tag" data-tag="aplicaciones web">#aplicaciones web</button>
-<button class="filtro-tag" data-tag="automatización de procesos">#automatización de procesos</button>
-<button class="filtro-tag" data-tag="banca">#banca</button>
-<button class="filtro-tag" data-tag="cloud">#cloud</button>
-<button class="filtro-tag" data-tag="consultoria">#consultoria</button>
-<button class="filtro-tag" data-tag="consultoría">#consultoría</button>
-<button class="filtro-tag" data-tag="crm">#crm</button>
-<button class="filtro-tag" data-tag="datos">#datos</button>
-<button class="filtro-tag" data-tag="desarrollo">#desarrollo</button>
-<button class="filtro-tag" data-tag="desarrollo de software">#desarrollo de software</button>
-<button class="filtro-tag" data-tag="desarrollo web">#desarrollo web</button>
-<button class="filtro-tag" data-tag="diseño web">#diseño web</button>
-<button class="filtro-tag" data-tag="empresarial">#empresarial</button>
-<button class="filtro-tag" data-tag="empresas">#empresas</button>
-<button class="filtro-tag" data-tag="erp">#erp</button>
-<button class="filtro-tag" data-tag="estrategia">#estrategia</button>
-<button class="filtro-tag" data-tag="eventos tech">#eventos tech</button>
-<button class="filtro-tag" data-tag="finanzas">#finanzas</button>
-<button class="filtro-tag" data-tag="gestion">#gestion</button>
-<button class="filtro-tag" data-tag="gestión">#gestión</button>
-<button class="filtro-tag" data-tag="hosting">#hosting</button>
-<button class="filtro-tag" data-tag="ia">#ia</button>
-<button class="filtro-tag" data-tag="informatica">#informatica</button>
-<button class="filtro-tag" data-tag="informática">#informática</button>
-<button class="filtro-tag" data-tag="ingenieria">#ingenieria</button>
-<button class="filtro-tag" data-tag="innovacion">#innovacion</button>
-<button class="filtro-tag" data-tag="innovación">#innovación</button>
-<button class="filtro-tag" data-tag="marketing digital">#marketing digital</button>
-<button class="filtro-tag" data-tag="metaverso">#metaverso</button>
-<button class="filtro-tag" data-tag="realidad extendida">#realidad extendida</button>
-<button class="filtro-tag" data-tag="redes">#redes</button>
-<button class="filtro-tag" data-tag="seo">#seo</button>
-<button class="filtro-tag" data-tag="servicios">#servicios</button>
-<button class="filtro-tag" data-tag="servicios profesionales">#servicios profesionales</button>
-<button class="filtro-tag" data-tag="software">#software</button>
-<button class="filtro-tag" data-tag="tecnologia">#tecnologia</button>
-<button class="filtro-tag" data-tag="tecnología">#tecnología</button>
-<button class="filtro-tag" data-tag="zaragoza">#zaragoza</button>
-                    <button class="filtro-tag limpiar-filtros" id="limpiar-filtros">Limpiar filtros</button>
-                </div>
-            </section>
-
-            <h3 class="titulo-listado">Empresas</h3>
-
-            <div class="grid-empresas" id="grid-empresas">
-
-            <div class="card tarjeta-clicable" 
-                 data-lat="41.6707881" data-lng="-0.8995539" data-nombre="Hiberus"
-                 data-tags="tecnología|consultoría|zaragoza"
-                 data-search="hiberus empresa tecnológica con sede en zaragoza que ofrece soluciones de tecnología y servicios de consultoría. hiberus, andador de berta cáceres flores, 50018 zaragoza, españa tecnología, consultoría, zaragoza daw sin estado ">
-                <div>
-                    <h2>Hiberus</h2>
-                    <span class="badge-ciclo">DAW</span>
-                    <p class="descripcion">Empresa tecnológica con sede en Zaragoza que ofrece soluciones de tecnología y servicios de consultoría.</p>
-                    <p class="direccion">📍 Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España</p>
-                    
-                </div>
-
-                <div>
-                    <div class="tags"><button class="tag tag-boton" data-tag="tecnología">#tecnología</button><button class="tag tag-boton" data-tag="consultoría">#consultoría</button><button class="tag tag-boton" data-tag="zaragoza">#Zaragoza</button></div>
-
-                    <div class="info-footer">
-                        <span>Lat: 41.6707881, Lng: -0.8995539</span>
-                        <span>👥 Alumnos: <strong>0</strong></span>
-                    </div>
-
-                    <div class="estado-footer">
-                        Estado agente: <strong>Sin estado</strong>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="card tarjeta-clicable" 
-                 data-lat="41.6457253" data-lng="-0.88851" data-nombre="Integra Tecnología"
-                 data-tags="tecnología|estrategia|zaragoza"
-                 data-search="integra tecnología empresa de tecnología con sede en zaragoza que ofrece servicios de estrategia y tecnología. integra. estrategia y tecnología., gran vía de santiago ramón y cajal, 23, 50006 zaragoza, españa tecnología, estrategia, zaragoza daw sin estado ">
-                <div>
-                    <h2>Integra Tecnología</h2>
-                    <span class="badge-ciclo">DAW</span>
-                    <p class="descripcion">Empresa de tecnología con sede en Zaragoza que ofrece servicios de estrategia y tecnología.</p>
-                    <p class="direccion">📍 Integra. Estrategia y Tecnología., Gran Vía de Santiago Ramón y Cajal, 23, 50006 Zaragoza, España</p>
-                    
-                </div>
-
-                <div>
-                    <div class="tags"><button class="tag tag-boton" data-tag="tecnología">#tecnología</button><button class="tag tag-boton" data-tag="estrategia">#estrategia</button><button class="tag tag-boton" data-tag="zaragoza">#Zaragoza</button></div>
-
-                    <div class="info-footer">
-                        <span>Lat: 41.6457253, Lng: -0.88851</span>
-                        <span>👥 Alumnos: <strong>preconfigurada</strong></span>
-                    </div>
-
-                    <div class="estado-footer">
-                        Estado agente: <strong>Sin estado</strong>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="card tarjeta-clicable" 
-                 data-lat="41.6499597" data-lng="-0.8823097" data-nombre="Imascono"
-                 data-tags="tecnología|realidad extendida|metaverso"
-                 data-search="imascono empresa de tecnología que ofrece soluciones de realidad extendida y servicios de metaverso para empresas. imascono, calle de felipe sanclemente, 3, 50001 zaragoza, españa tecnología, realidad extendida, metaverso daw sin estado ">
-                <div>
-                    <h2>Imascono</h2>
-                    <span class="badge-ciclo">DAW</span>
-                    <p class="descripcion">Empresa de tecnología que ofrece soluciones de realidad extendida y servicios de metaverso para empresas.</p>
-                    <p class="direccion">📍 imascono, Calle de Felipe Sanclemente, 3, 50001 Zaragoza, España</p>
-                    
-                </div>
-
-                <div>
-                    <div class="tags"><button class="tag tag-boton" data-tag="tecnología">#tecnología</button><button class="tag tag-boton" data-tag="realidad extendida">#realidad extendida</button><button class="tag tag-boton" data-tag="metaverso">#metaverso</button></div>
-
-                    <div class="info-footer">
-                        <span>Lat: 41.6499597, Lng: -0.8823097</span>
-                        <span>👥 Alumnos: <strong>preconfigurada</strong></span>
-                    </div>
-
-                    <div class="estado-footer">
-                        Estado agente: <strong>Sin estado</strong>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="card tarjeta-clicable" 
-                 data-lat="41.6414212" data-lng="-0.9953924" data-nombre="Inycom"
-                 data-tags="tecnología|innovación|servicios|empresas"
-                 data-search="inycom empresa de tecnología e innovación que ofrece soluciones y servicios adaptados a empresas y entidades públicas. inycom, calle de alaún, 8, 50197 zaragoza, españa tecnología, innovación, servicios, empresas daw sin estado ">
-                <div>
-                    <h2>Inycom</h2>
-                    <span class="badge-ciclo">DAW</span>
-                    <p class="descripcion">Empresa de tecnología e innovación que ofrece soluciones y servicios adaptados a empresas y entidades públicas.</p>
-                    <p class="direccion">📍 Inycom, Calle de Alaún, 8, 50197 Zaragoza, España</p>
-                    
-                </div>
-
-                <div>
-                    <div class="tags"><button class="tag tag-boton" data-tag="tecnología">#tecnología</button><button class="tag tag-boton" data-tag="innovación">#innovación</button><button class="tag tag-boton" data-tag="servicios">#servicios</button><button class="tag tag-boton" data-tag="empresas">#empresas</button></div>
-
-                    <div class="info-footer">
-                        <span>Lat: 41.6414212, Lng: -0.9953924</span>
-                        <span>👥 Alumnos: <strong>preconfigurada</strong></span>
-                    </div>
-
-                    <div class="estado-footer">
-                        Estado agente: <strong>Sin estado</strong>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="card tarjeta-clicable" 
-                 data-lat="41.6549845" data-lng="-0.9908509" data-nombre="DXC Technology Zaragoza"
-                 data-tags="tecnología|ia|cloud|zaragoza"
-                 data-search="dxc technology zaragoza empresa tecnológica con un centro de excelencia en zaragoza que impulsa la adopción de ia y cloud en las principales organizaciones de españa. dxc.technology, calle de bari, 11, 50197 zaragoza, españa tecnología, ia, cloud, zaragoza daw sin estado ">
-                <div>
-                    <h2>DXC Technology Zaragoza</h2>
-                    <span class="badge-ciclo">DAW</span>
-                    <p class="descripcion">Empresa tecnológica con un Centro de Excelencia en Zaragoza que impulsa la adopción de IA y Cloud en las principales organizaciones de España.</p>
-                    <p class="direccion">📍 DXC.technology, Calle de Bari, 11, 50197 Zaragoza, España</p>
-                    
-                </div>
-
-                <div>
-                    <div class="tags"><button class="tag tag-boton" data-tag="tecnología">#tecnología</button><button class="tag tag-boton" data-tag="ia">#IA</button><button class="tag tag-boton" data-tag="cloud">#Cloud</button><button class="tag tag-boton" data-tag="zaragoza">#Zaragoza</button></div>
-
-                    <div class="info-footer">
-                        <span>Lat: 41.6549845, Lng: -0.9908509</span>
-                        <span>👥 Alumnos: <strong>preconfigurada</strong></span>
-                    </div>
-
-                    <div class="estado-footer">
-                        Estado agente: <strong>Sin estado</strong>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="card tarjeta-clicable" 
-                 data-lat="40.4866435" data-lng="-3.6623952" data-nombre="NTT DATA Zaragoza"
-                 data-tags="tecnología|informática|servicios"
-                 data-search="ntt data zaragoza empresa de tecnología con sede en zaragoza que ofrece servicios relacionados con la información y la informática. ntt data españa, avenida de la fuente de la mora, 1, 28050 madrid, españa tecnología, informática, servicios daw sin estado ">
-                <div>
-                    <h2>NTT DATA Zaragoza</h2>
-                    <span class="badge-ciclo">DAW</span>
-                    <p class="descripcion">Empresa de tecnología con sede en Zaragoza que ofrece servicios relacionados con la información y la informática.</p>
-                    <p class="direccion">📍 NTT Data España, Avenida de la Fuente de la Mora, 1, 28050 Madrid, España</p>
-                    
-                </div>
-
-                <div>
-                    <div class="tags"><button class="tag tag-boton" data-tag="tecnología">#tecnología</button><button class="tag tag-boton" data-tag="informática">#informática</button><button class="tag tag-boton" data-tag="servicios">#servicios</button></div>
-
-                    <div class="info-footer">
-                        <span>Lat: 40.4866435, Lng: -3.6623952</span>
-                        <span>👥 Alumnos: <strong>preconfigurada</strong></span>
-                    </div>
-
-                    <div class="estado-footer">
-                        Estado agente: <strong>Sin estado</strong>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="card tarjeta-clicable" 
-                 data-lat="37.3913778" data-lng="-6.0102735" data-nombre="Deloitte Zaragoza"
-                 data-tags="consultoría|servicios profesionales|tecnología|finanzas|gestión"
-                 data-search="deloitte zaragoza empresa de consultoría y servicios profesionales con oficina en zaragoza. ofrece servicios de auditoría, consultoría y asesoramiento en áreas como tecnología, finanzas y gestión. deloitte, plaza alcalde alfredo sánchez monteseirín, 2, 41092 sevilla, españa consultoría, servicios profesionales, tecnología, finanzas, gestión daw sin estado ">
-                <div>
-                    <h2>Deloitte Zaragoza</h2>
-                    <span class="badge-ciclo">DAW</span>
-                    <p class="descripcion">Empresa de consultoría y servicios profesionales con oficina en Zaragoza. Ofrece servicios de auditoría, consultoría y asesoramiento en áreas como tecnología, finanzas y gestión.</p>
-                    <p class="direccion">📍 Deloitte, Plaza Alcalde Alfredo Sánchez Monteseirín, 2, 41092 Sevilla, España</p>
-                    
-                </div>
-
-                <div>
-                    <div class="tags"><button class="tag tag-boton" data-tag="consultoría">#consultoría</button><button class="tag tag-boton" data-tag="servicios profesionales">#servicios profesionales</button><button class="tag tag-boton" data-tag="tecnología">#tecnología</button><button class="tag tag-boton" data-tag="finanzas">#finanzas</button><button class="tag tag-boton" data-tag="gestión">#gestión</button></div>
-
-                    <div class="info-footer">
-                        <span>Lat: 37.3913778, Lng: -6.0102735</span>
-                        <span>👥 Alumnos: <strong>0</strong></span>
-                    </div>
-
-                    <div class="estado-footer">
-                        Estado agente: <strong>Sin estado</strong>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="card tarjeta-clicable" 
-                 data-lat="39.9838664" data-lng="-0.0198039" data-nombre="Ingenia"
-                 data-tags="consultoria|informatica|gestion|erp|crm"
-                 data-search="ingenia empresa de consultoría informática que ofrece soluciones de gestión, erp y crm. ingenia, avenida del mar, 12003 castellón de la plana, españa consultoria, informatica, gestion, erp, crm dam sin estado ">
-                <div>
-                    <h2>Ingenia</h2>
-                    <span class="badge-ciclo">DAM</span>
-                    <p class="descripcion">Empresa de consultoría informática que ofrece soluciones de gestión, ERP y CRM.</p>
-                    <p class="direccion">📍 Ingenia, Avenida del Mar, 12003 Castellón de la Plana, España</p>
-                    
-                </div>
-
-                <div>
-                    <div class="tags"><button class="tag tag-boton" data-tag="consultoria">#consultoria</button><button class="tag tag-boton" data-tag="informatica">#informatica</button><button class="tag tag-boton" data-tag="gestion">#gestion</button><button class="tag tag-boton" data-tag="erp">#erp</button><button class="tag tag-boton" data-tag="crm">#crm</button></div>
-
-                    <div class="info-footer">
-                        <span>Lat: 39.9838664, Lng: -0.0198039</span>
-                        <span>👥 Alumnos: <strong>0</strong></span>
-                    </div>
-
-                    <div class="estado-footer">
-                        Estado agente: <strong>Sin estado</strong>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="card tarjeta-clicable" 
-                 data-lat="41.65526" data-lng="-0.888438" data-nombre="Aratec64"
-                 data-tags="consultoria|informatica|diseño web|hosting|redes"
-                 data-search="aratec64 empresa de consultoría informática que ofrece servicios de diseño web, hosting, redes y consultoría informática. calle aranda, 64, 50003 zaragoza, españa consultoria, informatica, diseño web, hosting, redes daw sin estado ">
-                <div>
-                    <h2>Aratec64</h2>
-                    <span class="badge-ciclo">DAW</span>
-                    <p class="descripcion">Empresa de consultoría informática que ofrece servicios de diseño web, hosting, redes y consultoría informática.</p>
-                    <p class="direccion">📍 Calle Aranda, 64, 50003 Zaragoza, España</p>
-                    
-                </div>
-
-                <div>
-                    <div class="tags"><button class="tag tag-boton" data-tag="consultoria">#consultoria</button><button class="tag tag-boton" data-tag="informatica">#informatica</button><button class="tag tag-boton" data-tag="diseño web">#diseño web</button><button class="tag tag-boton" data-tag="hosting">#hosting</button><button class="tag tag-boton" data-tag="redes">#redes</button></div>
-
-                    <div class="info-footer">
-                        <span>Lat: 41.65526, Lng: -0.888438</span>
-                        <span>👥 Alumnos: <strong>0</strong></span>
-                    </div>
-
-                    <div class="estado-footer">
-                        Estado agente: <strong>Sin estado</strong>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="card tarjeta-clicable" 
-                 data-lat="41.6442511" data-lng="-0.8856127" data-nombre="Empresa de Desarrollo de Software en Zaragoza"
-                 data-tags="desarrollo de software|desarrollo web|aplicaciones móviles"
-                 data-search="empresa de desarrollo de software en zaragoza desarrollamos webs y apps a medida en zaragoza, adaptadas a tus necesidades. potencia tu negocio con soluciones digitales innovadoras. institut français d&#x27;espagne en zaragoza, paseo de sagasta, 7, 50008 zaragoza, españa desarrollo de software, desarrollo web, aplicaciones móviles daw sin estado ">
-                <div>
-                    <h2>Empresa de Desarrollo de Software en Zaragoza</h2>
-                    <span class="badge-ciclo">DAW</span>
-                    <p class="descripcion">Desarrollamos webs y apps a medida en Zaragoza, adaptadas a tus necesidades. Potencia tu negocio con soluciones digitales innovadoras.</p>
-                    <p class="direccion">📍 Institut Français d&#x27;Espagne en Zaragoza, Paseo de Sagasta, 7, 50008 Zaragoza, España</p>
-                    
-                </div>
-
-                <div>
-                    <div class="tags"><button class="tag tag-boton" data-tag="desarrollo de software">#desarrollo de software</button><button class="tag tag-boton" data-tag="desarrollo web">#desarrollo web</button><button class="tag tag-boton" data-tag="aplicaciones móviles">#aplicaciones móviles</button></div>
-
-                    <div class="info-footer">
-                        <span>Lat: 41.6442511, Lng: -0.8856127</span>
-                        <span>👥 Alumnos: <strong>0</strong></span>
-                    </div>
-
-                    <div class="estado-footer">
-                        Estado agente: <strong>Sin estado</strong>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="card tarjeta-clicable" 
-                 data-lat="41.6464797" data-lng="-0.8894298" data-nombre="ASD Solutions"
-                 data-tags="desarrollo de software|aplicaciones web|automatización de procesos"
-                 data-search="asd solutions diseñamos y desarrollamos software a medida para pymes: aplicaciones web, herramientas internas de gestión, automatización de procesos, integraciones entre sistemas y paneles de control. voilá contract solutions, calle de amado laguna de rins, 50006 zaragoza, españa desarrollo de software, aplicaciones web, automatización de procesos daw sin estado ">
-                <div>
-                    <h2>ASD Solutions</h2>
-                    <span class="badge-ciclo">DAW</span>
-                    <p class="descripcion">Diseñamos y desarrollamos software a medida para pymes: aplicaciones web, herramientas internas de gestión, automatización de procesos, integraciones entre sistemas y paneles de control.</p>
-                    <p class="direccion">📍 Voilá Contract Solutions, Calle de Amado Laguna de Rins, 50006 Zaragoza, España</p>
-                    
-                </div>
-
-                <div>
-                    <div class="tags"><button class="tag tag-boton" data-tag="desarrollo de software">#desarrollo de software</button><button class="tag tag-boton" data-tag="aplicaciones web">#aplicaciones web</button><button class="tag tag-boton" data-tag="automatización de procesos">#automatización de procesos</button></div>
-
-                    <div class="info-footer">
-                        <span>Lat: 41.6464797, Lng: -0.8894298</span>
-                        <span>👥 Alumnos: <strong>0</strong></span>
-                    </div>
-
-                    <div class="estado-footer">
-                        Estado agente: <strong>Sin estado</strong>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="card tarjeta-clicable" 
-                 data-lat="41.6442511" data-lng="-0.8856127" data-nombre="Ecosistema tech en Zaragoza"
-                 data-tags="eventos tech|marketing digital|seo"
-                 data-search="ecosistema tech en zaragoza eventos tech en zaragoza. congreso web zaragoza: marketing digital, seo, analítica. referente nacional desde hace 10+ ediciones. tech shakers: meetups mensuales con charlas de profesionales tech. institut français d&#x27;espagne en zaragoza, paseo de sagasta, 7, 50008 zaragoza, españa eventos tech, marketing digital, seo daw sin estado ">
-                <div>
-                    <h2>Ecosistema tech en Zaragoza</h2>
-                    <span class="badge-ciclo">DAW</span>
-                    <p class="descripcion">Eventos tech en Zaragoza. Congreso Web Zaragoza: marketing digital, SEO, analítica. Referente nacional desde hace 10+ ediciones. Tech Shakers: meetups mensuales con charlas de profesionales tech.</p>
-                    <p class="direccion">📍 Institut Français d&#x27;Espagne en Zaragoza, Paseo de Sagasta, 7, 50008 Zaragoza, España</p>
-                    
-                </div>
-
-                <div>
-                    <div class="tags"><button class="tag tag-boton" data-tag="eventos tech">#eventos tech</button><button class="tag tag-boton" data-tag="marketing digital">#marketing digital</button><button class="tag tag-boton" data-tag="seo">#seo</button></div>
-
-                    <div class="info-footer">
-                        <span>Lat: 41.6442511, Lng: -0.8856127</span>
-                        <span>👥 Alumnos: <strong>0</strong></span>
-                    </div>
-
-                    <div class="estado-footer">
-                        Estado agente: <strong>Sin estado</strong>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="card tarjeta-clicable" 
-                 data-lat="41.646481" data-lng="-0.887553" data-nombre="Q2BSTUDIO"
-                 data-tags="software|consultoria|ingenieria|desarrollo"
-                 data-search="q2bstudio empresa de software especializada en consultoría, ingeniería y desarrollo de software, avalada por la certificación de micro focus. zaragoza, ar, españa software, consultoria, ingenieria, desarrollo daw sin estado ">
-                <div>
-                    <h2>Q2BSTUDIO</h2>
-                    <span class="badge-ciclo">DAW</span>
-                    <p class="descripcion">Empresa de software especializada en consultoría, ingeniería y desarrollo de software, avalada por la certificación de Micro Focus.</p>
-                    <p class="direccion">📍 Zaragoza, AR, España</p>
-                    
-                </div>
-
-                <div>
-                    <div class="tags"><button class="tag tag-boton" data-tag="software">#software</button><button class="tag tag-boton" data-tag="consultoria">#consultoria</button><button class="tag tag-boton" data-tag="ingenieria">#ingenieria</button><button class="tag tag-boton" data-tag="desarrollo">#desarrollo</button></div>
-
-                    <div class="info-footer">
-                        <span>Lat: 41.646481, Lng: -0.887553</span>
-                        <span>👥 Alumnos: <strong>0</strong></span>
-                    </div>
-
-                    <div class="estado-footer">
-                        Estado agente: <strong>Sin estado</strong>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="card tarjeta-clicable" 
-                 data-lat="41.6915847" data-lng="-0.9101268" data-nombre="NTT DATA"
-                 data-tags="consultoria|administracion|tecnologia"
-                 data-search="ntt data consultora de administración empresarial y tecnológicas más grandes de españa, con una presencia destacada en el parque tecnológico de zaragoza. zaragoza, ar, españa consultoria, administracion, tecnologia daw sin estado ">
-                <div>
-                    <h2>NTT DATA</h2>
-                    <span class="badge-ciclo">DAW</span>
-                    <p class="descripcion">Consultora de administración empresarial y tecnológicas más grandes de España, con una presencia destacada en el parque tecnológico de Zaragoza.</p>
-                    <p class="direccion">📍 Zaragoza, AR, España</p>
-                    
-                </div>
-
-                <div>
-                    <div class="tags"><button class="tag tag-boton" data-tag="consultoria">#consultoria</button><button class="tag tag-boton" data-tag="administracion">#administracion</button><button class="tag tag-boton" data-tag="tecnologia">#tecnologia</button></div>
-
-                    <div class="info-footer">
-                        <span>Lat: 41.6915847, Lng: -0.9101268</span>
-                        <span>👥 Alumnos: <strong>0</strong></span>
-                    </div>
-
-                    <div class="estado-footer">
-                        Estado agente: <strong>Sin estado</strong>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="card tarjeta-clicable" 
-                 data-lat="41.6915847" data-lng="-0.9101268" data-nombre="Innovatus"
-                 data-tags="innovacion|desarrollo|empresarial"
-                 data-search="innovatus centro neurálgico de la innovación y el desarrollo empresarial en la ciudad de zaragoza, españa. zaragoza, ar, españa innovacion, desarrollo, empresarial daw sin estado ">
-                <div>
-                    <h2>Innovatus</h2>
-                    <span class="badge-ciclo">DAW</span>
-                    <p class="descripcion">Centro neurálgico de la innovación y el desarrollo empresarial en la ciudad de Zaragoza, España.</p>
-                    <p class="direccion">📍 Zaragoza, AR, España</p>
-                    
-                </div>
-
-                <div>
-                    <div class="tags"><button class="tag tag-boton" data-tag="innovacion">#innovacion</button><button class="tag tag-boton" data-tag="desarrollo">#desarrollo</button><button class="tag tag-boton" data-tag="empresarial">#empresarial</button></div>
-
-                    <div class="info-footer">
-                        <span>Lat: 41.6915847, Lng: -0.9101268</span>
-                        <span>👥 Alumnos: <strong>0</strong></span>
-                    </div>
-
-                    <div class="estado-footer">
-                        Estado agente: <strong>Sin estado</strong>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="card tarjeta-clicable" 
-                 data-lat="41.6410829" data-lng="-0.9096046" data-nombre="CaixaBank"
-                 data-tags="banca|finanzas"
-                 data-search="caixabank banco con sede en zaragoza que ofrece servicios financieros a particulares y empresas. caixabank, andador del teniente general quintana lacacci, 50009 zaragoza, españa banca, finanzas otro sin estado ">
-                <div>
-                    <h2>CaixaBank</h2>
-                    <span class="badge-ciclo">Otro</span>
-                    <p class="descripcion">Banco con sede en Zaragoza que ofrece servicios financieros a particulares y empresas.</p>
-                    <p class="direccion">📍 Caixabank, Andador del Teniente General Quintana Lacacci, 50009 Zaragoza, España</p>
-                    
-                </div>
-
-                <div>
-                    <div class="tags"><button class="tag tag-boton" data-tag="banca">#banca</button><button class="tag tag-boton" data-tag="finanzas">#finanzas</button></div>
-
-                    <div class="info-footer">
-                        <span>Lat: 41.6410829, Lng: -0.9096046</span>
-                        <span>👥 Alumnos: <strong>0</strong></span>
-                    </div>
-
-                    <div class="estado-footer">
-                        Estado agente: <strong>Sin estado</strong>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="card tarjeta-clicable" 
-                 data-lat="41.6915847" data-lng="-0.9101268" data-nombre="Driven"
-                 data-tags="software|consultoría"
-                 data-search="driven empresa de tecnología con sede en zaragoza que ofrece soluciones de software y consultoría. zaragoza, ar, españa software, consultoría daw sin estado ">
-                <div>
-                    <h2>Driven</h2>
-                    <span class="badge-ciclo">DAW</span>
-                    <p class="descripcion">Empresa de tecnología con sede en Zaragoza que ofrece soluciones de software y consultoría.</p>
-                    <p class="direccion">📍 Zaragoza, AR, España</p>
-                    
-                </div>
-
-                <div>
-                    <div class="tags"><button class="tag tag-boton" data-tag="software">#software</button><button class="tag tag-boton" data-tag="consultoría">#consultoría</button></div>
-
-                    <div class="info-footer">
-                        <span>Lat: 41.6915847, Lng: -0.9101268</span>
-                        <span>👥 Alumnos: <strong>0</strong></span>
-                    </div>
-
-                    <div class="estado-footer">
-                        Estado agente: <strong>Sin estado</strong>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="card tarjeta-clicable" 
-                 data-lat="41.6915847" data-lng="-0.9101268" data-nombre="Endalia"
-                 data-tags="software|cloud|datos"
-                 data-search="endalia empresa de tecnología con sede en zaragoza, aragón. ofrece servicios de informática y tecnología. zaragoza, ar, españa software, cloud, datos daw sin estado ">
-                <div>
-                    <h2>Endalia</h2>
-                    <span class="badge-ciclo">DAW</span>
-                    <p class="descripcion">Empresa de tecnología con sede en Zaragoza, Aragón. Ofrece servicios de informática y tecnología.</p>
-                    <p class="direccion">📍 Zaragoza, AR, España</p>
-                    
-                </div>
-
-                <div>
-                    <div class="tags"><button class="tag tag-boton" data-tag="software">#software</button><button class="tag tag-boton" data-tag="cloud">#cloud</button><button class="tag tag-boton" data-tag="datos">#datos</button></div>
-
-                    <div class="info-footer">
-                        <span>Lat: 41.6915847, Lng: -0.9101268</span>
-                        <span>👥 Alumnos: <strong>0</strong></span>
-                    </div>
-
-                    <div class="estado-footer">
-                        Estado agente: <strong>Sin estado</strong>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="card tarjeta-clicable" 
-                 data-lat="41.6915847" data-lng="-0.9101268" data-nombre="Inetum"
-                 data-tags="software|cloud|datos"
-                 data-search="inetum empresa de consultoría informática que ofrece servicios y soluciones en tecnología y datos. zaragoza, ar, españa software, cloud, datos daw sin estado ">
-                <div>
-                    <h2>Inetum</h2>
-                    <span class="badge-ciclo">DAW</span>
-                    <p class="descripcion">Empresa de consultoría informática que ofrece servicios y soluciones en tecnología y datos.</p>
-                    <p class="direccion">📍 Zaragoza, AR, España</p>
-                    
-                </div>
-
-                <div>
-                    <div class="tags"><button class="tag tag-boton" data-tag="software">#software</button><button class="tag tag-boton" data-tag="cloud">#cloud</button><button class="tag tag-boton" data-tag="datos">#datos</button></div>
-
-                    <div class="info-footer">
-                        <span>Lat: 41.6915847, Lng: -0.9101268</span>
-                        <span>👥 Alumnos: <strong>0</strong></span>
-                    </div>
-
-                    <div class="estado-footer">
-                        Estado agente: <strong>Sin estado</strong>
-                    </div>
-                </div>
-            </div>
-
-            </div>
-
-        </aside>
+    <main class="layout">
 
         <section class="zona-mapa">
             <div id="map"></div>
         </section>
 
-    </div>
+        <aside class="panel-lateral">
+
+            <div class="bloque-filtros">
+                <h2>Filtros</h2>
+
+                <input
+                    type="text"
+                    id="buscador"
+                    placeholder="Buscar empresa o tag..."
+                >
+
+                <div class="acciones-filtro">
+                    <button id="btnLimpiar">Limpiar filtros</button>
+                </div>
+            </div>
+
+            <div class="bloque-tags">
+                <h2>Tags</h2>
+
+                <div id="contenedorTags" class="contenedor-tags">
+                    <button class="tag-filtro" data-tag="administracion">administracion</button><button class="tag-filtro" data-tag="aplicaciones móviles">aplicaciones móviles</button><button class="tag-filtro" data-tag="aplicaciones web">aplicaciones web</button><button class="tag-filtro" data-tag="automatización de procesos">automatización de procesos</button><button class="tag-filtro" data-tag="banca">banca</button><button class="tag-filtro" data-tag="cloud">cloud</button><button class="tag-filtro" data-tag="consultoria">consultoria</button><button class="tag-filtro" data-tag="consultoría">consultoría</button><button class="tag-filtro" data-tag="crm">crm</button><button class="tag-filtro" data-tag="datos">datos</button><button class="tag-filtro" data-tag="desarrollo">desarrollo</button><button class="tag-filtro" data-tag="desarrollo de software">desarrollo de software</button><button class="tag-filtro" data-tag="desarrollo web">desarrollo web</button><button class="tag-filtro" data-tag="diseño web">diseño web</button><button class="tag-filtro" data-tag="empresarial">empresarial</button><button class="tag-filtro" data-tag="empresas">empresas</button><button class="tag-filtro" data-tag="erp">erp</button><button class="tag-filtro" data-tag="estrategia">estrategia</button><button class="tag-filtro" data-tag="eventos tech">eventos tech</button><button class="tag-filtro" data-tag="finanzas">finanzas</button><button class="tag-filtro" data-tag="gestion">gestion</button><button class="tag-filtro" data-tag="gestión">gestión</button><button class="tag-filtro" data-tag="hosting">hosting</button><button class="tag-filtro" data-tag="ia">ia</button><button class="tag-filtro" data-tag="informatica">informatica</button><button class="tag-filtro" data-tag="informática">informática</button><button class="tag-filtro" data-tag="ingenieria">ingenieria</button><button class="tag-filtro" data-tag="innovacion">innovacion</button><button class="tag-filtro" data-tag="innovación">innovación</button><button class="tag-filtro" data-tag="marketing digital">marketing digital</button><button class="tag-filtro" data-tag="metaverso">metaverso</button><button class="tag-filtro" data-tag="realidad extendida">realidad extendida</button><button class="tag-filtro" data-tag="redes">redes</button><button class="tag-filtro" data-tag="seo">seo</button><button class="tag-filtro" data-tag="servicios">servicios</button><button class="tag-filtro" data-tag="servicios profesionales">servicios profesionales</button><button class="tag-filtro" data-tag="software">software</button><button class="tag-filtro" data-tag="tecnologia">tecnologia</button><button class="tag-filtro" data-tag="tecnología">tecnología</button><button class="tag-filtro" data-tag="zaragoza">zaragoza</button>
+                </div>
+            </div>
+
+            <div class="bloque-empresas">
+                <h2>Empresas</h2>
+
+                <p id="contadorResultados" class="contador-resultados"></p>
+
+                <div id="listaEmpresas" class="lista-empresas">
+                    
+    <article
+        class="tarjeta-empresa"
+        data-nombre="hiberus"
+        data-tags="tecnología,consultoría,zaragoza"
+    >
+        <h3>Hiberus</h3>
+
+        <p class="linea-ciclo">
+            <strong>Ciclo:</strong> DAW
+        </p>
+
+        <p class="linea-direccion">
+            <strong>Dirección:</strong> Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España
+        </p>
+
+        <p class="descripcion">
+            Empresa tecnológica con sede en Zaragoza que ofrece soluciones de tecnología y servicios de consultoría.
+        </p>
+
+        <div class="tags-empresa">
+            <span class="tag-empresa" data-tag="tecnología">tecnología</span><span class="tag-empresa" data-tag="consultoría">consultoría</span><span class="tag-empresa" data-tag="zaragoza">zaragoza</span>
+        </div>
+    </article>
+    
+    <article
+        class="tarjeta-empresa"
+        data-nombre="integra tecnología"
+        data-tags="tecnología,estrategia,zaragoza"
+    >
+        <h3>Integra Tecnología</h3>
+
+        <p class="linea-ciclo">
+            <strong>Ciclo:</strong> DAW
+        </p>
+
+        <p class="linea-direccion">
+            <strong>Dirección:</strong> Integra. Estrategia y Tecnología., Gran Vía de Santiago Ramón y Cajal, 23, 50006 Zaragoza, España
+        </p>
+
+        <p class="descripcion">
+            Empresa de tecnología con sede en Zaragoza que ofrece servicios de estrategia y tecnología.
+        </p>
+
+        <div class="tags-empresa">
+            <span class="tag-empresa" data-tag="tecnología">tecnología</span><span class="tag-empresa" data-tag="estrategia">estrategia</span><span class="tag-empresa" data-tag="zaragoza">zaragoza</span>
+        </div>
+    </article>
+    
+    <article
+        class="tarjeta-empresa"
+        data-nombre="imascono"
+        data-tags="tecnología,realidad extendida,metaverso"
+    >
+        <h3>Imascono</h3>
+
+        <p class="linea-ciclo">
+            <strong>Ciclo:</strong> DAW
+        </p>
+
+        <p class="linea-direccion">
+            <strong>Dirección:</strong> imascono, Calle de Felipe Sanclemente, 3, 50001 Zaragoza, España
+        </p>
+
+        <p class="descripcion">
+            Empresa de tecnología que ofrece soluciones de realidad extendida y servicios de metaverso para empresas.
+        </p>
+
+        <div class="tags-empresa">
+            <span class="tag-empresa" data-tag="tecnología">tecnología</span><span class="tag-empresa" data-tag="realidad extendida">realidad extendida</span><span class="tag-empresa" data-tag="metaverso">metaverso</span>
+        </div>
+    </article>
+    
+    <article
+        class="tarjeta-empresa"
+        data-nombre="inycom"
+        data-tags="tecnología,innovación,servicios,empresas"
+    >
+        <h3>Inycom</h3>
+
+        <p class="linea-ciclo">
+            <strong>Ciclo:</strong> DAW
+        </p>
+
+        <p class="linea-direccion">
+            <strong>Dirección:</strong> Inycom, Calle de Alaún, 8, 50197 Zaragoza, España
+        </p>
+
+        <p class="descripcion">
+            Empresa de tecnología e innovación que ofrece soluciones y servicios adaptados a empresas y entidades públicas.
+        </p>
+
+        <div class="tags-empresa">
+            <span class="tag-empresa" data-tag="tecnología">tecnología</span><span class="tag-empresa" data-tag="innovación">innovación</span><span class="tag-empresa" data-tag="servicios">servicios</span><span class="tag-empresa" data-tag="empresas">empresas</span>
+        </div>
+    </article>
+    
+    <article
+        class="tarjeta-empresa"
+        data-nombre="dxc technology zaragoza"
+        data-tags="tecnología,ia,cloud,zaragoza"
+    >
+        <h3>DXC Technology Zaragoza</h3>
+
+        <p class="linea-ciclo">
+            <strong>Ciclo:</strong> DAW
+        </p>
+
+        <p class="linea-direccion">
+            <strong>Dirección:</strong> DXC.technology, Calle de Bari, 11, 50197 Zaragoza, España
+        </p>
+
+        <p class="descripcion">
+            Empresa tecnológica con un Centro de Excelencia en Zaragoza que impulsa la adopción de IA y Cloud en las principales organizaciones de España.
+        </p>
+
+        <div class="tags-empresa">
+            <span class="tag-empresa" data-tag="tecnología">tecnología</span><span class="tag-empresa" data-tag="ia">ia</span><span class="tag-empresa" data-tag="cloud">cloud</span><span class="tag-empresa" data-tag="zaragoza">zaragoza</span>
+        </div>
+    </article>
+    
+    <article
+        class="tarjeta-empresa"
+        data-nombre="ntt data zaragoza"
+        data-tags="tecnología,informática,servicios"
+    >
+        <h3>NTT DATA Zaragoza</h3>
+
+        <p class="linea-ciclo">
+            <strong>Ciclo:</strong> DAW
+        </p>
+
+        <p class="linea-direccion">
+            <strong>Dirección:</strong> NTT Data España, Avenida de la Fuente de la Mora, 1, 28050 Madrid, España
+        </p>
+
+        <p class="descripcion">
+            Empresa de tecnología con sede en Zaragoza que ofrece servicios relacionados con la información y la informática.
+        </p>
+
+        <div class="tags-empresa">
+            <span class="tag-empresa" data-tag="tecnología">tecnología</span><span class="tag-empresa" data-tag="informática">informática</span><span class="tag-empresa" data-tag="servicios">servicios</span>
+        </div>
+    </article>
+    
+    <article
+        class="tarjeta-empresa"
+        data-nombre="deloitte zaragoza"
+        data-tags="consultoría,servicios profesionales,tecnología,finanzas,gestión"
+    >
+        <h3>Deloitte Zaragoza</h3>
+
+        <p class="linea-ciclo">
+            <strong>Ciclo:</strong> DAW
+        </p>
+
+        <p class="linea-direccion">
+            <strong>Dirección:</strong> Deloitte, Plaza Alcalde Alfredo Sánchez Monteseirín, 2, 41092 Sevilla, España
+        </p>
+
+        <p class="descripcion">
+            Empresa de consultoría y servicios profesionales con oficina en Zaragoza. Ofrece servicios de auditoría, consultoría y asesoramiento en áreas como tecnología, finanzas y gestión.
+        </p>
+
+        <div class="tags-empresa">
+            <span class="tag-empresa" data-tag="consultoría">consultoría</span><span class="tag-empresa" data-tag="servicios profesionales">servicios profesionales</span><span class="tag-empresa" data-tag="tecnología">tecnología</span><span class="tag-empresa" data-tag="finanzas">finanzas</span><span class="tag-empresa" data-tag="gestión">gestión</span>
+        </div>
+    </article>
+    
+    <article
+        class="tarjeta-empresa"
+        data-nombre="ingenia"
+        data-tags="consultoria,informatica,gestion,erp,crm"
+    >
+        <h3>Ingenia</h3>
+
+        <p class="linea-ciclo">
+            <strong>Ciclo:</strong> DAM
+        </p>
+
+        <p class="linea-direccion">
+            <strong>Dirección:</strong> Ingenia, Avenida del Mar, 12003 Castellón de la Plana, España
+        </p>
+
+        <p class="descripcion">
+            Empresa de consultoría informática que ofrece soluciones de gestión, ERP y CRM.
+        </p>
+
+        <div class="tags-empresa">
+            <span class="tag-empresa" data-tag="consultoria">consultoria</span><span class="tag-empresa" data-tag="informatica">informatica</span><span class="tag-empresa" data-tag="gestion">gestion</span><span class="tag-empresa" data-tag="erp">erp</span><span class="tag-empresa" data-tag="crm">crm</span>
+        </div>
+    </article>
+    
+    <article
+        class="tarjeta-empresa"
+        data-nombre="aratec64"
+        data-tags="consultoria,informatica,diseño web,hosting,redes"
+    >
+        <h3>Aratec64</h3>
+
+        <p class="linea-ciclo">
+            <strong>Ciclo:</strong> DAW
+        </p>
+
+        <p class="linea-direccion">
+            <strong>Dirección:</strong> Calle Aranda, 64, 50003 Zaragoza, España
+        </p>
+
+        <p class="descripcion">
+            Empresa de consultoría informática que ofrece servicios de diseño web, hosting, redes y consultoría informática.
+        </p>
+
+        <div class="tags-empresa">
+            <span class="tag-empresa" data-tag="consultoria">consultoria</span><span class="tag-empresa" data-tag="informatica">informatica</span><span class="tag-empresa" data-tag="diseño web">diseño web</span><span class="tag-empresa" data-tag="hosting">hosting</span><span class="tag-empresa" data-tag="redes">redes</span>
+        </div>
+    </article>
+    
+    <article
+        class="tarjeta-empresa"
+        data-nombre="empresa de desarrollo de software en zaragoza"
+        data-tags="desarrollo de software,desarrollo web,aplicaciones móviles"
+    >
+        <h3>Empresa de Desarrollo de Software en Zaragoza</h3>
+
+        <p class="linea-ciclo">
+            <strong>Ciclo:</strong> DAW
+        </p>
+
+        <p class="linea-direccion">
+            <strong>Dirección:</strong> Institut Français d&#x27;Espagne en Zaragoza, Paseo de Sagasta, 7, 50008 Zaragoza, España
+        </p>
+
+        <p class="descripcion">
+            Desarrollamos webs y apps a medida en Zaragoza, adaptadas a tus necesidades. Potencia tu negocio con soluciones digitales innovadoras.
+        </p>
+
+        <div class="tags-empresa">
+            <span class="tag-empresa" data-tag="desarrollo de software">desarrollo de software</span><span class="tag-empresa" data-tag="desarrollo web">desarrollo web</span><span class="tag-empresa" data-tag="aplicaciones móviles">aplicaciones móviles</span>
+        </div>
+    </article>
+    
+    <article
+        class="tarjeta-empresa"
+        data-nombre="asd solutions"
+        data-tags="desarrollo de software,aplicaciones web,automatización de procesos"
+    >
+        <h3>ASD Solutions</h3>
+
+        <p class="linea-ciclo">
+            <strong>Ciclo:</strong> DAW
+        </p>
+
+        <p class="linea-direccion">
+            <strong>Dirección:</strong> Voilá Contract Solutions, Calle de Amado Laguna de Rins, 50006 Zaragoza, España
+        </p>
+
+        <p class="descripcion">
+            Diseñamos y desarrollamos software a medida para pymes: aplicaciones web, herramientas internas de gestión, automatización de procesos, integraciones entre sistemas y paneles de control.
+        </p>
+
+        <div class="tags-empresa">
+            <span class="tag-empresa" data-tag="desarrollo de software">desarrollo de software</span><span class="tag-empresa" data-tag="aplicaciones web">aplicaciones web</span><span class="tag-empresa" data-tag="automatización de procesos">automatización de procesos</span>
+        </div>
+    </article>
+    
+    <article
+        class="tarjeta-empresa"
+        data-nombre="ecosistema tech en zaragoza"
+        data-tags="eventos tech,marketing digital,seo"
+    >
+        <h3>Ecosistema tech en Zaragoza</h3>
+
+        <p class="linea-ciclo">
+            <strong>Ciclo:</strong> DAW
+        </p>
+
+        <p class="linea-direccion">
+            <strong>Dirección:</strong> Institut Français d&#x27;Espagne en Zaragoza, Paseo de Sagasta, 7, 50008 Zaragoza, España
+        </p>
+
+        <p class="descripcion">
+            Eventos tech en Zaragoza. Congreso Web Zaragoza: marketing digital, SEO, analítica. Referente nacional desde hace 10+ ediciones. Tech Shakers: meetups mensuales con charlas de profesionales tech.
+        </p>
+
+        <div class="tags-empresa">
+            <span class="tag-empresa" data-tag="eventos tech">eventos tech</span><span class="tag-empresa" data-tag="marketing digital">marketing digital</span><span class="tag-empresa" data-tag="seo">seo</span>
+        </div>
+    </article>
+    
+    <article
+        class="tarjeta-empresa"
+        data-nombre="q2bstudio"
+        data-tags="software,consultoria,ingenieria,desarrollo"
+    >
+        <h3>Q2BSTUDIO</h3>
+
+        <p class="linea-ciclo">
+            <strong>Ciclo:</strong> DAW
+        </p>
+
+        <p class="linea-direccion">
+            <strong>Dirección:</strong> Zaragoza, AR, España
+        </p>
+
+        <p class="descripcion">
+            Empresa de software especializada en consultoría, ingeniería y desarrollo de software, avalada por la certificación de Micro Focus.
+        </p>
+
+        <div class="tags-empresa">
+            <span class="tag-empresa" data-tag="software">software</span><span class="tag-empresa" data-tag="consultoria">consultoria</span><span class="tag-empresa" data-tag="ingenieria">ingenieria</span><span class="tag-empresa" data-tag="desarrollo">desarrollo</span>
+        </div>
+    </article>
+    
+    <article
+        class="tarjeta-empresa"
+        data-nombre="ntt data"
+        data-tags="consultoria,administracion,tecnologia"
+    >
+        <h3>NTT DATA</h3>
+
+        <p class="linea-ciclo">
+            <strong>Ciclo:</strong> DAW
+        </p>
+
+        <p class="linea-direccion">
+            <strong>Dirección:</strong> Zaragoza, AR, España
+        </p>
+
+        <p class="descripcion">
+            Consultora de administración empresarial y tecnológicas más grandes de España, con una presencia destacada en el parque tecnológico de Zaragoza.
+        </p>
+
+        <div class="tags-empresa">
+            <span class="tag-empresa" data-tag="consultoria">consultoria</span><span class="tag-empresa" data-tag="administracion">administracion</span><span class="tag-empresa" data-tag="tecnologia">tecnologia</span>
+        </div>
+    </article>
+    
+    <article
+        class="tarjeta-empresa"
+        data-nombre="innovatus"
+        data-tags="innovacion,desarrollo,empresarial"
+    >
+        <h3>Innovatus</h3>
+
+        <p class="linea-ciclo">
+            <strong>Ciclo:</strong> DAW
+        </p>
+
+        <p class="linea-direccion">
+            <strong>Dirección:</strong> Zaragoza, AR, España
+        </p>
+
+        <p class="descripcion">
+            Centro neurálgico de la innovación y el desarrollo empresarial en la ciudad de Zaragoza, España.
+        </p>
+
+        <div class="tags-empresa">
+            <span class="tag-empresa" data-tag="innovacion">innovacion</span><span class="tag-empresa" data-tag="desarrollo">desarrollo</span><span class="tag-empresa" data-tag="empresarial">empresarial</span>
+        </div>
+    </article>
+    
+    <article
+        class="tarjeta-empresa"
+        data-nombre="caixabank"
+        data-tags="banca,finanzas"
+    >
+        <h3>CaixaBank</h3>
+
+        <p class="linea-ciclo">
+            <strong>Ciclo:</strong> Otro
+        </p>
+
+        <p class="linea-direccion">
+            <strong>Dirección:</strong> Caixabank, Andador del Teniente General Quintana Lacacci, 50009 Zaragoza, España
+        </p>
+
+        <p class="descripcion">
+            Banco con sede en Zaragoza que ofrece servicios financieros a particulares y empresas.
+        </p>
+
+        <div class="tags-empresa">
+            <span class="tag-empresa" data-tag="banca">banca</span><span class="tag-empresa" data-tag="finanzas">finanzas</span>
+        </div>
+    </article>
+    
+    <article
+        class="tarjeta-empresa"
+        data-nombre="driven"
+        data-tags="software,consultoría"
+    >
+        <h3>Driven</h3>
+
+        <p class="linea-ciclo">
+            <strong>Ciclo:</strong> DAW
+        </p>
+
+        <p class="linea-direccion">
+            <strong>Dirección:</strong> Zaragoza, AR, España
+        </p>
+
+        <p class="descripcion">
+            Empresa de tecnología con sede en Zaragoza que ofrece soluciones de software y consultoría.
+        </p>
+
+        <div class="tags-empresa">
+            <span class="tag-empresa" data-tag="software">software</span><span class="tag-empresa" data-tag="consultoría">consultoría</span>
+        </div>
+    </article>
+    
+    <article
+        class="tarjeta-empresa"
+        data-nombre="endalia"
+        data-tags="software,cloud,datos"
+    >
+        <h3>Endalia</h3>
+
+        <p class="linea-ciclo">
+            <strong>Ciclo:</strong> DAW
+        </p>
+
+        <p class="linea-direccion">
+            <strong>Dirección:</strong> Zaragoza, AR, España
+        </p>
+
+        <p class="descripcion">
+            Empresa de tecnología con sede en Zaragoza, Aragón. Ofrece servicios de informática y tecnología.
+        </p>
+
+        <div class="tags-empresa">
+            <span class="tag-empresa" data-tag="software">software</span><span class="tag-empresa" data-tag="cloud">cloud</span><span class="tag-empresa" data-tag="datos">datos</span>
+        </div>
+    </article>
+    
+    <article
+        class="tarjeta-empresa"
+        data-nombre="inetum"
+        data-tags="software,cloud,datos"
+    >
+        <h3>Inetum</h3>
+
+        <p class="linea-ciclo">
+            <strong>Ciclo:</strong> DAW
+        </p>
+
+        <p class="linea-direccion">
+            <strong>Dirección:</strong> Zaragoza, AR, España
+        </p>
+
+        <p class="descripcion">
+            Empresa de consultoría informática que ofrece servicios y soluciones en tecnología y datos.
+        </p>
+
+        <div class="tags-empresa">
+            <span class="tag-empresa" data-tag="software">software</span><span class="tag-empresa" data-tag="cloud">cloud</span><span class="tag-empresa" data-tag="datos">datos</span>
+        </div>
+    </article>
+    
+                </div>
+            </div>
+
+        </aside>
+
+    </main>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
     <script>
+        const empresas = [{"nombre": "Hiberus", "latitud": "41.6707881", "longitud": "-0.8995539", "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España", "descripcion": "Empresa tecnológica con sede en Zaragoza que ofrece soluciones de tecnología y servicios de consultoría.", "tags": ["tecnología", "consultoría", "zaragoza"], "ciclo": "DAW", "estado_agente": "", "fuentes": ""}, {"nombre": "Integra Tecnología", "latitud": "41.6457253", "longitud": "-0.88851", "direccion": "Integra. Estrategia y Tecnología., Gran Vía de Santiago Ramón y Cajal, 23, 50006 Zaragoza, España", "descripcion": "Empresa de tecnología con sede en Zaragoza que ofrece servicios de estrategia y tecnología.", "tags": ["tecnología", "estrategia", "zaragoza"], "ciclo": "DAW", "estado_agente": "", "fuentes": ""}, {"nombre": "Imascono", "latitud": "41.6499597", "longitud": "-0.8823097", "direccion": "imascono, Calle de Felipe Sanclemente, 3, 50001 Zaragoza, España", "descripcion": "Empresa de tecnología que ofrece soluciones de realidad extendida y servicios de metaverso para empresas.", "tags": ["tecnología", "realidad extendida", "metaverso"], "ciclo": "DAW", "estado_agente": "", "fuentes": ""}, {"nombre": "Inycom", "latitud": "41.6414212", "longitud": "-0.9953924", "direccion": "Inycom, Calle de Alaún, 8, 50197 Zaragoza, España", "descripcion": "Empresa de tecnología e innovación que ofrece soluciones y servicios adaptados a empresas y entidades públicas.", "tags": ["tecnología", "innovación", "servicios", "empresas"], "ciclo": "DAW", "estado_agente": "", "fuentes": ""}, {"nombre": "DXC Technology Zaragoza", "latitud": "41.6549845", "longitud": "-0.9908509", "direccion": "DXC.technology, Calle de Bari, 11, 50197 Zaragoza, España", "descripcion": "Empresa tecnológica con un Centro de Excelencia en Zaragoza que impulsa la adopción de IA y Cloud en las principales organizaciones de España.", "tags": ["tecnología", "ia", "cloud", "zaragoza"], "ciclo": "DAW", "estado_agente": "", "fuentes": ""}, {"nombre": "NTT DATA Zaragoza", "latitud": "40.4866435", "longitud": "-3.6623952", "direccion": "NTT Data España, Avenida de la Fuente de la Mora, 1, 28050 Madrid, España", "descripcion": "Empresa de tecnología con sede en Zaragoza que ofrece servicios relacionados con la información y la informática.", "tags": ["tecnología", "informática", "servicios"], "ciclo": "DAW", "estado_agente": "", "fuentes": ""}, {"nombre": "Deloitte Zaragoza", "latitud": "37.3913778", "longitud": "-6.0102735", "direccion": "Deloitte, Plaza Alcalde Alfredo Sánchez Monteseirín, 2, 41092 Sevilla, España", "descripcion": "Empresa de consultoría y servicios profesionales con oficina en Zaragoza. Ofrece servicios de auditoría, consultoría y asesoramiento en áreas como tecnología, finanzas y gestión.", "tags": ["consultoría", "servicios profesionales", "tecnología", "finanzas", "gestión"], "ciclo": "DAW", "estado_agente": "", "fuentes": ""}, {"nombre": "Ingenia", "latitud": "39.9838664", "longitud": "-0.0198039", "direccion": "Ingenia, Avenida del Mar, 12003 Castellón de la Plana, España", "descripcion": "Empresa de consultoría informática que ofrece soluciones de gestión, ERP y CRM.", "tags": ["consultoria", "informatica", "gestion", "erp", "crm"], "ciclo": "DAM", "estado_agente": "", "fuentes": ""}, {"nombre": "Aratec64", "latitud": "41.65526", "longitud": "-0.888438", "direccion": "Calle Aranda, 64, 50003 Zaragoza, España", "descripcion": "Empresa de consultoría informática que ofrece servicios de diseño web, hosting, redes y consultoría informática.", "tags": ["consultoria", "informatica", "diseño web", "hosting", "redes"], "ciclo": "DAW", "estado_agente": "", "fuentes": ""}, {"nombre": "Empresa de Desarrollo de Software en Zaragoza", "latitud": "41.6442511", "longitud": "-0.8856127", "direccion": "Institut Français d'Espagne en Zaragoza, Paseo de Sagasta, 7, 50008 Zaragoza, España", "descripcion": "Desarrollamos webs y apps a medida en Zaragoza, adaptadas a tus necesidades. Potencia tu negocio con soluciones digitales innovadoras.", "tags": ["desarrollo de software", "desarrollo web", "aplicaciones móviles"], "ciclo": "DAW", "estado_agente": "", "fuentes": ""}, {"nombre": "ASD Solutions", "latitud": "41.6464797", "longitud": "-0.8894298", "direccion": "Voilá Contract Solutions, Calle de Amado Laguna de Rins, 50006 Zaragoza, España", "descripcion": "Diseñamos y desarrollamos software a medida para pymes: aplicaciones web, herramientas internas de gestión, automatización de procesos, integraciones entre sistemas y paneles de control.", "tags": ["desarrollo de software", "aplicaciones web", "automatización de procesos"], "ciclo": "DAW", "estado_agente": "", "fuentes": ""}, {"nombre": "Ecosistema tech en Zaragoza", "latitud": "41.6442511", "longitud": "-0.8856127", "direccion": "Institut Français d'Espagne en Zaragoza, Paseo de Sagasta, 7, 50008 Zaragoza, España", "descripcion": "Eventos tech en Zaragoza. Congreso Web Zaragoza: marketing digital, SEO, analítica. Referente nacional desde hace 10+ ediciones. Tech Shakers: meetups mensuales con charlas de profesionales tech.", "tags": ["eventos tech", "marketing digital", "seo"], "ciclo": "DAW", "estado_agente": "", "fuentes": ""}, {"nombre": "Q2BSTUDIO", "latitud": "41.646481", "longitud": "-0.887553", "direccion": "Zaragoza, AR, España", "descripcion": "Empresa de software especializada en consultoría, ingeniería y desarrollo de software, avalada por la certificación de Micro Focus.", "tags": ["software", "consultoria", "ingenieria", "desarrollo"], "ciclo": "DAW", "estado_agente": "", "fuentes": ""}, {"nombre": "NTT DATA", "latitud": "41.6915847", "longitud": "-0.9101268", "direccion": "Zaragoza, AR, España", "descripcion": "Consultora de administración empresarial y tecnológicas más grandes de España, con una presencia destacada en el parque tecnológico de Zaragoza.", "tags": ["consultoria", "administracion", "tecnologia"], "ciclo": "DAW", "estado_agente": "", "fuentes": ""}, {"nombre": "Innovatus", "latitud": "41.6915847", "longitud": "-0.9101268", "direccion": "Zaragoza, AR, España", "descripcion": "Centro neurálgico de la innovación y el desarrollo empresarial en la ciudad de Zaragoza, España.", "tags": ["innovacion", "desarrollo", "empresarial"], "ciclo": "DAW", "estado_agente": "", "fuentes": ""}, {"nombre": "CaixaBank", "latitud": "41.6410829", "longitud": "-0.9096046", "direccion": "Caixabank, Andador del Teniente General Quintana Lacacci, 50009 Zaragoza, España", "descripcion": "Banco con sede en Zaragoza que ofrece servicios financieros a particulares y empresas.", "tags": ["banca", "finanzas"], "ciclo": "Otro", "estado_agente": "", "fuentes": ""}, {"nombre": "Driven", "latitud": "41.6915847", "longitud": "-0.9101268", "direccion": "Zaragoza, AR, España", "descripcion": "Empresa de tecnología con sede en Zaragoza que ofrece soluciones de software y consultoría.", "tags": ["software", "consultoría"], "ciclo": "DAW", "estado_agente": "", "fuentes": ""}, {"nombre": "Endalia", "latitud": "41.6915847", "longitud": "-0.9101268", "direccion": "Zaragoza, AR, España", "descripcion": "Empresa de tecnología con sede en Zaragoza, Aragón. Ofrece servicios de informática y tecnología.", "tags": ["software", "cloud", "datos"], "ciclo": "DAW", "estado_agente": "", "fuentes": ""}, {"nombre": "Inetum", "latitud": "41.6915847", "longitud": "-0.9101268", "direccion": "Zaragoza, AR, España", "descripcion": "Empresa de consultoría informática que ofrece servicios y soluciones en tecnología y datos.", "tags": ["software", "cloud", "datos"], "ciclo": "DAW", "estado_agente": "", "fuentes": ""}];
 
-        const empresas = [{"nombre": "Hiberus", "lat": 41.6707881, "lng": -0.8995539, "ciclo": "DAW", "descripcion": "Empresa tecnológica con sede en Zaragoza que ofrece soluciones de tecnología y servicios de consultoría.", "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España", "tags": "tecnología, consultoría, Zaragoza", "tags_lista": ["tecnología", "consultoría", "Zaragoza"], "alumnos": "0"}, {"nombre": "Integra Tecnología", "lat": 41.6457253, "lng": -0.88851, "ciclo": "DAW", "descripcion": "Empresa de tecnología con sede en Zaragoza que ofrece servicios de estrategia y tecnología.", "direccion": "Integra. Estrategia y Tecnología., Gran Vía de Santiago Ramón y Cajal, 23, 50006 Zaragoza, España", "tags": "tecnología, estrategia, Zaragoza", "tags_lista": ["tecnología", "estrategia", "Zaragoza"], "alumnos": "preconfigurada"}, {"nombre": "Imascono", "lat": 41.6499597, "lng": -0.8823097, "ciclo": "DAW", "descripcion": "Empresa de tecnología que ofrece soluciones de realidad extendida y servicios de metaverso para empresas.", "direccion": "imascono, Calle de Felipe Sanclemente, 3, 50001 Zaragoza, España", "tags": "tecnología, realidad extendida, metaverso", "tags_lista": ["tecnología", "realidad extendida", "metaverso"], "alumnos": "preconfigurada"}, {"nombre": "Inycom", "lat": 41.6414212, "lng": -0.9953924, "ciclo": "DAW", "descripcion": "Empresa de tecnología e innovación que ofrece soluciones y servicios adaptados a empresas y entidades públicas.", "direccion": "Inycom, Calle de Alaún, 8, 50197 Zaragoza, España", "tags": "tecnología, innovación, servicios, empresas", "tags_lista": ["tecnología", "innovación", "servicios", "empresas"], "alumnos": "preconfigurada"}, {"nombre": "DXC Technology Zaragoza", "lat": 41.6549845, "lng": -0.9908509, "ciclo": "DAW", "descripcion": "Empresa tecnológica con un Centro de Excelencia en Zaragoza que impulsa la adopción de IA y Cloud en las principales organizaciones de España.", "direccion": "DXC.technology, Calle de Bari, 11, 50197 Zaragoza, España", "tags": "tecnología, IA, Cloud, Zaragoza", "tags_lista": ["tecnología", "IA", "Cloud", "Zaragoza"], "alumnos": "preconfigurada"}, {"nombre": "NTT DATA Zaragoza", "lat": 40.4866435, "lng": -3.6623952, "ciclo": "DAW", "descripcion": "Empresa de tecnología con sede en Zaragoza que ofrece servicios relacionados con la información y la informática.", "direccion": "NTT Data España, Avenida de la Fuente de la Mora, 1, 28050 Madrid, España", "tags": "tecnología, informática, servicios", "tags_lista": ["tecnología", "informática", "servicios"], "alumnos": "preconfigurada"}, {"nombre": "Deloitte Zaragoza", "lat": 37.3913778, "lng": -6.0102735, "ciclo": "DAW", "descripcion": "Empresa de consultoría y servicios profesionales con oficina en Zaragoza. Ofrece servicios de auditoría, consultoría y asesoramiento en áreas como tecnología, finanzas y gestión.", "direccion": "Deloitte, Plaza Alcalde Alfredo Sánchez Monteseirín, 2, 41092 Sevilla, España", "tags": "consultoría, servicios profesionales, tecnología, finanzas, gestión", "tags_lista": ["consultoría", "servicios profesionales", "tecnología", "finanzas", "gestión"], "alumnos": "0"}, {"nombre": "Ingenia", "lat": 39.9838664, "lng": -0.0198039, "ciclo": "DAM", "descripcion": "Empresa de consultoría informática que ofrece soluciones de gestión, ERP y CRM.", "direccion": "Ingenia, Avenida del Mar, 12003 Castellón de la Plana, España", "tags": "consultoria, informatica, gestion, erp, crm", "tags_lista": ["consultoria", "informatica", "gestion", "erp", "crm"], "alumnos": "0"}, {"nombre": "Aratec64", "lat": 41.65526, "lng": -0.888438, "ciclo": "DAW", "descripcion": "Empresa de consultoría informática que ofrece servicios de diseño web, hosting, redes y consultoría informática.", "direccion": "Calle Aranda, 64, 50003 Zaragoza, España", "tags": "consultoria, informatica, diseño web, hosting, redes", "tags_lista": ["consultoria", "informatica", "diseño web", "hosting", "redes"], "alumnos": "0"}, {"nombre": "Empresa de Desarrollo de Software en Zaragoza", "lat": 41.6442511, "lng": -0.8856127, "ciclo": "DAW", "descripcion": "Desarrollamos webs y apps a medida en Zaragoza, adaptadas a tus necesidades. Potencia tu negocio con soluciones digitales innovadoras.", "direccion": "Institut Français d'Espagne en Zaragoza, Paseo de Sagasta, 7, 50008 Zaragoza, España", "tags": "desarrollo de software, desarrollo web, aplicaciones móviles", "tags_lista": ["desarrollo de software", "desarrollo web", "aplicaciones móviles"], "alumnos": "0"}, {"nombre": "ASD Solutions", "lat": 41.6464797, "lng": -0.8894298, "ciclo": "DAW", "descripcion": "Diseñamos y desarrollamos software a medida para pymes: aplicaciones web, herramientas internas de gestión, automatización de procesos, integraciones entre sistemas y paneles de control.", "direccion": "Voilá Contract Solutions, Calle de Amado Laguna de Rins, 50006 Zaragoza, España", "tags": "desarrollo de software, aplicaciones web, automatización de procesos", "tags_lista": ["desarrollo de software", "aplicaciones web", "automatización de procesos"], "alumnos": "0"}, {"nombre": "Ecosistema tech en Zaragoza", "lat": 41.6442511, "lng": -0.8856127, "ciclo": "DAW", "descripcion": "Eventos tech en Zaragoza. Congreso Web Zaragoza: marketing digital, SEO, analítica. Referente nacional desde hace 10+ ediciones. Tech Shakers: meetups mensuales con charlas de profesionales tech.", "direccion": "Institut Français d'Espagne en Zaragoza, Paseo de Sagasta, 7, 50008 Zaragoza, España", "tags": "eventos tech, marketing digital, seo", "tags_lista": ["eventos tech", "marketing digital", "seo"], "alumnos": "0"}, {"nombre": "Q2BSTUDIO", "lat": 41.646481, "lng": -0.887553, "ciclo": "DAW", "descripcion": "Empresa de software especializada en consultoría, ingeniería y desarrollo de software, avalada por la certificación de Micro Focus.", "direccion": "Zaragoza, AR, España", "tags": "software, consultoria, ingenieria, desarrollo", "tags_lista": ["software", "consultoria", "ingenieria", "desarrollo"], "alumnos": "0"}, {"nombre": "NTT DATA", "lat": 41.6915847, "lng": -0.9101268, "ciclo": "DAW", "descripcion": "Consultora de administración empresarial y tecnológicas más grandes de España, con una presencia destacada en el parque tecnológico de Zaragoza.", "direccion": "Zaragoza, AR, España", "tags": "consultoria, administracion, tecnologia", "tags_lista": ["consultoria", "administracion", "tecnologia"], "alumnos": "0"}, {"nombre": "Innovatus", "lat": 41.6915847, "lng": -0.9101268, "ciclo": "DAW", "descripcion": "Centro neurálgico de la innovación y el desarrollo empresarial en la ciudad de Zaragoza, España.", "direccion": "Zaragoza, AR, España", "tags": "innovacion, desarrollo, empresarial", "tags_lista": ["innovacion", "desarrollo", "empresarial"], "alumnos": "0"}, {"nombre": "CaixaBank", "lat": 41.6410829, "lng": -0.9096046, "ciclo": "Otro", "descripcion": "Banco con sede en Zaragoza que ofrece servicios financieros a particulares y empresas.", "direccion": "Caixabank, Andador del Teniente General Quintana Lacacci, 50009 Zaragoza, España", "tags": "banca, finanzas", "tags_lista": ["banca", "finanzas"], "alumnos": "0"}, {"nombre": "Driven", "lat": 41.6915847, "lng": -0.9101268, "ciclo": "DAW", "descripcion": "Empresa de tecnología con sede en Zaragoza que ofrece soluciones de software y consultoría.", "direccion": "Zaragoza, AR, España", "tags": "software, consultoría", "tags_lista": ["software", "consultoría"], "alumnos": "0"}, {"nombre": "Endalia", "lat": 41.6915847, "lng": -0.9101268, "ciclo": "DAW", "descripcion": "Empresa de tecnología con sede en Zaragoza, Aragón. Ofrece servicios de informática y tecnología.", "direccion": "Zaragoza, AR, España", "tags": "software, cloud, datos", "tags_lista": ["software", "cloud", "datos"], "alumnos": "0"}, {"nombre": "Inetum", "lat": 41.6915847, "lng": -0.9101268, "ciclo": "DAW", "descripcion": "Empresa de consultoría informática que ofrece servicios y soluciones en tecnología y datos.", "direccion": "Zaragoza, AR, España", "tags": "software, cloud, datos", "tags_lista": ["software", "cloud", "datos"], "alumnos": "0"}];
+        
+let mapa = L.map('map').setView([41.6488, -0.8891], 12);
 
-        const map = L.map('map').setView([41.6488, -0.8891], 12);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; OpenStreetMap'
+}).addTo(mapa);
 
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; OpenStreetMap contributors'
-        }).addTo(map);
+let marcadores = [];
+let tagActivo = null;
 
-        let marcadoresLeaflet = [];
-        let marcadoresPorNombre = {};
-        let tagActivo = null;
+const iconoNormal = L.divIcon({
+    className: '',
+    html: '<div class="marker-normal"></div>',
+    iconSize: [22, 22],
+    iconAnchor: [11, 11]
+});
 
-        const iconoNormal = L.divIcon({
-            className: "",
-            html: '<div class="marker-normal"></div>',
-            iconSize: [22, 22],
-            iconAnchor: [11, 11],
-            popupAnchor: [0, -10]
-        });
+const iconoDestacado = L.divIcon({
+    className: '',
+    html: '<div class="marker-destacado"></div>',
+    iconSize: [30, 30],
+    iconAnchor: [15, 15]
+});
 
-        const iconoDestacado = L.divIcon({
-            className: "",
-            html: '<div class="marker-destacado"></div>',
-            iconSize: [30, 30],
-            iconAnchor: [15, 15],
-            popupAnchor: [0, -14]
-        });
+function normalizarTexto(texto) {
+    return String(texto || '')
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .trim();
+}
 
-        function normalizarTag(tag) {
-            if (!tag) return "";
-            return tag.toLowerCase().replace(/^#/, "").trim();
+function obtenerTagsEmpresa(empresa) {
+    if (Array.isArray(empresa.tags)) {
+        return empresa.tags;
+    }
+
+    return String(empresa.tags || '')
+        .split(',')
+        .map(t => t.trim())
+        .filter(t => t.length > 0);
+}
+
+function empresaTieneTag(empresa, tag) {
+    if (!tag) {
+        return false;
+    }
+
+    const tagNorm = normalizarTexto(tag);
+    const tagsEmpresa = obtenerTagsEmpresa(empresa);
+
+    return tagsEmpresa.some(t => normalizarTexto(t) === tagNorm);
+}
+
+function empresaCoincideTexto(empresa, texto) {
+    if (!texto) {
+        return true;
+    }
+
+    const t = normalizarTexto(texto);
+
+    const campos = [
+        empresa.nombre,
+        empresa.descripcion,
+        empresa.direccion,
+        empresa.ciclo,
+        obtenerTagsEmpresa(empresa).join(', ')
+    ].join(' ');
+
+    return normalizarTexto(campos).includes(t);
+}
+
+function limpiarMarcadores() {
+    marcadores.forEach(m => mapa.removeLayer(m));
+    marcadores = [];
+}
+
+function pintarMarcadores(empresasFiltradas) {
+    limpiarMarcadores();
+
+    empresasFiltradas.forEach(empresa => {
+        const lat = parseFloat(empresa.latitud);
+        const lon = parseFloat(empresa.longitud);
+
+        if (isNaN(lat) || isNaN(lon)) {
+            return;
         }
 
-        function crearPopup(empresa) {
-            return `
-                <div class="popup">
-                    <h3>${empresa.nombre}</h3>
-                    <p><strong>Ciclo:</strong> ${empresa.ciclo || "Otro"}</p>
-                    <p><strong>Descripción:</strong> ${empresa.descripcion || ""}</p>
-                    <p><strong>Dirección:</strong> ${empresa.direccion || ""}</p>
-                    <p><strong>Tags:</strong> ${empresa.tags || ""}</p>
-                    <p><strong>Alumnos:</strong> ${empresa.alumnos || "0"}</p>
-                </div>
-            `;
-        }
+        const destacada = tagActivo && empresaTieneTag(empresa, tagActivo);
 
-        function empresaTieneTag(empresa, tag) {
-            if (!tag) return false;
-
-            const tags = empresa.tags_lista || [];
-
-            return tags
-                .map(t => normalizarTag(t))
-                .includes(normalizarTag(tag));
-        }
-
-        function obtenerTagsGlobales() {
-            const tags = new Set();
-
-            empresas.forEach(empresa => {
-                (empresa.tags_lista || []).forEach(tag => {
-                    tags.add(normalizarTag(tag));
-                });
-            });
-
-            return Array.from(tags).sort();
-        }
-
-        function detectarTagDesdeTexto(texto) {
-            const t = normalizarTag(texto);
-
-            if (t.length === 0) {
-                return null;
+        const marcador = L.marker(
+            [lat, lon],
+            {
+                icon: destacada ? iconoDestacado : iconoNormal
             }
+        ).addTo(mapa);
 
-            const tags = obtenerTagsGlobales();
-            const tagEncontrado = tags.find(tag => tag.startsWith(t));
+        marcador.bindPopup(`
+            <strong>${empresa.nombre || ''}</strong><br>
+            ${empresa.direccion || ''}<br>
+            <small>${obtenerTagsEmpresa(empresa).join(', ')}</small>
+        `);
 
-            return tagEncontrado || null;
+        marcadores.push(marcador);
+    });
+
+    if (marcadores.length > 0) {
+        const grupo = L.featureGroup(marcadores);
+        mapa.fitBounds(grupo.getBounds().pad(0.2));
+    }
+}
+
+function colorearTagsEmpresa(tarjeta, tagActivo) {
+    const tags = tarjeta.querySelectorAll('.tag-empresa');
+
+    tags.forEach(tagElemento => {
+        tagElemento.classList.remove('destacado');
+
+        if (!tagActivo) {
+            return;
         }
 
-        function obtenerTagDeResaltado() {
-            const texto = document.getElementById("busqueda").value.toLowerCase().trim();
+        const tagTexto = tagElemento.dataset.tag || tagElemento.textContent;
 
-            if (tagActivo !== null) {
-                return tagActivo;
+        if (normalizarTexto(tagTexto) === normalizarTexto(tagActivo)) {
+            tagElemento.classList.add('destacado');
+        }
+    });
+}
+
+function aplicarFiltros() {
+    const texto = document.getElementById('buscador').value || '';
+    const tarjetas = document.querySelectorAll('.tarjeta-empresa');
+
+    const empresasFiltradas = [];
+
+    tarjetas.forEach((tarjeta, index) => {
+        const empresa = empresas[index];
+
+        const coincideTexto = empresaCoincideTexto(empresa, texto);
+        const coincideTag = !tagActivo || empresaTieneTag(empresa, tagActivo);
+
+        const visible = coincideTexto && coincideTag;
+
+        tarjeta.classList.toggle('oculta', !visible);
+        tarjeta.classList.remove('destacada');
+
+        colorearTagsEmpresa(tarjeta, tagActivo);
+
+        if (visible) {
+            empresasFiltradas.push(empresa);
+
+            if (tagActivo && empresaTieneTag(empresa, tagActivo)) {
+                tarjeta.classList.add('destacada');
             }
-
-            return detectarTagDesdeTexto(texto);
         }
+    });
 
-        function pintarMarcadores(lista) {
-            marcadoresLeaflet.forEach(m => map.removeLayer(m));
-            marcadoresLeaflet = [];
-            marcadoresPorNombre = {};
+    pintarMarcadores(empresasFiltradas);
 
-            const tagResaltado = obtenerTagDeResaltado();
+    const contador = document.getElementById('contadorResultados');
 
-            lista.forEach(empresa => {
-                const destacar = tagResaltado !== null && empresaTieneTag(empresa, tagResaltado);
+    if (contador) {
+        contador.textContent = `${empresasFiltradas.length} empresas encontradas`;
+    }
+}
 
-                const marker = L.marker(
-                    [empresa.lat, empresa.lng],
-                    {
-                        icon: destacar ? iconoDestacado : iconoNormal
-                    }
-                )
-                .addTo(map)
-                .bindPopup(crearPopup(empresa));
+function activarTags() {
+    const botones = document.querySelectorAll('.tag-filtro');
 
-                marcadoresLeaflet.push(marker);
-                marcadoresPorNombre[empresa.nombre] = marker;
-            });
+    botones.forEach(boton => {
+        boton.addEventListener('click', () => {
+            const tag = boton.dataset.tag || boton.textContent;
 
-            map.setView([41.6488, -0.8891], 12);
-        }
-
-        function obtenerEmpresasVisiblesPorTarjetas() {
-            const tarjetas = document.querySelectorAll(".card");
-            const visibles = [];
-
-            tarjetas.forEach(tarjeta => {
-                if (tarjeta.style.display !== "none") {
-                    const nombre = tarjeta.dataset.nombre;
-                    const empresa = empresas.find(e => e.nombre === nombre);
-
-                    if (empresa) {
-                        visibles.push(empresa);
-                    }
-                }
-            });
-
-            return visibles;
-        }
-
-        function actualizarMarcadoresDesdeTarjetas() {
-            const visibles = obtenerEmpresasVisiblesPorTarjetas();
-            pintarMarcadores(visibles);
-        }
-
-        function aplicarFiltros() {
-            const texto = document.getElementById("busqueda").value.toLowerCase().trim();
-            const tarjetas = document.querySelectorAll(".card");
-
-            const tagDetectadoPorTexto = detectarTagDesdeTexto(texto);
-            const tagFiltroEfectivo = tagActivo !== null ? tagActivo : null;
-            const tagParaResaltar = tagActivo !== null ? tagActivo : tagDetectadoPorTexto;
-
-            let visibles = 0;
-
-            tarjetas.forEach(tarjeta => {
-                const contenido = tarjeta.dataset.search || "";
-                const tags = tarjeta.dataset.tags || "";
-                const listaTags = tags.split("|");
-
-                const coincideTexto = texto === "" || contenido.includes(texto);
-                const coincideTagActivo = tagFiltroEfectivo === null || listaTags.includes(tagFiltroEfectivo);
-
-                if (coincideTexto && coincideTagActivo) {
-                    tarjeta.style.display = "flex";
-                    visibles++;
-
-                    tarjeta.classList.remove("seleccionada");
-                    tarjeta.classList.remove("coincide-busqueda");
-
-                    if (tagParaResaltar !== null && listaTags.includes(tagParaResaltar)) {
-                        tarjeta.classList.add("seleccionada");
-                    } else if (texto !== "") {
-                        tarjeta.classList.add("coincide-busqueda");
-                    }
-
-                } else {
-                    tarjeta.style.display = "none";
-                    tarjeta.classList.remove("coincide-busqueda");
-                    tarjeta.classList.remove("seleccionada");
-                }
-            });
-
-            document.getElementById("contador-empresas").textContent = visibles;
-            actualizarMarcadoresDesdeTarjetas();
-            actualizarTagsActivos(tagParaResaltar);
-        }
-
-        function actualizarTagsActivos(tagParaResaltar = null) {
-            document.querySelectorAll(".tag, .filtro-tag").forEach(boton => {
-                const tag = normalizarTag(boton.dataset.tag);
-
-                if (tagParaResaltar !== null && tag === tagParaResaltar) {
-                    boton.classList.add("activo");
-                } else {
-                    boton.classList.remove("activo");
-                }
-            });
-        }
-
-        function seleccionarTag(tag) {
-            const tagNormalizado = normalizarTag(tag);
-
-            if (tagActivo === tagNormalizado) {
+            if (tagActivo && normalizarTexto(tagActivo) === normalizarTexto(tag)) {
                 tagActivo = null;
             } else {
-                tagActivo = tagNormalizado;
+                tagActivo = tag;
+            }
+
+            botones.forEach(b => b.classList.remove('activo'));
+
+            if (tagActivo) {
+                boton.classList.add('activo');
             }
 
             aplicarFiltros();
+        });
+    });
+}
+
+function activarBuscador() {
+    const buscador = document.getElementById('buscador');
+
+    if (!buscador) {
+        return;
+    }
+
+    buscador.addEventListener('input', () => {
+        aplicarFiltros();
+    });
+}
+
+function activarLimpiar() {
+    const boton = document.getElementById('btnLimpiar');
+
+    if (!boton) {
+        return;
+    }
+
+    boton.addEventListener('click', () => {
+        tagActivo = null;
+
+        const buscador = document.getElementById('buscador');
+
+        if (buscador) {
+            buscador.value = '';
         }
 
-        function limpiarFiltros() {
-            tagActivo = null;
-            document.getElementById("busqueda").value = "";
+        document.querySelectorAll('.tag-filtro').forEach(b => {
+            b.classList.remove('activo');
+        });
 
-            document.querySelectorAll(".card").forEach(tarjeta => {
-                tarjeta.style.display = "flex";
-                tarjeta.classList.remove("seleccionada");
-                tarjeta.classList.remove("coincide-busqueda");
-            });
+        document.querySelectorAll('.tag-empresa').forEach(t => {
+            t.classList.remove('destacado');
+        });
 
-            document.querySelectorAll(".tag, .filtro-tag").forEach(tag => {
-                tag.classList.remove("activo");
-            });
+        aplicarFiltros();
+    });
+}
 
-            document.getElementById("contador-empresas").textContent = document.querySelectorAll(".card").length;
-            pintarMarcadores(empresas);
-        }
+function activarClickTarjetas() {
+    const tarjetas = document.querySelectorAll('.tarjeta-empresa');
 
-        function activarClickTags() {
-            document.querySelectorAll(".tag-boton, .filtro-tag").forEach(boton => {
-                boton.addEventListener("click", (event) => {
-                    event.stopPropagation();
-                    seleccionarTag(boton.dataset.tag);
-                });
-            });
+    tarjetas.forEach((tarjeta, index) => {
+        tarjeta.addEventListener('click', () => {
+            const empresa = empresas[index];
 
-            const botonLimpiar = document.getElementById("limpiar-filtros");
+            const lat = parseFloat(empresa.latitud);
+            const lon = parseFloat(empresa.longitud);
 
-            if (botonLimpiar) {
-                botonLimpiar.addEventListener("click", limpiarFiltros);
+            if (!isNaN(lat) && !isNaN(lon)) {
+                mapa.setView([lat, lon], 16);
             }
-        }
 
-        function activarClickTarjetas() {
-            const tarjetas = document.querySelectorAll(".tarjeta-clicable");
-
-            tarjetas.forEach(tarjeta => {
-                tarjeta.addEventListener("click", () => {
-                    const lat = Number(tarjeta.dataset.lat);
-                    const lng = Number(tarjeta.dataset.lng);
-                    const nombre = tarjeta.dataset.nombre;
-
-                    if (!isNaN(lat) && !isNaN(lng)) {
-                        map.setView([lat, lng], 17);
-
-                        const marcador = marcadoresPorNombre[nombre];
-
-                        if (marcador) {
-                            marcador.openPopup();
-                        }
-                    }
-                });
+            tarjeta.scrollIntoView({
+                behavior: 'smooth',
+                block: 'center'
             });
-        }
+        });
+    });
+}
 
-        document.getElementById("busqueda").addEventListener("input", aplicarFiltros);
+document.addEventListener('DOMContentLoaded', () => {
+    activarTags();
+    activarBuscador();
+    activarLimpiar();
+    activarClickTarjetas();
+    aplicarFiltros();
 
-        pintarMarcadores(empresas);
-        activarClickTarjetas();
-        activarClickTags();
+    setTimeout(() => {
+        mapa.invalidateSize();
+    }, 300);
+});
 
     </script>
+
 </body>
 </html>
