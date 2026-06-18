@@ -241,9 +241,19 @@ body {
     box-shadow: 0 2px 8px rgba(0,0,0,0.35);
 }
 
+.marker-atenuado {
+    width: 14px;
+    height: 14px;
+    background: #93c5fd;
+    border: 3px solid white;
+    border-radius: 50%;
+    opacity: 0.45;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+}
+
 .marker-destacado {
-    width: 22px;
-    height: 22px;
+    width: 24px;
+    height: 24px;
     background: #7f1d1d;
     border: 4px solid white;
     border-radius: 50%;
@@ -902,7 +912,10 @@ body {
         const empresas = [{"nombre": "Hiberus", "latitud": "41.6707881", "longitud": "-0.8995539", "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España", "descripcion": "Empresa tecnológica con sede en Zaragoza que ofrece soluciones de tecnología y servicios de consultoría.", "tags": ["tecnología", "consultoría", "zaragoza"], "ciclo": "DAW", "estado_agente": "", "fuentes": ""}, {"nombre": "Integra Tecnología", "latitud": "41.6457253", "longitud": "-0.88851", "direccion": "Integra. Estrategia y Tecnología., Gran Vía de Santiago Ramón y Cajal, 23, 50006 Zaragoza, España", "descripcion": "Empresa de tecnología con sede en Zaragoza que ofrece servicios de estrategia y tecnología.", "tags": ["tecnología", "estrategia", "zaragoza"], "ciclo": "DAW", "estado_agente": "", "fuentes": ""}, {"nombre": "Imascono", "latitud": "41.6499597", "longitud": "-0.8823097", "direccion": "imascono, Calle de Felipe Sanclemente, 3, 50001 Zaragoza, España", "descripcion": "Empresa de tecnología que ofrece soluciones de realidad extendida y servicios de metaverso para empresas.", "tags": ["tecnología", "realidad extendida", "metaverso"], "ciclo": "DAW", "estado_agente": "", "fuentes": ""}, {"nombre": "Inycom", "latitud": "41.6414212", "longitud": "-0.9953924", "direccion": "Inycom, Calle de Alaún, 8, 50197 Zaragoza, España", "descripcion": "Empresa de tecnología e innovación que ofrece soluciones y servicios adaptados a empresas y entidades públicas.", "tags": ["tecnología", "innovación", "servicios", "empresas"], "ciclo": "DAW", "estado_agente": "", "fuentes": ""}, {"nombre": "DXC Technology Zaragoza", "latitud": "41.6549845", "longitud": "-0.9908509", "direccion": "DXC.technology, Calle de Bari, 11, 50197 Zaragoza, España", "descripcion": "Empresa tecnológica con un Centro de Excelencia en Zaragoza que impulsa la adopción de IA y Cloud en las principales organizaciones de España.", "tags": ["tecnología", "ia", "cloud", "zaragoza"], "ciclo": "DAW", "estado_agente": "", "fuentes": ""}, {"nombre": "NTT DATA Zaragoza", "latitud": "40.4866435", "longitud": "-3.6623952", "direccion": "NTT Data España, Avenida de la Fuente de la Mora, 1, 28050 Madrid, España", "descripcion": "Empresa de tecnología con sede en Zaragoza que ofrece servicios relacionados con la información y la informática.", "tags": ["tecnología", "informática", "servicios"], "ciclo": "DAW", "estado_agente": "", "fuentes": ""}, {"nombre": "Deloitte Zaragoza", "latitud": "37.3913778", "longitud": "-6.0102735", "direccion": "Deloitte, Plaza Alcalde Alfredo Sánchez Monteseirín, 2, 41092 Sevilla, España", "descripcion": "Empresa de consultoría y servicios profesionales con oficina en Zaragoza. Ofrece servicios de auditoría, consultoría y asesoramiento en áreas como tecnología, finanzas y gestión.", "tags": ["consultoría", "servicios profesionales", "tecnología", "finanzas", "gestión"], "ciclo": "DAW", "estado_agente": "", "fuentes": ""}, {"nombre": "Ingenia", "latitud": "39.9838664", "longitud": "-0.0198039", "direccion": "Ingenia, Avenida del Mar, 12003 Castellón de la Plana, España", "descripcion": "Empresa de consultoría informática que ofrece soluciones de gestión, ERP y CRM.", "tags": ["consultoria", "informatica", "gestion", "erp", "crm"], "ciclo": "DAM", "estado_agente": "", "fuentes": ""}, {"nombre": "Aratec64", "latitud": "41.65526", "longitud": "-0.888438", "direccion": "Calle Aranda, 64, 50003 Zaragoza, España", "descripcion": "Empresa de consultoría informática que ofrece servicios de diseño web, hosting, redes y consultoría informática.", "tags": ["consultoria", "informatica", "diseño web", "hosting", "redes"], "ciclo": "DAW", "estado_agente": "", "fuentes": ""}, {"nombre": "Empresa de Desarrollo de Software en Zaragoza", "latitud": "41.6442511", "longitud": "-0.8856127", "direccion": "Institut Français d'Espagne en Zaragoza, Paseo de Sagasta, 7, 50008 Zaragoza, España", "descripcion": "Desarrollamos webs y apps a medida en Zaragoza, adaptadas a tus necesidades. Potencia tu negocio con soluciones digitales innovadoras.", "tags": ["desarrollo de software", "desarrollo web", "aplicaciones móviles"], "ciclo": "DAW", "estado_agente": "", "fuentes": ""}, {"nombre": "ASD Solutions", "latitud": "41.6464797", "longitud": "-0.8894298", "direccion": "Voilá Contract Solutions, Calle de Amado Laguna de Rins, 50006 Zaragoza, España", "descripcion": "Diseñamos y desarrollamos software a medida para pymes: aplicaciones web, herramientas internas de gestión, automatización de procesos, integraciones entre sistemas y paneles de control.", "tags": ["desarrollo de software", "aplicaciones web", "automatización de procesos"], "ciclo": "DAW", "estado_agente": "", "fuentes": ""}, {"nombre": "Ecosistema tech en Zaragoza", "latitud": "41.6442511", "longitud": "-0.8856127", "direccion": "Institut Français d'Espagne en Zaragoza, Paseo de Sagasta, 7, 50008 Zaragoza, España", "descripcion": "Eventos tech en Zaragoza. Congreso Web Zaragoza: marketing digital, SEO, analítica. Referente nacional desde hace 10+ ediciones. Tech Shakers: meetups mensuales con charlas de profesionales tech.", "tags": ["eventos tech", "marketing digital", "seo"], "ciclo": "DAW", "estado_agente": "", "fuentes": ""}, {"nombre": "Q2BSTUDIO", "latitud": "41.646481", "longitud": "-0.887553", "direccion": "Zaragoza, AR, España", "descripcion": "Empresa de software especializada en consultoría, ingeniería y desarrollo de software, avalada por la certificación de Micro Focus.", "tags": ["software", "consultoria", "ingenieria", "desarrollo"], "ciclo": "DAW", "estado_agente": "", "fuentes": ""}, {"nombre": "NTT DATA", "latitud": "41.6915847", "longitud": "-0.9101268", "direccion": "Zaragoza, AR, España", "descripcion": "Consultora de administración empresarial y tecnológicas más grandes de España, con una presencia destacada en el parque tecnológico de Zaragoza.", "tags": ["consultoria", "administracion", "tecnologia"], "ciclo": "DAW", "estado_agente": "", "fuentes": ""}, {"nombre": "Innovatus", "latitud": "41.6915847", "longitud": "-0.9101268", "direccion": "Zaragoza, AR, España", "descripcion": "Centro neurálgico de la innovación y el desarrollo empresarial en la ciudad de Zaragoza, España.", "tags": ["innovacion", "desarrollo", "empresarial"], "ciclo": "DAW", "estado_agente": "", "fuentes": ""}, {"nombre": "CaixaBank", "latitud": "41.6410829", "longitud": "-0.9096046", "direccion": "Caixabank, Andador del Teniente General Quintana Lacacci, 50009 Zaragoza, España", "descripcion": "Banco con sede en Zaragoza que ofrece servicios financieros a particulares y empresas.", "tags": ["banca", "finanzas"], "ciclo": "Otro", "estado_agente": "", "fuentes": ""}, {"nombre": "Driven", "latitud": "41.6915847", "longitud": "-0.9101268", "direccion": "Zaragoza, AR, España", "descripcion": "Empresa de tecnología con sede en Zaragoza que ofrece soluciones de software y consultoría.", "tags": ["software", "consultoría"], "ciclo": "DAW", "estado_agente": "", "fuentes": ""}, {"nombre": "Endalia", "latitud": "41.6915847", "longitud": "-0.9101268", "direccion": "Zaragoza, AR, España", "descripcion": "Empresa de tecnología con sede en Zaragoza, Aragón. Ofrece servicios de informática y tecnología.", "tags": ["software", "cloud", "datos"], "ciclo": "DAW", "estado_agente": "", "fuentes": ""}, {"nombre": "Inetum", "latitud": "41.6915847", "longitud": "-0.9101268", "direccion": "Zaragoza, AR, España", "descripcion": "Empresa de consultoría informática que ofrece servicios y soluciones en tecnología y datos.", "tags": ["software", "cloud", "datos"], "ciclo": "DAW", "estado_agente": "", "fuentes": ""}];
 
         
-let mapa = L.map('map').setView([41.6488, -0.8891], 12);
+const CENTRO_ZARAGOZA = [41.6488, -0.8891];
+const ZOOM_PROVINCIA_ZARAGOZA = 9;
+
+let mapa = L.map('map').setView(CENTRO_ZARAGOZA, ZOOM_PROVINCIA_ZARAGOZA);
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
@@ -919,11 +932,18 @@ const iconoNormal = L.divIcon({
     iconAnchor: [11, 11]
 });
 
+const iconoAtenuado = L.divIcon({
+    className: '',
+    html: '<div class="marker-atenuado"></div>',
+    iconSize: [22, 22],
+    iconAnchor: [11, 11]
+});
+
 const iconoDestacado = L.divIcon({
     className: '',
     html: '<div class="marker-destacado"></div>',
-    iconSize: [30, 30],
-    iconAnchor: [15, 15]
+    iconSize: [32, 32],
+    iconAnchor: [16, 16]
 });
 
 function normalizarTexto(texto) {
@@ -979,10 +999,10 @@ function limpiarMarcadores() {
     marcadores = [];
 }
 
-function pintarMarcadores(empresasFiltradas) {
+function pintarMarcadores(empresasVisibles) {
     limpiarMarcadores();
 
-    empresasFiltradas.forEach(empresa => {
+    empresas.forEach(empresa => {
         const lat = parseFloat(empresa.latitud);
         const lon = parseFloat(empresa.longitud);
 
@@ -990,12 +1010,25 @@ function pintarMarcadores(empresasFiltradas) {
             return;
         }
 
-        const destacada = tagActivo && empresaTieneTag(empresa, tagActivo);
+        const estaVisible = empresasVisibles.includes(empresa);
+        const estaRelacionadaConTag = tagActivo && empresaTieneTag(empresa, tagActivo);
+
+        let icono = iconoNormal;
+
+        if (tagActivo) {
+            if (estaRelacionadaConTag) {
+                icono = iconoDestacado;
+            } else {
+                icono = iconoAtenuado;
+            }
+        } else if (!estaVisible) {
+            icono = iconoAtenuado;
+        }
 
         const marcador = L.marker(
             [lat, lon],
             {
-                icon: destacada ? iconoDestacado : iconoNormal
+                icon: icono
             }
         ).addTo(mapa);
 
@@ -1008,10 +1041,9 @@ function pintarMarcadores(empresasFiltradas) {
         marcadores.push(marcador);
     });
 
-    if (marcadores.length > 0) {
-        const grupo = L.featureGroup(marcadores);
-        mapa.fitBounds(grupo.getBounds().pad(0.2));
-    }
+    // Importante:
+    // No hacemos fitBounds.
+    // El mapa se mantiene siempre centrado en Zaragoza.
 }
 
 function colorearTagsEmpresa(tarjeta, tagActivo) {
@@ -1036,7 +1068,7 @@ function aplicarFiltros() {
     const texto = document.getElementById('buscador').value || '';
     const tarjetas = document.querySelectorAll('.tarjeta-empresa');
 
-    const empresasFiltradas = [];
+    const empresasVisibles = [];
 
     tarjetas.forEach((tarjeta, index) => {
         const empresa = empresas[index];
@@ -1052,7 +1084,7 @@ function aplicarFiltros() {
         colorearTagsEmpresa(tarjeta, tagActivo);
 
         if (visible) {
-            empresasFiltradas.push(empresa);
+            empresasVisibles.push(empresa);
 
             if (tagActivo && empresaTieneTag(empresa, tagActivo)) {
                 tarjeta.classList.add('destacada');
@@ -1060,12 +1092,12 @@ function aplicarFiltros() {
         }
     });
 
-    pintarMarcadores(empresasFiltradas);
+    pintarMarcadores(empresasVisibles);
 
     const contador = document.getElementById('contadorResultados');
 
     if (contador) {
-        contador.textContent = `${empresasFiltradas.length} empresas encontradas`;
+        contador.textContent = `${empresasVisibles.length} empresas encontradas`;
     }
 }
 
@@ -1130,6 +1162,8 @@ function activarLimpiar() {
         });
 
         aplicarFiltros();
+
+        mapa.setView(CENTRO_ZARAGOZA, ZOOM_PROVINCIA_ZARAGOZA);
     });
 }
 
