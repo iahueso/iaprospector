@@ -241,16 +241,6 @@ body {
     box-shadow: 0 2px 8px rgba(0,0,0,0.35);
 }
 
-.marker-atenuado {
-    width: 14px;
-    height: 14px;
-    background: #93c5fd;
-    border: 3px solid white;
-    border-radius: 50%;
-    opacity: 0.45;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
-}
-
 .marker-destacado {
     width: 24px;
     height: 24px;
@@ -913,9 +903,9 @@ body {
 
         
 const CENTRO_ZARAGOZA = [41.6488, -0.8891];
-const ZOOM_PROVINCIA_ZARAGOZA = 9;
+const ZOOM_ZARAGOZA_CIUDAD = 12;
 
-let mapa = L.map('map').setView(CENTRO_ZARAGOZA, ZOOM_PROVINCIA_ZARAGOZA);
+let mapa = L.map('map').setView(CENTRO_ZARAGOZA, ZOOM_ZARAGOZA_CIUDAD);
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
@@ -928,13 +918,6 @@ let tagActivo = null;
 const iconoNormal = L.divIcon({
     className: '',
     html: '<div class="marker-normal"></div>',
-    iconSize: [22, 22],
-    iconAnchor: [11, 11]
-});
-
-const iconoAtenuado = L.divIcon({
-    className: '',
-    html: '<div class="marker-atenuado"></div>',
     iconSize: [22, 22],
     iconAnchor: [11, 11]
 });
@@ -1010,19 +993,12 @@ function pintarMarcadores(empresasVisibles) {
             return;
         }
 
-        const estaVisible = empresasVisibles.includes(empresa);
         const estaRelacionadaConTag = tagActivo && empresaTieneTag(empresa, tagActivo);
 
         let icono = iconoNormal;
 
-        if (tagActivo) {
-            if (estaRelacionadaConTag) {
-                icono = iconoDestacado;
-            } else {
-                icono = iconoAtenuado;
-            }
-        } else if (!estaVisible) {
-            icono = iconoAtenuado;
+        if (estaRelacionadaConTag) {
+            icono = iconoDestacado;
         }
 
         const marcador = L.marker(
@@ -1043,7 +1019,7 @@ function pintarMarcadores(empresasVisibles) {
 
     // Importante:
     // No hacemos fitBounds.
-    // El mapa se mantiene siempre centrado en Zaragoza.
+    // El mapa no se mueve al filtrar por tag.
 }
 
 function colorearTagsEmpresa(tarjeta, tagActivo) {
@@ -1163,7 +1139,7 @@ function activarLimpiar() {
 
         aplicarFiltros();
 
-        mapa.setView(CENTRO_ZARAGOZA, ZOOM_PROVINCIA_ZARAGOZA);
+        mapa.setView(CENTRO_ZARAGOZA, ZOOM_ZARAGOZA_CIUDAD);
     });
 }
 
