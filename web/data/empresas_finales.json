@@ -290,5 +290,379 @@
         "ciclo": "DAW",
         "estado_agente": "",
         "fuentes": ""
+    },
+    {
+        "nombre": "ERP-ZARAGOZA",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Empresa de Zaragoza especializada en proyectos de implantación de ERP empresarial.",
+        "tags": [
+            "erp",
+            "zaragoza"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://www.erp-zaragoza.com/"
+    },
+    {
+        "nombre": "Idea Consulting",
+        "latitud": "41.6511778",
+        "longitud": "-0.8813794",
+        "direccion": "My Consulting, Calle de San Miguel, 2, 50001 Zaragoza, España",
+        "descripcion": "Empresa de consultoría especializada en proyectos de implantación de ERP empresarial.",
+        "tags": [
+            "erp",
+            "zaragoza"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://www.ideaconsulting.es/"
+    },
+    {
+        "nombre": "Atlas Proyectos Informaticos",
+        "latitud": "41.4866708",
+        "longitud": "-1.1062283",
+        "direccion": "Atlas Copco, Carretera del cruce con la A-2 a Herrera de los Navarros, 50450 Muel, España",
+        "descripcion": "Empresa de desarrollo de software especializada en proyectos de ERP empresarial.",
+        "tags": [
+            "erp",
+            "zaragoza"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://www.atlasproyectos.com/"
+    },
+    {
+        "nombre": "Taktic Business & Technology",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Empresa de consultoría especializada en proyectos de implantación de ERP empresarial.",
+        "tags": [
+            "erp",
+            "zaragoza"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://www.takticbt.com/"
+    },
+    {
+        "nombre": "Babooni Technologies",
+        "latitud": "41.589874",
+        "longitud": "-0.810513",
+        "direccion": "Tudor Exide Technologies, 50720 Zaragoza, España",
+        "descripcion": "Empresa de desarrollo de software especializada en proyectos de ERP empresarial.",
+        "tags": [
+            "erp",
+            "zaragoza"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://www.babooni.com/"
+    },
+    {
+        "nombre": "Ayanet TIC",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Soluciones informáticas para empresas",
+        "tags": [
+            "tic",
+            "zaragoza",
+            "e-learning",
+            "datos"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://ayanettic.es/"
+    },
+    {
+        "nombre": "Acosis",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Consultora informática en Zaragoza para empresas",
+        "tags": [
+            "ciberseguridad",
+            "desarrollo",
+            "devops",
+            "nlp",
+            "crm"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://www.acosis.es/"
+    },
+    {
+        "nombre": "Carrie Consulting S.L",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Empresa de ciberseguridad en Zaragoza",
+        "tags": [
+            "ciberseguridad",
+            "desarrollo",
+            "devops",
+            "nlp",
+            "crm"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://www.carrie.es/"
+    },
+    {
+        "nombre": "IriusRisk",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Seguridad cloud/Kubernetes con defensa en tiempo real",
+        "tags": [
+            "ciberseguridad",
+            "desarrollo",
+            "devops",
+            "nlp",
+            "crm"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://araintel.com/"
+    },
+    {
+        "nombre": "xelab",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Plataforma de modelado de amenazas para DevSecOps y AppSec",
+        "tags": [
+            "ciberseguridad",
+            "desarrollo",
+            "devops",
+            "nlp",
+            "crm"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://araintel.com/"
+    },
+    {
+        "nombre": "Integra",
+        "latitud": "41.6667721",
+        "longitud": "-0.8933026",
+        "direccion": "Integra Aragón, Calle Clara Campoamor, 50018 Zaragoza, España",
+        "descripcion": "Empresa de tecnología con más de 800 personas, referente en servicios de tecnología y consultoría.",
+        "tags": [
+            "software",
+            "cloud",
+            "datos"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://redaccion.camarazaragoza.com/empresa/integra/, https://www.goaragon.es/integra-tecnologia-crea-solucion-innovadora-para-proteger-a-los-trabajadores-de-las-altas-temperaturas/, https://www.goaragon.es/noticias-aragon-espana-integra-tecnologia-premios-cex-estrategia-marketing/, https://www.calatayud.es/noticia/integra-recibe-el-premio-a-mejor-empresa-familiar-de-aragon-2023"
+    },
+    {
+        "nombre": "GFT Technologies IT Consulting",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Empresa de consultoría de tecnología con sede en Zaragoza, que ofrece servicios de análisis y desarrollo de software, así como soluciones en la nube y gestión de datos.",
+        "tags": [
+            "software",
+            "cloud",
+            "datos"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://www.gft.com/es/es/about-us/newsroom/press-and-news/2023/press-releases/gft-inaugura-un-nuevo-modelo-de-oficina-en-zaragoza, https://es.linkedin.com/in/diego-bellido-gomez-b316b6141, https://www.ceoezaragoza.com/wp-content/uploads/2024/03/MEMORIA-PARA-WEB-2021.pdf"
+    },
+    {
+        "nombre": "ACCENTURE",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Empresa de consultoría y servicios profesionales que ofrece soluciones en tecnología, innovación y transformación digital.",
+        "tags": [
+            "software",
+            "cloud",
+            "datos"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://www.accenture.com/es-es/index.htm, https://es.indeed.com/cmp/Accenture"
+    },
+    {
+        "nombre": "BALAY",
+        "latitud": "41.6732241",
+        "longitud": "-0.8371502",
+        "direccion": "B/S/H Balay, Santa Isabel, Zaragoza, AR, España",
+        "descripcion": "Empresa de electrodomésticos de alta calidad con sede en Zaragoza, que ofrece una amplia gama de productos innovadores y eficientes para el hogar.",
+        "tags": [
+            "electrodomésticos",
+            "innovación",
+            "eficiencia"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://www.balay.es/, https://www.camarazaragoza.com/actualidad/erase-una-vez-balay-en-la-camara-de-comercio/, https://electro-imagen.com/articulo/balay-inaugura-la-exposicion-de-su-75-aniversario"
+    },
+    {
+        "nombre": "multipc",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Tienda de informática en Zaragoza que ofrece servicios de programación de ordenadores y software.",
+        "tags": [
+            "software",
+            "informática",
+            "tienda"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://esopiniones.com/aragon/multipc-tu-tienda-de-informatica-267347, https://zaragozainfo.es/places/467140-multipc-tu-tienda-de-informatica"
+    },
+    {
+        "nombre": "multiverse computing",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Empresa de tecnología que se distingue por emplear a expertos en tecnología, incluyendo data managers, ingenieros de Inteligencia Artificial y arquitectos de soluciones.",
+        "tags": [
+            "software",
+            "cloud",
+            "datos",
+            "tecnología",
+            "innovación"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://www.goaragon.es/noticias-aragon-espana-multiverse-computing-computacion-cuantica-zaragoza-innovacion-desarrollo/, https://www.eleconomista.es/tecnologia/noticias/13727437/01/26/la-multinacional-de-tecnologia-multiverse-computing-creara-mas-de-200-empleos-en-su-nueva-sede-en-zaragoza.html"
+    },
+    {
+        "nombre": "deusens",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Empresa zaragozana especializada en el desarrollo de soluciones de tecnología, con experiencia en realidad virtual y expansión a nivel nacional e internacional.",
+        "tags": [
+            "software",
+            "cloud",
+            "datos",
+            "realidad-virtual",
+            "tecnología"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://redaccion.camarazaragoza.com/empresa/deusens/, https://deusens.com/es/blog/ejemplos-usos-realidad-virtual-empresas, https://www.heraldo.es/noticias/economia/2026/02/03/aragonesa-deusens-expansion-millones-facturacion-1890959.html"
+    },
+    {
+        "nombre": "Zonsai It Solutions",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Agencia de diseño web, marketing digital y programación de aplicaciones online a medida. Desarrollo e implantación de tecnologías web.",
+        "tags": [
+            "software",
+            "cloud",
+            "datos"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://www.zonsai.com/, https://www.sortlist.es/agency/zonsai-it-solutions, https://aqiveo.com/listing/zonsai/, https://www.empresia.es/empresa/zonsai-it-solutions/"
+    },
+    {
+        "nombre": "HubSpot",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Plataforma de clientes HubSpot con IA: unifica equipos desconectados, acelera procesos en un 65% y multiplica tu pipeline 5x. Todo conectado en un lugar.",
+        "tags": [
+            "software",
+            "ia",
+            "marketing",
+            "ventas",
+            "servicio al cliente"
+        ],
+        "ciclo": "Otro",
+        "estado_agente": "ok",
+        "fuentes": "https://www.hubspot.es/"
+    },
+    {
+        "nombre": "GA Consultores ERP / CRM",
+        "latitud": "41.6447037",
+        "longitud": "-0.9071411",
+        "direccion": "Patólogos. Consultores Asociados, Vía Univérsitas, 50009 Zaragoza, España",
+        "descripcion": "GA Consultores ERP / CRM cuenta con un cluster de Consultoras de Software ERP / CRM y Programación para Odoo, con equipos de Consultores Tecnológicos, Desarrolladores y Programadores con experiencia en Implantación y Mantenimiento de Software ERP / CRM de Odoo en Zaragoza, para gestionar ...",
+        "tags": [
+            "erp",
+            "crm",
+            "odoo",
+            "consultoría",
+            "implementación"
+        ],
+        "ciclo": "DAM",
+        "estado_agente": "ok",
+        "fuentes": "https://www.gaconsultoreserpcrmzaragoza.es/"
+    },
+    {
+        "nombre": "Inforges",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "¿Pensando en implantar un CRM en tu empresa en Zaragoza? Somos expertos en software CRM y partner oficinales de HubSpot y Salesforce",
+        "tags": [
+            "crm",
+            "hubspot",
+            "salesforce",
+            "consultoría",
+            "implementación"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://inforges.es/gestion-empresarial/crm/crm-zaragoza/"
+    },
+    {
+        "nombre": "Hiberus Tecnología",
+        "latitud": "41.6369197",
+        "longitud": "-0.8995137",
+        "direccion": "Hiberus, Paseo de Isabel la Católica, 6, 50009 Zaragoza, España",
+        "descripcion": "Empresa líder en consultoría, desarrollo tecnológico y transformación digital",
+        "tags": [
+            "consultoría",
+            "desarrollo tecnológico",
+            "transformación digital"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://www.hiberus.com/, https://www.empresia.es/empresa/hiberus-tecnologias-de-la-informacion/, https://www.einforma.com/informacion-empresa/hiberus-tecnologias-diferenciales"
+    },
+    {
+        "nombre": "Atenea",
+        "latitud": "41.6521952",
+        "longitud": "-0.8796568",
+        "direccion": "Atenea Abogadas, Calle de Don Jaime I, 6 Duplicado, 50001 Zaragoza, España",
+        "descripcion": "Plataforma Atenea Zaragoza SL es una empresa de construcción de edificios y promoción inmobiliaria con sede en Zaragoza.",
+        "tags": [
+            "construcción",
+            "inmobiliaria",
+            "zaragoza"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://www.einforma.com/informacion-empresa/plataforma-atenea-zaragoza, https://www.axesor.es/Informes-Empresas/11118898/PLATAFORMA_ATENEA_ZARAGOZA_SL.html"
+    },
+    {
+        "nombre": "BSH ELECTRODOMÉSTICOS",
+        "latitud": "41.5983221",
+        "longitud": "-0.8220512",
+        "direccion": "BSH Electrodomésticos, Calle Poligono Industrial La Cartuja Baja, 50720 Zaragoza, España",
+        "descripcion": "Empresa de electrodomésticos con sede en Zaragoza, que combina tecnología avanzada, diseño funcional y compromiso medioambiental.",
+        "tags": [
+            "electrodomésticos",
+            "tecnología",
+            "diseño"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://www.einforma.com/informacion-empresa/bsh-electrodomesticos-espana, https://redaccion.camarazaragoza.com/empresa/bsh/"
     }
 ]
