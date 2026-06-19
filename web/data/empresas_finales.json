@@ -664,5 +664,79 @@
         "ciclo": "DAW",
         "estado_agente": "ok",
         "fuentes": "https://www.einforma.com/informacion-empresa/bsh-electrodomesticos-espana, https://redaccion.camarazaragoza.com/empresa/bsh/"
+    },
+    {
+        "nombre": "Tecnocasa",
+        "latitud": "41.637214",
+        "longitud": "-0.87676",
+        "direccion": "Tecnocasa, Avenida de Tenor Fleta, 94, 50008 Zaragoza, España",
+        "descripcion": "Agencia inmobiliaria con oficinas en Zaragoza",
+        "tags": [
+            "inmobiliaria",
+            "zaragoza"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://www.tecnocasa.es/agencias-inmobiliarias/zaragoza/zaragoza.html"
+    },
+    {
+        "nombre": "Salesforce",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Proveedor de soluciones de CRM y tecnología para la industria inmobiliaria",
+        "tags": [
+            "salesforce",
+            "crm",
+            "inmobiliaria"
+        ],
+        "ciclo": "IA y Big Data",
+        "estado_agente": "ok",
+        "fuentes": "https://www.salesforce.com/es/engineering-construction-real-estate/real-estate-software/"
+    },
+    {
+        "nombre": "Solvify",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Empresa de software que ofrece soluciones en el sector SaaS",
+        "tags": [
+            "software",
+            "devops",
+            "java"
+        ],
+        "ciclo": "Otro",
+        "estado_agente": "ok",
+        "fuentes": "https://vacantesdigitales.com/empleo-digital/devops/devops-engineer-remoto-latam"
+    },
+    {
+        "nombre": "Kairós",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Empresa de tecnología que ayuda a sus clientes con retos de transformación digital y metodológica",
+        "tags": [
+            "software",
+            "devops",
+            "java"
+        ],
+        "ciclo": "Otro",
+        "estado_agente": "ok",
+        "fuentes": "https://es.indeed.com/q-java-devops-empleos.html"
+    },
+    {
+        "nombre": "ADA Computer",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Empresa de soluciones TIC para empresas",
+        "tags": [
+            "software",
+            "erp",
+            "crm"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://adacomputer.es/, https://www.linkedin.com/company/ada-computer/"
     }
 ]
