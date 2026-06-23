@@ -738,5 +738,81 @@
         "ciclo": "DAW",
         "estado_agente": "ok",
         "fuentes": "https://adacomputer.es/, https://www.linkedin.com/company/ada-computer/"
+    },
+    {
+        "nombre": "Databay Solutions",
+        "latitud": "41.6464797",
+        "longitud": "-0.8894298",
+        "direccion": "Voilá Contract Solutions, Calle de Amado Laguna de Rins, 50006 Zaragoza, España",
+        "descripcion": "Desarrollo de software y diseño web",
+        "tags": [
+            "software",
+            "diseño web",
+            "salesforce",
+            "docker"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://databay.solutions/, https://www.linkedin.com/company/databay-solutions/"
+    },
+    {
+        "nombre": "ITCY",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Empresa de ciberseguridad en Zaragoza que ofrece servicios como auditorías de seguridad, gestión de incidentes, consultoría, monitoreo continuo y formación en ciberseguridad.",
+        "tags": [
+            "ciberseguridad",
+            "servicios",
+            "consultoría"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://zaragozatop.com/informatica-y-electronica/empresas-ciberseguridad/"
+    },
+    {
+        "nombre": "Clovisolutions",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Empresa de servicios informáticos en Zaragoza que ofrece soluciones innovadoras y efectivas para proteger la infraestructura tecnológica de las empresas.",
+        "tags": [
+            "servicios",
+            "informática",
+            "ciberseguridad"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://clovisolutions.com/"
+    },
+    {
+        "nombre": "Vidasoft",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Desarrolla software a medida para empresas en Zaragoza, creando oportunidades de negocio únicas y mejorando la experiencia de los clientes.",
+        "tags": [
+            "software",
+            "ia",
+            "desarrollo de software"
+        ],
+        "ciclo": "IA y Big Data",
+        "estado_agente": "ok",
+        "fuentes": "https://vidasoft.es/desarrollador-software-zaragoza/"
+    },
+    {
+        "nombre": "rIL Agencia de Marketing Digital",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Diseña soluciones de IA aplicadas al marketing, al contenido y a la automatización para que la marca gane velocidad, eficiencia y ventaja competitiva.",
+        "tags": [
+            "marketing digital",
+            "ia",
+            "automatización"
+        ],
+        "ciclo": "Marketing",
+        "estado_agente": "ok",
+        "fuentes": "https://www.ril.es/"
     }
 ]
