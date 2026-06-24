@@ -814,5 +814,92 @@
         "ciclo": "Marketing",
         "estado_agente": "ok",
         "fuentes": "https://www.ril.es/"
+    },
+    {
+        "nombre": "SURáTICA Software",
+        "latitud": "41.6419128",
+        "longitud": "-0.8977566",
+        "direccion": "Oficina Software Libre Universidad de Zaragoza, Calle de Pedro Cerbuna, 12, 50009 Zaragoza, España",
+        "descripcion": "Empresa de desarrollo de software y aplicaciones móviles en Zaragoza. Ofrece servicios de desarrollo a medida, consultoría y mantenimiento web.",
+        "tags": [
+            "software",
+            "desarrollo",
+            "aplicaciones",
+            "móviles",
+            "consultoría",
+            "mantenimiento"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://www.suratica.es/"
+    },
+    {
+        "nombre": "Q2B Studio",
+        "latitud": "41.653329",
+        "longitud": "-0.8770741",
+        "direccion": "Entropy Studio, Calle San Juan y San Pedro, 5-7, 50001 Zaragoza, España",
+        "descripcion": "Agencia de desarrollo de software y aplicaciones móviles en Zaragoza. Ofrece servicios de desarrollo a medida, consultoría y marketing digital.",
+        "tags": [
+            "software",
+            "desarrollo",
+            "aplicaciones",
+            "móviles",
+            "consultoría",
+            "marketing"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://www.q2bstudio.com/"
+    },
+    {
+        "nombre": "Planea Soluciones",
+        "latitud": "41.6513613",
+        "longitud": "-0.8782321",
+        "direccion": "Maubic Soluciones tecnológicas, Calle del Coso, 67, 50001 Zaragoza, España",
+        "descripcion": "Empresa de servicios de consultoría informática en Zaragoza. Ofrece servicios de desarrollo de software, consultoría y soluciones informáticas.",
+        "tags": [
+            "consultoría",
+            "desarrollo",
+            "software",
+            "soluciones"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://planeasoluciones.com/"
+    },
+    {
+        "nombre": "Loop Innova",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Empresa de desarrollo de software y aplicaciones móviles en Zaragoza. Ofrece servicios de desarrollo a medida, consultoría y mantenimiento web.",
+        "tags": [
+            "software",
+            "desarrollo",
+            "aplicaciones",
+            "móviles",
+            "consultoría",
+            "mantenimiento"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://www.proveedores.com/"
+    },
+    {
+        "nombre": "Baltasar López Díaz",
+        "latitud": "41.646481",
+        "longitud": "-0.887553",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Data & Analytics & Big Data & IA & Governance",
+        "tags": [
+            "data",
+            "analytics",
+            "big data",
+            "ia",
+            "governance"
+        ],
+        "ciclo": "DAM",
+        "estado_agente": "ok",
+        "fuentes": "https://es.linkedin.com/in/baltasar-lópez-díaz-2a7a64106"
     }
 ]
