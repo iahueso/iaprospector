@@ -302,8 +302,8 @@
             "zaragoza"
         ],
         "ciclo": "DAW",
-        "estado_agente": "ok",
-        "fuentes": "https://www.erp-zaragoza.com/"
+        "estado_agente": "",
+        "fuentes": ""
     },
     {
         "nombre": "Idea Consulting",
@@ -316,8 +316,8 @@
             "zaragoza"
         ],
         "ciclo": "DAW",
-        "estado_agente": "ok",
-        "fuentes": "https://www.ideaconsulting.es/"
+        "estado_agente": "",
+        "fuentes": ""
     },
     {
         "nombre": "Atlas Proyectos Informaticos",
@@ -330,8 +330,8 @@
             "zaragoza"
         ],
         "ciclo": "DAW",
-        "estado_agente": "ok",
-        "fuentes": "https://www.atlasproyectos.com/"
+        "estado_agente": "",
+        "fuentes": ""
     },
     {
         "nombre": "Taktic Business & Technology",
@@ -344,8 +344,8 @@
             "zaragoza"
         ],
         "ciclo": "DAW",
-        "estado_agente": "ok",
-        "fuentes": "https://www.takticbt.com/"
+        "estado_agente": "",
+        "fuentes": ""
     },
     {
         "nombre": "Babooni Technologies",
@@ -358,8 +358,8 @@
             "zaragoza"
         ],
         "ciclo": "DAW",
-        "estado_agente": "ok",
-        "fuentes": "https://www.babooni.com/"
+        "estado_agente": "",
+        "fuentes": ""
     },
     {
         "nombre": "Ayanet TIC",
@@ -374,8 +374,8 @@
             "datos"
         ],
         "ciclo": "DAW",
-        "estado_agente": "ok",
-        "fuentes": "https://ayanettic.es/"
+        "estado_agente": "",
+        "fuentes": ""
     },
     {
         "nombre": "Acosis",
@@ -391,8 +391,8 @@
             "crm"
         ],
         "ciclo": "DAW",
-        "estado_agente": "ok",
-        "fuentes": "https://www.acosis.es/"
+        "estado_agente": "",
+        "fuentes": ""
     },
     {
         "nombre": "Carrie Consulting S.L",
@@ -408,8 +408,8 @@
             "crm"
         ],
         "ciclo": "DAW",
-        "estado_agente": "ok",
-        "fuentes": "https://www.carrie.es/"
+        "estado_agente": "",
+        "fuentes": ""
     },
     {
         "nombre": "IriusRisk",
@@ -425,8 +425,8 @@
             "crm"
         ],
         "ciclo": "DAW",
-        "estado_agente": "ok",
-        "fuentes": "https://araintel.com/"
+        "estado_agente": "",
+        "fuentes": ""
     },
     {
         "nombre": "xelab",
@@ -442,8 +442,8 @@
             "crm"
         ],
         "ciclo": "DAW",
-        "estado_agente": "ok",
-        "fuentes": "https://araintel.com/"
+        "estado_agente": "",
+        "fuentes": ""
     },
     {
         "nombre": "Integra",
@@ -457,8 +457,8 @@
             "datos"
         ],
         "ciclo": "DAW",
-        "estado_agente": "ok",
-        "fuentes": "https://redaccion.camarazaragoza.com/empresa/integra/, https://www.goaragon.es/integra-tecnologia-crea-solucion-innovadora-para-proteger-a-los-trabajadores-de-las-altas-temperaturas/, https://www.goaragon.es/noticias-aragon-espana-integra-tecnologia-premios-cex-estrategia-marketing/, https://www.calatayud.es/noticia/integra-recibe-el-premio-a-mejor-empresa-familiar-de-aragon-2023"
+        "estado_agente": "",
+        "fuentes": ""
     },
     {
         "nombre": "GFT Technologies IT Consulting",
@@ -472,8 +472,8 @@
             "datos"
         ],
         "ciclo": "DAW",
-        "estado_agente": "ok",
-        "fuentes": "https://www.gft.com/es/es/about-us/newsroom/press-and-news/2023/press-releases/gft-inaugura-un-nuevo-modelo-de-oficina-en-zaragoza, https://es.linkedin.com/in/diego-bellido-gomez-b316b6141, https://www.ceoezaragoza.com/wp-content/uploads/2024/03/MEMORIA-PARA-WEB-2021.pdf"
+        "estado_agente": "",
+        "fuentes": ""
     },
     {
         "nombre": "ACCENTURE",
@@ -487,8 +487,8 @@
             "datos"
         ],
         "ciclo": "DAW",
-        "estado_agente": "ok",
-        "fuentes": "https://www.accenture.com/es-es/index.htm, https://es.indeed.com/cmp/Accenture"
+        "estado_agente": "",
+        "fuentes": ""
     },
     {
         "nombre": "BALAY",
@@ -502,8 +502,8 @@
             "eficiencia"
         ],
         "ciclo": "DAW",
-        "estado_agente": "ok",
-        "fuentes": "https://www.balay.es/, https://www.camarazaragoza.com/actualidad/erase-una-vez-balay-en-la-camara-de-comercio/, https://electro-imagen.com/articulo/balay-inaugura-la-exposicion-de-su-75-aniversario"
+        "estado_agente": "",
+        "fuentes": ""
     },
     {
         "nombre": "multipc",
@@ -517,8 +517,8 @@
             "tienda"
         ],
         "ciclo": "DAW",
-        "estado_agente": "ok",
-        "fuentes": "https://esopiniones.com/aragon/multipc-tu-tienda-de-informatica-267347, https://zaragozainfo.es/places/467140-multipc-tu-tienda-de-informatica"
+        "estado_agente": "",
+        "fuentes": ""
     },
     {
         "nombre": "multiverse computing",
@@ -534,8 +534,8 @@
             "innovación"
         ],
         "ciclo": "DAW",
-        "estado_agente": "ok",
-        "fuentes": "https://www.goaragon.es/noticias-aragon-espana-multiverse-computing-computacion-cuantica-zaragoza-innovacion-desarrollo/, https://www.eleconomista.es/tecnologia/noticias/13727437/01/26/la-multinacional-de-tecnologia-multiverse-computing-creara-mas-de-200-empleos-en-su-nueva-sede-en-zaragoza.html"
+        "estado_agente": "",
+        "fuentes": ""
     },
     {
         "nombre": "deusens",
@@ -551,8 +551,8 @@
             "tecnología"
         ],
         "ciclo": "DAW",
-        "estado_agente": "ok",
-        "fuentes": "https://redaccion.camarazaragoza.com/empresa/deusens/, https://deusens.com/es/blog/ejemplos-usos-realidad-virtual-empresas, https://www.heraldo.es/noticias/economia/2026/02/03/aragonesa-deusens-expansion-millones-facturacion-1890959.html"
+        "estado_agente": "",
+        "fuentes": ""
     },
     {
         "nombre": "Zonsai It Solutions",
@@ -566,8 +566,8 @@
             "datos"
         ],
         "ciclo": "DAW",
-        "estado_agente": "ok",
-        "fuentes": "https://www.zonsai.com/, https://www.sortlist.es/agency/zonsai-it-solutions, https://aqiveo.com/listing/zonsai/, https://www.empresia.es/empresa/zonsai-it-solutions/"
+        "estado_agente": "",
+        "fuentes": ""
     },
     {
         "nombre": "HubSpot",
@@ -583,8 +583,8 @@
             "servicio al cliente"
         ],
         "ciclo": "Otro",
-        "estado_agente": "ok",
-        "fuentes": "https://www.hubspot.es/"
+        "estado_agente": "",
+        "fuentes": ""
     },
     {
         "nombre": "GA Consultores ERP / CRM",
@@ -600,8 +600,8 @@
             "implementación"
         ],
         "ciclo": "DAM",
-        "estado_agente": "ok",
-        "fuentes": "https://www.gaconsultoreserpcrmzaragoza.es/"
+        "estado_agente": "",
+        "fuentes": ""
     },
     {
         "nombre": "Inforges",
@@ -617,8 +617,8 @@
             "implementación"
         ],
         "ciclo": "DAW",
-        "estado_agente": "ok",
-        "fuentes": "https://inforges.es/gestion-empresarial/crm/crm-zaragoza/"
+        "estado_agente": "",
+        "fuentes": ""
     },
     {
         "nombre": "Hiberus Tecnología",
@@ -632,8 +632,8 @@
             "transformación digital"
         ],
         "ciclo": "DAW",
-        "estado_agente": "ok",
-        "fuentes": "https://www.hiberus.com/, https://www.empresia.es/empresa/hiberus-tecnologias-de-la-informacion/, https://www.einforma.com/informacion-empresa/hiberus-tecnologias-diferenciales"
+        "estado_agente": "",
+        "fuentes": ""
     },
     {
         "nombre": "Atenea",
@@ -647,8 +647,8 @@
             "zaragoza"
         ],
         "ciclo": "DAW",
-        "estado_agente": "ok",
-        "fuentes": "https://www.einforma.com/informacion-empresa/plataforma-atenea-zaragoza, https://www.axesor.es/Informes-Empresas/11118898/PLATAFORMA_ATENEA_ZARAGOZA_SL.html"
+        "estado_agente": "",
+        "fuentes": ""
     },
     {
         "nombre": "BSH ELECTRODOMÉSTICOS",
@@ -662,8 +662,8 @@
             "diseño"
         ],
         "ciclo": "DAW",
-        "estado_agente": "ok",
-        "fuentes": "https://www.einforma.com/informacion-empresa/bsh-electrodomesticos-espana, https://redaccion.camarazaragoza.com/empresa/bsh/"
+        "estado_agente": "",
+        "fuentes": ""
     },
     {
         "nombre": "Tecnocasa",
@@ -676,8 +676,8 @@
             "zaragoza"
         ],
         "ciclo": "DAW",
-        "estado_agente": "ok",
-        "fuentes": "https://www.tecnocasa.es/agencias-inmobiliarias/zaragoza/zaragoza.html"
+        "estado_agente": "",
+        "fuentes": ""
     },
     {
         "nombre": "Salesforce",
@@ -691,8 +691,8 @@
             "inmobiliaria"
         ],
         "ciclo": "IA y Big Data",
-        "estado_agente": "ok",
-        "fuentes": "https://www.salesforce.com/es/engineering-construction-real-estate/real-estate-software/"
+        "estado_agente": "",
+        "fuentes": ""
     },
     {
         "nombre": "Solvify",
@@ -706,8 +706,8 @@
             "java"
         ],
         "ciclo": "Otro",
-        "estado_agente": "ok",
-        "fuentes": "https://vacantesdigitales.com/empleo-digital/devops/devops-engineer-remoto-latam"
+        "estado_agente": "",
+        "fuentes": ""
     },
     {
         "nombre": "Kairós",
@@ -721,8 +721,8 @@
             "java"
         ],
         "ciclo": "Otro",
-        "estado_agente": "ok",
-        "fuentes": "https://es.indeed.com/q-java-devops-empleos.html"
+        "estado_agente": "",
+        "fuentes": ""
     },
     {
         "nombre": "ADA Computer",
@@ -736,8 +736,8 @@
             "crm"
         ],
         "ciclo": "DAW",
-        "estado_agente": "ok",
-        "fuentes": "https://adacomputer.es/, https://www.linkedin.com/company/ada-computer/"
+        "estado_agente": "",
+        "fuentes": ""
     },
     {
         "nombre": "Databay Solutions",
@@ -752,8 +752,8 @@
             "docker"
         ],
         "ciclo": "DAW",
-        "estado_agente": "ok",
-        "fuentes": "https://databay.solutions/, https://www.linkedin.com/company/databay-solutions/"
+        "estado_agente": "",
+        "fuentes": ""
     },
     {
         "nombre": "ITCY",
@@ -767,8 +767,8 @@
             "consultoría"
         ],
         "ciclo": "DAW",
-        "estado_agente": "ok",
-        "fuentes": "https://zaragozatop.com/informatica-y-electronica/empresas-ciberseguridad/"
+        "estado_agente": "",
+        "fuentes": ""
     },
     {
         "nombre": "Clovisolutions",
@@ -782,8 +782,8 @@
             "ciberseguridad"
         ],
         "ciclo": "DAW",
-        "estado_agente": "ok",
-        "fuentes": "https://clovisolutions.com/"
+        "estado_agente": "",
+        "fuentes": ""
     },
     {
         "nombre": "Vidasoft",
@@ -797,8 +797,8 @@
             "desarrollo de software"
         ],
         "ciclo": "IA y Big Data",
-        "estado_agente": "ok",
-        "fuentes": "https://vidasoft.es/desarrollador-software-zaragoza/"
+        "estado_agente": "",
+        "fuentes": ""
     },
     {
         "nombre": "rIL Agencia de Marketing Digital",
@@ -812,8 +812,8 @@
             "automatización"
         ],
         "ciclo": "Marketing",
-        "estado_agente": "ok",
-        "fuentes": "https://www.ril.es/"
+        "estado_agente": "",
+        "fuentes": ""
     },
     {
         "nombre": "SURáTICA Software",
@@ -830,8 +830,8 @@
             "mantenimiento"
         ],
         "ciclo": "DAW",
-        "estado_agente": "ok",
-        "fuentes": "https://www.suratica.es/"
+        "estado_agente": "",
+        "fuentes": ""
     },
     {
         "nombre": "Q2B Studio",
@@ -848,8 +848,8 @@
             "marketing"
         ],
         "ciclo": "DAW",
-        "estado_agente": "ok",
-        "fuentes": "https://www.q2bstudio.com/"
+        "estado_agente": "",
+        "fuentes": ""
     },
     {
         "nombre": "Planea Soluciones",
@@ -864,8 +864,8 @@
             "soluciones"
         ],
         "ciclo": "DAW",
-        "estado_agente": "ok",
-        "fuentes": "https://planeasoluciones.com/"
+        "estado_agente": "",
+        "fuentes": ""
     },
     {
         "nombre": "Loop Innova",
@@ -882,8 +882,8 @@
             "mantenimiento"
         ],
         "ciclo": "DAW",
-        "estado_agente": "ok",
-        "fuentes": "https://www.proveedores.com/"
+        "estado_agente": "",
+        "fuentes": ""
     },
     {
         "nombre": "Baltasar López Díaz",
@@ -899,7 +899,82 @@
             "governance"
         ],
         "ciclo": "DAM",
+        "estado_agente": "",
+        "fuentes": ""
+    },
+    {
+        "nombre": "Agencia De Desarrollo De Software",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Agencia desarrollo de software a medida con sede en París y Barcelona. Software especializado y aplicaciones SaaS.",
+        "tags": [
+            "software",
+            "aplicaciones",
+            "desarrollo"
+        ],
+        "ciclo": "DAW",
         "estado_agente": "ok",
-        "fuentes": "https://es.linkedin.com/in/baltasar-lópez-díaz-2a7a64106"
+        "fuentes": "https://www.bing.com/aclick?ld=e8yHape6SdRNA1aRqd1_1naDVUCUzjICi65gGYB3GRVxpOm40UT_g87KxsapTgfFBnDce0hYXMnfbndM6nlfEykr2W3L_tVlM2iwDwxS3ZSYPUInFEZYcpPgYk16ekL2CqaFwFQwSeIq_BDIv4Ur5MO8PavkndCEIDfkpEnBIjJZNsHf-h-3zuwKXuLAoxw1fZygL8Zg"
+    },
+    {
+        "nombre": "Empresas Desarrollo Software",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Completa un breve formulario y descubre las mejores Agencias de Desarrollo de Software.",
+        "tags": [
+            "software",
+            "desarrollo",
+            "agencia"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://www.bing.com/aclick?ld=e8bEFXtUSAQxHlmmE7Rk9PfzVUCUwdW4Siu2FxJ8gzZrXD_6imMxi8orFTGnlOnKeyuw_Ckc_EVK1YZvjLxPw64QvIOWrtO2-Idk60FI7gvHqqmo11SXWdvXvPcUOhI-DOqJEesqAZ7BS1ZRgYwFgbKmRcflO5G2t2ViR7LURVjQtkxn56oidk7NJWoXdErqEFoS-EhQ"
+    },
+    {
+        "nombre": "Top empresas de desarrollo de aplicaciones móviles en Zaragoza",
+        "latitud": "41.6442511",
+        "longitud": "-0.8856127",
+        "direccion": "Institut Français d'Espagne en Zaragoza, Paseo de Sagasta, 7, 50008 Zaragoza, España",
+        "descripcion": "Descubre las mejores empresas de desarrollo de aplicaciones móviles en Zaragoza, listas para llevar tu idea al siguiente nivel.",
+        "tags": [
+            "aplicaciones",
+            "desarrollo",
+            "móviles"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://www.sortlist.es/aplicaciones/zaragoza-es"
+    },
+    {
+        "nombre": "Las mejores empresas de desarrollo de apps móviles en Zaragoza",
+        "latitud": "41.6442511",
+        "longitud": "-0.8856127",
+        "direccion": "Institut Français d'Espagne en Zaragoza, Paseo de Sagasta, 7, 50008 Zaragoza, España",
+        "descripcion": "Descubre las mejores empresas de desarrollo de apps móviles en Zaragoza con nuestra guía detallada.",
+        "tags": [
+            "apps",
+            "desarrollo",
+            "móviles"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://zaragozatop.com/internet-y-telecomunicaciones/desarrollo-apps-moviles/"
+    },
+    {
+        "nombre": "Top 50 Compañías para desarrollo de aplicaciones móviles en Zaragoza",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Las 50 mejores empresas para el desarrollo de aplicaciones móviles en Zaragoza, ofreciendo servicios profesionales y de calidad para la creación de apps innovadoras y funcionales.",
+        "tags": [
+            "aplicaciones",
+            "desarrollo",
+            "móviles"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://www.q2bstudio.com/nuestro-blog/228135/mejores-empresas-desarrollo-aplicaciones-moviles-zaragoza"
     }
 ]
