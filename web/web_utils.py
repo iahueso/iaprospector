@@ -1,23 +1,15 @@
 import os
 import json
 import html
+import unicodedata
 
 import gspread
 from google.oauth2.service_account import Credentials
 
 
-# ==================================================
-# CONFIGURACIÓN INTERNA
-# ==================================================
-
-LAT_ZARAGOZA = 41.6488
-LON_ZARAGOZA = -0.8891
-ZOOM_ZARAGOZA = 12
-
-
-# ==================================================
-# GOOGLE SHEETS
-# ==================================================
+# ============================================================
+# 1. GOOGLE SHEETS
+# ============================================================
 
 def conectar_spreadsheet(directorio_superior, google_credentials_json, google_sheet_url):
     scopes = [
@@ -30,7 +22,7 @@ def conectar_spreadsheet(directorio_superior, google_credentials_json, google_sh
         google_credentials_json
     )
 
-    print("🔐 Usando credenciales:", ruta_credenciales)
+    print("Usando credenciales:", ruta_credenciales)
 
     credenciales = Credentials.from_service_account_file(
         ruta_credenciales,
@@ -43,93 +35,63 @@ def conectar_spreadsheet(directorio_superior, google_credentials_json, google_sh
     return spreadsheet
 
 
-def leer_hoja_empresas(directorio_superior, google_credentials_json, google_sheet_url, nombre_hoja):
-    spreadsheet = conectar_spreadsheet(
-        directorio_superior,
-        google_credentials_json,
-        google_sheet_url
-    )
+def leer_hoja_empresas(spreadsheet, nombre_hoja):
+    try:
+        hoja = spreadsheet.worksheet(nombre_hoja)
+    except gspread.WorksheetNotFound:
+        print(f"ERROR: No existe la hoja: {nombre_hoja}")
+        return []
 
-    print("\n📚 Hojas disponibles:")
-    for ws in spreadsheet.worksheets():
-        print("-", ws.title)
-
-    hoja = spreadsheet.worksheet(nombre_hoja)
     datos = hoja.get_all_values()
 
-    print(f"\n📄 Hoja leída: {nombre_hoja}")
-    print(f"Filas totales encontradas: {len(datos)}")
-
     if not datos:
-        return [], []
+        print(f"La hoja {nombre_hoja} está vacía.")
+        return []
 
-    cabecera = datos[0]
-    filas = datos[1:]
-
-    print("\n📌 Cabecera detectada:")
-    print(cabecera)
-
-    return cabecera, filas
+    return datos
 
 
-# ==================================================
-# UTILIDADES DE TEXTO Y DATOS
-# ==================================================
+# ============================================================
+# 2. UTILIDADES GENERALES
+# ============================================================
 
-def normalizar_campo(campo):
-    campo = str(campo).strip().lower()
-
-    reemplazos = {
-        "á": "a",
-        "é": "e",
-        "í": "i",
-        "ó": "o",
-        "ú": "u",
-        "ü": "u",
-        "ñ": "n"
-    }
-
-    for origen, destino in reemplazos.items():
-        campo = campo.replace(origen, destino)
-
-    return campo
-
-
-def obtener_valor(diccionario, posibles_campos, defecto=""):
-    mapa = {}
-
-    for clave, valor in diccionario.items():
-        mapa[normalizar_campo(clave)] = valor
-
-    for campo in posibles_campos:
-        campo_normalizado = normalizar_campo(campo)
-
-        if campo_normalizado in mapa:
-            return mapa[campo_normalizado]
-
-    return defecto
-
-
-def limpiar_texto(valor):
-    if valor is None:
+def escapar(texto):
+    if texto is None:
         return ""
 
-    return str(valor).strip()
+    return html.escape(str(texto), quote=True)
 
 
-def tiene_valor(valor):
-    valor = limpiar_texto(valor)
+def normalizar_texto(texto):
+    texto = str(texto).strip().lower()
 
-    if valor == "":
+    texto = unicodedata.normalize("NFD", texto)
+    texto = "".join(
+        c for c in texto
+        if unicodedata.category(c) != "Mn"
+    )
+
+    return texto
+
+
+def tiene_valor(texto):
+    if texto is None:
         return False
 
-    if valor.lower() in [
+    texto = str(texto).strip()
+
+    if texto == "":
+        return False
+
+    if texto.lower() in [
         "none",
         "null",
         "nan",
-        "no encontrado",
         "no_encontrado",
-        "sin datos"
+        "no encontrado",
+        "sin datos",
+        "sin descripcion",
+        "sin descripción"
     ]:
         return False
 
@@ -137,194 +99,254 @@ def tiene_valor(valor):
 
 
 def convertir_float(valor):
+    if valor is None:
+        return None
+
+    valor = str(valor).strip().replace(",", ".")
+
+    if valor == "":
+        return None
+
     try:
-        texto = str(valor).replace(",", ".").strip()
-
-        if texto == "":
-            return None
-
-        return float(texto)
-
-    except Exception:
+        return float(valor)
+    except ValueError:
         return None
 
 
 def coordenadas_validas(latitud, longitud):
-    if latitud is None or longitud is None:
+    lat = convertir_float(latitud)
+    lon = convertir_float(longitud)
+
+    if lat is None or lon is None:
         return False
 
-    try:
-        lat = float(latitud)
-        lon = float(longitud)
-
-        return -90 <= lat <= 90 and -180 <= lon <= 180
-
-    except Exception:
+    if lat < -90 or lat > 90:
         return False
 
+    if lon < -180 or lon > 180:
+        return False
 
-def escapar(valor):
-    return html.escape(str(valor), quote=True)
+    return True
 
 
-def convertir_tags_a_lista(tags):
-    if tags is None:
+def normalizar_cabecera(texto):
+    return normalizar_texto(texto)
+
+
+def obtener_valor_por_alias(fila, cabecera, alias):
+    """
+    Busca un campo usando varios posibles nombres de columna.
+
+    Si hay cabeceras duplicadas, por ejemplo:
+    Nombre ... nombre
+    devuelve la primera columna que tenga valor real.
+    """
+
+    alias_normalizados = [
+        normalizar_cabecera(a)
+        for a in alias
+    ]
+
+    valores_encontrados = []
+
+    for idx, nombre_columna in enumerate(cabecera):
+        nombre_normalizado = normalizar_cabecera(nombre_columna)
+
+        if nombre_normalizado in alias_normalizados:
+            if idx < len(fila):
+                valor = str(fila[idx]).strip()
+
+                if tiene_valor(valor):
+                    valores_encontrados.append(valor)
+
+    if valores_encontrados:
+        return valores_encontrados[0]
+
+    return ""
+
+
+# ============================================================
+# 3. TAGS
+# ============================================================
+
+def convertir_tags_a_lista(valor):
+    if valor is None:
         return []
 
-    if isinstance(tags, list):
-        return [limpiar_texto(t) for t in tags if limpiar_texto(t)]
+    if isinstance(valor, list):
+        partes = valor
+    else:
+        texto = str(valor).strip()
+        texto = texto.replace(";", ",")
+        partes = texto.split(",")
 
-    texto = limpiar_texto(tags)
-
-    if texto == "":
-        return []
-
-    partes = texto.replace(";", ",").split(",")
-
-    tags_limpios = []
+    tags = []
 
     for parte in partes:
-        tag = parte.strip()
+        tag = str(parte).strip().lower()
 
         if tag.startswith("#"):
             tag = tag[1:]
 
-        if tag and tag.lower() not in [t.lower() for t in tags_limpios]:
-            tags_limpios.append(tag)
+        if tag and tag not in tags:
+            tags.append(tag)
 
-    return tags_limpios
-
-
-def normalizar_tag(tag):
-    tag = limpiar_texto(tag).lower()
-
-    if tag.startswith("#"):
-        tag = tag[1:]
-
-    return tag.strip()
+    return tags
 
 
-# ==================================================
-# CONVERSIÓN DE FILAS A EMPRESAS
-# ==================================================
+def obtener_todos_los_tags(empresas):
+    tags = []
 
-def fila_a_empresa(cabecera, fila, numero_fila):
-    empresa_raw = {}
+    for empresa in empresas:
+        for tag in empresa.get("tags", []):
+            tag = str(tag).strip().lower()
 
-    for i, campo in enumerate(cabecera):
-        valor = fila[i] if i < len(fila) else ""
-        empresa_raw[campo] = valor
+            if tag and tag not in tags:
+                tags.append(tag)
 
-    nombre = limpiar_texto(
-        obtener_valor(
-            empresa_raw,
-            ["Nombre", "nombre", "empresa", "nombre_empresa", "name", "title"]
+    return sorted(tags)
+
+
+def generar_tags_html_empresa(empresa):
+    tags = empresa.get("tags", [])
+
+    html_tags = ""
+
+    for tag in tags:
+        html_tags += (
+            f'<span class="tag-empresa" '
+            f'data-tag="{escapar(tag)}">'
+            f'{escapar(tag)}</span>'
         )
+
+    return html_tags
+
+
+def generar_filtro_tags_global(empresas):
+    tags = obtener_todos_los_tags(empresas)
+
+    html_tags = ""
+
+    for tag in tags:
+        html_tags += (
+            f'<button class="tag-filtro" '
+            f'data-tag="{escapar(tag)}">'
+            f'{escapar(tag)}</button>'
+        )
+
+    return html_tags
+
+
+# ============================================================
+# 4. CONVERSIÓN DE FILAS A EMPRESAS
+# ============================================================
+
+def fila_a_empresa(fila, cabecera, numero_fila):
+    nombre = obtener_valor_por_alias(
+        fila,
+        cabecera,
+        ["Nombre", "nombre", "empresa", "Empresa", "title", "name"]
     )
 
-    latitud = convertir_float(
-        obtener_valor(
-            empresa_raw,
-            ["Latitud", "latitud", "lat", "latitude"]
-        )
+    latitud = obtener_valor_por_alias(
+        fila,
+        cabecera,
+        ["Latitud", "latitud", "lat", "latitude"]
     )
 
-    longitud = convertir_float(
-        obtener_valor(
-            empresa_raw,
-            ["Longitud", "longitud", "longtud", "lng", "lon", "longitude"]
-        )
+    longitud = obtener_valor_por_alias(
+        fila,
+        cabecera,
+        ["Longitud", "longitud", "lon", "lng", "longitude"]
     )
 
-    direccion = limpiar_texto(
-        obtener_valor(
-            empresa_raw,
-            ["Dirección", "direccion", "dirección", "address"]
-        )
+    direccion = obtener_valor_por_alias(
+        fila,
+        cabecera,
+        ["Dirección", "direccion", "dirección", "address", "streetAddress"]
     )
 
-    descripcion = limpiar_texto(
-        obtener_valor(
-            empresa_raw,
-            ["Descripción", "descripcion", "descripción", "description"]
-        )
+    descripcion = obtener_valor_por_alias(
+        fila,
+        cabecera,
+        ["Descripción", "descripcion", "descripción", "description"]
     )
 
-    tags = limpiar_texto(
-        obtener_valor(
-            empresa_raw,
-            ["Tags", "tags", "etiquetas", "keywords", "palabras_clave"]
-        )
+    tags_texto = obtener_valor_por_alias(
+        fila,
+        cabecera,
+        ["Tags", "tags", "etiquetas", "keywords", "palabras_clave"]
     )
 
-    ciclo = limpiar_texto(
-        obtener_valor(
-            empresa_raw,
-            [
-                "Ciclo Asignado",
-                "ciclo asignado",
-                "ciclo",
-                "familia",
-                "fp",
-                "ciclo_formativo"
-            ]
-        )
+    ciclo = obtener_valor_por_alias(
+        fila,
+        cabecera,
+        ["Ciclo Asignado", "ciclo", "Ciclo", "ciclo asignado"]
     )
 
-    alumnos = limpiar_texto(
-        obtener_valor(
-            empresa_raw,
-            ["NAlumnos", "nalumnos", "alumnos", "num_alumnos", "numero_alumnos"],
-            "0"
-        )
+    estado_agente = obtener_valor_por_alias(
+        fila,
+        cabecera,
+        ["estado_agente", "Estado Agente", "estado"]
     )
 
-    estado_agente = limpiar_texto(
-        obtener_valor(
-            empresa_raw,
-            ["estado_agente", "Estado Agente", "estado"]
-        )
+    fuentes = obtener_valor_por_alias(
+        fila,
+        cabecera,
+        ["fuentes", "Fuentes", "source", "sources"]
     )
 
-    fuentes = limpiar_texto(
-        obtener_valor(
-            empresa_raw,
-            ["fuentes", "Fuentes", "source", "sources"]
-        )
+    fecha_inclusion = obtener_valor_por_alias(
+        fila,
+        cabecera,
+        ["fecha_inclusion", "Fecha inclusión", "fecha_alta", "fecha"]
     )
 
     if not tiene_valor(nombre):
-        print(f"⚠️ Fila {numero_fila} descartada: no tiene nombre.")
+        print(f"Fila {numero_fila} descartada: no tiene nombre.")
         return None
 
     if not coordenadas_validas(latitud, longitud):
-        print(f"⚠️ {nombre}: sin coordenadas válidas. Se publicará tarjeta, pero no marcador.")
+        print(f"Fila {numero_fila} descartada: coordenadas no válidas para {nombre}.")
+        return None
 
-    return {
+    empresa = {
         "nombre": nombre,
-        "latitud": latitud,
-        "longitud": longitud,
+        "latitud": str(latitud).replace(",", "."),
+        "longitud": str(longitud).replace(",", "."),
         "direccion": direccion,
         "descripcion": descripcion,
-        "tags": tags,
-        "tags_lista": convertir_tags_a_lista(tags),
-        "ciclo": ciclo if ciclo else "Otro",
-        "alumnos": alumnos if alumnos else "0",
-        "estado_agente": estado_agente if estado_agente else "Sin estado",
-        "fuentes": fuentes
+        "tags": convertir_tags_a_lista(tags_texto),
+        "ciclo": ciclo,
+        "estado_agente": estado_agente,
+        "fuentes": fuentes,
+        "fecha_inclusion": fecha_inclusion
     }
 
+    return empresa
 
-def convertir_filas_a_empresas(cabecera, filas):
+
+def convertir_filas_a_empresas(datos):
+    if not datos:
+        return []
+
+    cabecera = datos[0]
+    filas = datos[1:]
+
+    print("\nCabecera detectada:")
+    print(cabecera)
+
     empresas = []
 
     for numero_fila, fila in enumerate(filas, start=2):
-        empresa = fila_a_empresa(cabecera, fila, numero_fila)
+        empresa = fila_a_empresa(
+            fila=fila,
+            cabecera=cabecera,
+            numero_fila=numero_fila
+        )
 
-        if empresa is not None:
+        if empresa:
             empresas.append(empresa)
-
-    print(f"\n✅ Empresas preparadas para publicar: {len(empresas)}")
 
     return empresas
 
@@ -335,848 +357,1260 @@ def leer_empresas_desde_sheets(
     google_sheet_url,
     nombre_hoja
 ):
-    cabecera, filas = leer_hoja_empresas(
-        directorio_superior,
-        google_credentials_json,
-        google_sheet_url,
-        nombre_hoja
+    spreadsheet = conectar_spreadsheet(
+        directorio_superior=directorio_superior,
+        google_credentials_json=google_credentials_json,
+        google_sheet_url=google_sheet_url
     )
 
-    if not cabecera:
-        print("⚠️ La hoja está vacía.")
-        return []
+    datos = leer_hoja_empresas(
+        spreadsheet=spreadsheet,
+        nombre_hoja=nombre_hoja
+    )
 
-    return convertir_filas_a_empresas(cabecera, filas)
+    empresas = convertir_filas_a_empresas(datos)
+
+    return empresas
 
 
-# ==================================================
-# JSON
-# ==================================================
+# ============================================================
+# 5. GENERACIÓN JSON
+# ============================================================
 
 def generar_json(empresas, ruta_json):
-    os.makedirs(os.path.dirname(ruta_json), exist_ok=True)
+    carpeta = os.path.dirname(ruta_json)
+
+    if carpeta:
+        os.makedirs(carpeta, exist_ok=True)
 
     with open(ruta_json, "w", encoding="utf-8") as f:
-        json.dump(empresas, f, ensure_ascii=False, indent=2)
-
-    print(f"✅ JSON generado: {ruta_json}")
-
-
-# ==================================================
-# GENERACIÓN DE TARJETAS Y TAGS
-# ==================================================
-
-def generar_tags_html_empresa(empresa):
-    tags = empresa.get("tags_lista", [])
-
-    if not tags:
-        return '<button class="tag tag-boton" data-tag="sintags">#SinTags</button>'
-
-    partes = []
-
-    for tag in tags:
-        tag_visible = "#" + escapar(tag)
-        tag_data = escapar(normalizar_tag(tag))
-
-        partes.append(
-            f'<button class="tag tag-boton" data-tag="{tag_data}">{tag_visible}</button>'
+        json.dump(
+            empresas,
+            f,
+            ensure_ascii=False,
+            indent=4
         )
 
-    return "".join(partes)
+    print(f"JSON generado: {ruta_json}")
 
+
+# ============================================================
+# 6. HTML DE TARJETAS
+# ============================================================
 
 def generar_tarjeta_empresa(empresa):
-    nombre = escapar(empresa["nombre"])
-    descripcion = escapar(empresa["descripcion"]) or "Sin descripción disponible."
-    direccion = escapar(empresa["direccion"]) or "Dirección no disponible."
-    ciclo = escapar(empresa["ciclo"])
-    alumnos = escapar(empresa["alumnos"])
-    estado_agente = escapar(empresa["estado_agente"])
-    fuentes = escapar(empresa["fuentes"])
+    nombre = empresa.get("nombre", "")
+    descripcion = empresa.get("descripcion", "")
+    direccion = empresa.get("direccion", "")
+    ciclo = empresa.get("ciclo", "")
+    tags = empresa.get("tags", [])
 
-    tags_data = "|".join(
-        normalizar_tag(tag)
-        for tag in empresa.get("tags_lista", [])
-    )
-
-    texto_busqueda = " ".join([
-        empresa["nombre"],
-        empresa["descripcion"],
-        empresa["direccion"],
-        empresa["tags"],
-        empresa["ciclo"],
-        empresa["estado_agente"],
-        empresa["fuentes"]
-    ])
-
-    texto_busqueda = escapar(texto_busqueda.lower())
-
-    tiene_coords = coordenadas_validas(
-        empresa["latitud"],
-        empresa["longitud"]
-    )
-
-    if tiene_coords:
-        latitud = empresa["latitud"]
-        longitud = empresa["longitud"]
-        clase_extra = " tarjeta-clicable"
-        data_coords = f'data-lat="{latitud}" data-lng="{longitud}" data-nombre="{nombre}"'
-    else:
-        latitud = "Sin latitud"
-        longitud = "Sin longitud"
-        clase_extra = ""
-        data_coords = f'data-nombre="{nombre}"'
-
-    tags_html = generar_tags_html_empresa(empresa)
-
-    if fuentes:
-        fuentes_html = f'<p class="fuentes">🔗 Fuentes: {fuentes}</p>'
-    else:
-        fuentes_html = ""
+    data_tags = ",".join(tags)
 
     return f"""
-            <div class="card{clase_extra}" 
-                 {data_coords}
-                 data-tags="{escapar(tags_data)}"
-                 data-search="{texto_busqueda}">
-                <div>
-                    <h2>{nombre}</h2>
-                    <span class="badge-ciclo">{ciclo}</span>
-                    <p class="descripcion">{descripcion}</p>
-                    <p class="direccion">📍 {direccion}</p>
-                    {fuentes_html}
-                </div>
+    <article
+        class="tarjeta-empresa"
+        data-nombre="{escapar(nombre.lower())}"
+        data-tags="{escapar(data_tags.lower())}"
+    >
+        <h3>{escapar(nombre)}</h3>
 
-                <div>
-                    <div class="tags">{tags_html}</div>
+        <p class="linea-ciclo">
+            <strong>Ciclo:</strong> {escapar(ciclo)}
+        </p>
 
-                    <div class="info-footer">
-                        <span>Lat: {latitud}, Lng: {longitud}</span>
-                        <span>👥 Alumnos: <strong>{alumnos}</strong></span>
-                    </div>
+        <p class="linea-direccion">
+            <strong>Dirección:</strong> {escapar(direccion)}
+        </p>
 
-                    <div class="estado-footer">
-                        Estado agente: <strong>{estado_agente}</strong>
-                    </div>
-                </div>
-            </div>
-"""
+        <p class="descripcion">
+            {escapar(descripcion)}
+        </p>
+
+        <div class="tags-empresa">
+            {generar_tags_html_empresa(empresa)}
+        </div>
+    </article>
+    """
 
 
-def obtener_todos_los_tags(empresas):
-    tags = set()
-
-    for empresa in empresas:
-        for tag in empresa.get("tags_lista", []):
-            tags.add(normalizar_tag(tag))
-
-    return sorted(tags)
-
-
-def generar_filtro_tags_global(empresas):
-    tags = obtener_todos_los_tags(empresas)
-
-    if not tags:
-        return ""
-
-    botones = []
-
-    for tag in tags:
-        botones.append(
-            f'<button class="filtro-tag" data-tag="{escapar(tag)}">#{escapar(tag)}</button>'
-        )
-
-    return "\n".join(botones)
-
-
-def generar_marcadores(empresas):
-    marcadores = []
-
-    for empresa in empresas:
-        if not coordenadas_validas(empresa["latitud"], empresa["longitud"]):
-            continue
-
-        marcadores.append({
-            "nombre": empresa["nombre"],
-            "lat": empresa["latitud"],
-            "lng": empresa["longitud"],
-            "ciclo": empresa["ciclo"],
-            "descripcion": empresa["descripcion"],
-            "direccion": empresa["direccion"],
-            "tags": empresa["tags"],
-            "tags_lista": empresa["tags_lista"],
-            "alumnos": empresa["alumnos"]
-        })
-
-    return marcadores
-
-
-# ==================================================
-# CSS
-# ==================================================
+# ============================================================
+# 7. CSS
+# ============================================================
 
 def generar_css():
     return """
-        body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background-color: #f4f7f6;
-            margin: 0;
-            padding: 0;
-            color: #333;
-        }
+* {
+    box-sizing: border-box;
+}
 
-        header {
-            background-color: #1e293b;
-            color: white;
-            text-align: center;
-            padding: 1.5rem 1rem;
-        }
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f3f4f6;
+    color: #111827;
+}
 
-        header h1 {
-            margin: 0;
-            font-size: 2rem;
-        }
+.cabecera {
+    background: #111827;
+    color: white;
+    padding: 18px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+}
 
-        header p {
-            margin: 0.5rem 0 0 0;
-            color: #cbd5e1;
-        }
+.cabecera h1 {
+    margin: 0;
+    font-size: 26px;
+}
 
-        .barra-info {
-            max-width: 1200px;
-            margin: 1rem auto 0 auto;
-            padding: 0 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
+.cabecera p {
+    margin: 6px 0 0 0;
+    color: #d1d5db;
+}
 
-        .contador {
-            background: white;
-            padding: 0.75rem 1rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            font-weight: bold;
-            color: #1e293b;
-        }
+.resumen-superior {
+    display: flex;
+    gap: 12px;
+}
 
-        .buscador {
-            flex: 1;
-            min-width: 260px;
-        }
+.dato-resumen {
+    min-width: 90px;
+    background: #1f2937;
+    border: 1px solid #374151;
+    border-radius: 14px;
+    padding: 12px;
+    text-align: center;
+}
 
-        .buscador input {
-            width: 100%;
-            padding: 0.75rem 1rem;
-            border: 1px solid #cbd5e1;
-            border-radius: 8px;
-            font-size: 1rem;
-        }
+.dato-resumen span {
+    display: block;
+    font-size: 28px;
+    font-weight: bold;
+}
 
-        .panel-tags {
-            max-width: 1200px;
-            margin: 1rem auto 0 auto;
-            padding: 0 1rem;
-        }
+.dato-resumen small {
+    color: #d1d5db;
+    font-size: 13px;
+}
 
-        .panel-tags h3 {
-            margin: 0 0 0.5rem 0;
-            color: #1e293b;
-            font-size: 1rem;
-        }
+.tabs-vista {
+    display: flex;
+    gap: 8px;
+    background: #111827;
+    padding: 0 24px 14px 24px;
+}
 
-        .filtros-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
+.tab-vista {
+    border: 1px solid #374151;
+    background: #1f2937;
+    color: #d1d5db;
+    padding: 9px 16px;
+    border-radius: 999px;
+    font-size: 14px;
+    cursor: pointer;
+}
 
-        .filtro-tag,
-        .tag-boton {
-            border: none;
-            cursor: pointer;
-            font-family: inherit;
-        }
+.tab-vista:hover {
+    background: #374151;
+}
 
-        .filtro-tag {
-            background: #e2e8f0;
-            color: #334155;
-            padding: 0.4rem 0.7rem;
-            border-radius: 999px;
-            font-size: 0.85rem;
-            transition: 0.2s;
-        }
+.tab-vista.activo {
+    background: #2563eb;
+    border-color: #2563eb;
+    color: white;
+}
 
-        .filtro-tag:hover {
-            background: #fecaca;
-            color: #7f1d1d;
-        }
+.vista-oculta {
+    display: none !important;
+}
 
-        .filtro-tag.activo {
-            background: #7f1d1d;
-            color: white;
-        }
+.layout {
+    height: calc(100vh - 96px);
+    display: grid;
+    grid-template-columns: 390px 1fr;
+    grid-template-areas: "panel mapa";
+}
 
-        .limpiar-filtros {
-            background: #fee2e2;
-            color: #991b1b;
-        }
+.vista-fecha {
+    height: calc(100vh - 96px);
+    overflow-y: auto;
+    padding: 24px;
+    background: #f3f4f6;
+}
 
-        #mapa-seccion {
-            max-width: 1200px;
-            margin: 1.5rem auto;
-            padding: 0 1rem;
-        }
+.vista-fecha .contenedor-fecha {
+    max-width: 900px;
+    margin: 0 auto;
+}
 
-        #map {
-            height: 450px;
-            width: 100%;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
+.vista-fecha h2 {
+    margin: 0 0 4px 0;
+}
 
-        main {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
+.vista-fecha .subtitulo-fecha {
+    margin: 0 0 20px 0;
+    color: #6b7280;
+    font-size: 14px;
+}
 
-        .grid-empresas {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
+.grupo-fecha {
+    margin-bottom: 26px;
+}
 
-        .card {
-            background: white;
-            border-radius: 8px;
-            padding: 1.5rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            border-left: 5px solid #3b82f6;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: 0.2s ease;
-        }
+.grupo-fecha h3 {
+    position: sticky;
+    top: 0;
+    background: #f3f4f6;
+    margin: 0 0 10px 0;
+    padding: 6px 0;
+    font-size: 15px;
+    color: #374151;
+    border-bottom: 1px solid #e5e7eb;
+}
 
-        .card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 14px rgba(0,0,0,0.08);
-        }
+.lista-por-fecha {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
 
-        .card.seleccionada {
-            border-left-color: #7f1d1d;
-            background-color: #fef2f2;
-            box-shadow: 0 8px 18px rgba(127,29,29,0.20);
-        }
+.tarjeta-fecha {
+    border: 1px solid #e5e7eb;
+    background: white;
+    border-radius: 14px;
+    padding: 14px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.2s ease;
+}
 
-        .card.coincide-busqueda {
-            border-left-color: #0ea5e9;
-            background-color: #f0f9ff;
-        }
+.tarjeta-fecha:hover {
+    border-color: #2563eb;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
 
-        .tarjeta-clicable {
-            cursor: pointer;
-        }
+.tarjeta-fecha .info-empresa-fecha h4 {
+    margin: 0 0 4px 0;
+    font-size: 16px;
+}
 
-        .tarjeta-clicable:hover {
-            border-left-color: #0ea5e9;
-            background-color: #f8fafc;
-        }
+.tarjeta-fecha .info-empresa-fecha p {
+    margin: 0;
+    font-size: 13px;
+    color: #6b7280;
+}
 
-        .card h2 {
-            margin-top: 0;
-            color: #1e293b;
-            font-size: 1.25rem;
-        }
+.tarjeta-fecha .badge-ciclo {
+    flex-shrink: 0;
+    background: #eff6ff;
+    color: #1d4ed8;
+    border-radius: 999px;
+    padding: 6px 12px;
+    font-size: 12px;
+    white-space: nowrap;
+}
 
-        .badge-ciclo {
-            background-color: #e0f2fe;
-            color: #0369a1;
-            padding: 0.25rem 0.5rem;
-            border-radius: 4px;
-            font-size: 0.85rem;
-            font-weight: bold;
-            display: inline-block;
-            margin-bottom: 1rem;
-            align-self: flex-start;
-        }
+.panel-lateral {
+    grid-area: panel;
+    background: white;
+    border-right: 1px solid #e5e7eb;
+    overflow-y: auto;
+    padding: 18px;
+}
 
-        .descripcion {
-            font-size: 0.95rem;
-            color: #4b5563;
-            line-height: 1.4;
-            margin-bottom: 1rem;
-        }
+.zona-mapa {
+    grid-area: mapa;
+    min-height: 400px;
+}
 
-        .direccion {
-            font-size: 0.85rem;
-            color: #64748b;
-            line-height: 1.4;
-        }
+#map {
+    width: 100%;
+    height: 100%;
+}
 
-        .fuentes {
-            font-size: 0.8rem;
-            color: #64748b;
-            word-break: break-word;
-        }
+.bloque-filtros,
+.bloque-tags,
+.bloque-empresas {
+    margin-bottom: 22px;
+}
 
-        .tags {
-            margin: 1rem 0;
-        }
+.bloque-filtros h2,
+.bloque-tags h2,
+.bloque-empresas h2 {
+    margin: 0 0 10px 0;
+    font-size: 18px;
+}
 
-        .tag {
-            background: #f1f5f9;
-            color: #475569;
-            padding: 0.25rem 0.55rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            margin-right: 0.5rem;
-            display: inline-block;
-            margin-bottom: 0.25rem;
-        }
+#buscador {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    font-size: 15px;
+}
 
-        .tag:hover {
-            background: #fecaca;
-            color: #7f1d1d;
-        }
+.acciones-filtro {
+    margin-top: 10px;
+}
 
-        .tag.activo {
-            background: #7f1d1d;
-            color: white;
-        }
+#btnLimpiar {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    background: #374151;
+    color: white;
+    cursor: pointer;
+}
 
-        .info-footer {
-            display: flex;
-            justify-content: space-between;
-            gap: 1rem;
-            font-size: 0.8rem;
-            color: #64748b;
-            border-top: 1px solid #f1f5f9;
-            padding-top: 0.75rem;
-            margin-top: auto;
-            flex-wrap: wrap;
-        }
+#btnLimpiar:hover {
+    background: #111827;
+}
 
-        .estado-footer {
-            margin-top: 0.5rem;
-            font-size: 0.78rem;
-            color: #64748b;
-        }
+.contenedor-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
 
-        .popup h3 {
-            margin: 0 0 0.5rem 0;
-            color: #1e293b;
-        }
+.tag-filtro {
+    border: 1px solid #d1d5db;
+    background: #f9fafb;
+    color: #374151;
+    padding: 7px 10px;
+    border-radius: 999px;
+    font-size: 13px;
+    cursor: pointer;
+}
 
-        .popup p {
-            margin: 0.25rem 0;
-        }
+.tag-filtro:hover {
+    background: #e5e7eb;
+}
 
-        .marker-normal {
-            width: 16px;
-            height: 16px;
-            background: #2563eb;
-            border: 3px solid white;
-            border-radius: 50%;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.35);
-        }
+.tag-filtro.activo {
+    color: white;
+    border-color: transparent;
+}
 
-        .marker-destacado {
-            width: 22px;
-            height: 22px;
-            background: #7f1d1d;
-            border: 4px solid white;
-            border-radius: 50%;
-            box-shadow: 0 3px 12px rgba(127,29,29,0.6);
-        }
+.contador-resultados {
+    margin: 0 0 12px 0;
+    color: #6b7280;
+    font-size: 14px;
+}
 
-        footer {
-            text-align: center;
-            color: #64748b;
-            padding: 2rem 1rem;
-            font-size: 0.9rem;
-        }
+.lista-empresas {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
 
-        @media (max-width: 700px) {
-            header h1 {
-                font-size: 1.5rem;
-            }
+.tarjeta-empresa {
+    border: 1px solid #e5e7eb;
+    background: white;
+    border-radius: 14px;
+    padding: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
 
-            #map {
-                height: 360px;
-            }
+.tarjeta-empresa:hover {
+    border-color: #2563eb;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
 
-            .grid-empresas {
-                grid-template-columns: 1fr;
-            }
-        }
+.tarjeta-empresa.destacada {
+    border-width: 2px;
+    background: #fff;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.16);
+}
+
+.tarjeta-empresa.oculta {
+    display: none;
+}
+
+.tarjeta-empresa h3 {
+    margin: 0 0 6px 0;
+    font-size: 17px;
+}
+
+.tarjeta-empresa p {
+    margin: 4px 0;
+    font-size: 14px;
+    color: #374151;
+}
+
+.descripcion {
+    line-height: 1.35;
+}
+
+.tags-empresa {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.tag-empresa {
+    background: #f9fafb;
+    color: #075985;
+    border-radius: 999px;
+    padding: 4px 8px;
+    font-size: 12px;
+}
+
+.tag-empresa.destacado {
+    color: white;
+}
+
+.marker-normal {
+    width: 16px;
+    height: 16px;
+    background: #2563eb;
+    border: 3px solid white;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.35);
+}
+
+.marker-color {
+    width: 24px;
+    height: 24px;
+    border: 4px solid white;
+    border-radius: 50%;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.45);
+}
+
+/* ============================= */
+/* VERSIÓN MÓVIL */
+/* ============================= */
+
+@media (max-width: 768px) {
+
+    body {
+        background: #f3f4f6;
+    }
+
+    .cabecera {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        padding: 12px;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .cabecera h1 {
+        font-size: 18px;
+        line-height: 1.2;
+    }
+
+    .cabecera p {
+        display: none;
+    }
+
+    .tabs-vista {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        padding: 10px 12px;
+        overflow-x: auto;
+    }
+
+    .vista-fecha {
+        height: auto;
+        padding: 14px;
+    }
+
+    .resumen-superior {
+        gap: 6px;
+    }
+
+    .dato-resumen {
+        min-width: 66px;
+        padding: 8px;
+        border-radius: 10px;
+    }
+
+    .dato-resumen span {
+        font-size: 20px;
+    }
+
+    .dato-resumen small {
+        font-size: 11px;
+    }
+
+    .layout {
+        height: auto;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .zona-mapa {
+        order: 1;
+        width: 100%;
+        height: 48vh;
+        min-height: 320px;
+        border-bottom: 1px solid #d1d5db;
+    }
+
+    #map {
+        height: 100%;
+    }
+
+    .panel-lateral {
+        order: 2;
+        width: 100%;
+        border-right: none;
+        padding: 14px;
+        overflow: visible;
+    }
+
+    .bloque-filtros {
+        position: sticky;
+        top: 68px;
+        z-index: 900;
+        background: #f3f4f6;
+        padding: 10px 0;
+    }
+
+    .bloque-tags {
+        background: white;
+        padding: 14px;
+        border-radius: 14px;
+        border: 1px solid #e5e7eb;
+    }
+
+    .bloque-empresas {
+        background: white;
+        padding: 14px;
+        border-radius: 14px;
+        border: 1px solid #e5e7eb;
+    }
+
+    .contenedor-tags {
+        max-height: 170px;
+        overflow-y: auto;
+        padding-bottom: 4px;
+    }
+
+    .tag-filtro {
+        font-size: 12px;
+        padding: 7px 9px;
+    }
+
+    .lista-empresas {
+        gap: 10px;
+    }
+
+    .tarjeta-empresa {
+        padding: 12px;
+    }
+
+    .tarjeta-empresa h3 {
+        font-size: 16px;
+    }
+
+    .tarjeta-empresa p {
+        font-size: 13px;
+    }
+}
 """
 
 
-# ==================================================
-# JAVASCRIPT
-# ==================================================
+# ============================================================
+# 8. JAVASCRIPT
+# ============================================================
 
-def generar_javascript(marcadores):
-    marcadores_json = json.dumps(marcadores, ensure_ascii=False)
+def generar_javascript():
+    return """
+const CENTRO_ZARAGOZA = [41.6488, -0.8891];
+const ZOOM_ZARAGOZA_CIUDAD = 12;
 
-    return f"""
-        const empresas = {marcadores_json};
+let mapa = L.map('map').setView(CENTRO_ZARAGOZA, ZOOM_ZARAGOZA_CIUDAD);
 
-        const map = L.map('map').setView([{LAT_ZARAGOZA}, {LON_ZARAGOZA}], {ZOOM_ZARAGOZA});
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; OpenStreetMap'
+}).addTo(mapa);
 
-        L.tileLayer('https://{{s}}.tile.openstreetmap.org/{{z}}/{{x}}/{{y}}.png', {{
-            attribution: '&copy; OpenStreetMap contributors'
-        }}).addTo(map);
+let marcadores = [];
 
-        let marcadoresLeaflet = [];
-        let marcadoresPorNombre = {{}};
-        let tagActivo = null;
+// Ahora permitimos varios tags activos
+let tagsActivos = [];
 
-        const iconoNormal = L.divIcon({{
-            className: "",
-            html: '<div class="marker-normal"></div>',
-            iconSize: [22, 22],
-            iconAnchor: [11, 11],
-            popupAnchor: [0, -10]
-        }});
+const PALETA_TAGS = [
+    '#7f1d1d',
+    '#1d4ed8',
+    '#047857',
+    '#6d28d9',
+    '#c2410c',
+    '#0f766e',
+    '#be123c',
+    '#4338ca',
+    '#a16207',
+    '#15803d',
+    '#0369a1',
+    '#9333ea',
+    '#b45309',
+    '#0e7490',
+    '#4d7c0f'
+];
 
-        const iconoDestacado = L.divIcon({{
-            className: "",
-            html: '<div class="marker-destacado"></div>',
-            iconSize: [30, 30],
-            iconAnchor: [15, 15],
-            popupAnchor: [0, -14]
-        }});
+const iconoNormal = L.divIcon({
+    className: '',
+    html: '<div class="marker-normal"></div>',
+    iconSize: [22, 22],
+    iconAnchor: [11, 11]
+});
 
-        function normalizarTag(tag) {{
-            if (!tag) return "";
-            return tag.toLowerCase().replace(/^#/, "").trim();
-        }}
+function normalizarTexto(texto) {
+    return String(texto || '')
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\\u0300-\\u036f]/g, '')
+        .trim();
+}
 
-        function crearPopup(empresa) {{
-            return `
-                <div class="popup">
-                    <h3>${{empresa.nombre}}</h3>
-                    <p><strong>Ciclo:</strong> ${{empresa.ciclo || "Otro"}}</p>
-                    <p><strong>Descripción:</strong> ${{empresa.descripcion || ""}}</p>
-                    <p><strong>Dirección:</strong> ${{empresa.direccion || ""}}</p>
-                    <p><strong>Tags:</strong> ${{empresa.tags || ""}}</p>
-                    <p><strong>Alumnos:</strong> ${{empresa.alumnos || "0"}}</p>
-                </div>
-            `;
-        }}
+function obtenerTagsEmpresa(empresa) {
+    if (Array.isArray(empresa.tags)) {
+        return empresa.tags;
+    }
 
-        function empresaTieneTag(empresa, tag) {{
-            if (!tag) return false;
+    return String(empresa.tags || '')
+        .split(',')
+        .map(t => t.trim())
+        .filter(t => t.length > 0);
+}
 
-            const tags = empresa.tags_lista || [];
+function obtenerTodosLosTags() {
+    const tags = [];
 
-            return tags
-                .map(t => normalizarTag(t))
-                .includes(normalizarTag(tag));
-        }}
+    empresas.forEach(empresa => {
+        obtenerTagsEmpresa(empresa).forEach(tag => {
+            const tagNorm = normalizarTexto(tag);
 
-        function obtenerTagsGlobales() {{
-            const tags = new Set();
+            if (tagNorm && !tags.some(t => normalizarTexto(t) === tagNorm)) {
+                tags.push(tag);
+            }
+        });
+    });
 
-            empresas.forEach(empresa => {{
-                (empresa.tags_lista || []).forEach(tag => {{
-                    tags.add(normalizarTag(tag));
-                }});
-            }});
+    return tags.sort((a, b) => normalizarTexto(a).localeCompare(normalizarTexto(b)));
+}
 
-            return Array.from(tags).sort();
-        }}
+const TAGS_GLOBALES = obtenerTodosLosTags();
 
-        function detectarTagDesdeTexto(texto) {{
-            const t = normalizarTag(texto);
+function obtenerColorTag(tag) {
+    const tagNorm = normalizarTexto(tag);
 
-            if (t.length === 0) {{
-                return null;
-            }}
+    let indice = TAGS_GLOBALES.findIndex(
+        t => normalizarTexto(t) === tagNorm
+    );
 
-            const tags = obtenerTagsGlobales();
-            const tagEncontrado = tags.find(tag => tag.startsWith(t));
+    if (indice < 0) {
+        indice = 0;
+    }
 
-            return tagEncontrado || null;
-        }}
+    return PALETA_TAGS[indice % PALETA_TAGS.length];
+}
 
-        function obtenerTagDeResaltado() {{
-            const texto = document.getElementById("busqueda").value.toLowerCase().trim();
+function crearIconoColor(color) {
+    return L.divIcon({
+        className: '',
+        html: `<div class="marker-color" style="background:${color};"></div>`,
+        iconSize: [32, 32],
+        iconAnchor: [16, 16]
+    });
+}
 
-            if (tagActivo !== null) {{
-                return tagActivo;
-            }}
+function empresaTieneTag(empresa, tag) {
+    if (!tag) {
+        return false;
+    }
 
-            return detectarTagDesdeTexto(texto);
-        }}
+    const tagNorm = normalizarTexto(tag);
+    const tagsEmpresa = obtenerTagsEmpresa(empresa);
 
-        function pintarMarcadores(lista) {{
-            marcadoresLeaflet.forEach(m => map.removeLayer(m));
-            marcadoresLeaflet = [];
-            marcadoresPorNombre = {{}};
+    return tagsEmpresa.some(t => normalizarTexto(t) === tagNorm);
+}
 
-            const tagResaltado = obtenerTagDeResaltado();
+function empresaTieneAlgunTagActivo(empresa) {
+    if (tagsActivos.length === 0) {
+        return true;
+    }
 
-            lista.forEach(empresa => {{
-                const destacar = tagResaltado !== null && empresaTieneTag(empresa, tagResaltado);
+    return tagsActivos.some(tag => empresaTieneTag(empresa, tag));
+}
 
-                const marker = L.marker(
-                    [empresa.lat, empresa.lng],
-                    {{
-                        icon: destacar ? iconoDestacado : iconoNormal
-                    }}
-                )
-                .addTo(map)
-                .bindPopup(crearPopup(empresa));
+function obtenerPrimerTagActivoDeEmpresa(empresa) {
+    for (const tag of tagsActivos) {
+        if (empresaTieneTag(empresa, tag)) {
+            return tag;
+        }
+    }
 
-                marcadoresLeaflet.push(marker);
-                marcadoresPorNombre[empresa.nombre] = marker;
-            }});
+    return null;
+}
 
-            map.setView([{LAT_ZARAGOZA}, {LON_ZARAGOZA}], {ZOOM_ZARAGOZA});
-        }}
+function empresaCoincideTexto(empresa, texto) {
+    if (!texto) {
+        return true;
+    }
 
-        function obtenerEmpresasVisiblesPorTarjetas() {{
-            const tarjetas = document.querySelectorAll(".card");
-            const visibles = [];
+    const t = normalizarTexto(texto);
 
-            tarjetas.forEach(tarjeta => {{
-                if (tarjeta.style.display !== "none") {{
-                    const nombre = tarjeta.dataset.nombre;
-                    const empresa = empresas.find(e => e.nombre === nombre);
+    const campos = [
+        empresa.nombre,
+        empresa.descripcion,
+        empresa.direccion,
+        empresa.ciclo,
+        obtenerTagsEmpresa(empresa).join(', ')
+    ].join(' ');
 
-                    if (empresa) {{
-                        visibles.push(empresa);
-                    }}
-                }}
-            }});
+    return normalizarTexto(campos).includes(t);
+}
 
-            return visibles;
-        }}
+function limpiarMarcadores() {
+    marcadores.forEach(m => mapa.removeLayer(m));
+    marcadores = [];
+}
 
-        function actualizarMarcadoresDesdeTarjetas() {{
-            const visibles = obtenerEmpresasVisiblesPorTarjetas();
-            pintarMarcadores(visibles);
-        }}
+function pintarMarcadores(empresasVisibles) {
+    limpiarMarcadores();
 
-        function aplicarFiltros() {{
-            const texto = document.getElementById("busqueda").value.toLowerCase().trim();
-            const tarjetas = document.querySelectorAll(".card");
+    empresasVisibles.forEach(empresa => {
+        const lat = parseFloat(empresa.latitud);
+        const lon = parseFloat(empresa.longitud);
 
-            const tagDetectadoPorTexto = detectarTagDesdeTexto(texto);
-            const tagFiltroEfectivo = tagActivo !== null ? tagActivo : null;
-            const tagParaResaltar = tagActivo !== null ? tagActivo : tagDetectadoPorTexto;
+        if (isNaN(lat) || isNaN(lon)) {
+            return;
+        }
 
-            let visibles = 0;
+        let icono = iconoNormal;
 
-            tarjetas.forEach(tarjeta => {{
-                const contenido = tarjeta.dataset.search || "";
-                const tags = tarjeta.dataset.tags || "";
-                const listaTags = tags.split("|");
+        const primerTagActivo = obtenerPrimerTagActivoDeEmpresa(empresa);
 
-                const coincideTexto = texto === "" || contenido.includes(texto);
-                const coincideTagActivo = tagFiltroEfectivo === null || listaTags.includes(tagFiltroEfectivo);
+        if (primerTagActivo) {
+            const color = obtenerColorTag(primerTagActivo);
+            icono = crearIconoColor(color);
+        }
 
-                if (coincideTexto && coincideTagActivo) {{
-                    tarjeta.style.display = "flex";
-                    visibles++;
+        const marcador = L.marker(
+            [lat, lon],
+            {
+                icon: icono
+            }
+        ).addTo(mapa);
 
-                    tarjeta.classList.remove("seleccionada");
-                    tarjeta.classList.remove("coincide-busqueda");
+        marcador.bindPopup(`
+            <strong>${empresa.nombre || ''}</strong><br>
+            ${empresa.direccion || ''}<br>
+            <small>${obtenerTagsEmpresa(empresa).join(', ')}</small>
+        `);
 
-                    if (tagParaResaltar !== null && listaTags.includes(tagParaResaltar)) {{
-                        tarjeta.classList.add("seleccionada");
-                    }} else if (texto !== "") {{
-                        tarjeta.classList.add("coincide-busqueda");
-                    }}
+        marcadores.push(marcador);
+    });
 
-                }} else {{
-                    tarjeta.style.display = "none";
-                    tarjeta.classList.remove("coincide-busqueda");
-                    tarjeta.classList.remove("seleccionada");
-                }}
-            }});
+    // No hacemos fitBounds.
+    // El mapa no se mueve al seleccionar tags.
+}
 
-            document.getElementById("contador-empresas").textContent = visibles;
-            actualizarMarcadoresDesdeTarjetas();
-            actualizarTagsActivos(tagParaResaltar);
-        }}
+function tagEstaActivo(tag) {
+    const tagNorm = normalizarTexto(tag);
 
-        function actualizarTagsActivos(tagParaResaltar = null) {{
-            document.querySelectorAll(".tag, .filtro-tag").forEach(boton => {{
-                const tag = normalizarTag(boton.dataset.tag);
+    return tagsActivos.some(
+        t => normalizarTexto(t) === tagNorm
+    );
+}
 
-                if (tagParaResaltar !== null && tag === tagParaResaltar) {{
-                    boton.classList.add("activo");
-                }} else {{
-                    boton.classList.remove("activo");
-                }}
-            }});
-        }}
+function activarODesactivarTag(tag) {
+    const tagNorm = normalizarTexto(tag);
 
-        function seleccionarTag(tag) {{
-            const tagNormalizado = normalizarTag(tag);
+    const yaExiste = tagsActivos.some(
+        t => normalizarTexto(t) === tagNorm
+    );
 
-            if (tagActivo === tagNormalizado) {{
-                tagActivo = null;
-            }} else {{
-                tagActivo = tagNormalizado;
-            }}
+    if (yaExiste) {
+        tagsActivos = tagsActivos.filter(
+            t => normalizarTexto(t) !== tagNorm
+        );
+    } else {
+        tagsActivos.push(tag);
+    }
+}
+
+function colorearTagsGlobales() {
+    const botones = document.querySelectorAll('.tag-filtro');
+
+    botones.forEach(boton => {
+        const tag = boton.dataset.tag || boton.textContent;
+        const color = obtenerColorTag(tag);
+
+        boton.style.borderColor = color;
+
+        if (tagEstaActivo(tag)) {
+            boton.classList.add('activo');
+            boton.style.backgroundColor = color;
+            boton.style.color = 'white';
+        } else {
+            boton.classList.remove('activo');
+            boton.style.backgroundColor = '';
+            boton.style.color = color;
+        }
+    });
+}
+
+function colorearTagsEmpresa(tarjeta) {
+    const tags = tarjeta.querySelectorAll('.tag-empresa');
+
+    tags.forEach(tagElemento => {
+        tagElemento.classList.remove('destacado');
+        tagElemento.style.backgroundColor = '';
+        tagElemento.style.color = '';
+
+        const tagTexto = tagElemento.dataset.tag || tagElemento.textContent;
+        const color = obtenerColorTag(tagTexto);
+
+        tagElemento.style.border = `1px solid ${color}`;
+        tagElemento.style.color = color;
+
+        if (tagEstaActivo(tagTexto)) {
+            tagElemento.classList.add('destacado');
+            tagElemento.style.backgroundColor = color;
+            tagElemento.style.color = 'white';
+        }
+    });
+}
+
+function aplicarFiltros() {
+    const texto = document.getElementById('buscador').value || '';
+    const tarjetas = document.querySelectorAll('.tarjeta-empresa');
+
+    const empresasVisibles = [];
+
+    tarjetas.forEach((tarjeta, index) => {
+        const empresa = empresas[index];
+
+        const coincideTexto = empresaCoincideTexto(empresa, texto);
+        const coincideTags = empresaTieneAlgunTagActivo(empresa);
+
+        const visible = coincideTexto && coincideTags;
+
+        tarjeta.classList.toggle('oculta', !visible);
+        tarjeta.classList.remove('destacada');
+        tarjeta.style.borderColor = '';
+        tarjeta.style.boxShadow = '';
+
+        colorearTagsEmpresa(tarjeta);
+
+        if (visible) {
+            empresasVisibles.push(empresa);
+
+            const primerTagActivo = obtenerPrimerTagActivoDeEmpresa(empresa);
+
+            if (primerTagActivo) {
+                const color = obtenerColorTag(primerTagActivo);
+
+                tarjeta.classList.add('destacada');
+                tarjeta.style.borderColor = color;
+                tarjeta.style.boxShadow = `0 4px 16px ${color}44`;
+            }
+        }
+    });
+
+    pintarMarcadores(empresasVisibles);
+    colorearTagsGlobales();
+
+    const contador = document.getElementById('contadorResultados');
+
+    if (contador) {
+        if (tagsActivos.length === 0) {
+            contador.textContent = `${empresasVisibles.length} empresas encontradas`;
+        } else {
+            contador.textContent = `${empresasVisibles.length} empresas encontradas con: ${tagsActivos.join(', ')}`;
+        }
+    }
+}
+
+function activarTags() {
+    const botones = document.querySelectorAll('.tag-filtro');
+
+    botones.forEach(boton => {
+        boton.addEventListener('click', () => {
+            const tag = boton.dataset.tag || boton.textContent;
+
+            activarODesactivarTag(tag);
 
             aplicarFiltros();
-        }}
+        });
+    });
+}
 
-        function limpiarFiltros() {{
-            tagActivo = null;
-            document.getElementById("busqueda").value = "";
+function activarBuscador() {
+    const buscador = document.getElementById('buscador');
 
-            document.querySelectorAll(".card").forEach(tarjeta => {{
-                tarjeta.style.display = "flex";
-                tarjeta.classList.remove("seleccionada");
-                tarjeta.classList.remove("coincide-busqueda");
-            }});
+    if (!buscador) {
+        return;
+    }
 
-            document.querySelectorAll(".tag, .filtro-tag").forEach(tag => {{
-                tag.classList.remove("activo");
-            }});
+    buscador.addEventListener('input', () => {
+        aplicarFiltros();
+    });
+}
 
-            document.getElementById("contador-empresas").textContent = document.querySelectorAll(".card").length;
-            pintarMarcadores(empresas);
-        }}
+function activarLimpiar() {
+    const boton = document.getElementById('btnLimpiar');
 
-        function activarClickTags() {{
-            document.querySelectorAll(".tag-boton, .filtro-tag").forEach(boton => {{
-                boton.addEventListener("click", (event) => {{
-                    event.stopPropagation();
-                    seleccionarTag(boton.dataset.tag);
-                }});
-            }});
+    if (!boton) {
+        return;
+    }
 
-            const botonLimpiar = document.getElementById("limpiar-filtros");
+    boton.addEventListener('click', () => {
+        tagsActivos = [];
 
-            if (botonLimpiar) {{
-                botonLimpiar.addEventListener("click", limpiarFiltros);
-            }}
-        }}
+        const buscador = document.getElementById('buscador');
 
-        function activarClickTarjetas() {{
-            const tarjetas = document.querySelectorAll(".tarjeta-clicable");
+        if (buscador) {
+            buscador.value = '';
+        }
 
-            tarjetas.forEach(tarjeta => {{
-                tarjeta.addEventListener("click", () => {{
-                    const lat = Number(tarjeta.dataset.lat);
-                    const lng = Number(tarjeta.dataset.lng);
-                    const nombre = tarjeta.dataset.nombre;
+        document.querySelectorAll('.tag-filtro').forEach(b => {
+            b.classList.remove('activo');
+            b.style.backgroundColor = '';
+        });
 
-                    if (!isNaN(lat) && !isNaN(lng)) {{
-                        map.setView([lat, lng], 17);
+        document.querySelectorAll('.tag-empresa').forEach(t => {
+            t.classList.remove('destacado');
+            t.style.backgroundColor = '';
+        });
 
-                        const marcador = marcadoresPorNombre[nombre];
+        aplicarFiltros();
 
-                        if (marcador) {{
-                            marcador.openPopup();
-                        }}
-                    }}
-                }});
-            }});
-        }}
+        mapa.setView(CENTRO_ZARAGOZA, ZOOM_ZARAGOZA_CIUDAD);
+    });
+}
 
-        document.getElementById("busqueda").addEventListener("input", aplicarFiltros);
+function activarClickTarjetas() {
+    const tarjetas = document.querySelectorAll('.tarjeta-empresa');
 
-        pintarMarcadores(empresas);
-        activarClickTarjetas();
-        activarClickTags();
+    tarjetas.forEach((tarjeta, index) => {
+        tarjeta.addEventListener('click', () => {
+            const empresa = empresas[index];
+
+            const lat = parseFloat(empresa.latitud);
+            const lon = parseFloat(empresa.longitud);
+
+            if (!isNaN(lat) && !isNaN(lon)) {
+                mapa.setView([lat, lon], 16);
+            }
+
+            tarjeta.scrollIntoView({
+                behavior: 'smooth',
+                block: 'center'
+            });
+        });
+    });
+}
+
+const NOMBRES_MES = [
+    'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio',
+    'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'
+];
+
+function formatearFechaLarga(fechaTexto) {
+    const partes = String(fechaTexto || '').split('-');
+
+    if (partes.length !== 3) {
+        return 'Sin fecha';
+    }
+
+    const [anio, mes, dia] = partes;
+    const indiceMes = parseInt(mes, 10) - 1;
+    const nombreMes = NOMBRES_MES[indiceMes] || mes;
+
+    return `${parseInt(dia, 10)} de ${nombreMes} de ${anio}`;
+}
+
+function empresasOrdenadasPorFecha() {
+    return [...empresas].sort((a, b) => {
+        const fechaA = a.fecha_inclusion || '';
+        const fechaB = b.fecha_inclusion || '';
+
+        if (fechaA === fechaB) {
+            return normalizarTexto(a.nombre).localeCompare(normalizarTexto(b.nombre));
+        }
+
+        // Sin fecha va al final
+        if (!fechaA) return 1;
+        if (!fechaB) return -1;
+
+        return fechaB.localeCompare(fechaA);
+    });
+}
+
+function centrarEnEmpresa(empresa) {
+    const lat = parseFloat(empresa.latitud);
+    const lon = parseFloat(empresa.longitud);
+
+    cambiarVista('mapa');
+
+    setTimeout(() => {
+        if (!isNaN(lat) && !isNaN(lon)) {
+            mapa.setView([lat, lon], 16);
+        }
+    }, 50);
+}
+
+function renderizarListaPorFecha() {
+    const contenedor = document.getElementById('listaPorFecha');
+
+    if (!contenedor) {
+        return;
+    }
+
+    const ordenadas = empresasOrdenadasPorFecha();
+
+    let fechaActualGrupo = null;
+    let html = '';
+
+    ordenadas.forEach(empresa => {
+        const fecha = empresa.fecha_inclusion || '';
+
+        if (fecha !== fechaActualGrupo) {
+            if (fechaActualGrupo !== null) {
+                html += '</div></div>';
+            }
+
+            html += `
+                <div class="grupo-fecha">
+                    <h3>${formatearFechaLarga(fecha)}</h3>
+                    <div class="lista-por-fecha">
+            `;
+
+            fechaActualGrupo = fecha;
+        }
+
+        html += `
+            <article class="tarjeta-fecha" data-nombre="${escaparHtml(empresa.nombre || '')}">
+                <div class="info-empresa-fecha">
+                    <h4>${escaparHtml(empresa.nombre || '')}</h4>
+                    <p>${escaparHtml(empresa.direccion || '')}</p>
+                </div>
+                <span class="badge-ciclo">${escaparHtml(empresa.ciclo || '')}</span>
+            </article>
+        `;
+    });
+
+    if (fechaActualGrupo !== null) {
+        html += '</div></div>';
+    }
+
+    contenedor.innerHTML = html;
+
+    contenedor.querySelectorAll('.tarjeta-fecha').forEach((tarjeta, index) => {
+        tarjeta.addEventListener('click', () => {
+            centrarEnEmpresa(ordenadas[index]);
+        });
+    });
+}
+
+function escaparHtml(texto) {
+    const div = document.createElement('div');
+    div.textContent = String(texto || '');
+    return div.innerHTML;
+}
+
+function cambiarVista(vista) {
+    const vistaMapa = document.getElementById('vistaMapa');
+    const vistaFecha = document.getElementById('vistaFecha');
+
+    document.querySelectorAll('.tab-vista').forEach(boton => {
+        boton.classList.toggle('activo', boton.dataset.vista === vista);
+    });
+
+    if (vista === 'mapa') {
+        vistaMapa.classList.remove('vista-oculta');
+        vistaFecha.classList.add('vista-oculta');
+
+        setTimeout(() => {
+            mapa.invalidateSize();
+        }, 50);
+    } else {
+        vistaMapa.classList.add('vista-oculta');
+        vistaFecha.classList.remove('vista-oculta');
+    }
+}
+
+function activarTabsVista() {
+    document.querySelectorAll('.tab-vista').forEach(boton => {
+        boton.addEventListener('click', () => {
+            cambiarVista(boton.dataset.vista);
+        });
+    });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    activarTags();
+    activarBuscador();
+    activarLimpiar();
+    activarClickTarjetas();
+    activarTabsVista();
+    aplicarFiltros();
+    renderizarListaPorFecha();
+
+    setTimeout(() => {
+        mapa.invalidateSize();
+    }, 300);
+});
 """
 
 
-# ==================================================
-# HTML COMPLETO
-# ==================================================
+# ============================================================
+# 9. HTML COMPLETO
+# ============================================================
 
 def generar_html_completo(empresas):
-    tarjetas_html = "\n".join(
+    total_empresas = len(empresas)
+    total_tags = len(obtener_todos_los_tags(empresas))
+
+    tarjetas_html = "".join(
         generar_tarjeta_empresa(empresa)
         for empresa in empresas
     )
 
-    filtros_tags_html = generar_filtro_tags_global(empresas)
-    marcadores = generar_marcadores(empresas)
+    tags_html = generar_filtro_tags_global(empresas)
 
-    total_empresas = len(empresas)
-    total_marcadores = len(marcadores)
+    empresas_json = json.dumps(
+        empresas,
+        ensure_ascii=False
+    )
 
-    css = generar_css()
-    javascript = generar_javascript(marcadores)
-
-    return f"""<!DOCTYPE html>
+    html_completo = f"""
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IAProspector - Mapa de Empresas</title>
 
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <title>Mapa de empresas tecnológicas de Zaragoza</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
 
     <style>
-{css}
+        {generar_css()}
     </style>
 </head>
+
 <body>
 
-    <header>
-        <h1>IAProspector: Mapa Tecnológico</h1>
-        <p>Empresas sincronizadas automáticamente desde Google Sheets</p>
+    <header class="cabecera">
+        <div>
+            <h1>Empresas tecnológicas de Zaragoza</h1>
+            <p>Mapa interactivo de empresas, ciclos y tecnologías.</p>
+        </div>
+
+        <div class="resumen-superior">
+            <div class="dato-resumen">
+                <span id="totalEmpresas">{total_empresas}</span>
+                <small>empresas</small>
+            </div>
+
+            <div class="dato-resumen">
+                <span id="totalTags">{total_tags}</span>
+                <small>tags</small>
+            </div>
+        </div>
     </header>
 
-    <section class="barra-info">
-        <div class="contador">
-            <span id="contador-empresas">{total_empresas}</span> empresas publicadas · {total_marcadores} con marcador
-        </div>
+    <nav class="tabs-vista">
+        <button class="tab-vista activo" data-vista="mapa">🗺️ Mapa</button>
+        <button class="tab-vista" data-vista="fecha">🕒 Por fecha de inclusión</button>
+    </nav>
 
-        <div class="buscador">
-            <input type="text" id="busqueda" placeholder="Escribe una empresa o las primeras letras de un tag...">
-        </div>
-    </section>
+    <main class="layout" id="vistaMapa">
 
-    <section class="panel-tags">
-        <h3>Tags disponibles</h3>
-        <div class="filtros-tags">
-            {filtros_tags_html}
-            <button class="filtro-tag limpiar-filtros" id="limpiar-filtros">Limpiar filtros</button>
-        </div>
-    </section>
+        <section class="zona-mapa">
+            <div id="map"></div>
+        </section>
 
-    <section id="mapa-seccion">
-        <div id="map"></div>
-    </section>
+        <aside class="panel-lateral">
 
-    <main>
-        <div class="grid-empresas" id="grid-empresas">
-{tarjetas_html}
-        </div>
+            <div class="bloque-filtros">
+                <h2>Filtros</h2>
+
+                <input
+                    type="text"
+                    id="buscador"
+                    placeholder="Buscar empresa o tag..."
+                >
+
+                <div class="acciones-filtro">
+                    <button id="btnLimpiar">Limpiar filtros</button>
+                </div>
+            </div>
+
+            <div class="bloque-tags">
+                <h2>Tags</h2>
+
+                <div id="contenedorTags" class="contenedor-tags">
+                    {tags_html}
+                </div>
+            </div>
+
+            <div class="bloque-empresas">
+                <h2>Empresas</h2>
+
+                <p id="contadorResultados" class="contador-resultados"></p>
+
+                <div id="listaEmpresas" class="lista-empresas">
+                    {tarjetas_html}
+                </div>
+            </div>
+
+        </aside>
+
     </main>
 
-    <footer>
-        IAProspector · Datos generados desde Google Sheets
-    </footer>
+    <main class="vista-fecha vista-oculta" id="vistaFecha">
+        <div class="contenedor-fecha">
+            <h2>Empresas por fecha de inclusión</h2>
+            <p class="subtitulo-fecha">Orden cronológico, de la más reciente a la más antigua.</p>
+
+            <div id="listaPorFecha"></div>
+        </div>
+    </main>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
     <script>
-{javascript}
+        const empresas = {empresas_json};
+
+        {generar_javascript()}
     </script>
+
 </body>
 </html>
 """
 
+    return html_completo
+
 
 def guardar_html(html_completo, ruta_html):
+    carpeta = os.path.dirname(ruta_html)
+
+    if carpeta:
+        os.makedirs(carpeta, exist_ok=True)
+
     with open(ruta_html, "w", encoding="utf-8") as f:
         f.write(html_completo)
 
-    print(f"✅ HTML generado: {ruta_html}")
+    print(f"HTML generado: {ruta_html}")

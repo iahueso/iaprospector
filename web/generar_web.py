@@ -9,9 +9,9 @@ from web_utils import (
 )
 
 
-# ==================================================
+# ============================================================
 # 0. DIRECTORIOS
-# ==================================================
+# ============================================================
 
 DIRECTORIO_ACTUAL = os.path.dirname(os.path.abspath(__file__))
 DIRECTORIO_SUPERIOR = os.path.dirname(DIRECTORIO_ACTUAL)
@@ -20,35 +20,57 @@ if DIRECTORIO_SUPERIOR not in sys.path:
     sys.path.append(DIRECTORIO_SUPERIOR)
 
 
-# ==================================================
+# ============================================================
 # 1. IMPORTAR CONFIG
-# ==================================================
+# ============================================================
 
-from config import GOOGLE_SHEET_URL, GOOGLE_CREDENTIALS_JSON
+try:
+    from config import (
+        GOOGLE_SHEET_URL,
+        GOOGLE_CREDENTIALS_JSON
+    )
+
+except ImportError as e:
+    print("❌ Error importando config.py")
+    print(e)
+    exit(1)
 
 
-# ==================================================
+# ============================================================
 # 2. CONFIGURACIÓN
-# ==================================================
+# ============================================================
 
 HOJA_FINALES = "empresas_finales"
 
-CARPETA_WEB = os.path.join(DIRECTORIO_SUPERIOR, "web")
-CARPETA_DATA = os.path.join(CARPETA_WEB, "data")
+CARPETA_WEB = os.path.join(
+    DIRECTORIO_SUPERIOR,
+    "web"
+)
 
-RUTA_JSON = os.path.join(CARPETA_DATA, "empresas_finales.json")
+CARPETA_DATA = os.path.join(
+    CARPETA_WEB,
+    "data"
+)
 
-# HTML en la raíz del proyecto
-RUTA_HTML = os.path.join(DIRECTORIO_SUPERIOR, "index.html")
+RUTA_JSON = os.path.join(
+    CARPETA_DATA,
+    "empresas_finales.json"
+)
+
+# Lo dejamos en la raíz para GitHub Pages configurado en /root
+RUTA_HTML = os.path.join(
+    DIRECTORIO_SUPERIOR,
+    "index.html"
+)
 
 
-# ==================================================
+# ============================================================
 # 3. PROCESO PRINCIPAL
-# ==================================================
+# ============================================================
 
 def main():
     print("\n==================================================")
-    print("🌐 GENERADOR WEB IAProspector")
+    print("🌐 GENERADOR WEB - EMPRESAS TECNOLÓGICAS")
     print("==================================================")
 
     empresas = leer_empresas_desde_sheets(
@@ -57,6 +79,8 @@ def main():
         google_sheet_url=GOOGLE_SHEET_URL,
         nombre_hoja=HOJA_FINALES
     )
+
+    print(f"\n✅ Empresas preparadas para publicar: {len(empresas)}")
 
     if not empresas:
         print("⚠️ No hay empresas válidas para publicar.")
@@ -77,10 +101,8 @@ def main():
     print("\n==================================================")
     print("✅ WEB GENERADA CORRECTAMENTE")
     print("==================================================")
-    print(f"Empresas publicadas: {len(empresas)}")
-    print(f"JSON: {RUTA_JSON}")
     print(f"HTML: {RUTA_HTML}")
-    print("==================================================")
+    print(f"JSON: {RUTA_JSON}")
 
 
 if __name__ == "__main__":
