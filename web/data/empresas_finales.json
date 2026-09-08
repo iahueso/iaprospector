@@ -976,5 +976,88 @@
         "ciclo": "DAW",
         "estado_agente": "ok",
         "fuentes": "https://www.q2bstudio.com/nuestro-blog/228135/mejores-empresas-desarrollo-aplicaciones-moviles-zaragoza"
+    },
+    {
+        "nombre": "RSC - Redes, Sistemas y Comunicaciones",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Empresa tecnológica de Zaragoza fundada en 1994/1996, especializada en soluciones y servicios TIC para infraestructuras, sistemas de información y comunicaciones corporativas, con más de 30 años de experiencia en el sector.",
+        "tags": [
+            "sistemas",
+            "infraestructura tic",
+            "comunicaciones",
+            "redes"
+        ],
+        "ciclo": "ASIR",
+        "estado_agente": "ok",
+        "fuentes": "https://rsc.es/, https://www.alimarket.es/empresa/415672/REDES--SISTEMAS-Y-COMUNICACIONES--S-L-, https://es.linkedin.com/company/redes-sistemas-y-comunicaciones-r-s-c-"
+    },
+    {
+        "nombre": "Miranda Digital",
+        "latitud": "41.6433356",
+        "longitud": "-0.8892341",
+        "direccion": "Miranda Digital, Avenida Francisco de Goya, 30, 50006 Zaragoza, España",
+        "descripcion": "Empresa de Zaragoza especializada en software de gestión (partner oficial Sage), diseño de páginas web y soluciones informáticas integrales para pymes en Aragón.",
+        "tags": [
+            "software de gestión",
+            "web",
+            "pymes",
+            "sage"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://imdigital.es/, https://imdigital.es/contacto/, https://www.linkedin.com/company/miranda-digital-soluciones"
+    },
+    {
+        "nombre": "Miranda Digital Soluciones",
+        "latitud": "41.6433356",
+        "longitud": "-0.8892341",
+        "direccion": "Miranda Digital, Avenida Francisco de Goya, 30, 50006 Zaragoza, España",
+        "descripcion": "Empresa de Zaragoza especializada en servicios informáticos, consultoría TI y digitalización de PYMES. Partner oficial de Sage, ofrece software de gestión, ERP, contabilidad y diseño de páginas web para empresas de Aragón.",
+        "tags": [
+            "software de gestión",
+            "erp",
+            "sage",
+            "consultoría ti",
+            "desarrollo web"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://imdigital.es/, https://es.linkedin.com/company/miranda-digital-soluciones"
+    },
+    {
+        "nombre": "NTT Data (centro Zaragoza)",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Multinacional tecnológica japonesa que ha centralizado en sus instalaciones de Zaragoza su estrategia global de Inteligencia Artificial generativa, con un área de especialización (AoE IA) dedicada a proyectos de IA generativa y LLM para clientes internacionales.",
+        "tags": [
+            "inteligencia artificial",
+            "ia generativa",
+            "llm",
+            "consultoría tecnológica",
+            "big data"
+        ],
+        "ciclo": "IA y Big Data",
+        "estado_agente": "ok",
+        "fuentes": "https://www.eleconomista.es/tecnologia/noticias/13204421/02/25/ntt-data-lidera-desde-zaragoza-su-estrategia-global-en-ia-generativa.html; https://www.aragondigital.es/articulo/economia/ntt-data-centraliza-zaragoza-servicios-inteligencia-artificial-generativa/20250204180138905442.html"
+    },
+    {
+        "nombre": "FIDEX DLT",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Firma zaragozana especializada en la gestión y optimización de capital mediante activos digitales estables bajo un marco regulado, dedicada a la gestión patrimonial de familias, empresarios y family offices. Ha sido seleccionada por la aceleradora Lanzadera.",
+        "tags": [
+            "fintech",
+            "activos digitales",
+            "gestión patrimonial",
+            "blockchain",
+            "finanzas"
+        ],
+        "ciclo": "Administración",
+        "estado_agente": "ok",
+        "fuentes": "https://www.hoyaragon.es/zaragoza/dos-proyectos-zaragozanos-fidex-marina-garcia-entre-124-startups-seleccionadas-aceleradora-juan-roig/20260908122748145253.html; https://www.aea.plus/2026/02/10/alejandro-ruiz-ciudad-y-dimitri-orga-casao-fidex-dlt-es-una-firma-especializada-en-la-gestion-y-optimizacion-de-capital-que-utiliza-activos-digitales-estables-operando-bajo-un-marco-regulad/"
     }
 ]
