@@ -1059,5 +1059,21 @@
         "ciclo": "Administración",
         "estado_agente": "ok",
         "fuentes": "https://www.hoyaragon.es/zaragoza/dos-proyectos-zaragozanos-fidex-marina-garcia-entre-124-startups-seleccionadas-aceleradora-juan-roig/20260908122748145253.html; https://www.aea.plus/2026/02/10/alejandro-ruiz-ciudad-y-dimitri-orga-casao-fidex-dlt-es-una-firma-especializada-en-la-gestion-y-optimizacion-de-capital-que-utiliza-activos-digitales-estables-operando-bajo-un-marco-regulad/"
+    },
+    {
+        "nombre": "Business Telecommunications Services Europe SA",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Empresa ubicada en Zaragoza dedicada a servicios de telecomunicaciones y comunicaciones empresariales, identificada en directorios empresariales como eInforma y Expansion dentro del sector de comunicaciones.",
+        "tags": [
+            "telecomunicaciones",
+            "comunicaciones",
+            "servicios empresariales",
+            "redes"
+        ],
+        "ciclo": "ASIR",
+        "estado_agente": "ok",
+        "fuentes": "https://www.einforma.com/informacion-empresa/business-telecommunications-services-europe ; https://www.expansion.com/empresas-de/comunicaciones/zaragoza/ranking/"
     }
 ]
