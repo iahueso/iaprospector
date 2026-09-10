@@ -1144,5 +1144,89 @@
         "estado_agente": "ok",
         "fuentes": "https://www.einforma.com/informacion-empresa/business-telecommunications-services-europe ; https://www.expansion.com/empresas-de/comunicaciones/zaragoza/ranking/",
         "fecha_inclusion": "2026-09-01"
+    },
+    {
+        "nombre": "Zepren Solutions",
+        "latitud": "41.6464797",
+        "longitud": "-0.8894298",
+        "direccion": "Voilá Contract Solutions, Calle de Amado Laguna de Rins, 50006 Zaragoza, España",
+        "descripcion": "Startup zaragozana especializada en desarrollo de firmware/software, prototipado, integración de sistemas y despliegue de soluciones tecnológicas para diversos sectores industriales. Reconocida en 2025 como empresa con mayor impacto en Aragón en los premios Emprende XXI.",
+        "tags": [
+            "software",
+            "firmware",
+            "integración de sistemas",
+            "startup",
+            "tecnología"
+        ],
+        "ciclo": "DAM",
+        "estado_agente": "ok",
+        "fuentes": "https://zepren.com/en_gb/about/, https://www.heraldo.es/noticias/economia/2025/10/05/zepren-solutions-la-empresa-de-zaragoza-que-no-quiere-morir-de-exito-1859063.html, https://empresite.eleconomista.es/ZEPREN-SOLUTIONS.html",
+        "fecha_inclusion": "2026-09-10"
+    },
+    {
+        "nombre": "Integrapp",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Consultora tecnológica ubicada en Aragón (Zaragoza) especializada en el desarrollo de software a medida, integraciones, gestión de datos, diseño web y dirección técnica de proyectos para empresas.",
+        "tags": [
+            "software a medida",
+            "consultoría",
+            "integraciones",
+            "desarrollo web"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://integrapp.es/, https://www.provenexpert.com/es-es/integrapp-zaragoza/",
+        "fecha_inclusion": "2026-09-10"
+    },
+    {
+        "nombre": "Software Grupo V (SGV)",
+        "latitud": "41.652161",
+        "longitud": "-0.870977",
+        "direccion": "Calle Alonso V, 50001 Zaragoza, España",
+        "descripcion": "Empresa zaragozana fundada en 1990 dedicada al desarrollo de aplicaciones informáticas y proyectos tecnológicos, con software orientado a ayuntamientos y administraciones autonómicas y provinciales.",
+        "tags": [
+            "software de gestión",
+            "administración pública",
+            "aplicaciones informáticas",
+            "desarrollo"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://www.sgv.es/, https://www.sgv.es/productos",
+        "fecha_inclusion": "2026-09-10"
+    },
+    {
+        "nombre": "Ingenia Aragón",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Empresa de Zaragoza especializada en desarrollo web para empresas industriales y de servicios, enfocada en soluciones de gestión, automatización y comunicación.",
+        "tags": [
+            "desarrollo web",
+            "software a medida",
+            "automatización"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://ingenia-aragon.es/desarrollo-web-zaragoza/",
+        "fecha_inclusion": "2026-09-10"
+    },
+    {
+        "nombre": "Alhambra IT",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Empresa tecnológica que ofrece servicios de aplicaciones empresariales, incluyendo diseño, desarrollo e integración de software para mejorar procesos internos y productividad organizativa.",
+        "tags": [
+            "aplicaciones empresariales",
+            "integración de software",
+            "consultoría it"
+        ],
+        "ciclo": "DAM",
+        "estado_agente": "ok",
+        "fuentes": "https://www.alhambrait.com/servicios-it/servicios-aplicaciones/",
+        "fecha_inclusion": "2026-09-10"
     }
 ]
