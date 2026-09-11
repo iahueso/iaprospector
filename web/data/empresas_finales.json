@@ -1228,5 +1228,91 @@
         "estado_agente": "ok",
         "fuentes": "https://www.alhambrait.com/servicios-it/servicios-aplicaciones/",
         "fecha_inclusion": "2026-09-10"
+    },
+    {
+        "nombre": "ESI Soluciones",
+        "latitud": "41.6513613",
+        "longitud": "-0.8782321",
+        "direccion": "Maubic Soluciones tecnológicas, Calle del Coso, 67, 50001 Zaragoza, España",
+        "descripcion": "Empresa aragonesa con sede en Zaragoza especializada en software de gestión empresarial, digitalización de procesos y mantenimiento informático para PYMEs.",
+        "tags": [
+            "software de gestión",
+            "digitalización",
+            "pymes",
+            "erp"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://esisoluciones.es/, https://redaccion.camarazaragoza.com/empresa/esi-soluciones/, https://es.linkedin.com/company/esi-soluciones, https://ajezaragoza.com/asociados/esi-soluciones/",
+        "fecha_inclusion": "2026-09-11"
+    },
+    {
+        "nombre": "Megastar SL",
+        "latitud": "41.6499794",
+        "longitud": "-0.8801362",
+        "direccion": "Gadda Galeria S.l., Calle de Jerónimo Zurita, 17, 50001 Zaragoza, España",
+        "descripcion": "Empresa con sede en Zaragoza dedicada a la ciberseguridad, infraestructura IT y adopción de soluciones de inteligencia artificial para empresas.",
+        "tags": [
+            "ciberseguridad",
+            "inteligencia artificial",
+            "infraestructura it"
+        ],
+        "ciclo": "ASIR",
+        "estado_agente": "ok",
+        "fuentes": "https://megastar.es/, https://megastar.es/ciberseguridad/, https://www.iberinform.es/empresa/647688/megastar, https://es.linkedin.com/company/megastar-s.l.",
+        "fecha_inclusion": "2026-09-11"
+    },
+    {
+        "nombre": "Magic Fennec",
+        "latitud": "41.6509373",
+        "longitud": "-0.9125795",
+        "direccion": "Locutorio Magic Touch, Calle de Fray Juan Regla, 50017 Zaragoza, España",
+        "descripcion": "Estudio tecnológico con sede en Zaragoza (World Trade Center), fundado en 2020, especializado en desarrollo de videojuegos, Virtual Production y Realidad Virtual/Aumentada. Socio oficial de Epic Games y centro de entrenamiento autorizado de Unreal Engine.",
+        "tags": [
+            "realidad virtual",
+            "videojuegos",
+            "unreal engine",
+            "virtual production"
+        ],
+        "ciclo": "DAM",
+        "estado_agente": "ok",
+        "fuentes": "https://www.devuego.es/bd/festudio/magic-fennec; https://www.heraldo.es/noticias/aragon/zaragoza/2020/10/02/la-empresa-tecnologica-magic-fennec-se-instala-en-el-world-trade-center-de-zaragoza-para-crear-30-puestos-de-trabajo-1398117.html; https://es.linkedin.com/company/magicfennec",
+        "fecha_inclusion": "2026-09-11"
+    },
+    {
+        "nombre": "Noática",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Empresa zaragozana de desarrollo de software fundada en 1998, especializada en programación a medida (Python, PHP, Java, C++), implementación de Odoo y Moodle, desarrollo de APIs, CRM y aplicaciones móviles.",
+        "tags": [
+            "software a medida",
+            "odoo",
+            "api",
+            "crm",
+            "desarrollo móvil"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://noatica.com/, https://noatica.com/empresa-de-programacion-informatica-en-zaragoza/, https://es.linkedin.com/company/noatica-programadores-informaticos",
+        "fecha_inclusion": "2026-09-11"
+    },
+    {
+        "nombre": "GA Consultores ERP/CRM (delegación Zaragoza)",
+        "latitud": "41.6447037",
+        "longitud": "-0.9071411",
+        "direccion": "Patólogos. Consultores Asociados, Vía Univérsitas, 50009 Zaragoza, España",
+        "descripcion": "Cluster de consultoras especializadas en implantación y mantenimiento de software ERP/CRM basado en Odoo, con oficina propia en Zaragoza (Francisco de Vitoria, nº8) que atiende a empresas de múltiples sectores.",
+        "tags": [
+            "odoo",
+            "erp",
+            "crm",
+            "consultoría ti",
+            "transformación digital"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://www.ga-consultores.com/g-a-consultores-abre-una-nueva-delegacion-en-zaragoza-167/, https://www.gaconsultoreserpcrmzaragoza.es/",
+        "fecha_inclusion": "2026-09-11"
     }
 ]
