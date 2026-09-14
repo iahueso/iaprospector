@@ -1314,5 +1314,92 @@
         "estado_agente": "ok",
         "fuentes": "https://www.ga-consultores.com/g-a-consultores-abre-una-nueva-delegacion-en-zaragoza-167/, https://www.gaconsultoreserpcrmzaragoza.es/",
         "fecha_inclusion": "2026-09-11"
+    },
+    {
+        "nombre": "960 Pixels Comunicación",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Consultora con sede en Zaragoza (Calle San Pablo 12) especializada en comunicación, innovación, tecnología, datos y gobernanza. Ha participado en proyectos de gobierno del dato para administraciones públicas, como la Ordenanza tipo sobre gobierno del dato de la FEMP.",
+        "tags": [
+            "gobierno del dato",
+            "consultoría",
+            "innovación",
+            "datos",
+            "comunicación"
+        ],
+        "ciclo": "IA y Big Data",
+        "estado_agente": "ok",
+        "fuentes": "https://960pixels.es/; https://www.iberinform.es/empresa/3661667/960-pixels-comunicacion; https://960pixels.es/recorrido-empresarial/",
+        "fecha_inclusion": "2026-09-14"
+    },
+    {
+        "nombre": "Sngular",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Empresa tecnológica dedicada al desarrollo de software y servicios digitales, con oficina en Zaragoza además de otras sedes en España (Madrid, Barcelona, Córdoba, Badajoz, Oviedo). Ofrece soluciones de software, IA e ingeniería digital.",
+        "tags": [
+            "software",
+            "desarrollo",
+            "inteligencia artificial",
+            "consultoría digital"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://www.elconfidencial.com/espana/andalucia/2021-12-01/tecnologica-sngular-salida-bolsa-valoracion_3333522/; https://es.linkedin.com/company/sngular/",
+        "fecha_inclusion": "2026-09-14"
+    },
+    {
+        "nombre": "EON Transformación Digital",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Empresa de servicios TI y transformación digital, con oficina en Zaragoza además de Madrid y Tarragona, especializada en servicios gestionados de tecnología y consultoría LEAN IT.",
+        "tags": [
+            "transformación digital",
+            "servicios ti",
+            "consultoría",
+            "gestión de procesos"
+        ],
+        "ciclo": "ASIR",
+        "estado_agente": "ok",
+        "fuentes": "https://www.eontd.com/servicios/servicios-soluciones-ti/, https://redaccion.camarazaragoza.com/empresa/eon/",
+        "fecha_inclusion": "2026-09-14"
+    },
+    {
+        "nombre": "Digital Zaragoza",
+        "latitud": "41.6626213",
+        "longitud": "-0.8878167",
+        "direccion": "Campus Digital FP, Avenida José Atarés, 20, 50018 Zaragoza, España",
+        "descripcion": "Agencia de marketing y publicidad ubicada en Zaragoza, especializada en diseño web, SEO, SEM y estrategias digitales para pymes y autónomos de Aragón y Navarra.",
+        "tags": [
+            "marketing digital",
+            "seo",
+            "sem",
+            "diseño web",
+            "publicidad"
+        ],
+        "ciclo": "Marketing",
+        "estado_agente": "ok",
+        "fuentes": "https://digitalzaragoza.es/ ; https://es.linkedin.com/company/digital-zaragoza",
+        "fecha_inclusion": "2026-09-14"
+    },
+    {
+        "nombre": "Jiménez Carbó",
+        "latitud": "41.6456796",
+        "longitud": "-0.8931532",
+        "direccion": "Jiménez Huarte, Joaquín, Jiménez Huarte, Avenida Francisco de Goya, 72, 50005 Zaragoza, España",
+        "descripcion": "Agencia de marketing digital con sede en Calle Cinco de Marzo 18, Zaragoza, que ofrece servicios de desarrollo web, diseño gráfico y posicionamiento online para clientes locales, nacionales e internacionales.",
+        "tags": [
+            "marketing digital",
+            "desarrollo web",
+            "posicionamiento web",
+            "diseño gráfico"
+        ],
+        "ciclo": "Marketing",
+        "estado_agente": "ok",
+        "fuentes": "https://jimenezcarbo.com/ ; https://www.paginasamarillas.es/f/zaragoza/jimenez-carbo-agencia-marketing-online-posicionamiento-web_236506663_000000001.html",
+        "fecha_inclusion": "2026-09-14"
     }
 ]
