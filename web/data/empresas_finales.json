@@ -1401,5 +1401,75 @@
         "estado_agente": "ok",
         "fuentes": "https://jimenezcarbo.com/ ; https://www.paginasamarillas.es/f/zaragoza/jimenez-carbo-agencia-marketing-online-posicionamiento-web_236506663_000000001.html",
         "fecha_inclusion": "2026-09-14"
+    },
+    {
+        "nombre": "IATIC SW",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Empresa de Zaragoza especializada en desarrollo de software, aplicaciones web, inteligencia artificial, CRM, ERP y mantenimiento informático para empresas.",
+        "tags": [
+            "inteligencia artificial",
+            "crm",
+            "erp",
+            "software"
+        ],
+        "ciclo": "IA y Big Data",
+        "estado_agente": "ok",
+        "fuentes": "https://www.iatic.es/ia-empresas-zaragoza.php; https://www.iatic.es/software-medida-zaragoza.php",
+        "fecha_inclusion": "2026-09-15"
+    },
+    {
+        "nombre": "NAXIA",
+        "latitud": "41.646481",
+        "longitud": "-0.887553",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Agencia con presencia en Zaragoza centrada en agentes de IA y automatización de procesos administrativos y de soporte para empresas de diversos sectores como legal, construcción y e-commerce.",
+        "tags": [
+            "agentes ia",
+            "automatización",
+            "procesos administrativos",
+            "saas"
+        ],
+        "ciclo": "IA y Big Data",
+        "estado_agente": "ok",
+        "fuentes": "https://www.naxia.es/zaragoza/",
+        "fecha_inclusion": "2026-09-15"
+    },
+    {
+        "nombre": "Bitbrain (Bit&Brain Technologies)",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Empresa de neurotecnología con sede en Zaragoza que combina neurociencia, inteligencia artificial y hardware para desarrollar equipos de EEG y soluciones de monitorización humana, con aplicaciones en investigación y experiencia de usuario avanzada.",
+        "tags": [
+            "neurotecnología",
+            "inteligencia artificial",
+            "hardware",
+            "eeg",
+            "ux research"
+        ],
+        "ciclo": "IA y Big Data",
+        "estado_agente": "ok",
+        "fuentes": "https://www.bitbrain.com/es; https://neurotec.umh.es/portfolio/bitbrain-technologies/",
+        "fecha_inclusion": "2026-09-15"
+    },
+    {
+        "nombre": "Bozeta Design (Bozeta Innovation SL)",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Estudio de diseño con sede en Zaragoza especializado en estrategia de producto, branding, UX/UI, diseño web y proyectos que fusionan arte y tecnología, incluyendo desarrollos con realidad aumentada y blockchain para otras marcas.",
+        "tags": [
+            "ux/ui",
+            "diseño de producto",
+            "branding",
+            "realidad aumentada",
+            "diseño web"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://www.bozetadesign.com/work; https://ajezaragoza.com/asociados/bozeta-design/; https://www.enjoyzaragoza.es/bolsos-paris-64-blockchain/",
+        "fecha_inclusion": "2026-09-15"
     }
 ]
