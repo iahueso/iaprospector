@@ -616,6 +616,144 @@ body {
     white-space: nowrap;
 }
 
+.vista-semantica {
+    height: calc(100vh - 96px);
+    overflow-y: auto;
+    padding: 24px;
+    background: #f3f4f6;
+}
+
+.vista-semantica .contenedor-semantica {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.vista-semantica h2 {
+    margin: 0 0 4px 0;
+}
+
+.vista-semantica .subtitulo-semantica {
+    margin: 0 0 20px 0;
+    color: #6b7280;
+    font-size: 14px;
+}
+
+.caja-busqueda-semantica {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    padding: 18px;
+    margin-bottom: 20px;
+}
+
+#textoSemantico {
+    width: 100%;
+    min-height: 140px;
+    resize: vertical;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    padding: 12px;
+    font-family: inherit;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.acciones-semantica {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+#contadorPalabras {
+    font-size: 12px;
+    color: #6b7280;
+}
+
+#contadorPalabras.limite-alcanzado {
+    color: #dc2626;
+    font-weight: bold;
+}
+
+#btnBuscarSemantico {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 999px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#btnBuscarSemantico:hover {
+    background: #1d4ed8;
+}
+
+.aviso-semantico {
+    color: #6b7280;
+    font-size: 14px;
+    text-align: center;
+    padding: 30px 0;
+}
+
+.resultados-semanticos {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.resultado-semantico {
+    border: 1px solid #e5e7eb;
+    background: white;
+    border-radius: 14px;
+    padding: 14px 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.resultado-semantico:hover {
+    border-color: #2563eb;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+.cabecera-resultado-semantico {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 6px;
+}
+
+.cabecera-resultado-semantico h4 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.badge-relevancia {
+    flex-shrink: 0;
+    background: #eff6ff;
+    color: #1d4ed8;
+    border-radius: 999px;
+    padding: 4px 10px;
+    font-size: 12px;
+    white-space: nowrap;
+    font-weight: bold;
+}
+
+.descripcion-resultado-semantico {
+    margin: 0 0 8px 0;
+    font-size: 13px;
+    color: #4b5563;
+}
+
+.tags-resultado-semantico {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
 .panel-lateral {
     grid-area: panel;
     background: white;
@@ -768,6 +906,12 @@ body {
     color: white;
 }
 
+.tag-empresa.tag-coincide {
+    background: #2563eb;
+    color: white;
+    font-weight: 600;
+}
+
 .marker-normal {
     width: 16px;
     height: 16px;
@@ -822,6 +966,11 @@ body {
     }
 
     .vista-fecha {
+        height: auto;
+        padding: 14px;
+    }
+
+    .vista-semantica {
         height: auto;
         padding: 14px;
     }
@@ -1428,22 +1577,226 @@ function escaparHtml(texto) {
 function cambiarVista(vista) {
     const vistaMapa = document.getElementById('vistaMapa');
     const vistaFecha = document.getElementById('vistaFecha');
+    const vistaSemantica = document.getElementById('vistaSemantica');
 
     document.querySelectorAll('.tab-vista').forEach(boton => {
         boton.classList.toggle('activo', boton.dataset.vista === vista);
     });
 
-    if (vista === 'mapa') {
-        vistaMapa.classList.remove('vista-oculta');
-        vistaFecha.classList.add('vista-oculta');
+    vistaMapa.classList.toggle('vista-oculta', vista !== 'mapa');
+    vistaFecha.classList.toggle('vista-oculta', vista !== 'fecha');
+    vistaSemantica.classList.toggle('vista-oculta', vista !== 'semantica');
 
+    if (vista === 'mapa') {
         setTimeout(() => {
             mapa.invalidateSize();
         }, 50);
-    } else {
-        vistaMapa.classList.add('vista-oculta');
-        vistaFecha.classList.remove('vista-oculta');
     }
+}
+
+// ============================================================
+// BÚSQUEDA POR TEXTO LIBRE (RELEVANCIA TIPO TF-IDF)
+// ============================================================
+
+const STOPWORDS_ES = new Set([
+    'de', 'la', 'que', 'el', 'en', 'y', 'a', 'los', 'las', 'del', 'un', 'una',
+    'unos', 'unas', 'para', 'con', 'por', 'se', 'su', 'sus', 'es', 'al', 'como',
+    'mas', 'o', 'u', 'e', 'sin', 'sobre', 'entre', 'este', 'esta', 'estos',
+    'estas', 'ese', 'esa', 'esos', 'esas', 'lo', 'le', 'les', 'nos', 'ya',
+    'ha', 'han', 'fue', 'ser', 'son', 'muy', 'todo', 'toda', 'todos', 'todas',
+    'tambien', 'nuestra', 'nuestro', 'nuestras', 'nuestros', 'pero', 'mas',
+    'si', 'no', 'yo', 'tu', 'el', 'ella', 'ellos', 'ellas', 'buscamos', 'busco',
+    'quiero', 'necesito', 'empresa', 'empresas'
+]);
+
+function tokenizarTexto(texto) {
+    return normalizarTexto(texto)
+        .replace(/[^a-z0-9ñ\\s]/g, ' ')
+        .split(/\\s+/)
+        .filter(t => t.length > 2 && !STOPWORDS_ES.has(t));
+}
+
+function textoIndexableEmpresa(empresa) {
+    const tags = obtenerTagsEmpresa(empresa);
+
+    const partes = [
+        ...tags, ...tags, ...tags,
+        empresa.nombre || '', empresa.nombre || '',
+        empresa.ciclo || '',
+        empresa.descripcion || ''
+    ];
+
+    return partes.join(' ');
+}
+
+let indiceSemantico = null;
+
+function construirIndiceSemantico() {
+    const documentos = empresas.map(
+        empresa => tokenizarTexto(textoIndexableEmpresa(empresa))
+    );
+
+    const frecuenciaDocumentos = new Map();
+
+    documentos.forEach(tokens => {
+        new Set(tokens).forEach(token => {
+            frecuenciaDocumentos.set(token, (frecuenciaDocumentos.get(token) || 0) + 1);
+        });
+    });
+
+    return {
+        documentos,
+        frecuenciaDocumentos,
+        totalDocumentos: documentos.length
+    };
+}
+
+function calcularIdf(token, indice) {
+    const frecuencia = indice.frecuenciaDocumentos.get(token) || 0;
+    return Math.log((indice.totalDocumentos + 1) / (frecuencia + 1)) + 1;
+}
+
+function contarFrecuencias(tokens) {
+    const frecuencias = new Map();
+
+    tokens.forEach(token => {
+        frecuencias.set(token, (frecuencias.get(token) || 0) + 1);
+    });
+
+    return frecuencias;
+}
+
+function calcularPuntuacionesSemanticas(textoConsulta) {
+    if (!indiceSemantico) {
+        indiceSemantico = construirIndiceSemantico();
+    }
+
+    const tokensConsulta = tokenizarTexto(textoConsulta);
+
+    if (tokensConsulta.length === 0) {
+        return [];
+    }
+
+    const frecuenciaConsulta = contarFrecuencias(tokensConsulta);
+
+    const resultados = empresas.map((empresa, indice) => {
+        const tokensDoc = indiceSemantico.documentos[indice];
+        const frecuenciaDoc = contarFrecuencias(tokensDoc);
+
+        let puntuacion = 0;
+        const palabrasCoincidentes = new Set();
+
+        frecuenciaConsulta.forEach((frecConsulta, token) => {
+            const frecDoc = frecuenciaDoc.get(token) || 0;
+
+            if (frecDoc > 0) {
+                puntuacion += frecConsulta * frecDoc * calcularIdf(token, indiceSemantico);
+                palabrasCoincidentes.add(token);
+            }
+        });
+
+        const normalizador = Math.sqrt(tokensDoc.length || 1);
+
+        return {
+            empresa,
+            puntuacion: puntuacion / normalizador,
+            palabrasCoincidentes: Array.from(palabrasCoincidentes)
+        };
+    });
+
+    return resultados
+        .filter(resultado => resultado.puntuacion > 0)
+        .sort((a, b) => b.puntuacion - a.puntuacion);
+}
+
+function renderizarResultadosSemanticos(resultados) {
+    const contenedor = document.getElementById('resultadosSemanticos');
+
+    if (!contenedor) {
+        return;
+    }
+
+    if (resultados.length === 0) {
+        contenedor.innerHTML = '<p class="aviso-semantico">No se han encontrado empresas relacionadas con ese texto. Prueba con otras palabras.</p>';
+        return;
+    }
+
+    const puntuacionMaxima = resultados[0].puntuacion;
+
+    contenedor.innerHTML = resultados.slice(0, 20).map(resultado => {
+        const porcentaje = Math.max(1, Math.round((resultado.puntuacion / puntuacionMaxima) * 100));
+
+        const tagsHtml = obtenerTagsEmpresa(resultado.empresa).map(tag => {
+            const tagNorm = normalizarTexto(tag);
+            const coincide = resultado.palabrasCoincidentes.some(
+                token => tagNorm.includes(token)
+            );
+
+            return `<span class="tag-empresa${coincide ? ' tag-coincide' : ''}" data-tag="${escaparHtml(tag)}">${escaparHtml(tag)}</span>`;
+        }).join('');
+
+        return `
+            <article class="resultado-semantico" data-nombre="${escaparHtml(resultado.empresa.nombre || '')}">
+                <div class="cabecera-resultado-semantico">
+                    <h4>${escaparHtml(resultado.empresa.nombre || '')}</h4>
+                    <span class="badge-relevancia">${porcentaje}% relevancia</span>
+                </div>
+                <p class="descripcion-resultado-semantico">${escaparHtml(resultado.empresa.descripcion || '')}</p>
+                <div class="tags-resultado-semantico">${tagsHtml}</div>
+            </article>
+        `;
+    }).join('');
+
+    contenedor.querySelectorAll('.resultado-semantico').forEach((tarjeta, indice) => {
+        tarjeta.addEventListener('click', () => {
+            centrarEnEmpresa(resultados[indice].empresa);
+        });
+    });
+}
+
+function contarPalabras(texto) {
+    const coincidencias = texto.trim().match(/\\S+/g);
+    return coincidencias ? coincidencias.length : 0;
+}
+
+const LIMITE_PALABRAS_SEMANTICO = 1000;
+
+function activarBusquedaSemantica() {
+    const textarea = document.getElementById('textoSemantico');
+    const contador = document.getElementById('contadorPalabras');
+    const boton = document.getElementById('btnBuscarSemantico');
+
+    if (!textarea || !contador || !boton) {
+        return;
+    }
+
+    function actualizarContador() {
+        if (contarPalabras(textarea.value) > LIMITE_PALABRAS_SEMANTICO) {
+            const palabrasRecortadas = textarea.value.trim().split(/\\s+/).slice(0, LIMITE_PALABRAS_SEMANTICO);
+            textarea.value = palabrasRecortadas.join(' ');
+        }
+
+        const palabrasActuales = contarPalabras(textarea.value);
+        contador.textContent = `${palabrasActuales} / ${LIMITE_PALABRAS_SEMANTICO} palabras`;
+        contador.classList.toggle('limite-alcanzado', palabrasActuales >= LIMITE_PALABRAS_SEMANTICO);
+    }
+
+    function ejecutarBusqueda() {
+        const resultados = calcularPuntuacionesSemanticas(textarea.value);
+        renderizarResultadosSemanticos(resultados);
+    }
+
+    textarea.addEventListener('input', actualizarContador);
+
+    textarea.addEventListener('keydown', evento => {
+        if (evento.key === 'Enter' && (evento.ctrlKey || evento.metaKey)) {
+            ejecutarBusqueda();
+        }
+    });
+
+    boton.addEventListener('click', ejecutarBusqueda);
+
+    actualizarContador();
 }
 
 function activarTabsVista() {
@@ -1460,6 +1813,7 @@ document.addEventListener('DOMContentLoaded', () => {
     activarLimpiar();
     activarClickTarjetas();
     activarTabsVista();
+    activarBusquedaSemantica();
     aplicarFiltros();
     renderizarListaPorFecha();
 
@@ -1534,6 +1888,7 @@ def generar_html_completo(empresas):
     <nav class="tabs-vista">
         <button class="tab-vista activo" data-vista="mapa">🗺️ Mapa</button>
         <button class="tab-vista" data-vista="fecha">🕒 Por fecha de inclusión</button>
+        <button class="tab-vista" data-vista="semantica">🔍 Buscar por texto</button>
     </nav>
 
     <main class="layout" id="vistaMapa">
@@ -1586,6 +1941,32 @@ def generar_html_completo(empresas):
             <p class="subtitulo-fecha">Orden cronológico, de la más reciente a la más antigua.</p>
 
             <div id="listaPorFecha"></div>
+        </div>
+    </main>
+
+    <main class="vista-semantica vista-oculta" id="vistaSemantica">
+        <div class="contenedor-semantica">
+            <h2>Buscar empresas por descripción</h2>
+            <p class="subtitulo-semantica">
+                Describe con tus propias palabras el tipo de empresa que buscas (hasta 1000 palabras)
+                y te mostraremos las empresas más relacionadas según sus tags y descripción.
+            </p>
+
+            <div class="caja-busqueda-semantica">
+                <textarea
+                    id="textoSemantico"
+                    placeholder="Ej: Empresa de desarrollo de software a medida especializada en aplicaciones web y movilidad, con experiencia en la nube..."
+                ></textarea>
+
+                <div class="acciones-semantica">
+                    <p id="contadorPalabras">0 / 1000 palabras</p>
+                    <button id="btnBuscarSemantico">Buscar empresas relacionadas</button>
+                </div>
+            </div>
+
+            <div id="resultadosSemanticos" class="resultados-semanticos">
+                <p class="aviso-semantico">Escribe una descripción para encontrar empresas relacionadas.</p>
+            </div>
         </div>
     </main>
 
