@@ -1471,5 +1471,56 @@
         "estado_agente": "ok",
         "fuentes": "https://www.bozetadesign.com/work; https://ajezaragoza.com/asociados/bozeta-design/; https://www.enjoyzaragoza.es/bolsos-paris-64-blockchain/",
         "fecha_inclusion": "2026-09-15"
+    },
+    {
+        "nombre": "Guara Servicios Informáticos",
+        "latitud": "41.665067",
+        "longitud": "-0.873498",
+        "direccion": "Calle Sierra de Guara, 50015 Zaragoza, España",
+        "descripcion": "Empresa zaragozana especializada en analizar e identificar vulnerabilidades en infraestructuras informáticas internas, redes, servidores y aplicaciones.",
+        "tags": [
+            "ciberseguridad",
+            "infraestructura it",
+            "auditoría",
+            "redes"
+        ],
+        "ciclo": "ASIR",
+        "estado_agente": "ok",
+        "fuentes": "https://ciberseguridad.com/empresas/espana/zaragoza/",
+        "fecha_inclusion": "2026-09-18"
+    },
+    {
+        "nombre": "CiberSafety",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Empresa especializada en ciberseguridad gestionada con presencia en Zaragoza, ofrece SOC propio, MDR, cumplimiento normativo (NIS2, ENS, DORA) y respuesta a incidentes.",
+        "tags": [
+            "ciberseguridad",
+            "soc",
+            "cumplimiento normativo",
+            "cloud"
+        ],
+        "ciclo": "ASIR",
+        "estado_agente": "ok",
+        "fuentes": "https://cibersafety.com/empresa-ciberseguridad-zaragoza/",
+        "fecha_inclusion": "2026-09-18"
+    },
+    {
+        "nombre": "Ibersya",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Empresa que ofrece servicios de ciberseguridad para empresas en Zaragoza, incluyendo protección IT, monitorización 24/7, auditorías y copias de seguridad.",
+        "tags": [
+            "ciberseguridad",
+            "monitorización",
+            "auditoría",
+            "backup"
+        ],
+        "ciclo": "ASIR",
+        "estado_agente": "ok",
+        "fuentes": "https://ibersya.com/ciberseguridad-empresas-zaragoza/",
+        "fecha_inclusion": "2026-09-18"
     }
 ]
