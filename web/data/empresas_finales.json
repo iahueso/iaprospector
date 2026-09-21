@@ -1522,5 +1522,40 @@
         "estado_agente": "ok",
         "fuentes": "https://ibersya.com/ciberseguridad-empresas-zaragoza/",
         "fecha_inclusion": "2026-09-18"
+    },
+    {
+        "nombre": "Redes Consultoría",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Consultora tecnológica con actividad en Zaragoza centrada en la implantación de agentes de inteligencia artificial generativa para automatizar tareas y optimizar procesos industriales en empresas de la región.",
+        "tags": [
+            "ia generativa",
+            "consultoría",
+            "automatización",
+            "procesos industriales"
+        ],
+        "ciclo": "IA y Big Data",
+        "estado_agente": "ok",
+        "fuentes": "https://www.redesconsultoria.com/transformacion-digital-en-zaragoza/; https://www.redesconsultoria.com/transformacion-digital/",
+        "fecha_inclusion": "2026-09-21"
+    },
+    {
+        "nombre": "ForgeNEX",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Empresa tecnológica que ofrece soluciones B2B a empresas de Zaragoza, incluyendo automatización de procesos con IA, consultoría estratégica de inteligencia artificial, CRM, desarrollo de software y otras herramientas digitales, con soporte local.",
+        "tags": [
+            "ia",
+            "automatización",
+            "crm",
+            "desarrollo software",
+            "consultoría digital"
+        ],
+        "ciclo": "IA y Big Data",
+        "estado_agente": "ok",
+        "fuentes": "https://www.forgenex.com/soluciones/automatizacion-ia-en-zaragoza; https://www.forgenex.com/soluciones/empresas-en-zaragoza; https://www.forgenex.com/inteligencia-artificial/consultoria-ia-en-zaragoza/",
+        "fecha_inclusion": "2026-09-21"
     }
 ]
