@@ -1557,5 +1557,90 @@
         "estado_agente": "ok",
         "fuentes": "https://www.forgenex.com/soluciones/automatizacion-ia-en-zaragoza; https://www.forgenex.com/soluciones/empresas-en-zaragoza; https://www.forgenex.com/inteligencia-artificial/consultoria-ia-en-zaragoza/",
         "fecha_inclusion": "2026-09-21"
+    },
+    {
+        "nombre": "Entalto Studios",
+        "latitud": "41.6524956",
+        "longitud": "-0.874438",
+        "direccion": "Entalto, Calle Mayor, 50001 Zaragoza, España",
+        "descripcion": "Estudio de desarrollo de videojuegos con sede en Zaragoza, fundado en 2021 por veteranos de la industria, enfocado en proyectos para PlayStation y otras plataformas.",
+        "tags": [
+            "videojuegos",
+            "gaming",
+            "desarrollo",
+            "playstation"
+        ],
+        "ciclo": "DAM",
+        "estado_agente": "ok",
+        "fuentes": "https://www.aragondigital.es/articulo/economia/entalto-studios-empresa-aragonesa-gaming-que-codea-entidades-todo-mundo/20250402194943915478.html",
+        "fecha_inclusion": "2026-09-22"
+    },
+    {
+        "nombre": "o10media",
+        "latitud": "41.646481",
+        "longitud": "-0.887553",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Agencia de marketing digital en Zaragoza que ofrece servicios de diseño web, SEO, SEM, desarrollo de aplicaciones y soluciones de inteligencia artificial.",
+        "tags": [
+            "marketing digital",
+            "desarrollo web",
+            "seo",
+            "ia"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://www.o10media.es/",
+        "fecha_inclusion": "2026-09-22"
+    },
+    {
+        "nombre": "SOCIAL11",
+        "latitud": "41.6435773",
+        "longitud": "-0.8736191",
+        "direccion": "Calle Previsión Social, 11, 50008 Zaragoza, España",
+        "descripcion": "Agencia de marketing digital en Zaragoza especializada en diseño web, posicionamiento web, desarrollo de software y campañas en redes sociales.",
+        "tags": [
+            "marketing digital",
+            "desarrollo software",
+            "diseño web",
+            "seo"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://www.social11.es/",
+        "fecha_inclusion": "2026-09-22"
+    },
+    {
+        "nombre": "Ematiza Marketing Digital",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Agencia de marketing digital en Zaragoza que gestiona redes sociales y desarrolla aplicaciones personalizadas para empresas y ayuntamientos.",
+        "tags": [
+            "marketing digital",
+            "redes sociales",
+            "apps",
+            "comunicación"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://ematizamarketing.com/",
+        "fecha_inclusion": "2026-09-22"
+    },
+    {
+        "nombre": "LionRigStudio",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Estudio de realización multimedia fundado en 2018 en Zaragoza, que combina experiencia en informática y producción audiovisual.",
+        "tags": [
+            "multimedia",
+            "audiovisual",
+            "informática",
+            "producción"
+        ],
+        "ciclo": "Otro",
+        "estado_agente": "ok",
+        "fuentes": "https://www.lionrigstudio.com/",
+        "fecha_inclusion": "2026-09-22"
     }
 ]
