@@ -1642,5 +1642,57 @@
         "estado_agente": "ok",
         "fuentes": "https://www.lionrigstudio.com/",
         "fecha_inclusion": "2026-09-22"
+    },
+    {
+        "nombre": "SGV (Software Grupo V)",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Empresa zaragozana fundada en 1990 dedicada al desarrollo de aplicaciones informáticas y proyectos tecnológicos, especializada en software de gestión de almacenes (WMS) y soluciones para servicios sociales.",
+        "tags": [
+            "software de gestión",
+            "wms",
+            "logística",
+            "aplicaciones a medida"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://www.sgv.es/ ; https://sgvsoftware.com/ ; https://www.sgv.es/productos/c/software-servicios-sociales",
+        "fecha_inclusion": "2026-09-25"
+    },
+    {
+        "nombre": "nSolver (Nuevas Soluciones Virtuales)",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Empresa de Zaragoza que ofrece desarrollo de software empresarial (sistema ERP-CRM), diseño de páginas web y aplicaciones móviles, apostando por el software libre.",
+        "tags": [
+            "erp",
+            "crm",
+            "diseño web",
+            "software libre"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://www.nsolver.com/ ; https://www.nsolver.com/sistema-erp-gestion-empresarial-open-source",
+        "fecha_inclusion": "2026-09-25"
+    },
+    {
+        "nombre": "Ematiza Digital S.L. (Ematiza Tecnología Audiovisual)",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Empresa ubicada en La Puebla de Alfindén (Zaragoza) especializada en ingeniería audiovisual, integración y distribución de contenido, instalaciones, alquiler y venta de equipos profesionales, así como marketing digital para empresas y eventos.",
+        "tags": [
+            "audiovisual",
+            "ingeniería",
+            "marketing digital",
+            "streaming",
+            "equipos profesionales"
+        ],
+        "ciclo": "Otro",
+        "estado_agente": "ok",
+        "fuentes": "https://ematizaudiovisual.com/ ; https://redaccion.camarazaragoza.com/empresa/ematiza/ ; https://www.cylex.es/la-puebla-de-alfinden/ematiza-tecnología-audiovisual-14448893.html",
+        "fecha_inclusion": "2026-09-25"
     }
 ]
