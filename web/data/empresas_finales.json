@@ -1694,5 +1694,89 @@
         "estado_agente": "ok",
         "fuentes": "https://ematizaudiovisual.com/ ; https://redaccion.camarazaragoza.com/empresa/ematiza/ ; https://www.cylex.es/la-puebla-de-alfinden/ematiza-tecnología-audiovisual-14448893.html",
         "fecha_inclusion": "2026-09-25"
+    },
+    {
+        "nombre": "Calat Sistemas y Comunicaciones",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Empresa de informática en Zaragoza dedicada al desarrollo de soluciones web, software comercial y aplicaciones móviles (Android, iOS) con tecnologías responsive.",
+        "tags": [
+            "desarrollo web",
+            "apps móviles",
+            "software comercial"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://www.calat.com/",
+        "fecha_inclusion": "2026-09-28"
+    },
+    {
+        "nombre": "PredictLand",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Consultora tecnológica aragonesa fundada en 2017, especializada en inteligencia artificial, ciencia de datos y soluciones predictivas aplicadas a negocio (ventas, operaciones y experiencia de cliente).",
+        "tags": [
+            "inteligencia artificial",
+            "big data",
+            "machine learning",
+            "consultoría"
+        ],
+        "ciclo": "IA y Big Data",
+        "estado_agente": "ok",
+        "fuentes": "https://www.predictland.com/, https://redaccion.camarazaragoza.com/empresa/predictland/, https://es.linkedin.com/company/predictland",
+        "fecha_inclusion": "2026-09-28"
+    },
+    {
+        "nombre": "JEVA Systems and Compliance",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Empresa zaragozana de consultoría tecnológica con sede en el Casco Antiguo de Zaragoza, dedicada al desarrollo de software, servicios informáticos, protección de datos y cumplimiento normativo.",
+        "tags": [
+            "software",
+            "compliance",
+            "tecnología",
+            "protección de datos"
+        ],
+        "ciclo": "DAM",
+        "estado_agente": "ok",
+        "fuentes": "https://www.jevasc.com/, https://www.iberinform.es/empresa/7033832/jeva-systems-and-compliance, https://openmercantil.es/empresa/jeva-systems-and-compliance-sociedad-limitada",
+        "fecha_inclusion": "2026-09-28"
+    },
+    {
+        "nombre": "SDAI",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Empresa de Zaragoza que actúa como departamento externo de inteligencia artificial para negocios, detectando tareas repetitivas e implantando soluciones de automatización medibles.",
+        "tags": [
+            "ia",
+            "automatización",
+            "consultoría",
+            "n8n"
+        ],
+        "ciclo": "IA y Big Data",
+        "estado_agente": "ok",
+        "fuentes": "https://sdai.es/",
+        "fecha_inclusion": "2026-09-28"
+    },
+    {
+        "nombre": "Informática Ingenia",
+        "latitud": "41.6596148",
+        "longitud": "-0.8780178",
+        "direccion": "Tecnovalia Informática, Calle del Arquitecto de la Figuera, 2, 50015 Zaragoza, España",
+        "descripcion": "Empresa de desarrollo de software con sede en Zaragoza, fundada en 2007, con más de 25 años de experiencia en el sector, especializada en soluciones TIC y ERP para la gestión empresarial (plataforma Ahora One).",
+        "tags": [
+            "desarrollo software",
+            "erp",
+            "transformación digital",
+            "pymes"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://ingenia-aragon.es/ ; https://es.linkedin.com/company/informática-ingenia-s-l ; https://www.ahora.es/socio_certificado/informatica-ingenia/",
+        "fecha_inclusion": "2026-09-28"
     }
 ]
