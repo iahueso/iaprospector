@@ -1778,5 +1778,87 @@
         "estado_agente": "ok",
         "fuentes": "https://ingenia-aragon.es/ ; https://es.linkedin.com/company/informática-ingenia-s-l ; https://www.ahora.es/socio_certificado/informatica-ingenia/",
         "fecha_inclusion": "2026-09-28"
+    },
+    {
+        "nombre": "Databay",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Empresa de desarrollo de aplicaciones Android en Zaragoza, creando desde apps de gestión interna hasta aplicaciones B2C con gran volumen de descargas.",
+        "tags": [
+            "android",
+            "desarrollo móvil",
+            "apps"
+        ],
+        "ciclo": "DAM",
+        "estado_agente": "ok",
+        "fuentes": "https://databay.solutions/desarrollo-de-aplicaciones-android-zaragoza",
+        "fecha_inclusion": "2026-09-29"
+    },
+    {
+        "nombre": "I.D.A.",
+        "latitud": "41.6545546",
+        "longitud": "-0.8805789",
+        "direccion": "Unión de Consumidores de Aragón, Calle de Alfonso I, 20, 50003 Zaragoza, España",
+        "descripcion": "Consultoría tecnológica con más de 25 años de trayectoria en Zaragoza, especializada en desarrollo de software a medida e integración de sistemas ERP.",
+        "tags": [
+            "consultoría",
+            "software a medida",
+            "erp"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://ida.es/",
+        "fecha_inclusion": "2026-09-29"
+    },
+    {
+        "nombre": "Intesiscon",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Empresa de servicios y consultoría de TI con sede en Avenida Francisco de Goya, Zaragoza. Especializada en sistemas de captura automática de datos en tiempo real, consultoría tecnológica, datos y análisis, y automatización de marketing.",
+        "tags": [
+            "consultoría ti",
+            "captura de datos",
+            "kit digital",
+            "sistemas inteligentes"
+        ],
+        "ciclo": "ASIR",
+        "estado_agente": "ok",
+        "fuentes": "https://es.linkedin.com/company/intesiscon ; https://intesiscon.es/que-hacemos.php ; https://www.qdq.com/intesiscon-1210744",
+        "fecha_inclusion": "2026-09-29"
+    },
+    {
+        "nombre": "Davisa Informática",
+        "latitud": "41.6596148",
+        "longitud": "-0.8780178",
+        "direccion": "Tecnovalia Informática, Calle del Arquitecto de la Figuera, 2, 50015 Zaragoza, España",
+        "descripcion": "Empresa española con sede central en Zaragoza, Microsoft Solutions Partner desde 2003, especializada en la implantación de Microsoft Dynamics 365 Business Central para sectores como fabricación, logística, finanzas y construcción.",
+        "tags": [
+            "erp",
+            "microsoft dynamics",
+            "business central",
+            "consultoría"
+        ],
+        "ciclo": "DAM",
+        "estado_agente": "ok",
+        "fuentes": "https://www.davisa.es/ ; https://www.davisa.es/zaragoza/ ; https://www.davisa.es/oficinas/",
+        "fecha_inclusion": "2026-09-29"
+    },
+    {
+        "nombre": "Deveco",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Consultora tecnológica de Zaragoza especializada en software a medida, inteligencia artificial y automatización de procesos, con más de 100 clientes atendidos.",
+        "tags": [
+            "software a medida",
+            "inteligencia artificial",
+            "automatización"
+        ],
+        "ciclo": "IA y Big Data",
+        "estado_agente": "ok",
+        "fuentes": "https://devecotech.com/",
+        "fecha_inclusion": "2026-09-29"
     }
 ]
