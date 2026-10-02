@@ -1860,5 +1860,74 @@
         "estado_agente": "ok",
         "fuentes": "https://devecotech.com/",
         "fecha_inclusion": "2026-09-29"
+    },
+    {
+        "nombre": "Bitbrain",
+        "latitud": "41.6405815",
+        "longitud": "-0.8933178",
+        "direccion": "Bitbrain, Calle de Santa Teresa de Jesús, 30-32, 50006 Zaragoza, España",
+        "descripcion": "Empresa de neurotecnología con sede en Zaragoza que combina neurociencia, inteligencia artificial y hardware para desarrollar productos y soluciones innovadoras de monitorización biométrica y neuronal.",
+        "tags": [
+            "neurotecnología",
+            "inteligencia artificial",
+            "hardware",
+            "biometría",
+            "i+d"
+        ],
+        "ciclo": "IA y Big Data",
+        "estado_agente": "ok",
+        "fuentes": "https://www.bitbrain.com/es; https://firmania.es/zaragoza/bitbrain-1001269",
+        "fecha_inclusion": "2026-10-02"
+    },
+    {
+        "nombre": "Brainy Digital",
+        "latitud": "41.6494558",
+        "longitud": "-0.8852553",
+        "direccion": "Lamont Imagen digital, Calle José Luis Albareda, 7, 50004 Zaragoza, España",
+        "descripcion": "Agencia de marketing digital y transformación digital con sede en el Casco Antiguo de Zaragoza, especializada en estrategias online basadas en análisis de datos y tecnología.",
+        "tags": [
+            "marketing digital",
+            "transformación digital",
+            "análisis de datos",
+            "publicidad"
+        ],
+        "ciclo": "Marketing",
+        "estado_agente": "ok",
+        "fuentes": "https://brainydigital.es/; https://es.linkedin.com/company/brainy-digital-spain",
+        "fecha_inclusion": "2026-10-02"
+    },
+    {
+        "nombre": "Góriz Telecomunicación",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Empresa de telecomunicaciones dedicada a la instalación y mantenimiento de redes para empresas en Aragón, considerada uno de los socios tecnológicos relevantes de la comunidad autónoma.",
+        "tags": [
+            "telecomunicaciones",
+            "redes",
+            "networking",
+            "infraestructura"
+        ],
+        "ciclo": "ASIR",
+        "estado_agente": "ok",
+        "fuentes": "https://www.murcia.com/empresas/noticias/2025/06/17-goriz-telecomunicacion--la-empresa-de-telecomunicaciones-que-impulsa-el-crecimiento-de-las-empresas.asp",
+        "fecha_inclusion": "2026-10-02"
+    },
+    {
+        "nombre": "Instrumentación y Componentes SA",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Empresa con sede en Zaragoza registrada en el sector de instrumentación y componentes técnicos, vinculada al ámbito de las nuevas tecnologías y telecomunicaciones en Aragón.",
+        "tags": [
+            "instrumentación",
+            "componentes",
+            "tecnología",
+            "aragón"
+        ],
+        "ciclo": "Otro",
+        "estado_agente": "ok",
+        "fuentes": "https://www.einforma.com/informacion-empresa/instrumentacion-componentes; https://www.telecosaragon.es/noche-telecomunicaciones/noche-de-las-telecomunicaciones-2006/",
+        "fecha_inclusion": "2026-10-02"
     }
 ]
