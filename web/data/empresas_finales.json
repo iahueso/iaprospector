@@ -1929,5 +1929,93 @@
         "estado_agente": "ok",
         "fuentes": "https://www.einforma.com/informacion-empresa/instrumentacion-componentes; https://www.telecosaragon.es/noche-telecomunicaciones/noche-de-las-telecomunicaciones-2006/",
         "fecha_inclusion": "2026-10-02"
+    },
+    {
+        "nombre": "Nunsys",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Empresa tecnológica con oficina en la Plataforma Logística de Zaragoza (Pla-Za), dedicada a ofrecer soluciones tecnológicas y de transformación digital integral a empresas de diversos sectores.",
+        "tags": [
+            "transformación digital",
+            "soluciones ti",
+            "consultoría tecnológica",
+            "software"
+        ],
+        "ciclo": "ASIR",
+        "estado_agente": "ok",
+        "fuentes": "https://www.nunsys.com/contacto/; https://nunsysgroup.com/sobre-nunsys-group/",
+        "fecha_inclusion": "2026-10-05"
+    },
+    {
+        "nombre": "GFT Technologies",
+        "latitud": "41.589874",
+        "longitud": "-0.810513",
+        "direccion": "Tudor Exide Technologies, 50720 Zaragoza, España",
+        "descripcion": "Compañía tecnológica internacional con oficina en Zaragoza desde 2001, especializada en consultoría IT, desarrollo de software impulsado por IA y digitalización de procesos empresariales, con más de 250 empleados en la ciudad.",
+        "tags": [
+            "consultoría it",
+            "inteligencia artificial",
+            "software",
+            "cloud",
+            "digitalización"
+        ],
+        "ciclo": "DAM",
+        "estado_agente": "ok",
+        "fuentes": "https://www.gft.com/es/es/about-us/newsroom/press-and-news/2023/press-releases/gft-inaugura-un-nuevo-modelo-de-oficina-en-zaragoza; https://www.gft.com/es/es/about-us/locations",
+        "fecha_inclusion": "2026-10-05"
+    },
+    {
+        "nombre": "GAMCO",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Empresa con actividad en Zaragoza pionera en el desarrollo de soluciones de software basadas en inteligencia artificial, enfocada en modelos predictivos, optimización comercial y gestión avanzada del riesgo para clientes nacionales e internacionales.",
+        "tags": [
+            "inteligencia artificial",
+            "modelos predictivos",
+            "software",
+            "big data"
+        ],
+        "ciclo": "IA y Big Data",
+        "estado_agente": "ok",
+        "fuentes": "https://gamco.es/empresas-inteligencia-artificial-zaragoza/; https://es.linkedin.com/company/gamcosl",
+        "fecha_inclusion": "2026-10-05"
+    },
+    {
+        "nombre": "Nologin",
+        "latitud": "41.6706352",
+        "longitud": "-0.9002498",
+        "direccion": "Nologin, Andador de Berta Cáceres Flores, 50018 Zaragoza, España",
+        "descripcion": "Compañía tecnológica con sede principal en Zaragoza desde el año 2000, especializada en datacenter, cloud, ciberseguridad, identidad e inteligencia artificial, con proyección internacional en EE.UU., Latinoamérica y España.",
+        "tags": [
+            "cloud",
+            "ciberseguridad",
+            "inteligencia artificial",
+            "datacenter",
+            "infraestructura ti"
+        ],
+        "ciclo": "ASIR",
+        "estado_agente": "ok",
+        "fuentes": "https://www.nologin.es/es/contact, https://www.elespanol.com/aragon/economia/20241119/tecnologica-nologin-triplica-instalaciones-zaragoza-planea-contratar-centenar-trabajadores/902410097_0.html",
+        "fecha_inclusion": "2026-10-05"
+    },
+    {
+        "nombre": "Wanatop",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Agencia de marketing digital de alto rendimiento fundada en Zaragoza en 2014, especializada en SEO, SEM, Social Media, Paid Media, analítica, diseño UX y desarrollo web, con más de 50 especialistas y certificación Google Premier Partner.",
+        "tags": [
+            "marketing digital",
+            "seo",
+            "sem",
+            "analítica web",
+            "ux"
+        ],
+        "ciclo": "Marketing",
+        "estado_agente": "ok",
+        "fuentes": "https://es.wikipedia.org/wiki/Wanatop, https://datalierta.com/directorio/wanatop-agencia-aragonesa-referente-en-marketing-digital/",
+        "fecha_inclusion": "2026-10-05"
     }
 ]
