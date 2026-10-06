@@ -2033,5 +2033,40 @@
         "estado_agente": "ok",
         "fuentes": "https://pentestingteam.com/empresa-de-ciberseguridad/zaragoza",
         "fecha_inclusion": "2026-10-06"
+    },
+    {
+        "nombre": "ARATECNIA",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Empresa informática especializada en servicios IT para empresas y profesionales de Zaragoza, Huesca y Teruel, cubriendo soporte técnico, infraestructuras y servicios informáticos generales.",
+        "tags": [
+            "soporte it",
+            "infraestructuras",
+            "sistemas",
+            "servicios informáticos"
+        ],
+        "ciclo": "ASIR",
+        "estado_agente": "ok",
+        "fuentes": "https://aratecnia.es/",
+        "fecha_inclusion": "2026-10-06"
+    },
+    {
+        "nombre": "TechConsulting (Salatech Consulting SL)",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Empresa de ciberseguridad con sede en Zaragoza especializada en pentesting, cumplimiento normativo (ENS, NIS2, DORA) y soluciones SIEM/EDR gestionadas para entidades públicas y privadas.",
+        "tags": [
+            "pentesting",
+            "ciberseguridad",
+            "ens",
+            "nis2",
+            "siem"
+        ],
+        "ciclo": "ASIR",
+        "estado_agente": "ok",
+        "fuentes": "https://techconsulting.es/empresa-de-ciberseguridad-en-zaragoza-expertos-en-ens-nis2-y-pentesting/, https://www.iberinform.es/empresa/11292581/salatech-consulting",
+        "fecha_inclusion": "2026-10-06"
     }
 ]
