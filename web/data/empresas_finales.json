@@ -2017,5 +2017,21 @@
         "estado_agente": "ok",
         "fuentes": "https://es.wikipedia.org/wiki/Wanatop, https://datalierta.com/directorio/wanatop-agencia-aragonesa-referente-en-marketing-digital/",
         "fecha_inclusion": "2026-10-05"
+    },
+    {
+        "nombre": "Pentesting Team",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Empresa con actividad en Zaragoza especializada en auditoría ofensiva de ciberseguridad y pentesting para detectar vulnerabilidades en sistemas empresariales.",
+        "tags": [
+            "pentesting",
+            "auditoria",
+            "ciberseguridad"
+        ],
+        "ciclo": "ASIR",
+        "estado_agente": "ok",
+        "fuentes": "https://pentestingteam.com/empresa-de-ciberseguridad/zaragoza",
+        "fecha_inclusion": "2026-10-06"
     }
 ]
