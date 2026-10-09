@@ -2068,5 +2068,91 @@
         "estado_agente": "ok",
         "fuentes": "https://techconsulting.es/empresa-de-ciberseguridad-en-zaragoza-expertos-en-ens-nis2-y-pentesting/, https://www.iberinform.es/empresa/11292581/salatech-consulting",
         "fecha_inclusion": "2026-10-06"
+    },
+    {
+        "nombre": "NEXIO Ingeniería",
+        "latitud": "41.6390437",
+        "longitud": "-0.8833",
+        "direccion": "Ingeniería de Equipos de Control, S.L., Ingeniería de Equipos de Control, Calle del Monasterio de Rueda, 9, 50007 Zaragoza, España",
+        "descripcion": "Empresa de ingeniería y desarrollo tecnológico con sede en Ejea de los Caballeros (Zaragoza), especializada en soluciones IoT propias para digitalización industrial, iluminación inteligente, gestión de infraestructuras y optimización de recursos agrícolas mediante una plataforma SaaS.",
+        "tags": [
+            "iot",
+            "saas",
+            "digitalización industrial",
+            "ingeniería",
+            "automatización"
+        ],
+        "ciclo": "IA y Big Data",
+        "estado_agente": "ok",
+        "fuentes": "https://nexioingenieria.com/; https://redaccion.camarazaragoza.com/empresa/nexio/; https://anmopyc.es/socios/nexio/",
+        "fecha_inclusion": "2026-10-09"
+    },
+    {
+        "nombre": "ITSICAP Consultoría y Sistemas",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Empresa de consultoría informática con sede en Zaragoza, dedicada al desarrollo e implantación de aplicaciones de gestión para pymes (cloud, apps, Windows), telefonía VoIP, automatización y soporte técnico, actuando como Agente Digitalizador del Kit Digital.",
+        "tags": [
+            "consultoría it",
+            "soporte técnico",
+            "cloud",
+            "digitalización",
+            "pymes"
+        ],
+        "ciclo": "ASIR",
+        "estado_agente": "ok",
+        "fuentes": "https://itsicap.com/consultoria-informatica-y-soluciones-it-en-zaragoza/; https://itsicap.com/servicios/consultoria-informatica/; https://es.linkedin.com/company/itsicap",
+        "fecha_inclusion": "2026-10-09"
+    },
+    {
+        "nombre": "Lecra",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Empresa de Zaragoza especializada en diseño de páginas web corporativas, aplicaciones móviles y software de gestión para empresas.",
+        "tags": [
+            "desarrollo web",
+            "apps móviles",
+            "software gestión"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://lecra.net/",
+        "fecha_inclusion": "2026-10-09"
+    },
+    {
+        "nombre": "Gessner",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Agencia de Zaragoza dedicada al desarrollo de software a medida, diseño web, integraciones API y SEO técnico en Aragón.",
+        "tags": [
+            "software a medida",
+            "diseño web",
+            "seo",
+            "api"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://gessnerhof.com/",
+        "fecha_inclusion": "2026-10-09"
+    },
+    {
+        "nombre": "Informática Zaragoza",
+        "latitud": "41.6430443",
+        "longitud": "-0.8946726",
+        "direccion": "Informática Zaragoza, Calle de Luis del Valle, 50005 Zaragoza, España",
+        "descripcion": "Empresa zaragozana que diseña páginas web profesionales, tiendas online y aplicaciones móviles optimizadas para posicionamiento en buscadores.",
+        "tags": [
+            "diseño web",
+            "tienda online",
+            "apps móviles",
+            "seo"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://www.informaticazaragoza.com/diseno-web-zaragoza",
+        "fecha_inclusion": "2026-10-09"
     }
 ]
