@@ -2154,5 +2154,22 @@
         "estado_agente": "ok",
         "fuentes": "https://www.informaticazaragoza.com/diseno-web-zaragoza",
         "fecha_inclusion": "2026-10-09"
+    },
+    {
+        "nombre": "BenusTech",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Empresa especializada en infraestructura cloud y FinOps para pymes en Zaragoza, ofreciendo implementaciones con enfoque en retorno de inversión y entregas rápidas.",
+        "tags": [
+            "cloud",
+            "finops",
+            "pymes",
+            "infraestructura"
+        ],
+        "ciclo": "ASIR",
+        "estado_agente": "ok",
+        "fuentes": "https://benustech.es/servicios/infraestructura-cloud/zaragoza",
+        "fecha_inclusion": "2026-10-16"
     }
 ]
