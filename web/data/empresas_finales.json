@@ -2171,5 +2171,90 @@
         "estado_agente": "ok",
         "fuentes": "https://benustech.es/servicios/infraestructura-cloud/zaragoza",
         "fecha_inclusion": "2026-10-16"
+    },
+    {
+        "nombre": "Visualcom Solutions",
+        "latitud": "41.6464797",
+        "longitud": "-0.8894298",
+        "direccion": "Voilá Contract Solutions, Calle de Amado Laguna de Rins, 50006 Zaragoza, España",
+        "descripcion": "Empresa de Zaragoza dedicada a soluciones informáticas, diseño web, marketing digital y consultoría tecnológica, ofreciendo un servicio integral de digitalización a empresas y profesionales.",
+        "tags": [
+            "diseño web",
+            "marketing digital",
+            "digitalización",
+            "consultoría"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://visualcom.es/ ; https://visualcom.es/diseno-web/ ; https://es.linkedin.com/company/visualcom-solutions",
+        "fecha_inclusion": "2026-10-19"
+    },
+    {
+        "nombre": "Inycom (Instrumentación y Componentes)",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Empresa tecnológica con sede en Zaragoza y oficinas en una docena de ciudades españolas, especializada en servicios TIC, analítica de datos y soluciones para los sectores sanitario y de laboratorio. En 2023 fue adquirida por el grupo valenciano Nunsys.",
+        "tags": [
+            "tic",
+            "analítica de datos",
+            "salud digital",
+            "servicios it"
+        ],
+        "ciclo": "ASIR",
+        "estado_agente": "ok",
+        "fuentes": "https://www.inycom.es/, https://www.dataprix.com/empresa-it/business-intelligence/inycom, https://www.elperiodicodearagon.com/aragon/valenciana-nunsys-compra-tecnologica-aragonesa-85223455.html",
+        "fecha_inclusion": "2026-10-19"
+    },
+    {
+        "nombre": "Parque Tecnológico Walqa",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Espacio empresarial tecnológico situado en Huesca que alberga numerosas empresas especializadas en Tecnologías de la Información, biotecnología y energías renovables, con más de 80 empresas y más de 800 empleos.",
+        "tags": [
+            "parque tecnológico",
+            "tic",
+            "innovación",
+            "huesca"
+        ],
+        "ciclo": "DAM",
+        "estado_agente": "ok",
+        "fuentes": "https://www.ptwalqa.com/, https://es.wikipedia.org/wiki/Parque_Tecnológico_Walqa, https://www.eleconomista.es/tecnologia/noticias/13535165/09/25/walqa-toma-impulso-con-84-empresas-mas-de-830-empleos-y-la-llegada-de-nuevas-companias-y-el-centro-de-datos-de-aws.html",
+        "fecha_inclusion": "2026-10-19"
+    },
+    {
+        "nombre": "Aragón Marketing",
+        "latitud": "41.6468132",
+        "longitud": "-0.8952307",
+        "direccion": "Aragón, Calle Fueros de Aragón, 50005 Zaragoza, España",
+        "descripcion": "Agencia de marketing digital con sede en Zaragoza que ofrece servicios de diseño web, SEO, redes sociales, CRM y soluciones cloud orientadas a pymes, micropymes y autónomos.",
+        "tags": [
+            "marketing digital",
+            "crm",
+            "cloud",
+            "diseño web"
+        ],
+        "ciclo": "Marketing",
+        "estado_agente": "ok",
+        "fuentes": "https://aragonmarketing.es/, https://aragonmarketing.es/aragon-marketing/marketing-digital-zaragoza/",
+        "fecha_inclusion": "2026-10-19"
+    },
+    {
+        "nombre": "Bitbrain Technologies",
+        "latitud": "41.589874",
+        "longitud": "-0.810513",
+        "direccion": "Tudor Exide Technologies, 50720 Zaragoza, España",
+        "descripcion": "Empresa aragonesa de neurotecnología, spin-off de la Universidad de Zaragoza, que combina neurociencia, inteligencia artificial y hardware para desarrollar productos de neurotecnología aplicados a la medición de emociones y actividad cerebral.",
+        "tags": [
+            "neurotecnología",
+            "inteligencia artificial",
+            "hardware",
+            "neurociencia"
+        ],
+        "ciclo": "IA y Big Data",
+        "estado_agente": "ok",
+        "fuentes": "https://redarce.aragonemprende.com/emprendedores/bitbrain-technologies/; https://blogthinkbig.com/bitbrain-startup-neurotecnologica",
+        "fecha_inclusion": "2026-10-19"
     }
 ]
