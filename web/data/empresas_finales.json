@@ -2256,5 +2256,93 @@
         "estado_agente": "ok",
         "fuentes": "https://redarce.aragonemprende.com/emprendedores/bitbrain-technologies/; https://blogthinkbig.com/bitbrain-startup-neurotecnologica",
         "fecha_inclusion": "2026-10-19"
+    },
+    {
+        "nombre": "Baron Bamboo",
+        "latitud": "41.6481011",
+        "longitud": "-0.89034",
+        "direccion": "Bar Cortez, Calle Hernán Cortés, 22, 50005 Zaragoza, España",
+        "descripcion": "Agencia de marketing digital con sede en Zaragoza, especializada en SEO, SEM, campañas publicitarias, gestión de redes sociales, diseño web y creación de contenido para impulsar la visibilidad online de negocios.",
+        "tags": [
+            "marketing digital",
+            "seo",
+            "sem",
+            "redes sociales",
+            "diseño web"
+        ],
+        "ciclo": "Marketing",
+        "estado_agente": "ok",
+        "fuentes": "https://www.baronbamboo.com/ ; https://es.linkedin.com/company/baron-bamboo",
+        "fecha_inclusion": "2026-10-20"
+    },
+    {
+        "nombre": "ItziData",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Consultoría informática ubicada en el Parque Tecnológico Walqa (Huesca), especializada en sistemas de backup, continuidad de negocio, digitalización de empresas e industria 4.0, con actividad también en marketing digital y publicidad.",
+        "tags": [
+            "backup",
+            "continuidad de negocio",
+            "digitalización",
+            "industria 4.0",
+            "marketing digital"
+        ],
+        "ciclo": "ASIR",
+        "estado_agente": "ok",
+        "fuentes": "https://www.ptwalqa.com/empresas/itzidata/ ; https://www.apte.org/itzidata",
+        "fecha_inclusion": "2026-10-20"
+    },
+    {
+        "nombre": "ArdiCiber",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Empresa con sede central en el Parque Tecnológico Walqa (Huesca), especializada en ciberseguridad y en la asistencia a víctimas de ciberestafas, ayudando a particulares y empresas a recuperar fondos tras fraudes online.",
+        "tags": [
+            "ciberseguridad",
+            "ciberestafas",
+            "protección de datos",
+            "consultoría"
+        ],
+        "ciclo": "ASIR",
+        "estado_agente": "ok",
+        "fuentes": "https://www.ardiciber.com/ ; https://www.ptwalqa.com/empresas/ardiciber/",
+        "fecha_inclusion": "2026-10-20"
+    },
+    {
+        "nombre": "To Be Solutions",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Agencia de publicidad y diseño con sede en Zaragoza, dedicada al diseño web y gráfico, marketing online, tiendas online, SEO y consultoría digital para empresas.",
+        "tags": [
+            "diseño web",
+            "marketing online",
+            "seo",
+            "e-commerce",
+            "publicidad"
+        ],
+        "ciclo": "Marketing",
+        "estado_agente": "ok",
+        "fuentes": "https://www.citiservi.es/zaragoza/to-be-solutions-zaragoza__10157653_284.html ; https://www.sortlist.com/agency/to-be-solutions",
+        "fecha_inclusion": "2026-10-20"
+    },
+    {
+        "nombre": "I.D.A. (Informática y Desarrollos Aragoneses)",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Empresa de Zaragoza especializada en consultoría tecnológica, desarrollo de software a medida e integración de sistemas ERP, con más de 25 años de trayectoria.",
+        "tags": [
+            "consultoría tecnológica",
+            "erp",
+            "software a medida",
+            "desarrollo"
+        ],
+        "ciclo": "DAM",
+        "estado_agente": "ok",
+        "fuentes": "https://ida.es/",
+        "fecha_inclusion": "2026-10-20"
     }
 ]
