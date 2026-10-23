@@ -2344,5 +2344,39 @@
         "estado_agente": "ok",
         "fuentes": "https://ida.es/",
         "fecha_inclusion": "2026-10-20"
+    },
+    {
+        "nombre": "ZEO Technology",
+        "latitud": "41.6499543",
+        "longitud": "-0.8871683",
+        "direccion": "Apla Global Technology, Avenida de César Augusto, 50004 Zaragoza, España",
+        "descripcion": "Empresa aragonesa que desarrolla software MES (Manufacturing Execution System) para conectar personas, máquinas y procesos en plantas industriales, mejorando calidad, OEE y planificación de la producción dentro de la digitalización industrial.",
+        "tags": [
+            "mes",
+            "digitalización industrial",
+            "industria 4.0",
+            "software"
+        ],
+        "ciclo": "IA y Big Data",
+        "estado_agente": "ok",
+        "fuentes": "https://zeotechnology.com/; https://www.axesor.es/Informes-Empresas/6811411/ZEO_TECHNOLOGY_FOR_INDUSTRY_SL.html; https://es.linkedin.com/company/zeotechnology",
+        "fecha_inclusion": "2026-10-23"
+    },
+    {
+        "nombre": "Androtiyas",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Estudio de desarrollo de videojuegos y agencia creativa con sede en Zaragoza (José Luis Albareda 8), fundado en 2010, especializado en desarrollo con Unity, diseño gráfico, realidad virtual y nuevas tecnologías.",
+        "tags": [
+            "videojuegos",
+            "unity",
+            "realidad virtual",
+            "diseño"
+        ],
+        "ciclo": "DAM",
+        "estado_agente": "ok",
+        "fuentes": "https://androtiyas.com/; https://www.devuego.es/bd/festudio/androtiyas; https://www.cylex.es/zaragoza/androtiyas-13952694.html",
+        "fecha_inclusion": "2026-10-23"
     }
 ]
