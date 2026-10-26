@@ -2378,5 +2378,23 @@
         "estado_agente": "ok",
         "fuentes": "https://androtiyas.com/; https://www.devuego.es/bd/festudio/androtiyas; https://www.cylex.es/zaragoza/androtiyas-13952694.html",
         "fecha_inclusion": "2026-10-23"
+    },
+    {
+        "nombre": "Apser",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Empresa tecnológica con sede en Zaragoza, Advanced Consulting Partner de Amazon Web Services (AWS), especializada en migración a la nube, soluciones cloud e inteligencia artificial para empresas y administraciones.",
+        "tags": [
+            "cloud",
+            "aws",
+            "inteligencia artificial",
+            "consultoría ti",
+            "transformación digital"
+        ],
+        "ciclo": "ASIR",
+        "estado_agente": "ok",
+        "fuentes": "https://apser.es/; https://www.hoyaragon.es/articulo/noticias-economia-empresa/apser-certificaciones-aws/20250129141110085713.html; https://at.linkedin.com/company/apser",
+        "fecha_inclusion": "2026-10-26"
     }
 ]
