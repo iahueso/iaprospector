@@ -2396,5 +2396,91 @@
         "estado_agente": "ok",
         "fuentes": "https://apser.es/; https://www.hoyaragon.es/articulo/noticias-economia-empresa/apser-certificaciones-aws/20250129141110085713.html; https://at.linkedin.com/company/apser",
         "fecha_inclusion": "2026-10-26"
+    },
+    {
+        "nombre": "Integra - Estrategia y Tecnología",
+        "latitud": "41.6457253",
+        "longitud": "-0.88851",
+        "direccion": "Integra. Estrategia y Tecnología., Gran Vía de Santiago Ramón y Cajal, 23, 50006 Zaragoza, España",
+        "descripcion": "Consultora tecnológica fundada en 1986 en Aragón, especializada en transformación digital, estrategia IT, soluciones de negocio, IoT, datos e inteligencia artificial. Cuenta con presencia en toda España y más de 700 profesionales.",
+        "tags": [
+            "consultoría",
+            "transformación digital",
+            "iot",
+            "data",
+            "ia"
+        ],
+        "ciclo": "IA y Big Data",
+        "estado_agente": "ok",
+        "fuentes": "https://www.integratecnologia.es/sobre-nosotros ; https://caaragon.com/project/integra/ ; https://aliaragon.es/alia-connect/integra/",
+        "fecha_inclusion": "2026-10-27"
+    },
+    {
+        "nombre": "DeuSens Hyperxperience",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Estudio de tecnología inmersiva fundado en 2014 en Zaragoza, especializado en realidad extendida (XR), inteligencia artificial y robótica, con oficinas también en Valencia, Barcelona e Italia.",
+        "tags": [
+            "xr",
+            "realidad extendida",
+            "inteligencia artificial",
+            "robótica"
+        ],
+        "ciclo": "IA y Big Data",
+        "estado_agente": "ok",
+        "fuentes": "https://www.europages.es/es/company/deusens-22410401 ; https://www.iberinform.es/empresa/7272823/deusens-hyperxperience",
+        "fecha_inclusion": "2026-10-27"
+    },
+    {
+        "nombre": "Sertoria Tech",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Empresa de software e integración de inteligencia artificial con sede en Zaragoza, que atiende a empresas de Aragón con soluciones tecnológicas y acompañamiento presencial.",
+        "tags": [
+            "software",
+            "inteligencia artificial",
+            "integración",
+            "zaragoza"
+        ],
+        "ciclo": "IA y Big Data",
+        "estado_agente": "ok",
+        "fuentes": "https://www.sertoria.com/zaragoza",
+        "fecha_inclusion": "2026-10-27"
+    },
+    {
+        "nombre": "Nologin Consulting",
+        "latitud": "41.6706352",
+        "longitud": "-0.9002498",
+        "direccion": "Nologin, Andador de Berta Cáceres Flores, 50018 Zaragoza, España",
+        "descripcion": "Compañía aragonesa fundada en el año 2000, con sede en Zaragoza, especializada en infraestructura tecnológica, datacenters, consultoría IT y desarrollo de software a medida para empresas de todo el mundo.",
+        "tags": [
+            "infraestructura",
+            "datacenter",
+            "consultoría it",
+            "software a medida"
+        ],
+        "ciclo": "ASIR",
+        "estado_agente": "ok",
+        "fuentes": "https://nologin.es/; https://cincodias.elpais.com/directorio-empresas/empresa/713875/nologin-consulting",
+        "fecha_inclusion": "2026-10-27"
+    },
+    {
+        "nombre": "Pentest Aragón (PentestingTeam)",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Empresa zaragozana especializada en ciberseguridad ofensiva, realiza auditorías de pentesting y detección de vulnerabilidades para proteger a compañías frente a ciberataques y ciberestafas.",
+        "tags": [
+            "pentesting",
+            "ciberseguridad",
+            "auditorías",
+            "vulnerabilidades"
+        ],
+        "ciclo": "ASIR",
+        "estado_agente": "ok",
+        "fuentes": "https://pentestingteam.com/empresa-de-ciberseguridad/zaragoza; https://cincodias.elpais.com/directorio-empresas/empresa/2219131/pentest-aragon",
+        "fecha_inclusion": "2026-10-27"
     }
 ]
