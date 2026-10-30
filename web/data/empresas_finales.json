@@ -2482,5 +2482,90 @@
         "estado_agente": "ok",
         "fuentes": "https://pentestingteam.com/empresa-de-ciberseguridad/zaragoza; https://cincodias.elpais.com/directorio-empresas/empresa/2219131/pentest-aragon",
         "fecha_inclusion": "2026-10-27"
+    },
+    {
+        "nombre": "Agencia IA Digital",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Agencia ubicada en Zaragoza especializada en soluciones de automatización y marketing mediante inteligencia artificial, incluyendo SEO y optimización de canales digitales.",
+        "tags": [
+            "inteligencia artificial",
+            "marketing digital",
+            "automatización",
+            "seo"
+        ],
+        "ciclo": "IA y Big Data",
+        "estado_agente": "ok",
+        "fuentes": "https://www.agencia-ia.digital/zaragoza/zaragoza",
+        "fecha_inclusion": "2026-10-30"
+    },
+    {
+        "nombre": "Netbulb",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Agencia con sede en Zaragoza con más de 15 años de experiencia en posicionamiento web (SEO), SEO local, diseño web y campañas de publicidad online (ADS).",
+        "tags": [
+            "seo",
+            "posicionamiento web",
+            "diseño web",
+            "publicidad online"
+        ],
+        "ciclo": "Marketing",
+        "estado_agente": "ok",
+        "fuentes": "https://agenciaseonetbulb.com/agencia-seo-zaragoza/",
+        "fecha_inclusion": "2026-10-30"
+    },
+    {
+        "nombre": "OverFuture",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Empresa de software con sede en Zaragoza (Plaza Ntra. Sra. de las Nieves, Casablanca) especializada en desarrollo de software a medida, aplicaciones móviles, automatización de procesos e integración de IA para empresas.",
+        "tags": [
+            "desarrollo software",
+            "apps móviles",
+            "automatización",
+            "ia"
+        ],
+        "ciclo": "DAM",
+        "estado_agente": "ok",
+        "fuentes": "https://overfuture.dev/ ; https://lunamedia.es/over-future/ ; https://antproject.es/over-future/",
+        "fecha_inclusion": "2026-10-30"
+    },
+    {
+        "nombre": "Data Center Ribera Alta del Ebro SL",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Empresa con sede en Zaragoza dedicada a infraestructura informática, procesamiento de datos y servicios de hosting (CNAE 6310).",
+        "tags": [
+            "datacenter",
+            "infraestructura",
+            "hosting",
+            "procesamiento de datos"
+        ],
+        "ciclo": "ASIR",
+        "estado_agente": "ok",
+        "fuentes": "https://www.informa.es/directorio-empresas/Empresa_DATA-CENTER-RIBERA-ALTA-EBRO.html, https://bormedirectorio.com/empresa/data-center-ribera-alta-del-ebro-sl, https://www.einforma.com/informacion-empresa/data-center-ribera-alta-ebro",
+        "fecha_inclusion": "2026-10-30"
+    },
+    {
+        "nombre": "Desarrollo4App SL",
+        "latitud": "41.6443247",
+        "longitud": "-0.8838409",
+        "direccion": "Ashloc Traducciones S.L., Paseo de las Damas, 1, 50008 Zaragoza, España",
+        "descripcion": "Agencia de desarrollo informático con oficina en Zaragoza (además de Toledo), fundada en 2013, especializada en creación y mantenimiento de aplicaciones móviles y páginas web.",
+        "tags": [
+            "desarrollo móvil",
+            "apps",
+            "páginas web",
+            "software a medida"
+        ],
+        "ciclo": "DAM",
+        "estado_agente": "ok",
+        "fuentes": "https://www.lafabriquedunet.es/agencias/agencia/desarrollo4app-sl, https://desarrollo4app.com/",
+        "fecha_inclusion": "2026-10-30"
     }
 ]
