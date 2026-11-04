@@ -2567,5 +2567,155 @@
         "estado_agente": "ok",
         "fuentes": "https://www.lafabriquedunet.es/agencias/agencia/desarrollo4app-sl, https://desarrollo4app.com/",
         "fecha_inclusion": "2026-10-30"
+    },
+    {
+        "nombre": "Maubic Consultoría Tecnológica",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Empresa de Zaragoza especializada en consultoría tecnológica, desarrollo de software y asesoría de marketing para negocios.",
+        "tags": [
+            "consultoría it",
+            "software",
+            "marketing digital"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://redes2000.es/maubic-consultoria-tecnologica-sl/",
+        "fecha_inclusion": "2026-11-04"
+    },
+    {
+        "nombre": "ITSicap",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Empresa de Zaragoza que ofrece servicios de consultoría informática y soluciones IT para empresas, incluyendo soporte técnico y transformación digital.",
+        "tags": [
+            "consultoría it",
+            "sistemas",
+            "soporte técnico"
+        ],
+        "ciclo": "ASIR",
+        "estado_agente": "ok",
+        "fuentes": "https://itsicap.com/consultoria-informatica-y-soluciones-it-en-zaragoza/",
+        "fecha_inclusion": "2026-11-04"
+    },
+    {
+        "nombre": "IDA - Integración y Desarrollo de Aplicaciones",
+        "latitud": "41.6455283",
+        "longitud": "-0.8976893",
+        "direccion": "De ida y vuelta, Calle de Tomás Bretón, 50005 Zaragoza, España",
+        "descripcion": "Consultora tecnológica de Zaragoza con más de 25 años de experiencia, especializada en desarrollo de software a medida, consultoría tecnológica e integración de sistemas ERP para empresas.",
+        "tags": [
+            "software a medida",
+            "consultoría tecnológica",
+            "erp",
+            "desarrollo de aplicaciones"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://ida.es/, https://ida.es/consultora-tecnologica-zaragoza/",
+        "fecha_inclusion": "2026-11-04"
+    },
+    {
+        "nombre": "Netaservice Servicios Informáticos SL",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Empresa aragonesa con más de 14 años de experiencia especializada en el desarrollo e implantación de soluciones web y aplicaciones móviles para diversos sectores.",
+        "tags": [
+            "desarrollo web",
+            "aplicaciones móviles",
+            "soluciones software",
+            "aragón"
+        ],
+        "ciclo": "DAM",
+        "estado_agente": "ok",
+        "fuentes": "https://es.linkedin.com/company/netaservice, https://www.starofservice.es/dir/aragon/zaragoza/zaragoza/desarrollo-de-aplicaciones-moviles",
+        "fecha_inclusion": "2026-11-04"
+    },
+    {
+        "nombre": "BSH Electrodomésticos España, S.A.",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Filial española del grupo BSH (marcas Bosch, Siemens, entre otras), con sede y planta de fabricación de electrodomésticos en el Parque Empresarial Pla-Za de Zaragoza.",
+        "tags": [
+            "electrodomésticos",
+            "fabricación",
+            "industria 4.0",
+            "zaragoza"
+        ],
+        "ciclo": "Otro",
+        "estado_agente": "ok",
+        "fuentes": "https://www.ahk.es/es/socios/guia-de-socios/b-s-h-electrodomesticos-espana-s.a; https://www.alimarket.es/electro/empresa/266441/bsh-electrodomesticos-espana--s-a-",
+        "fecha_inclusion": "2026-11-04"
+    },
+    {
+        "nombre": "Nedtel Servicios",
+        "latitud": "41.64203",
+        "longitud": "-0.89757",
+        "direccion": "Edificio de Servicios Centrales, 50005 Zaragoza, España",
+        "descripcion": "Empresa de consultoría y servicios tecnológicos ubicada en Zaragoza, especializada en implantación de soluciones ERP, CRM (partner oficial de Salesforce), gestión documental y transformación digital.",
+        "tags": [
+            "crm",
+            "salesforce",
+            "erp",
+            "transformación digital"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://nedtelservicios.com/salesforce-crm/crm-zaragoza/; https://es.linkedin.com/company/nedtel-servicios",
+        "fecha_inclusion": "2026-11-04"
+    },
+    {
+        "nombre": "Erediapol",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Agencia con oficina en el Paseo de la Independencia de Zaragoza dedicada al desarrollo de aplicaciones web, ecommerce y marketing digital para empresas de Aragón.",
+        "tags": [
+            "desarrollo web",
+            "ecommerce",
+            "react",
+            "marketing digital"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://erediapol.com/zaragoza-zgz/agencia-desarrollo-web/",
+        "fecha_inclusion": "2026-11-04"
+    },
+    {
+        "nombre": "AiQube Labs",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Empresa de software con sede en el Casco Antiguo de Zaragoza que desarrolla soluciones tecnológicas e informáticas para clientes empresariales.",
+        "tags": [
+            "software",
+            "desarrollo",
+            "consultoría it"
+        ],
+        "ciclo": "DAM",
+        "estado_agente": "ok",
+        "fuentes": "https://technology.belplan.es/zaragoza/aiqube-labs",
+        "fecha_inclusion": "2026-11-04"
+    },
+    {
+        "nombre": "GA Agencia Digital",
+        "latitud": "41.6915847",
+        "longitud": "-0.9101268",
+        "direccion": "Zaragoza, AR, España",
+        "descripcion": "Agencia digital de Zaragoza especializada en desarrollo de aplicaciones web y móviles, diseño UX/UI y arquitectura de software para empresas.",
+        "tags": [
+            "desarrollo web",
+            "apps móviles",
+            "ux/ui",
+            "arquitectura software"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://www.gaagenciadigitalzaragoza.es/desarrollo-de-aplicaciones-web-y-mobile",
+        "fecha_inclusion": "2026-11-04"
     }
 ]
