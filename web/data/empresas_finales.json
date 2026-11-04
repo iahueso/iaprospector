@@ -4,6 +4,7 @@
         "latitud": "41.6707881",
         "longitud": "-0.8995539",
         "direccion": "Hiberus, Andador de Berta Cáceres Flores, 50018 Zaragoza, España",
+        "sin_ubicacion": false,
         "descripcion": "Empresa tecnológica con sede en Zaragoza que ofrece soluciones de tecnología y servicios de consultoría.",
         "tags": [
             "tecnología",
@@ -20,6 +21,7 @@
         "latitud": "41.6457253",
         "longitud": "-0.88851",
         "direccion": "Integra. Estrategia y Tecnología., Gran Vía de Santiago Ramón y Cajal, 23, 50006 Zaragoza, España",
+        "sin_ubicacion": false,
         "descripcion": "Empresa de tecnología con sede en Zaragoza que ofrece servicios de estrategia y tecnología.",
         "tags": [
             "tecnología",
@@ -36,6 +38,7 @@
         "latitud": "41.6499597",
         "longitud": "-0.8823097",
         "direccion": "imascono, Calle de Felipe Sanclemente, 3, 50001 Zaragoza, España",
+        "sin_ubicacion": false,
         "descripcion": "Empresa de tecnología que ofrece soluciones de realidad extendida y servicios de metaverso para empresas.",
         "tags": [
             "tecnología",
@@ -52,6 +55,7 @@
         "latitud": "41.6414212",
         "longitud": "-0.9953924",
         "direccion": "Inycom, Calle de Alaún, 8, 50197 Zaragoza, España",
+        "sin_ubicacion": false,
         "descripcion": "Empresa de tecnología e innovación que ofrece soluciones y servicios adaptados a empresas y entidades públicas.",
         "tags": [
             "tecnología",
@@ -69,6 +73,7 @@
         "latitud": "41.6549845",
         "longitud": "-0.9908509",
         "direccion": "DXC.technology, Calle de Bari, 11, 50197 Zaragoza, España",
+        "sin_ubicacion": false,
         "descripcion": "Empresa tecnológica con un Centro de Excelencia en Zaragoza que impulsa la adopción de IA y Cloud en las principales organizaciones de España.",
         "tags": [
             "tecnología",
@@ -86,6 +91,7 @@
         "latitud": "40.4866435",
         "longitud": "-3.6623952",
         "direccion": "NTT Data España, Avenida de la Fuente de la Mora, 1, 28050 Madrid, España",
+        "sin_ubicacion": false,
         "descripcion": "Empresa de tecnología con sede en Zaragoza que ofrece servicios relacionados con la información y la informática.",
         "tags": [
             "tecnología",
@@ -102,6 +108,7 @@
         "latitud": "37.3913778",
         "longitud": "-6.0102735",
         "direccion": "Deloitte, Plaza Alcalde Alfredo Sánchez Monteseirín, 2, 41092 Sevilla, España",
+        "sin_ubicacion": false,
         "descripcion": "Empresa de consultoría y servicios profesionales con oficina en Zaragoza. Ofrece servicios de auditoría, consultoría y asesoramiento en áreas como tecnología, finanzas y gestión.",
         "tags": [
             "consultoría",
@@ -120,6 +127,7 @@
         "latitud": "39.9838664",
         "longitud": "-0.0198039",
         "direccion": "Ingenia, Avenida del Mar, 12003 Castellón de la Plana, España",
+        "sin_ubicacion": false,
         "descripcion": "Empresa de consultoría informática que ofrece soluciones de gestión, ERP y CRM.",
         "tags": [
             "consultoria",
@@ -138,6 +146,7 @@
         "latitud": "41.65526",
         "longitud": "-0.888438",
         "direccion": "Calle Aranda, 64, 50003 Zaragoza, España",
+        "sin_ubicacion": false,
         "descripcion": "Empresa de consultoría informática que ofrece servicios de diseño web, hosting, redes y consultoría informática.",
         "tags": [
             "consultoria",
@@ -156,6 +165,7 @@
         "latitud": "41.6442511",
         "longitud": "-0.8856127",
         "direccion": "Institut Français d'Espagne en Zaragoza, Paseo de Sagasta, 7, 50008 Zaragoza, España",
+        "sin_ubicacion": false,
         "descripcion": "Desarrollamos webs y apps a medida en Zaragoza, adaptadas a tus necesidades. Potencia tu negocio con soluciones digitales innovadoras.",
         "tags": [
             "desarrollo de software",
@@ -172,6 +182,7 @@
         "latitud": "41.6464797",
         "longitud": "-0.8894298",
         "direccion": "Voilá Contract Solutions, Calle de Amado Laguna de Rins, 50006 Zaragoza, España",
+        "sin_ubicacion": false,
         "descripcion": "Diseñamos y desarrollamos software a medida para pymes: aplicaciones web, herramientas internas de gestión, automatización de procesos, integraciones entre sistemas y paneles de control.",
         "tags": [
             "desarrollo de software",
@@ -188,6 +199,7 @@
         "latitud": "41.6442511",
         "longitud": "-0.8856127",
         "direccion": "Institut Français d'Espagne en Zaragoza, Paseo de Sagasta, 7, 50008 Zaragoza, España",
+        "sin_ubicacion": false,
         "descripcion": "Eventos tech en Zaragoza. Congreso Web Zaragoza: marketing digital, SEO, analítica. Referente nacional desde hace 10+ ediciones. Tech Shakers: meetups mensuales con charlas de profesionales tech.",
         "tags": [
             "eventos tech",
@@ -204,6 +216,7 @@
         "latitud": "41.646481",
         "longitud": "-0.887553",
         "direccion": "Zaragoza, AR, España",
+        "sin_ubicacion": false,
         "descripcion": "Empresa de software especializada en consultoría, ingeniería y desarrollo de software, avalada por la certificación de Micro Focus.",
         "tags": [
             "software",
@@ -218,9 +231,10 @@
     },
     {
         "nombre": "NTT DATA",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Consultora de administración empresarial y tecnológicas más grandes de España, con una presencia destacada en el parque tecnológico de Zaragoza.",
         "tags": [
             "consultoria",
@@ -234,9 +248,10 @@
     },
     {
         "nombre": "Innovatus",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Centro neurálgico de la innovación y el desarrollo empresarial en la ciudad de Zaragoza, España.",
         "tags": [
             "innovacion",
@@ -253,6 +268,7 @@
         "latitud": "41.6410829",
         "longitud": "-0.9096046",
         "direccion": "Caixabank, Andador del Teniente General Quintana Lacacci, 50009 Zaragoza, España",
+        "sin_ubicacion": false,
         "descripcion": "Banco con sede en Zaragoza que ofrece servicios financieros a particulares y empresas.",
         "tags": [
             "banca",
@@ -265,9 +281,10 @@
     },
     {
         "nombre": "Driven",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Empresa de tecnología con sede en Zaragoza que ofrece soluciones de software y consultoría.",
         "tags": [
             "software",
@@ -280,9 +297,10 @@
     },
     {
         "nombre": "Endalia",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Empresa de tecnología con sede en Zaragoza, Aragón. Ofrece servicios de informática y tecnología.",
         "tags": [
             "software",
@@ -296,9 +314,10 @@
     },
     {
         "nombre": "Inetum",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Empresa de consultoría informática que ofrece servicios y soluciones en tecnología y datos.",
         "tags": [
             "software",
@@ -312,9 +331,10 @@
     },
     {
         "nombre": "ERP-ZARAGOZA",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Empresa de Zaragoza especializada en proyectos de implantación de ERP empresarial.",
         "tags": [
             "erp",
@@ -330,6 +350,7 @@
         "latitud": "41.6511778",
         "longitud": "-0.8813794",
         "direccion": "My Consulting, Calle de San Miguel, 2, 50001 Zaragoza, España",
+        "sin_ubicacion": false,
         "descripcion": "Empresa de consultoría especializada en proyectos de implantación de ERP empresarial.",
         "tags": [
             "erp",
@@ -345,6 +366,7 @@
         "latitud": "41.4866708",
         "longitud": "-1.1062283",
         "direccion": "Atlas Copco, Carretera del cruce con la A-2 a Herrera de los Navarros, 50450 Muel, España",
+        "sin_ubicacion": false,
         "descripcion": "Empresa de desarrollo de software especializada en proyectos de ERP empresarial.",
         "tags": [
             "erp",
@@ -357,9 +379,10 @@
     },
     {
         "nombre": "Taktic Business & Technology",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Empresa de consultoría especializada en proyectos de implantación de ERP empresarial.",
         "tags": [
             "erp",
@@ -375,6 +398,7 @@
         "latitud": "41.589874",
         "longitud": "-0.810513",
         "direccion": "Tudor Exide Technologies, 50720 Zaragoza, España",
+        "sin_ubicacion": false,
         "descripcion": "Empresa de desarrollo de software especializada en proyectos de ERP empresarial.",
         "tags": [
             "erp",
@@ -387,9 +411,10 @@
     },
     {
         "nombre": "Ayanet TIC",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Soluciones informáticas para empresas",
         "tags": [
             "tic",
@@ -404,9 +429,10 @@
     },
     {
         "nombre": "Acosis",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Consultora informática en Zaragoza para empresas",
         "tags": [
             "ciberseguridad",
@@ -422,9 +448,10 @@
     },
     {
         "nombre": "Carrie Consulting S.L",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Empresa de ciberseguridad en Zaragoza",
         "tags": [
             "ciberseguridad",
@@ -440,9 +467,10 @@
     },
     {
         "nombre": "IriusRisk",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Seguridad cloud/Kubernetes con defensa en tiempo real",
         "tags": [
             "ciberseguridad",
@@ -458,9 +486,10 @@
     },
     {
         "nombre": "xelab",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Plataforma de modelado de amenazas para DevSecOps y AppSec",
         "tags": [
             "ciberseguridad",
@@ -479,6 +508,7 @@
         "latitud": "41.6667721",
         "longitud": "-0.8933026",
         "direccion": "Integra Aragón, Calle Clara Campoamor, 50018 Zaragoza, España",
+        "sin_ubicacion": false,
         "descripcion": "Empresa de tecnología con más de 800 personas, referente en servicios de tecnología y consultoría.",
         "tags": [
             "software",
@@ -492,9 +522,10 @@
     },
     {
         "nombre": "GFT Technologies IT Consulting",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Empresa de consultoría de tecnología con sede en Zaragoza, que ofrece servicios de análisis y desarrollo de software, así como soluciones en la nube y gestión de datos.",
         "tags": [
             "software",
@@ -508,9 +539,10 @@
     },
     {
         "nombre": "ACCENTURE",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Empresa de consultoría y servicios profesionales que ofrece soluciones en tecnología, innovación y transformación digital.",
         "tags": [
             "software",
@@ -527,6 +559,7 @@
         "latitud": "41.6732241",
         "longitud": "-0.8371502",
         "direccion": "B/S/H Balay, Santa Isabel, Zaragoza, AR, España",
+        "sin_ubicacion": false,
         "descripcion": "Empresa de electrodomésticos de alta calidad con sede en Zaragoza, que ofrece una amplia gama de productos innovadores y eficientes para el hogar.",
         "tags": [
             "electrodomésticos",
@@ -540,9 +573,10 @@
     },
     {
         "nombre": "multipc",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Tienda de informática en Zaragoza que ofrece servicios de programación de ordenadores y software.",
         "tags": [
             "software",
@@ -556,9 +590,10 @@
     },
     {
         "nombre": "multiverse computing",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Empresa de tecnología que se distingue por emplear a expertos en tecnología, incluyendo data managers, ingenieros de Inteligencia Artificial y arquitectos de soluciones.",
         "tags": [
             "software",
@@ -574,9 +609,10 @@
     },
     {
         "nombre": "deusens",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Empresa zaragozana especializada en el desarrollo de soluciones de tecnología, con experiencia en realidad virtual y expansión a nivel nacional e internacional.",
         "tags": [
             "software",
@@ -592,9 +628,10 @@
     },
     {
         "nombre": "Zonsai It Solutions",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Agencia de diseño web, marketing digital y programación de aplicaciones online a medida. Desarrollo e implantación de tecnologías web.",
         "tags": [
             "software",
@@ -608,9 +645,10 @@
     },
     {
         "nombre": "HubSpot",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Plataforma de clientes HubSpot con IA: unifica equipos desconectados, acelera procesos en un 65% y multiplica tu pipeline 5x. Todo conectado en un lugar.",
         "tags": [
             "software",
@@ -629,6 +667,7 @@
         "latitud": "41.6447037",
         "longitud": "-0.9071411",
         "direccion": "Patólogos. Consultores Asociados, Vía Univérsitas, 50009 Zaragoza, España",
+        "sin_ubicacion": false,
         "descripcion": "GA Consultores ERP / CRM cuenta con un cluster de Consultoras de Software ERP / CRM y Programación para Odoo, con equipos de Consultores Tecnológicos, Desarrolladores y Programadores con experiencia en Implantación y Mantenimiento de Software ERP / CRM de Odoo en Zaragoza, para gestionar ...",
         "tags": [
             "erp",
@@ -644,9 +683,10 @@
     },
     {
         "nombre": "Inforges",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "¿Pensando en implantar un CRM en tu empresa en Zaragoza? Somos expertos en software CRM y partner oficinales de HubSpot y Salesforce",
         "tags": [
             "crm",
@@ -665,6 +705,7 @@
         "latitud": "41.6369197",
         "longitud": "-0.8995137",
         "direccion": "Hiberus, Paseo de Isabel la Católica, 6, 50009 Zaragoza, España",
+        "sin_ubicacion": false,
         "descripcion": "Empresa líder en consultoría, desarrollo tecnológico y transformación digital",
         "tags": [
             "consultoría",
@@ -681,6 +722,7 @@
         "latitud": "41.6521952",
         "longitud": "-0.8796568",
         "direccion": "Atenea Abogadas, Calle de Don Jaime I, 6 Duplicado, 50001 Zaragoza, España",
+        "sin_ubicacion": false,
         "descripcion": "Plataforma Atenea Zaragoza SL es una empresa de construcción de edificios y promoción inmobiliaria con sede en Zaragoza.",
         "tags": [
             "construcción",
@@ -697,6 +739,7 @@
         "latitud": "41.5983221",
         "longitud": "-0.8220512",
         "direccion": "BSH Electrodomésticos, Calle Poligono Industrial La Cartuja Baja, 50720 Zaragoza, España",
+        "sin_ubicacion": false,
         "descripcion": "Empresa de electrodomésticos con sede en Zaragoza, que combina tecnología avanzada, diseño funcional y compromiso medioambiental.",
         "tags": [
             "electrodomésticos",
@@ -713,6 +756,7 @@
         "latitud": "41.637214",
         "longitud": "-0.87676",
         "direccion": "Tecnocasa, Avenida de Tenor Fleta, 94, 50008 Zaragoza, España",
+        "sin_ubicacion": false,
         "descripcion": "Agencia inmobiliaria con oficinas en Zaragoza",
         "tags": [
             "inmobiliaria",
@@ -725,9 +769,10 @@
     },
     {
         "nombre": "Salesforce",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Proveedor de soluciones de CRM y tecnología para la industria inmobiliaria",
         "tags": [
             "salesforce",
@@ -741,9 +786,10 @@
     },
     {
         "nombre": "Solvify",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Empresa de software que ofrece soluciones en el sector SaaS",
         "tags": [
             "software",
@@ -757,9 +803,10 @@
     },
     {
         "nombre": "Kairós",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Empresa de tecnología que ayuda a sus clientes con retos de transformación digital y metodológica",
         "tags": [
             "software",
@@ -773,9 +820,10 @@
     },
     {
         "nombre": "ADA Computer",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Empresa de soluciones TIC para empresas",
         "tags": [
             "software",
@@ -792,6 +840,7 @@
         "latitud": "41.6464797",
         "longitud": "-0.8894298",
         "direccion": "Voilá Contract Solutions, Calle de Amado Laguna de Rins, 50006 Zaragoza, España",
+        "sin_ubicacion": false,
         "descripcion": "Desarrollo de software y diseño web",
         "tags": [
             "software",
@@ -806,9 +855,10 @@
     },
     {
         "nombre": "ITCY",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Empresa de ciberseguridad en Zaragoza que ofrece servicios como auditorías de seguridad, gestión de incidentes, consultoría, monitoreo continuo y formación en ciberseguridad.",
         "tags": [
             "ciberseguridad",
@@ -822,9 +872,10 @@
     },
     {
         "nombre": "Clovisolutions",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Empresa de servicios informáticos en Zaragoza que ofrece soluciones innovadoras y efectivas para proteger la infraestructura tecnológica de las empresas.",
         "tags": [
             "servicios",
@@ -838,9 +889,10 @@
     },
     {
         "nombre": "Vidasoft",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Desarrolla software a medida para empresas en Zaragoza, creando oportunidades de negocio únicas y mejorando la experiencia de los clientes.",
         "tags": [
             "software",
@@ -854,9 +906,10 @@
     },
     {
         "nombre": "rIL Agencia de Marketing Digital",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Diseña soluciones de IA aplicadas al marketing, al contenido y a la automatización para que la marca gane velocidad, eficiencia y ventaja competitiva.",
         "tags": [
             "marketing digital",
@@ -873,6 +926,7 @@
         "latitud": "41.6419128",
         "longitud": "-0.8977566",
         "direccion": "Oficina Software Libre Universidad de Zaragoza, Calle de Pedro Cerbuna, 12, 50009 Zaragoza, España",
+        "sin_ubicacion": false,
         "descripcion": "Empresa de desarrollo de software y aplicaciones móviles en Zaragoza. Ofrece servicios de desarrollo a medida, consultoría y mantenimiento web.",
         "tags": [
             "software",
@@ -892,6 +946,7 @@
         "latitud": "41.653329",
         "longitud": "-0.8770741",
         "direccion": "Entropy Studio, Calle San Juan y San Pedro, 5-7, 50001 Zaragoza, España",
+        "sin_ubicacion": false,
         "descripcion": "Agencia de desarrollo de software y aplicaciones móviles en Zaragoza. Ofrece servicios de desarrollo a medida, consultoría y marketing digital.",
         "tags": [
             "software",
@@ -911,6 +966,7 @@
         "latitud": "41.6513613",
         "longitud": "-0.8782321",
         "direccion": "Maubic Soluciones tecnológicas, Calle del Coso, 67, 50001 Zaragoza, España",
+        "sin_ubicacion": false,
         "descripcion": "Empresa de servicios de consultoría informática en Zaragoza. Ofrece servicios de desarrollo de software, consultoría y soluciones informáticas.",
         "tags": [
             "consultoría",
@@ -925,9 +981,10 @@
     },
     {
         "nombre": "Loop Innova",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Empresa de desarrollo de software y aplicaciones móviles en Zaragoza. Ofrece servicios de desarrollo a medida, consultoría y mantenimiento web.",
         "tags": [
             "software",
@@ -947,6 +1004,7 @@
         "latitud": "41.646481",
         "longitud": "-0.887553",
         "direccion": "Zaragoza, AR, España",
+        "sin_ubicacion": false,
         "descripcion": "Data & Analytics & Big Data & IA & Governance",
         "tags": [
             "data",
@@ -962,9 +1020,10 @@
     },
     {
         "nombre": "Agencia De Desarrollo De Software",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Agencia desarrollo de software a medida con sede en París y Barcelona. Software especializado y aplicaciones SaaS.",
         "tags": [
             "software",
@@ -978,9 +1037,10 @@
     },
     {
         "nombre": "Empresas Desarrollo Software",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Completa un breve formulario y descubre las mejores Agencias de Desarrollo de Software.",
         "tags": [
             "software",
@@ -997,6 +1057,7 @@
         "latitud": "41.6442511",
         "longitud": "-0.8856127",
         "direccion": "Institut Français d'Espagne en Zaragoza, Paseo de Sagasta, 7, 50008 Zaragoza, España",
+        "sin_ubicacion": false,
         "descripcion": "Descubre las mejores empresas de desarrollo de aplicaciones móviles en Zaragoza, listas para llevar tu idea al siguiente nivel.",
         "tags": [
             "aplicaciones",
@@ -1013,6 +1074,7 @@
         "latitud": "41.6442511",
         "longitud": "-0.8856127",
         "direccion": "Institut Français d'Espagne en Zaragoza, Paseo de Sagasta, 7, 50008 Zaragoza, España",
+        "sin_ubicacion": false,
         "descripcion": "Descubre las mejores empresas de desarrollo de apps móviles en Zaragoza con nuestra guía detallada.",
         "tags": [
             "apps",
@@ -1026,9 +1088,10 @@
     },
     {
         "nombre": "Top 50 Compañías para desarrollo de aplicaciones móviles en Zaragoza",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Las 50 mejores empresas para el desarrollo de aplicaciones móviles en Zaragoza, ofreciendo servicios profesionales y de calidad para la creación de apps innovadoras y funcionales.",
         "tags": [
             "aplicaciones",
@@ -1042,9 +1105,10 @@
     },
     {
         "nombre": "RSC - Redes, Sistemas y Comunicaciones",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Empresa tecnológica de Zaragoza fundada en 1994/1996, especializada en soluciones y servicios TIC para infraestructuras, sistemas de información y comunicaciones corporativas, con más de 30 años de experiencia en el sector.",
         "tags": [
             "sistemas",
@@ -1062,6 +1126,7 @@
         "latitud": "41.6433356",
         "longitud": "-0.8892341",
         "direccion": "Miranda Digital, Avenida Francisco de Goya, 30, 50006 Zaragoza, España",
+        "sin_ubicacion": false,
         "descripcion": "Empresa de Zaragoza especializada en software de gestión (partner oficial Sage), diseño de páginas web y soluciones informáticas integrales para pymes en Aragón.",
         "tags": [
             "software de gestión",
@@ -1079,6 +1144,7 @@
         "latitud": "41.6433356",
         "longitud": "-0.8892341",
         "direccion": "Miranda Digital, Avenida Francisco de Goya, 30, 50006 Zaragoza, España",
+        "sin_ubicacion": false,
         "descripcion": "Empresa de Zaragoza especializada en servicios informáticos, consultoría TI y digitalización de PYMES. Partner oficial de Sage, ofrece software de gestión, ERP, contabilidad y diseño de páginas web para empresas de Aragón.",
         "tags": [
             "software de gestión",
@@ -1094,9 +1160,10 @@
     },
     {
         "nombre": "NTT Data (centro Zaragoza)",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Multinacional tecnológica japonesa que ha centralizado en sus instalaciones de Zaragoza su estrategia global de Inteligencia Artificial generativa, con un área de especialización (AoE IA) dedicada a proyectos de IA generativa y LLM para clientes internacionales.",
         "tags": [
             "inteligencia artificial",
@@ -1112,9 +1179,10 @@
     },
     {
         "nombre": "FIDEX DLT",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Firma zaragozana especializada en la gestión y optimización de capital mediante activos digitales estables bajo un marco regulado, dedicada a la gestión patrimonial de familias, empresarios y family offices. Ha sido seleccionada por la aceleradora Lanzadera.",
         "tags": [
             "fintech",
@@ -1130,9 +1198,10 @@
     },
     {
         "nombre": "Business Telecommunications Services Europe SA",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Empresa ubicada en Zaragoza dedicada a servicios de telecomunicaciones y comunicaciones empresariales, identificada en directorios empresariales como eInforma y Expansion dentro del sector de comunicaciones.",
         "tags": [
             "telecomunicaciones",
@@ -1150,6 +1219,7 @@
         "latitud": "41.6464797",
         "longitud": "-0.8894298",
         "direccion": "Voilá Contract Solutions, Calle de Amado Laguna de Rins, 50006 Zaragoza, España",
+        "sin_ubicacion": false,
         "descripcion": "Startup zaragozana especializada en desarrollo de firmware/software, prototipado, integración de sistemas y despliegue de soluciones tecnológicas para diversos sectores industriales. Reconocida en 2025 como empresa con mayor impacto en Aragón en los premios Emprende XXI.",
         "tags": [
             "software",
@@ -1165,9 +1235,10 @@
     },
     {
         "nombre": "Integrapp",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Consultora tecnológica ubicada en Aragón (Zaragoza) especializada en el desarrollo de software a medida, integraciones, gestión de datos, diseño web y dirección técnica de proyectos para empresas.",
         "tags": [
             "software a medida",
@@ -1185,6 +1256,7 @@
         "latitud": "41.652161",
         "longitud": "-0.870977",
         "direccion": "Calle Alonso V, 50001 Zaragoza, España",
+        "sin_ubicacion": false,
         "descripcion": "Empresa zaragozana fundada en 1990 dedicada al desarrollo de aplicaciones informáticas y proyectos tecnológicos, con software orientado a ayuntamientos y administraciones autonómicas y provinciales.",
         "tags": [
             "software de gestión",
@@ -1199,9 +1271,10 @@
     },
     {
         "nombre": "Ingenia Aragón",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Empresa de Zaragoza especializada en desarrollo web para empresas industriales y de servicios, enfocada en soluciones de gestión, automatización y comunicación.",
         "tags": [
             "desarrollo web",
@@ -1215,9 +1288,10 @@
     },
     {
         "nombre": "Alhambra IT",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Empresa tecnológica que ofrece servicios de aplicaciones empresariales, incluyendo diseño, desarrollo e integración de software para mejorar procesos internos y productividad organizativa.",
         "tags": [
             "aplicaciones empresariales",
@@ -1234,6 +1308,7 @@
         "latitud": "41.6513613",
         "longitud": "-0.8782321",
         "direccion": "Maubic Soluciones tecnológicas, Calle del Coso, 67, 50001 Zaragoza, España",
+        "sin_ubicacion": false,
         "descripcion": "Empresa aragonesa con sede en Zaragoza especializada en software de gestión empresarial, digitalización de procesos y mantenimiento informático para PYMEs.",
         "tags": [
             "software de gestión",
@@ -1251,6 +1326,7 @@
         "latitud": "41.6499794",
         "longitud": "-0.8801362",
         "direccion": "Gadda Galeria S.l., Calle de Jerónimo Zurita, 17, 50001 Zaragoza, España",
+        "sin_ubicacion": false,
         "descripcion": "Empresa con sede en Zaragoza dedicada a la ciberseguridad, infraestructura IT y adopción de soluciones de inteligencia artificial para empresas.",
         "tags": [
             "ciberseguridad",
@@ -1267,6 +1343,7 @@
         "latitud": "41.6509373",
         "longitud": "-0.9125795",
         "direccion": "Locutorio Magic Touch, Calle de Fray Juan Regla, 50017 Zaragoza, España",
+        "sin_ubicacion": false,
         "descripcion": "Estudio tecnológico con sede en Zaragoza (World Trade Center), fundado en 2020, especializado en desarrollo de videojuegos, Virtual Production y Realidad Virtual/Aumentada. Socio oficial de Epic Games y centro de entrenamiento autorizado de Unreal Engine.",
         "tags": [
             "realidad virtual",
@@ -1281,9 +1358,10 @@
     },
     {
         "nombre": "Noática",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Empresa zaragozana de desarrollo de software fundada en 1998, especializada en programación a medida (Python, PHP, Java, C++), implementación de Odoo y Moodle, desarrollo de APIs, CRM y aplicaciones móviles.",
         "tags": [
             "software a medida",
@@ -1302,6 +1380,7 @@
         "latitud": "41.6447037",
         "longitud": "-0.9071411",
         "direccion": "Patólogos. Consultores Asociados, Vía Univérsitas, 50009 Zaragoza, España",
+        "sin_ubicacion": false,
         "descripcion": "Cluster de consultoras especializadas en implantación y mantenimiento de software ERP/CRM basado en Odoo, con oficina propia en Zaragoza (Francisco de Vitoria, nº8) que atiende a empresas de múltiples sectores.",
         "tags": [
             "odoo",
@@ -1317,9 +1396,10 @@
     },
     {
         "nombre": "960 Pixels Comunicación",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Consultora con sede en Zaragoza (Calle San Pablo 12) especializada en comunicación, innovación, tecnología, datos y gobernanza. Ha participado en proyectos de gobierno del dato para administraciones públicas, como la Ordenanza tipo sobre gobierno del dato de la FEMP.",
         "tags": [
             "gobierno del dato",
@@ -1335,9 +1415,10 @@
     },
     {
         "nombre": "Sngular",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Empresa tecnológica dedicada al desarrollo de software y servicios digitales, con oficina en Zaragoza además de otras sedes en España (Madrid, Barcelona, Córdoba, Badajoz, Oviedo). Ofrece soluciones de software, IA e ingeniería digital.",
         "tags": [
             "software",
@@ -1352,9 +1433,10 @@
     },
     {
         "nombre": "EON Transformación Digital",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Empresa de servicios TI y transformación digital, con oficina en Zaragoza además de Madrid y Tarragona, especializada en servicios gestionados de tecnología y consultoría LEAN IT.",
         "tags": [
             "transformación digital",
@@ -1372,6 +1454,7 @@
         "latitud": "41.6626213",
         "longitud": "-0.8878167",
         "direccion": "Campus Digital FP, Avenida José Atarés, 20, 50018 Zaragoza, España",
+        "sin_ubicacion": false,
         "descripcion": "Agencia de marketing y publicidad ubicada en Zaragoza, especializada en diseño web, SEO, SEM y estrategias digitales para pymes y autónomos de Aragón y Navarra.",
         "tags": [
             "marketing digital",
@@ -1390,6 +1473,7 @@
         "latitud": "41.6456796",
         "longitud": "-0.8931532",
         "direccion": "Jiménez Huarte, Joaquín, Jiménez Huarte, Avenida Francisco de Goya, 72, 50005 Zaragoza, España",
+        "sin_ubicacion": false,
         "descripcion": "Agencia de marketing digital con sede en Calle Cinco de Marzo 18, Zaragoza, que ofrece servicios de desarrollo web, diseño gráfico y posicionamiento online para clientes locales, nacionales e internacionales.",
         "tags": [
             "marketing digital",
@@ -1404,9 +1488,10 @@
     },
     {
         "nombre": "IATIC SW",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Empresa de Zaragoza especializada en desarrollo de software, aplicaciones web, inteligencia artificial, CRM, ERP y mantenimiento informático para empresas.",
         "tags": [
             "inteligencia artificial",
@@ -1424,6 +1509,7 @@
         "latitud": "41.646481",
         "longitud": "-0.887553",
         "direccion": "Zaragoza, AR, España",
+        "sin_ubicacion": false,
         "descripcion": "Agencia con presencia en Zaragoza centrada en agentes de IA y automatización de procesos administrativos y de soporte para empresas de diversos sectores como legal, construcción y e-commerce.",
         "tags": [
             "agentes ia",
@@ -1438,9 +1524,10 @@
     },
     {
         "nombre": "Bitbrain (Bit&Brain Technologies)",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Empresa de neurotecnología con sede en Zaragoza que combina neurociencia, inteligencia artificial y hardware para desarrollar equipos de EEG y soluciones de monitorización humana, con aplicaciones en investigación y experiencia de usuario avanzada.",
         "tags": [
             "neurotecnología",
@@ -1456,9 +1543,10 @@
     },
     {
         "nombre": "Bozeta Design (Bozeta Innovation SL)",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Estudio de diseño con sede en Zaragoza especializado en estrategia de producto, branding, UX/UI, diseño web y proyectos que fusionan arte y tecnología, incluyendo desarrollos con realidad aumentada y blockchain para otras marcas.",
         "tags": [
             "ux/ui",
@@ -1477,6 +1565,7 @@
         "latitud": "41.665067",
         "longitud": "-0.873498",
         "direccion": "Calle Sierra de Guara, 50015 Zaragoza, España",
+        "sin_ubicacion": false,
         "descripcion": "Empresa zaragozana especializada en analizar e identificar vulnerabilidades en infraestructuras informáticas internas, redes, servidores y aplicaciones.",
         "tags": [
             "ciberseguridad",
@@ -1491,9 +1580,10 @@
     },
     {
         "nombre": "CiberSafety",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Empresa especializada en ciberseguridad gestionada con presencia en Zaragoza, ofrece SOC propio, MDR, cumplimiento normativo (NIS2, ENS, DORA) y respuesta a incidentes.",
         "tags": [
             "ciberseguridad",
@@ -1508,9 +1598,10 @@
     },
     {
         "nombre": "Ibersya",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Empresa que ofrece servicios de ciberseguridad para empresas en Zaragoza, incluyendo protección IT, monitorización 24/7, auditorías y copias de seguridad.",
         "tags": [
             "ciberseguridad",
@@ -1525,9 +1616,10 @@
     },
     {
         "nombre": "Redes Consultoría",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Consultora tecnológica con actividad en Zaragoza centrada en la implantación de agentes de inteligencia artificial generativa para automatizar tareas y optimizar procesos industriales en empresas de la región.",
         "tags": [
             "ia generativa",
@@ -1542,9 +1634,10 @@
     },
     {
         "nombre": "ForgeNEX",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Empresa tecnológica que ofrece soluciones B2B a empresas de Zaragoza, incluyendo automatización de procesos con IA, consultoría estratégica de inteligencia artificial, CRM, desarrollo de software y otras herramientas digitales, con soporte local.",
         "tags": [
             "ia",
@@ -1563,6 +1656,7 @@
         "latitud": "41.6524956",
         "longitud": "-0.874438",
         "direccion": "Entalto, Calle Mayor, 50001 Zaragoza, España",
+        "sin_ubicacion": false,
         "descripcion": "Estudio de desarrollo de videojuegos con sede en Zaragoza, fundado en 2021 por veteranos de la industria, enfocado en proyectos para PlayStation y otras plataformas.",
         "tags": [
             "videojuegos",
@@ -1580,6 +1674,7 @@
         "latitud": "41.646481",
         "longitud": "-0.887553",
         "direccion": "Zaragoza, AR, España",
+        "sin_ubicacion": false,
         "descripcion": "Agencia de marketing digital en Zaragoza que ofrece servicios de diseño web, SEO, SEM, desarrollo de aplicaciones y soluciones de inteligencia artificial.",
         "tags": [
             "marketing digital",
@@ -1597,6 +1692,7 @@
         "latitud": "41.6435773",
         "longitud": "-0.8736191",
         "direccion": "Calle Previsión Social, 11, 50008 Zaragoza, España",
+        "sin_ubicacion": false,
         "descripcion": "Agencia de marketing digital en Zaragoza especializada en diseño web, posicionamiento web, desarrollo de software y campañas en redes sociales.",
         "tags": [
             "marketing digital",
@@ -1611,9 +1707,10 @@
     },
     {
         "nombre": "Ematiza Marketing Digital",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Agencia de marketing digital en Zaragoza que gestiona redes sociales y desarrolla aplicaciones personalizadas para empresas y ayuntamientos.",
         "tags": [
             "marketing digital",
@@ -1628,9 +1725,10 @@
     },
     {
         "nombre": "LionRigStudio",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Estudio de realización multimedia fundado en 2018 en Zaragoza, que combina experiencia en informática y producción audiovisual.",
         "tags": [
             "multimedia",
@@ -1645,9 +1743,10 @@
     },
     {
         "nombre": "SGV (Software Grupo V)",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Empresa zaragozana fundada en 1990 dedicada al desarrollo de aplicaciones informáticas y proyectos tecnológicos, especializada en software de gestión de almacenes (WMS) y soluciones para servicios sociales.",
         "tags": [
             "software de gestión",
@@ -1662,9 +1761,10 @@
     },
     {
         "nombre": "nSolver (Nuevas Soluciones Virtuales)",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Empresa de Zaragoza que ofrece desarrollo de software empresarial (sistema ERP-CRM), diseño de páginas web y aplicaciones móviles, apostando por el software libre.",
         "tags": [
             "erp",
@@ -1679,9 +1779,10 @@
     },
     {
         "nombre": "Ematiza Digital S.L. (Ematiza Tecnología Audiovisual)",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Empresa ubicada en La Puebla de Alfindén (Zaragoza) especializada en ingeniería audiovisual, integración y distribución de contenido, instalaciones, alquiler y venta de equipos profesionales, así como marketing digital para empresas y eventos.",
         "tags": [
             "audiovisual",
@@ -1697,9 +1798,10 @@
     },
     {
         "nombre": "Calat Sistemas y Comunicaciones",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Empresa de informática en Zaragoza dedicada al desarrollo de soluciones web, software comercial y aplicaciones móviles (Android, iOS) con tecnologías responsive.",
         "tags": [
             "desarrollo web",
@@ -1713,9 +1815,10 @@
     },
     {
         "nombre": "PredictLand",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Consultora tecnológica aragonesa fundada en 2017, especializada en inteligencia artificial, ciencia de datos y soluciones predictivas aplicadas a negocio (ventas, operaciones y experiencia de cliente).",
         "tags": [
             "inteligencia artificial",
@@ -1730,9 +1833,10 @@
     },
     {
         "nombre": "JEVA Systems and Compliance",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Empresa zaragozana de consultoría tecnológica con sede en el Casco Antiguo de Zaragoza, dedicada al desarrollo de software, servicios informáticos, protección de datos y cumplimiento normativo.",
         "tags": [
             "software",
@@ -1747,9 +1851,10 @@
     },
     {
         "nombre": "SDAI",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Empresa de Zaragoza que actúa como departamento externo de inteligencia artificial para negocios, detectando tareas repetitivas e implantando soluciones de automatización medibles.",
         "tags": [
             "ia",
@@ -1767,6 +1872,7 @@
         "latitud": "41.6596148",
         "longitud": "-0.8780178",
         "direccion": "Tecnovalia Informática, Calle del Arquitecto de la Figuera, 2, 50015 Zaragoza, España",
+        "sin_ubicacion": false,
         "descripcion": "Empresa de desarrollo de software con sede en Zaragoza, fundada en 2007, con más de 25 años de experiencia en el sector, especializada en soluciones TIC y ERP para la gestión empresarial (plataforma Ahora One).",
         "tags": [
             "desarrollo software",
@@ -1781,9 +1887,10 @@
     },
     {
         "nombre": "Databay",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Empresa de desarrollo de aplicaciones Android en Zaragoza, creando desde apps de gestión interna hasta aplicaciones B2C con gran volumen de descargas.",
         "tags": [
             "android",
@@ -1800,6 +1907,7 @@
         "latitud": "41.6545546",
         "longitud": "-0.8805789",
         "direccion": "Unión de Consumidores de Aragón, Calle de Alfonso I, 20, 50003 Zaragoza, España",
+        "sin_ubicacion": false,
         "descripcion": "Consultoría tecnológica con más de 25 años de trayectoria en Zaragoza, especializada en desarrollo de software a medida e integración de sistemas ERP.",
         "tags": [
             "consultoría",
@@ -1813,9 +1921,10 @@
     },
     {
         "nombre": "Intesiscon",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Empresa de servicios y consultoría de TI con sede en Avenida Francisco de Goya, Zaragoza. Especializada en sistemas de captura automática de datos en tiempo real, consultoría tecnológica, datos y análisis, y automatización de marketing.",
         "tags": [
             "consultoría ti",
@@ -1833,6 +1942,7 @@
         "latitud": "41.6596148",
         "longitud": "-0.8780178",
         "direccion": "Tecnovalia Informática, Calle del Arquitecto de la Figuera, 2, 50015 Zaragoza, España",
+        "sin_ubicacion": false,
         "descripcion": "Empresa española con sede central en Zaragoza, Microsoft Solutions Partner desde 2003, especializada en la implantación de Microsoft Dynamics 365 Business Central para sectores como fabricación, logística, finanzas y construcción.",
         "tags": [
             "erp",
@@ -1847,9 +1957,10 @@
     },
     {
         "nombre": "Deveco",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Consultora tecnológica de Zaragoza especializada en software a medida, inteligencia artificial y automatización de procesos, con más de 100 clientes atendidos.",
         "tags": [
             "software a medida",
@@ -1866,6 +1977,7 @@
         "latitud": "41.6405815",
         "longitud": "-0.8933178",
         "direccion": "Bitbrain, Calle de Santa Teresa de Jesús, 30-32, 50006 Zaragoza, España",
+        "sin_ubicacion": false,
         "descripcion": "Empresa de neurotecnología con sede en Zaragoza que combina neurociencia, inteligencia artificial y hardware para desarrollar productos y soluciones innovadoras de monitorización biométrica y neuronal.",
         "tags": [
             "neurotecnología",
@@ -1884,6 +1996,7 @@
         "latitud": "41.6494558",
         "longitud": "-0.8852553",
         "direccion": "Lamont Imagen digital, Calle José Luis Albareda, 7, 50004 Zaragoza, España",
+        "sin_ubicacion": false,
         "descripcion": "Agencia de marketing digital y transformación digital con sede en el Casco Antiguo de Zaragoza, especializada en estrategias online basadas en análisis de datos y tecnología.",
         "tags": [
             "marketing digital",
@@ -1898,9 +2011,10 @@
     },
     {
         "nombre": "Góriz Telecomunicación",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Empresa de telecomunicaciones dedicada a la instalación y mantenimiento de redes para empresas en Aragón, considerada uno de los socios tecnológicos relevantes de la comunidad autónoma.",
         "tags": [
             "telecomunicaciones",
@@ -1915,9 +2029,10 @@
     },
     {
         "nombre": "Instrumentación y Componentes SA",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Empresa con sede en Zaragoza registrada en el sector de instrumentación y componentes técnicos, vinculada al ámbito de las nuevas tecnologías y telecomunicaciones en Aragón.",
         "tags": [
             "instrumentación",
@@ -1932,9 +2047,10 @@
     },
     {
         "nombre": "Nunsys",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Empresa tecnológica con oficina en la Plataforma Logística de Zaragoza (Pla-Za), dedicada a ofrecer soluciones tecnológicas y de transformación digital integral a empresas de diversos sectores.",
         "tags": [
             "transformación digital",
@@ -1952,6 +2068,7 @@
         "latitud": "41.589874",
         "longitud": "-0.810513",
         "direccion": "Tudor Exide Technologies, 50720 Zaragoza, España",
+        "sin_ubicacion": false,
         "descripcion": "Compañía tecnológica internacional con oficina en Zaragoza desde 2001, especializada en consultoría IT, desarrollo de software impulsado por IA y digitalización de procesos empresariales, con más de 250 empleados en la ciudad.",
         "tags": [
             "consultoría it",
@@ -1967,9 +2084,10 @@
     },
     {
         "nombre": "GAMCO",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Empresa con actividad en Zaragoza pionera en el desarrollo de soluciones de software basadas en inteligencia artificial, enfocada en modelos predictivos, optimización comercial y gestión avanzada del riesgo para clientes nacionales e internacionales.",
         "tags": [
             "inteligencia artificial",
@@ -1987,6 +2105,7 @@
         "latitud": "41.6706352",
         "longitud": "-0.9002498",
         "direccion": "Nologin, Andador de Berta Cáceres Flores, 50018 Zaragoza, España",
+        "sin_ubicacion": false,
         "descripcion": "Compañía tecnológica con sede principal en Zaragoza desde el año 2000, especializada en datacenter, cloud, ciberseguridad, identidad e inteligencia artificial, con proyección internacional en EE.UU., Latinoamérica y España.",
         "tags": [
             "cloud",
@@ -2002,9 +2121,10 @@
     },
     {
         "nombre": "Wanatop",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Agencia de marketing digital de alto rendimiento fundada en Zaragoza en 2014, especializada en SEO, SEM, Social Media, Paid Media, analítica, diseño UX y desarrollo web, con más de 50 especialistas y certificación Google Premier Partner.",
         "tags": [
             "marketing digital",
@@ -2020,9 +2140,10 @@
     },
     {
         "nombre": "Pentesting Team",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Empresa con actividad en Zaragoza especializada en auditoría ofensiva de ciberseguridad y pentesting para detectar vulnerabilidades en sistemas empresariales.",
         "tags": [
             "pentesting",
@@ -2036,9 +2157,10 @@
     },
     {
         "nombre": "ARATECNIA",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Empresa informática especializada en servicios IT para empresas y profesionales de Zaragoza, Huesca y Teruel, cubriendo soporte técnico, infraestructuras y servicios informáticos generales.",
         "tags": [
             "soporte it",
@@ -2053,9 +2175,10 @@
     },
     {
         "nombre": "TechConsulting (Salatech Consulting SL)",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Empresa de ciberseguridad con sede en Zaragoza especializada en pentesting, cumplimiento normativo (ENS, NIS2, DORA) y soluciones SIEM/EDR gestionadas para entidades públicas y privadas.",
         "tags": [
             "pentesting",
@@ -2074,6 +2197,7 @@
         "latitud": "41.6390437",
         "longitud": "-0.8833",
         "direccion": "Ingeniería de Equipos de Control, S.L., Ingeniería de Equipos de Control, Calle del Monasterio de Rueda, 9, 50007 Zaragoza, España",
+        "sin_ubicacion": false,
         "descripcion": "Empresa de ingeniería y desarrollo tecnológico con sede en Ejea de los Caballeros (Zaragoza), especializada en soluciones IoT propias para digitalización industrial, iluminación inteligente, gestión de infraestructuras y optimización de recursos agrícolas mediante una plataforma SaaS.",
         "tags": [
             "iot",
@@ -2089,9 +2213,10 @@
     },
     {
         "nombre": "ITSICAP Consultoría y Sistemas",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Empresa de consultoría informática con sede en Zaragoza, dedicada al desarrollo e implantación de aplicaciones de gestión para pymes (cloud, apps, Windows), telefonía VoIP, automatización y soporte técnico, actuando como Agente Digitalizador del Kit Digital.",
         "tags": [
             "consultoría it",
@@ -2107,9 +2232,10 @@
     },
     {
         "nombre": "Lecra",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Empresa de Zaragoza especializada en diseño de páginas web corporativas, aplicaciones móviles y software de gestión para empresas.",
         "tags": [
             "desarrollo web",
@@ -2123,9 +2249,10 @@
     },
     {
         "nombre": "Gessner",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Agencia de Zaragoza dedicada al desarrollo de software a medida, diseño web, integraciones API y SEO técnico en Aragón.",
         "tags": [
             "software a medida",
@@ -2143,6 +2270,7 @@
         "latitud": "41.6430443",
         "longitud": "-0.8946726",
         "direccion": "Informática Zaragoza, Calle de Luis del Valle, 50005 Zaragoza, España",
+        "sin_ubicacion": false,
         "descripcion": "Empresa zaragozana que diseña páginas web profesionales, tiendas online y aplicaciones móviles optimizadas para posicionamiento en buscadores.",
         "tags": [
             "diseño web",
@@ -2157,9 +2285,10 @@
     },
     {
         "nombre": "BenusTech",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Empresa especializada en infraestructura cloud y FinOps para pymes en Zaragoza, ofreciendo implementaciones con enfoque en retorno de inversión y entregas rápidas.",
         "tags": [
             "cloud",
@@ -2177,6 +2306,7 @@
         "latitud": "41.6464797",
         "longitud": "-0.8894298",
         "direccion": "Voilá Contract Solutions, Calle de Amado Laguna de Rins, 50006 Zaragoza, España",
+        "sin_ubicacion": false,
         "descripcion": "Empresa de Zaragoza dedicada a soluciones informáticas, diseño web, marketing digital y consultoría tecnológica, ofreciendo un servicio integral de digitalización a empresas y profesionales.",
         "tags": [
             "diseño web",
@@ -2191,9 +2321,10 @@
     },
     {
         "nombre": "Inycom (Instrumentación y Componentes)",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Empresa tecnológica con sede en Zaragoza y oficinas en una docena de ciudades españolas, especializada en servicios TIC, analítica de datos y soluciones para los sectores sanitario y de laboratorio. En 2023 fue adquirida por el grupo valenciano Nunsys.",
         "tags": [
             "tic",
@@ -2208,9 +2339,10 @@
     },
     {
         "nombre": "Parque Tecnológico Walqa",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Espacio empresarial tecnológico situado en Huesca que alberga numerosas empresas especializadas en Tecnologías de la Información, biotecnología y energías renovables, con más de 80 empresas y más de 800 empleos.",
         "tags": [
             "parque tecnológico",
@@ -2228,6 +2360,7 @@
         "latitud": "41.6468132",
         "longitud": "-0.8952307",
         "direccion": "Aragón, Calle Fueros de Aragón, 50005 Zaragoza, España",
+        "sin_ubicacion": false,
         "descripcion": "Agencia de marketing digital con sede en Zaragoza que ofrece servicios de diseño web, SEO, redes sociales, CRM y soluciones cloud orientadas a pymes, micropymes y autónomos.",
         "tags": [
             "marketing digital",
@@ -2245,6 +2378,7 @@
         "latitud": "41.589874",
         "longitud": "-0.810513",
         "direccion": "Tudor Exide Technologies, 50720 Zaragoza, España",
+        "sin_ubicacion": false,
         "descripcion": "Empresa aragonesa de neurotecnología, spin-off de la Universidad de Zaragoza, que combina neurociencia, inteligencia artificial y hardware para desarrollar productos de neurotecnología aplicados a la medición de emociones y actividad cerebral.",
         "tags": [
             "neurotecnología",
@@ -2262,6 +2396,7 @@
         "latitud": "41.6481011",
         "longitud": "-0.89034",
         "direccion": "Bar Cortez, Calle Hernán Cortés, 22, 50005 Zaragoza, España",
+        "sin_ubicacion": false,
         "descripcion": "Agencia de marketing digital con sede en Zaragoza, especializada en SEO, SEM, campañas publicitarias, gestión de redes sociales, diseño web y creación de contenido para impulsar la visibilidad online de negocios.",
         "tags": [
             "marketing digital",
@@ -2277,9 +2412,10 @@
     },
     {
         "nombre": "ItziData",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Consultoría informática ubicada en el Parque Tecnológico Walqa (Huesca), especializada en sistemas de backup, continuidad de negocio, digitalización de empresas e industria 4.0, con actividad también en marketing digital y publicidad.",
         "tags": [
             "backup",
@@ -2295,9 +2431,10 @@
     },
     {
         "nombre": "ArdiCiber",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Empresa con sede central en el Parque Tecnológico Walqa (Huesca), especializada en ciberseguridad y en la asistencia a víctimas de ciberestafas, ayudando a particulares y empresas a recuperar fondos tras fraudes online.",
         "tags": [
             "ciberseguridad",
@@ -2312,9 +2449,10 @@
     },
     {
         "nombre": "To Be Solutions",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Agencia de publicidad y diseño con sede en Zaragoza, dedicada al diseño web y gráfico, marketing online, tiendas online, SEO y consultoría digital para empresas.",
         "tags": [
             "diseño web",
@@ -2330,9 +2468,10 @@
     },
     {
         "nombre": "I.D.A. (Informática y Desarrollos Aragoneses)",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Empresa de Zaragoza especializada en consultoría tecnológica, desarrollo de software a medida e integración de sistemas ERP, con más de 25 años de trayectoria.",
         "tags": [
             "consultoría tecnológica",
@@ -2350,6 +2489,7 @@
         "latitud": "41.6499543",
         "longitud": "-0.8871683",
         "direccion": "Apla Global Technology, Avenida de César Augusto, 50004 Zaragoza, España",
+        "sin_ubicacion": false,
         "descripcion": "Empresa aragonesa que desarrolla software MES (Manufacturing Execution System) para conectar personas, máquinas y procesos en plantas industriales, mejorando calidad, OEE y planificación de la producción dentro de la digitalización industrial.",
         "tags": [
             "mes",
@@ -2364,9 +2504,10 @@
     },
     {
         "nombre": "Androtiyas",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Estudio de desarrollo de videojuegos y agencia creativa con sede en Zaragoza (José Luis Albareda 8), fundado en 2010, especializado en desarrollo con Unity, diseño gráfico, realidad virtual y nuevas tecnologías.",
         "tags": [
             "videojuegos",
@@ -2381,9 +2522,10 @@
     },
     {
         "nombre": "Apser",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Empresa tecnológica con sede en Zaragoza, Advanced Consulting Partner de Amazon Web Services (AWS), especializada en migración a la nube, soluciones cloud e inteligencia artificial para empresas y administraciones.",
         "tags": [
             "cloud",
@@ -2402,6 +2544,7 @@
         "latitud": "41.6457253",
         "longitud": "-0.88851",
         "direccion": "Integra. Estrategia y Tecnología., Gran Vía de Santiago Ramón y Cajal, 23, 50006 Zaragoza, España",
+        "sin_ubicacion": false,
         "descripcion": "Consultora tecnológica fundada en 1986 en Aragón, especializada en transformación digital, estrategia IT, soluciones de negocio, IoT, datos e inteligencia artificial. Cuenta con presencia en toda España y más de 700 profesionales.",
         "tags": [
             "consultoría",
@@ -2417,9 +2560,10 @@
     },
     {
         "nombre": "DeuSens Hyperxperience",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Estudio de tecnología inmersiva fundado en 2014 en Zaragoza, especializado en realidad extendida (XR), inteligencia artificial y robótica, con oficinas también en Valencia, Barcelona e Italia.",
         "tags": [
             "xr",
@@ -2434,9 +2578,10 @@
     },
     {
         "nombre": "Sertoria Tech",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Empresa de software e integración de inteligencia artificial con sede en Zaragoza, que atiende a empresas de Aragón con soluciones tecnológicas y acompañamiento presencial.",
         "tags": [
             "software",
@@ -2454,6 +2599,7 @@
         "latitud": "41.6706352",
         "longitud": "-0.9002498",
         "direccion": "Nologin, Andador de Berta Cáceres Flores, 50018 Zaragoza, España",
+        "sin_ubicacion": false,
         "descripcion": "Compañía aragonesa fundada en el año 2000, con sede en Zaragoza, especializada en infraestructura tecnológica, datacenters, consultoría IT y desarrollo de software a medida para empresas de todo el mundo.",
         "tags": [
             "infraestructura",
@@ -2468,9 +2614,10 @@
     },
     {
         "nombre": "Pentest Aragón (PentestingTeam)",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Empresa zaragozana especializada en ciberseguridad ofensiva, realiza auditorías de pentesting y detección de vulnerabilidades para proteger a compañías frente a ciberataques y ciberestafas.",
         "tags": [
             "pentesting",
@@ -2485,9 +2632,10 @@
     },
     {
         "nombre": "Agencia IA Digital",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Agencia ubicada en Zaragoza especializada en soluciones de automatización y marketing mediante inteligencia artificial, incluyendo SEO y optimización de canales digitales.",
         "tags": [
             "inteligencia artificial",
@@ -2502,9 +2650,10 @@
     },
     {
         "nombre": "Netbulb",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Agencia con sede en Zaragoza con más de 15 años de experiencia en posicionamiento web (SEO), SEO local, diseño web y campañas de publicidad online (ADS).",
         "tags": [
             "seo",
@@ -2519,9 +2668,10 @@
     },
     {
         "nombre": "OverFuture",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Empresa de software con sede en Zaragoza (Plaza Ntra. Sra. de las Nieves, Casablanca) especializada en desarrollo de software a medida, aplicaciones móviles, automatización de procesos e integración de IA para empresas.",
         "tags": [
             "desarrollo software",
@@ -2536,9 +2686,10 @@
     },
     {
         "nombre": "Data Center Ribera Alta del Ebro SL",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Empresa con sede en Zaragoza dedicada a infraestructura informática, procesamiento de datos y servicios de hosting (CNAE 6310).",
         "tags": [
             "datacenter",
@@ -2556,6 +2707,7 @@
         "latitud": "41.6443247",
         "longitud": "-0.8838409",
         "direccion": "Ashloc Traducciones S.L., Paseo de las Damas, 1, 50008 Zaragoza, España",
+        "sin_ubicacion": false,
         "descripcion": "Agencia de desarrollo informático con oficina en Zaragoza (además de Toledo), fundada en 2013, especializada en creación y mantenimiento de aplicaciones móviles y páginas web.",
         "tags": [
             "desarrollo móvil",
@@ -2570,9 +2722,10 @@
     },
     {
         "nombre": "Maubic Consultoría Tecnológica",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Empresa de Zaragoza especializada en consultoría tecnológica, desarrollo de software y asesoría de marketing para negocios.",
         "tags": [
             "consultoría it",
@@ -2586,9 +2739,10 @@
     },
     {
         "nombre": "ITSicap",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Empresa de Zaragoza que ofrece servicios de consultoría informática y soluciones IT para empresas, incluyendo soporte técnico y transformación digital.",
         "tags": [
             "consultoría it",
@@ -2605,6 +2759,7 @@
         "latitud": "41.6455283",
         "longitud": "-0.8976893",
         "direccion": "De ida y vuelta, Calle de Tomás Bretón, 50005 Zaragoza, España",
+        "sin_ubicacion": false,
         "descripcion": "Consultora tecnológica de Zaragoza con más de 25 años de experiencia, especializada en desarrollo de software a medida, consultoría tecnológica e integración de sistemas ERP para empresas.",
         "tags": [
             "software a medida",
@@ -2619,9 +2774,10 @@
     },
     {
         "nombre": "Netaservice Servicios Informáticos SL",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Empresa aragonesa con más de 14 años de experiencia especializada en el desarrollo e implantación de soluciones web y aplicaciones móviles para diversos sectores.",
         "tags": [
             "desarrollo web",
@@ -2636,9 +2792,10 @@
     },
     {
         "nombre": "BSH Electrodomésticos España, S.A.",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Filial española del grupo BSH (marcas Bosch, Siemens, entre otras), con sede y planta de fabricación de electrodomésticos en el Parque Empresarial Pla-Za de Zaragoza.",
         "tags": [
             "electrodomésticos",
@@ -2656,6 +2813,7 @@
         "latitud": "41.64203",
         "longitud": "-0.89757",
         "direccion": "Edificio de Servicios Centrales, 50005 Zaragoza, España",
+        "sin_ubicacion": false,
         "descripcion": "Empresa de consultoría y servicios tecnológicos ubicada en Zaragoza, especializada en implantación de soluciones ERP, CRM (partner oficial de Salesforce), gestión documental y transformación digital.",
         "tags": [
             "crm",
@@ -2670,9 +2828,10 @@
     },
     {
         "nombre": "Erediapol",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Agencia con oficina en el Paseo de la Independencia de Zaragoza dedicada al desarrollo de aplicaciones web, ecommerce y marketing digital para empresas de Aragón.",
         "tags": [
             "desarrollo web",
@@ -2687,9 +2846,10 @@
     },
     {
         "nombre": "AiQube Labs",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Empresa de software con sede en el Casco Antiguo de Zaragoza que desarrolla soluciones tecnológicas e informáticas para clientes empresariales.",
         "tags": [
             "software",
@@ -2703,9 +2863,10 @@
     },
     {
         "nombre": "GA Agencia Digital",
-        "latitud": "41.6915847",
-        "longitud": "-0.9101268",
-        "direccion": "Zaragoza, AR, España",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
         "descripcion": "Agencia digital de Zaragoza especializada en desarrollo de aplicaciones web y móviles, diseño UX/UI y arquitectura de software para empresas.",
         "tags": [
             "desarrollo web",

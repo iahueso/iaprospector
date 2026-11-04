@@ -113,6 +113,25 @@ def convertir_float(valor):
         return None
 
 
+# Punto genérico que devuelve Geoapify cuando solo reconoce "Zaragoza"
+# (cae en Juslibol). No es la sede real de la empresa.
+UBICACION_GENERICA = (41.6915847, -0.9101268)
+NOTA_SIN_UBICACION = "Sin ubicación exacta (sede no localizada)"
+
+
+def es_ubicacion_generica(latitud, longitud):
+    lat = convertir_float(latitud)
+    lon = convertir_float(longitud)
+
+    if lat is None or lon is None:
+        return False
+
+    return (
+        abs(lat - UBICACION_GENERICA[0]) < 0.0001
+        and abs(lon - UBICACION_GENERICA[1]) < 0.0001
+    )
+
+
 def coordenadas_validas(latitud, longitud):
     lat = convertir_float(latitud)
     lon = convertir_float(longitud)
@@ -306,7 +325,16 @@ def fila_a_empresa(fila, cabecera, numero_fila):
         print(f"Fila {numero_fila} descartada: no tiene nombre.")
         return None
 
-    if not coordenadas_validas(latitud, longitud):
+    sin_ubicacion = (
+        es_ubicacion_generica(latitud, longitud)
+        or (not tiene_valor(latitud) and not tiene_valor(longitud))
+    )
+
+    if sin_ubicacion:
+        latitud = ""
+        longitud = ""
+        direccion = ""
+    elif not coordenadas_validas(latitud, longitud):
         print(f"Fila {numero_fila} descartada: coordenadas no válidas para {nombre}.")
         return None
 
@@ -315,6 +343,7 @@ def fila_a_empresa(fila, cabecera, numero_fila):
         "latitud": str(latitud).replace(",", "."),
         "longitud": str(longitud).replace(",", "."),
         "direccion": direccion,
+        "sin_ubicacion": sin_ubicacion,
         "descripcion": descripcion,
         "tags": convertir_tags_a_lista(tags_texto),
         "ciclo": ciclo,
@@ -420,7 +449,7 @@ def generar_tarjeta_empresa(empresa):
         </p>
 
         <p class="linea-direccion">
-            <strong>Dirección:</strong> {escapar(direccion)}
+            <strong>Dirección:</strong> {escapar(direccion) if not empresa.get("sin_ubicacion") else escapar(NOTA_SIN_UBICACION)}
         </p>
 
         <p class="descripcion">
@@ -1258,7 +1287,7 @@ function pintarMarcadores(empresasVisibles) {
 
         marcador.bindPopup(`
             <strong>${empresa.nombre || ''}</strong><br>
-            ${empresa.direccion || ''}<br>
+            ${empresa.sin_ubicacion ? 'Sin ubicación exacta' : (empresa.direccion || '')}<br>
             <small>${obtenerTagsEmpresa(empresa).join(', ')}</small>
         `);
 
@@ -1548,7 +1577,7 @@ function renderizarListaPorFecha() {
             <article class="tarjeta-fecha" data-nombre="${escaparHtml(empresa.nombre || '')}">
                 <div class="info-empresa-fecha">
                     <h4>${escaparHtml(empresa.nombre || '')}</h4>
-                    <p>${escaparHtml(empresa.direccion || '')}</p>
+                    <p>${escaparHtml(empresa.sin_ubicacion ? 'Sin ubicación exacta' : (empresa.direccion || ''))}</p>
                 </div>
                 <span class="badge-ciclo">${escaparHtml(empresa.ciclo || '')}</span>
             </article>
