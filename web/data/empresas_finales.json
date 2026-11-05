@@ -2878,5 +2878,78 @@
         "estado_agente": "ok",
         "fuentes": "https://www.gaagenciadigitalzaragoza.es/desarrollo-de-aplicaciones-web-y-mobile",
         "fecha_inclusion": "2026-11-04"
+    },
+    {
+        "nombre": "Polygonal Mind",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
+        "descripcion": "Estudio tecnológico con sede en Zaragoza especializado en el diseño y desarrollo de entornos de metaverso y experiencias 3D, con un equipo de entre 11 y 50 empleados enfocado en arte digital y optimización.",
+        "tags": [
+            "metaverso",
+            "3d",
+            "realidad virtual",
+            "diseño digital"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://es.linkedin.com/company/polygonal-mind ; https://www.iberinform.es/empresa/9579637/polygonal-mind",
+        "fecha_inclusion": "2026-11-05"
+    },
+    {
+        "nombre": "Entropy Studio",
+        "latitud": "41.653329",
+        "longitud": "-0.8770741",
+        "direccion": "Entropy Studio, Calle San Juan y San Pedro, 5-7, 50001 Zaragoza, España",
+        "sin_ubicacion": false,
+        "descripcion": "Estudio zaragozano dedicado a efectos visuales, animación 3D, composición digital y motion graphics para proyectos audiovisuales, colaborando con directores y productoras.",
+        "tags": [
+            "vfx",
+            "animación 3d",
+            "composición digital",
+            "motion graphics"
+        ],
+        "ciclo": "Otro",
+        "estado_agente": "ok",
+        "fuentes": "https://www.entropystudio.es/ ; https://www.cybo.com/ES-biz/entropy-studio",
+        "fecha_inclusion": "2026-11-05"
+    },
+    {
+        "nombre": "Piensaenweb",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
+        "descripcion": "Agencia zaragozana con más de 22 años de trayectoria dedicada al diseño y desarrollo de páginas web, tiendas online y proyectos web complejos a medida.",
+        "tags": [
+            "diseño web",
+            "ecommerce",
+            "tiendas online",
+            "desarrollo web"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://piensaenweb.com/; https://espana.digital/zaragoza/agencias-de-diseno-web/piensaenweb-diseno-web-zaragoza",
+        "fecha_inclusion": "2026-11-05"
+    },
+    {
+        "nombre": "Triddeo",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
+        "descripcion": "Agencia de Zaragoza especializada en marketing digital, diseño y desarrollo web, SEO y automatización de procesos con inteligencia artificial para empresas y pymes.",
+        "tags": [
+            "marketing digital",
+            "diseño web",
+            "seo",
+            "automatización",
+            "ia"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://www.triddeo.com/, https://es.linkedin.com/company/triddeo-studio",
+        "fecha_inclusion": "2026-11-05"
     }
 ]
