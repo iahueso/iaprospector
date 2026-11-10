@@ -2951,5 +2951,24 @@
         "estado_agente": "ok",
         "fuentes": "https://www.triddeo.com/, https://es.linkedin.com/company/triddeo-studio",
         "fecha_inclusion": "2026-11-05"
+    },
+    {
+        "nombre": "Balui Digital (Balui Servicios Digitales SL)",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
+        "descripcion": "Empresa familiar con sede en Zaragoza que ofrece soluciones IT integrales: diseño web, ciberseguridad, marketing digital, redes y telecomunicaciones para pymes y autónomos.",
+        "tags": [
+            "diseño web",
+            "ciberseguridad",
+            "telecomunicaciones",
+            "marketing digital",
+            "redes"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://baluidigital.es/comunicaciones/ ; https://es.linkedin.com/company/baluidigital ; https://encuentre-abierto.es/zaragoza/balui-digital-diseño-web-it-ciberseguridad-marketing-digital-1216265",
+        "fecha_inclusion": "2026-11-10"
     }
 ]
