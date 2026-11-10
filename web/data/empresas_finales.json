@@ -2970,5 +2970,60 @@
         "estado_agente": "ok",
         "fuentes": "https://baluidigital.es/comunicaciones/ ; https://es.linkedin.com/company/baluidigital ; https://encuentre-abierto.es/zaragoza/balui-digital-diseño-web-it-ciberseguridad-marketing-digital-1216265",
         "fecha_inclusion": "2026-11-10"
+    },
+    {
+        "nombre": "Tiltac",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
+        "descripcion": "Empresa tecnológica ubicada en Huesca (Aragón) que desarrolla asistentes con inteligencia artificial, aplicaciones móviles y soluciones web en Angular para automatizar procesos y digitalizar negocios, incluyendo implementación de ERPs y dashboards con Power BI.",
+        "tags": [
+            "ia",
+            "apps móviles",
+            "angular",
+            "automatización",
+            "erp"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://tiltac.es/; https://es.linkedin.com/company/tiltac; https://www.diariodelaltoaragon.es/noticias/huesca/2025/01/19/cinco-empresas-llegan-al-parque-tecnologico-walqa-1793202-daa.html",
+        "fecha_inclusion": "2026-11-10"
+    },
+    {
+        "nombre": "Balui Digital",
+        "latitud": "41.6494558",
+        "longitud": "-0.8852553",
+        "direccion": "Lamont Imagen digital, Calle José Luis Albareda, 7, 50004 Zaragoza, España",
+        "sin_ubicacion": false,
+        "descripcion": "Empresa de Zaragoza que ofrece servicios de ciberseguridad para empresas utilizando herramientas como Acronis y Bitdefender.",
+        "tags": [
+            "ciberseguridad",
+            "protección digital",
+            "software de seguridad"
+        ],
+        "ciclo": "ASIR",
+        "estado_agente": "ok",
+        "fuentes": "https://baluidigital.es/ciberseguridad-empresas/",
+        "fecha_inclusion": "2026-11-10"
+    },
+    {
+        "nombre": "ASAC",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
+        "descripcion": "Empresa tecnológica zaragozana con más de 30 años de trayectoria, especializada en servicios cloud, infraestructuras TI, ciberseguridad gestionada y transformación digital para empresas, incluyendo adaptación a la normativa NIS2.",
+        "tags": [
+            "ciberseguridad",
+            "cloud",
+            "nis2",
+            "transformación digital",
+            "infraestructuras ti"
+        ],
+        "ciclo": "ASIR",
+        "estado_agente": "ok",
+        "fuentes": "https://www.asacti.es/, https://www.asacti.es/ciberseguridad-gestionada/nis2/, https://www.ituser.es/actualidad/2026/06/asac-cumple-30-anos-como-referente-en-servicios-cloud-infraestructuras-ti-y-transformacion-digital",
+        "fecha_inclusion": "2026-11-10"
     }
 ]
