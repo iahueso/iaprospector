@@ -3025,5 +3025,94 @@
         "estado_agente": "ok",
         "fuentes": "https://www.asacti.es/, https://www.asacti.es/ciberseguridad-gestionada/nis2/, https://www.ituser.es/actualidad/2026/06/asac-cumple-30-anos-como-referente-en-servicios-cloud-infraestructuras-ti-y-transformacion-digital",
         "fecha_inclusion": "2026-11-10"
+    },
+    {
+        "nombre": "Grupo Soto (división Tecnología)",
+        "latitud": "41.6467",
+        "longitud": "-0.998771",
+        "direccion": "Grupo Carreras, 50195 Zaragoza, España",
+        "sin_ubicacion": false,
+        "descripcion": "División tecnológica de Grupo Soto en Zaragoza que ofrece consultoría avanzada, migración a infraestructuras cloud y diseño de sistemas informáticos para empresas.",
+        "tags": [
+            "cloud",
+            "consultoría",
+            "sistemas informáticos",
+            "migración"
+        ],
+        "ciclo": "ASIR",
+        "estado_agente": "ok",
+        "fuentes": "https://gruposoto.es/tecnologia/zaragoza",
+        "fecha_inclusion": "2026-11-12"
+    },
+    {
+        "nombre": "Evoluziona",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
+        "descripcion": "Agencia de marketing digital y SEO ubicada en Zaragoza, especializada en posicionamiento web, diseño web y programación a medida para empresas y autónomos.",
+        "tags": [
+            "seo",
+            "marketing digital",
+            "diseño web",
+            "posicionamiento"
+        ],
+        "ciclo": "Marketing",
+        "estado_agente": "ok",
+        "fuentes": "https://evoluziona.es/agencia-seo-zaragoza/ ; https://www.paginasamarillas.es/f/zaragoza/evoluziona_235083623_000000001.html",
+        "fecha_inclusion": "2026-11-12"
+    },
+    {
+        "nombre": "Delebe Consultoría Tecnológica",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
+        "descripcion": "Empresa de informática y consultoría tecnológica con sede en Plaza San Francisco, Zaragoza, dedicada a servicios IT para empresas.",
+        "tags": [
+            "informática",
+            "consultoría it",
+            "tecnología"
+        ],
+        "ciclo": "ASIR",
+        "estado_agente": "ok",
+        "fuentes": "https://www.paginasamarillas.es/f/zaragoza/delebe-consultoria-tecnologica_221060171_000000001.html",
+        "fecha_inclusion": "2026-11-12"
+    },
+    {
+        "nombre": "Warfocus VR",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
+        "descripcion": "Centro de entretenimiento de realidad virtual ubicado en Zaragoza (Delicias), que ofrece experiencias inmersivas de VR para particulares y empresas.",
+        "tags": [
+            "realidad virtual",
+            "vr",
+            "entretenimiento",
+            "tecnología inmersiva"
+        ],
+        "ciclo": "Otro",
+        "estado_agente": "ok",
+        "fuentes": "https://triana-en-navidad.es/warfocus-vr/",
+        "fecha_inclusion": "2026-11-12"
+    },
+    {
+        "nombre": "Miranda Digital (Informática Miranda Digital / IMDigital)",
+        "latitud": "41.6433356",
+        "longitud": "-0.8892341",
+        "direccion": "Miranda Digital, Avenida Francisco de Goya, 30, 50006 Zaragoza, España",
+        "sin_ubicacion": false,
+        "descripcion": "Empresa zaragozana dedicada al diseño web, desarrollo de software a medida y mantenimiento informático, especializada en soluciones de gestión como Sage 50 adaptadas a normativas como Verifactu.",
+        "tags": [
+            "desarrollo web",
+            "software gestión",
+            "mantenimiento informático",
+            "sage"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://imdigital.es/, https://www.sortlist.es/agency/informatica-miranda-digital-sl",
+        "fecha_inclusion": "2026-11-12"
     }
 ]
