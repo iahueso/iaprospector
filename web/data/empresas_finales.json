@@ -3114,5 +3114,41 @@
         "estado_agente": "ok",
         "fuentes": "https://imdigital.es/, https://www.sortlist.es/agency/informatica-miranda-digital-sl",
         "fecha_inclusion": "2026-11-12"
+    },
+    {
+        "nombre": "Albada Servicios Informáticos",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
+        "descripcion": "Empresa de software y consultoría informática con sede en Zaragoza, distribuidora oficial de a3ERP para la gestión integral de empresas.",
+        "tags": [
+            "erp",
+            "software gestión",
+            "consultoría ti",
+            "a3erp"
+        ],
+        "ciclo": "ASIR",
+        "estado_agente": "ok",
+        "fuentes": "https://albada.es/soluciones/a3-software/a3erp/soluciones-a3erp; https://lunamedia.es/albada-servicios-informaticos/",
+        "fecha_inclusion": "2026-11-13"
+    },
+    {
+        "nombre": "Atlas SAP Business One",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
+        "descripcion": "Partner de SAP Business One en Zaragoza, dedicado a la implantación de soluciones ERP para pequeñas y medianas empresas.",
+        "tags": [
+            "erp",
+            "sap business one",
+            "implantación software",
+            "pymes"
+        ],
+        "ciclo": "DAM",
+        "estado_agente": "ok",
+        "fuentes": "https://www.atlas-sap.com/; https://innovatus.es/sap-business-one-atlas/",
+        "fecha_inclusion": "2026-11-13"
     }
 ]
