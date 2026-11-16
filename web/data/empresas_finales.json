@@ -3150,5 +3150,41 @@
         "estado_agente": "ok",
         "fuentes": "https://www.atlas-sap.com/; https://innovatus.es/sap-business-one-atlas/",
         "fecha_inclusion": "2026-11-13"
+    },
+    {
+        "nombre": "Atlas (Atlas Sap)",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
+        "descripcion": "Empresa con sede en Zaragoza, partner oficial de SAP Business One, dedicada a la implantación y soporte de soluciones ERP para empresas.",
+        "tags": [
+            "sap",
+            "erp",
+            "software empresarial",
+            "zaragoza"
+        ],
+        "ciclo": "ASIR",
+        "estado_agente": "ok",
+        "fuentes": "https://www.atlas-sap.com/; https://innovatus.es/sap-business-one-atlas/",
+        "fecha_inclusion": "2026-11-16"
+    },
+    {
+        "nombre": "Advantic (Advantic Aragón SL)",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
+        "descripcion": "Empresa de software ERP con sede en Zaragoza, partner SAP especializado en la implantación de SAP Business One y soluciones de integración con e-commerce.",
+        "tags": [
+            "erp",
+            "sap",
+            "e-commerce",
+            "software"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://advanticbusinessone.com/; https://esopiniones.com/aragon/advantic-579758",
+        "fecha_inclusion": "2026-11-16"
     }
 ]
