@@ -3186,5 +3186,58 @@
         "estado_agente": "ok",
         "fuentes": "https://advanticbusinessone.com/; https://esopiniones.com/aragon/advantic-579758",
         "fecha_inclusion": "2026-11-16"
+    },
+    {
+        "nombre": "Inicionet",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
+        "descripcion": "Empresa de Zaragoza con más de 20 años de experiencia especializada en diseño y desarrollo web, creación de tiendas online y programación a medida orientada a optimizar procesos de negocio.",
+        "tags": [
+            "desarrollo web",
+            "ecommerce",
+            "programación a medida",
+            "seo"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://www.inicionet.com/zaragoza-diseno/ ; https://www.sortlist.es/agency/diseno-web-zaragoza-inicionet ; https://www.cylex.es/zaragoza/inicionet-14068018.html",
+        "fecha_inclusion": "2026-11-17"
+    },
+    {
+        "nombre": "Bucle Marketing Online",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
+        "descripcion": "Agencia de marketing online con sede en Zaragoza (oficina en Gran Vía) especializada en publicidad digital, diseño web, Google Ads y redes sociales para pymes.",
+        "tags": [
+            "marketing digital",
+            "publicidad",
+            "diseño web",
+            "seo/sem"
+        ],
+        "ciclo": "Marketing",
+        "estado_agente": "ok",
+        "fuentes": "https://www.bucleweb.com/ ; https://www.bucleweb.com/empresa-marketing-zaragoza/ ; https://zaragozaonline.es/zaragoza/agencias-de-marketing-digital/bucle-marketing-online-agencia-marketing-digital",
+        "fecha_inclusion": "2026-11-17"
+    },
+    {
+        "nombre": "IDA (Integración y Desarrollo de Aplicaciones)",
+        "latitud": "41.6455283",
+        "longitud": "-0.8976893",
+        "direccion": "De ida y vuelta, Calle de Tomás Bretón, 50005 Zaragoza, España",
+        "sin_ubicacion": false,
+        "descripcion": "Consultora informática con equipo propio en Zaragoza, más de 25 años de trayectoria, partner oficial de Wolters Kluwer para a3ERP, dedicada a desarrollo a medida e integraciones con ERP.",
+        "tags": [
+            "consultoría ti",
+            "erp",
+            "desarrollo a medida"
+        ],
+        "ciclo": "DAM",
+        "estado_agente": "ok",
+        "fuentes": "https://ida.es/ ; https://ida.es/consultora-tecnologica-zaragoza/ ; https://empresite.eleconomista.es/INTEGRACION-DESARROLLO-APLICACIONES.html",
+        "fecha_inclusion": "2026-11-17"
     }
 ]
