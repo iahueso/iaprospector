@@ -3239,5 +3239,96 @@
         "estado_agente": "ok",
         "fuentes": "https://ida.es/ ; https://ida.es/consultora-tecnologica-zaragoza/ ; https://empresite.eleconomista.es/INTEGRACION-DESARROLLO-APLICACIONES.html",
         "fecha_inclusion": "2026-11-17"
+    },
+    {
+        "nombre": "Impulsa3",
+        "latitud": "41.6550442",
+        "longitud": "-0.9130091",
+        "direccion": "Comín Ros 3, Calle de Alfonso Carlos Comín Ros, 50017 Zaragoza, España",
+        "sin_ubicacion": false,
+        "descripcion": "Empresa de desarrollo de software con actividad en Zaragoza, ofreciendo servicios de desarrollo tecnológico para empresas.",
+        "tags": [
+            "desarrollo software",
+            "tecnología",
+            "zaragoza"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://www.sortlist.es/s/software-development/zaragoza-es",
+        "fecha_inclusion": "2026-11-18"
+    },
+    {
+        "nombre": "A La Fresca Studio",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
+        "descripcion": "Estudio de desarrollo de videojuegos con sede en Zaragoza, fundado en 2025, dedicado a la creación de proyectos de entretenimiento digital.",
+        "tags": [
+            "videojuegos",
+            "desarrollo",
+            "startup",
+            "gaming"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://www.devuego.es/festudio/a-la-fresca-studio",
+        "fecha_inclusion": "2026-11-18"
+    },
+    {
+        "nombre": "Atlas Sap",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
+        "descripcion": "Partner oficial de SAP Business One en Zaragoza, especializado en implantación, soporte y servicios de ERP para pymes y empresas industriales.",
+        "tags": [
+            "sap",
+            "erp",
+            "consultoría",
+            "implantación"
+        ],
+        "ciclo": "ASIR",
+        "estado_agente": "ok",
+        "fuentes": "https://www.atlas-sap.com/",
+        "fecha_inclusion": "2026-11-18"
+    },
+    {
+        "nombre": "Capillary.io",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
+        "descripcion": "Startup healthtech zaragozana que desarrolla una plataforma basada en inteligencia artificial y visión por computador para el análisis automatizado de imágenes de capilaroscopia periungueal, destinada a investigación clínica.",
+        "tags": [
+            "inteligencia artificial",
+            "healthtech",
+            "visión por computador",
+            "startup",
+            "zaragoza"
+        ],
+        "ciclo": "IA y Big Data",
+        "estado_agente": "ok",
+        "fuentes": "https://es.capillary.io/ ; https://www.empresia.es/empresa/capillary-io/ ; https://la-terminal.es/proyectos/capillary-io/",
+        "fecha_inclusion": "2026-11-18"
+    },
+    {
+        "nombre": "Augan (Automatización Ganadera)",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
+        "descripcion": "Empresa aragonesa, nacida en Biota (Zaragoza), especializada en sensores IoT autónomos sin cables ni electricidad para la digitalización y control remoto de granjas, principalmente en el sector porcino.",
+        "tags": [
+            "iot",
+            "agrotech",
+            "ganadería",
+            "sensores",
+            "cloud"
+        ],
+        "ciclo": "IA y Big Data",
+        "estado_agente": "ok",
+        "fuentes": "https://www.augan.es/ ; https://ecosistemastartup.com/augan-digitaliza-granjas-con-iot-e-ia-tu-ganaderia-en-el-movil/",
+        "fecha_inclusion": "2026-11-18"
     }
 ]
