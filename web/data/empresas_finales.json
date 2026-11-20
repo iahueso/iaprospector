@@ -3330,5 +3330,93 @@
         "estado_agente": "ok",
         "fuentes": "https://www.augan.es/ ; https://ecosistemastartup.com/augan-digitaliza-granjas-con-iot-e-ia-tu-ganaderia-en-el-movil/",
         "fecha_inclusion": "2026-11-18"
+    },
+    {
+        "nombre": "Zeleron Automatización y Robótica",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
+        "descripcion": "Empresa aragonesa con sede en Zaragoza especializada en el diseño, fabricación e implementación de soluciones a medida de automatización industrial y sistemas robóticos.",
+        "tags": [
+            "robótica",
+            "automatización industrial",
+            "ingeniería"
+        ],
+        "ciclo": "Otro",
+        "estado_agente": "ok",
+        "fuentes": "https://zeleron.es/, https://es.linkedin.com/company/zeleron-automatización-y-robótica, https://aragonsourcing.com/empresa/zeleron-automatizacion-y-robotica/?lang=es",
+        "fecha_inclusion": "2026-11-20"
+    },
+    {
+        "nombre": "Araman (Aragonesa de Mantenimiento)",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
+        "descripcion": "Empresa de Zaragoza con más de 20 años de experiencia en mantenimiento industrial, automatización y robótica industrial, incluyendo almacenes automatizados.",
+        "tags": [
+            "robótica industrial",
+            "automatización",
+            "mantenimiento"
+        ],
+        "ciclo": "Otro",
+        "estado_agente": "ok",
+        "fuentes": "https://araman.es/, https://araman.es/araman-robotica-industrial/",
+        "fecha_inclusion": "2026-11-20"
+    },
+    {
+        "nombre": "ASAI Industrial",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
+        "descripcion": "Empresa de ingeniería de automatización y robótica industrial con sede en Zaragoza, que desarrolla proyectos llave en mano para sectores como automoción, aeronáutica, logística, energía y alimentación.",
+        "tags": [
+            "robótica",
+            "automatización",
+            "ingeniería industrial",
+            "logística"
+        ],
+        "ciclo": "Transporte y Logística",
+        "estado_agente": "ok",
+        "fuentes": "https://www.asai.es/",
+        "fecha_inclusion": "2026-11-20"
+    },
+    {
+        "nombre": "Inetum (centro Walqa, Aragón)",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
+        "descripcion": "Compañía de servicios y soluciones digitales con presencia histórica en Zaragoza y Monzón, que ha abierto un centro de I+D+i y consultoría en el Parque Tecnológico Walqa (Huesca), colaborando con AWS en proyectos de innovación en Aragón.",
+        "tags": [
+            "consultoría it",
+            "cloud",
+            "i+d+i",
+            "servicios digitales"
+        ],
+        "ciclo": "ASIR",
+        "estado_agente": "ok",
+        "fuentes": "https://www.inetum.com/es/spain/noticias/inetum-se-incorpora-walqa-y-firma-una-colaboracion-con-aws-en-aragon, https://www.goaragon.es/inetum-se-establece-en-walqa-y-se-asocia-con-aws-para-impulsar-la-innovacion-en-aragon/",
+        "fecha_inclusion": "2026-11-20"
+    },
+    {
+        "nombre": "EDJ Informática",
+        "latitud": "41.6596148",
+        "longitud": "-0.8780178",
+        "direccion": "Tecnovalia Informática, Calle del Arquitecto de la Figuera, 2, 50015 Zaragoza, España",
+        "sin_ubicacion": false,
+        "descripcion": "Empresa zaragozana con más de 25 años de experiencia especializada en software de fabricación, producción y facturación para pymes y grandes empresas, con el producto XE5 (ERP de gestión y producción).",
+        "tags": [
+            "erp",
+            "software fabricación",
+            "gestión empresarial",
+            "producción"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://edjinformatica.es/ ; https://www.xe5.es/",
+        "fecha_inclusion": "2026-11-20"
     }
 ]
