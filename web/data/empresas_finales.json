@@ -3418,5 +3418,95 @@
         "estado_agente": "ok",
         "fuentes": "https://edjinformatica.es/ ; https://www.xe5.es/",
         "fecha_inclusion": "2026-11-20"
+    },
+    {
+        "nombre": "Veridika",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
+        "descripcion": "Empresa de desarrollo de páginas web en Zaragoza, ofrece servicios de diseño y creación de sitios web para impulsar negocios online.",
+        "tags": [
+            "desarrollo web",
+            "diseño web",
+            "ecommerce",
+            "zaragoza"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://www.veridika.com/servicios/paginas-web-en-zaragoza.php",
+        "fecha_inclusion": "2026-11-24"
+    },
+    {
+        "nombre": "Empresa en Digital",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
+        "descripcion": "Agencia de marketing digital en Zaragoza que ofrece servicios integrales de web, ecommerce, publicidad y comunicación online.",
+        "tags": [
+            "marketing digital",
+            "ecommerce",
+            "publicidad",
+            "zaragoza"
+        ],
+        "ciclo": "Marketing",
+        "estado_agente": "ok",
+        "fuentes": "https://empresaendigital.com/",
+        "fecha_inclusion": "2026-11-24"
+    },
+    {
+        "nombre": "Bluecell Comunicación",
+        "latitud": "41.6433709",
+        "longitud": "-0.9115898",
+        "direccion": "Servinco. Servicio integral de Comunicación, Calle de Fernando Díaz de Mendoza, 50009 Zaragoza, España",
+        "sin_ubicacion": false,
+        "descripcion": "Agencia de comunicación y ecommerce ubicada en Zaragoza, incluida entre las empresas destacadas de e-commerce de la ciudad.",
+        "tags": [
+            "ecommerce",
+            "comunicación",
+            "agencia",
+            "zaragoza"
+        ],
+        "ciclo": "Marketing",
+        "estado_agente": "ok",
+        "fuentes": "https://www.sortlist.es/ecommerce/zaragoza-es",
+        "fecha_inclusion": "2026-11-24"
+    },
+    {
+        "nombre": "rIL",
+        "latitud": "41.6513421",
+        "longitud": "-0.8781753",
+        "direccion": "rIL Estudio, Calle del Coso, 67, 50001 Zaragoza, España",
+        "sin_ubicacion": false,
+        "descripcion": "Agencia de diseño web en Zaragoza que ofrece servicios de consultoría digital, posicionamiento SEO y gestión de redes sociales para negocios locales.",
+        "tags": [
+            "diseño web",
+            "seo",
+            "consultoría digital",
+            "redes sociales"
+        ],
+        "ciclo": "DAW",
+        "estado_agente": "ok",
+        "fuentes": "https://www.ril.es/diseno-web-zaragoza",
+        "fecha_inclusion": "2026-11-24"
+    },
+    {
+        "nombre": "Incaelum",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
+        "descripcion": "Empresa de consultoría en posicionamiento digital ubicada en Zaragoza, especializada en estrategias SEO para mejorar la visibilidad online de sus clientes.",
+        "tags": [
+            "posicionamiento web",
+            "seo",
+            "consultoría",
+            "marketing digital"
+        ],
+        "ciclo": "Marketing",
+        "estado_agente": "ok",
+        "fuentes": "https://www.cylex.es/zaragoza/incaelum---consultoría-posicionamiento-digital-12933832.html",
+        "fecha_inclusion": "2026-11-24"
     }
 ]
