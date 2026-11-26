@@ -941,6 +941,56 @@ body {
     font-weight: 600;
 }
 
+.vista-nube {
+    height: calc(100vh - 96px);
+    overflow-y: auto;
+    padding: 24px;
+    background: #f3f4f6;
+}
+
+.contenedor-nube {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    padding: 20px;
+}
+
+.contenedor-nube h2 {
+    margin: 0 0 6px 0;
+}
+
+.subtitulo-nube {
+    margin: 0 0 18px 0;
+    color: #6b7280;
+    font-size: 14px;
+}
+
+.nube-tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 6px 18px;
+}
+
+.tag-nube {
+    border: none;
+    background: none;
+    padding: 2px 4px;
+    border-radius: 8px;
+    line-height: 1.2;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.tag-nube:hover,
+.tag-nube:focus-visible {
+    background: #f3f4f6;
+    text-decoration: underline;
+}
+
 .marker-normal {
     width: 16px;
     height: 16px;
@@ -1000,6 +1050,11 @@ body {
     }
 
     .vista-semantica {
+        height: auto;
+        padding: 14px;
+    }
+
+    .vista-nube {
         height: auto;
         padding: 14px;
     }
@@ -1154,6 +1209,42 @@ function normalizarTexto(texto) {
         .trim();
 }
 
+// Sinónimos: la clave es el nombre que se muestra en la nube y la lista son
+// sus variantes. Los acentos y las mayúsculas no hace falta repetirlos.
+const GRUPOS_SINONIMOS = {
+    'inteligencia artificial': ['ia'],
+    'consultoría IT': ['consultoría ti'],
+    'desarrollo de software': ['desarrollo software'],
+    'aplicaciones móviles': ['apps móviles'],
+    'aplicaciones': ['apps'],
+    'ecommerce': ['e-commerce', 'tienda online', 'tiendas online'],
+    'datos': ['data'],
+    'análisis de datos': ['analítica de datos'],
+    'auditoría': ['auditorías'],
+    'infraestructura IT': ['infraestructura ti', 'infraestructura tic', 'infraestructuras ti'],
+    'infraestructura': ['infraestructuras'],
+    'servicios IT': ['servicios ti'],
+    'realidad virtual': ['realidad-virtual', 'vr'],
+    'realidad extendida': ['xr'],
+    'I+D+i': ['i+d']
+};
+
+// Variante normalizada -> nombre del grupo
+const SINONIMOS = new Map();
+
+Object.entries(GRUPOS_SINONIMOS).forEach(([nombre, variantes]) => {
+    [nombre, ...variantes].forEach(variante => {
+        SINONIMOS.set(normalizarTexto(variante), nombre);
+    });
+});
+
+// Clave para comparar tags: dos sinónimos tienen la misma
+function claveTag(tag) {
+    const tagNorm = normalizarTexto(tag);
+
+    return normalizarTexto(SINONIMOS.get(tagNorm) || tagNorm);
+}
+
 function obtenerTagsEmpresa(empresa) {
     if (Array.isArray(empresa.tags)) {
         return empresa.tags;
@@ -1184,10 +1275,10 @@ function obtenerTodosLosTags() {
 const TAGS_GLOBALES = obtenerTodosLosTags();
 
 function obtenerColorTag(tag) {
-    const tagNorm = normalizarTexto(tag);
+    const tagNorm = claveTag(tag);
 
     let indice = TAGS_GLOBALES.findIndex(
-        t => normalizarTexto(t) === tagNorm
+        t => claveTag(t) === tagNorm
     );
 
     if (indice < 0) {
@@ -1211,10 +1302,10 @@ function empresaTieneTag(empresa, tag) {
         return false;
     }
 
-    const tagNorm = normalizarTexto(tag);
+    const tagNorm = claveTag(tag);
     const tagsEmpresa = obtenerTagsEmpresa(empresa);
 
-    return tagsEmpresa.some(t => normalizarTexto(t) === tagNorm);
+    return tagsEmpresa.some(t => claveTag(t) === tagNorm);
 }
 
 function empresaTieneAlgunTagActivo(empresa) {
@@ -1299,23 +1390,23 @@ function pintarMarcadores(empresasVisibles) {
 }
 
 function tagEstaActivo(tag) {
-    const tagNorm = normalizarTexto(tag);
+    const tagNorm = claveTag(tag);
 
     return tagsActivos.some(
-        t => normalizarTexto(t) === tagNorm
+        t => claveTag(t) === tagNorm
     );
 }
 
 function activarODesactivarTag(tag) {
-    const tagNorm = normalizarTexto(tag);
+    const tagNorm = claveTag(tag);
 
     const yaExiste = tagsActivos.some(
-        t => normalizarTexto(t) === tagNorm
+        t => claveTag(t) === tagNorm
     );
 
     if (yaExiste) {
         tagsActivos = tagsActivos.filter(
-            t => normalizarTexto(t) !== tagNorm
+            t => claveTag(t) !== tagNorm
         );
     } else {
         tagsActivos.push(tag);
@@ -1615,6 +1706,7 @@ function cambiarVista(vista) {
     vistaMapa.classList.toggle('vista-oculta', vista !== 'mapa');
     vistaFecha.classList.toggle('vista-oculta', vista !== 'fecha');
     vistaSemantica.classList.toggle('vista-oculta', vista !== 'semantica');
+    document.getElementById('vistaNube').classList.toggle('vista-oculta', vista !== 'nube');
 
     if (vista === 'mapa') {
         setTimeout(() => {
@@ -1828,6 +1920,103 @@ function activarBusquedaSemantica() {
     actualizarContador();
 }
 
+// ============================================================
+// NUBE DE TAGS
+// ============================================================
+
+const MAX_TAGS_NUBE = 50;
+
+// Tags geográficos: los tienen muchas empresas y no ayudan a distinguirlas
+const TAGS_EXCLUIDOS_NUBE = new Set(['zaragoza', 'aragon', 'espana']);
+
+// Cuenta en cuántas empresas aparece cada tag, agrupando acentos y sinónimos
+function contarTags() {
+    const conteo = new Map();
+
+    empresas.forEach(empresa => {
+        const vistos = new Set();
+
+        obtenerTagsEmpresa(empresa).forEach(tag => {
+            const clave = claveTag(tag);
+
+            if (!clave || TAGS_EXCLUIDOS_NUBE.has(clave) || vistos.has(clave)) {
+                return;
+            }
+
+            vistos.add(clave);
+
+            const dato = conteo.get(clave) || { total: 0, variantes: new Map() };
+            dato.total += 1;
+            dato.variantes.set(tag, (dato.variantes.get(tag) || 0) + 1);
+            conteo.set(clave, dato);
+        });
+    });
+
+    return Array.from(conteo.values()).map(dato => {
+        const habitual = Array.from(dato.variantes).sort((a, b) => b[1] - a[1])[0][0];
+
+        // Con sinónimos se usa el nombre del grupo; si no, la forma más habitual
+        return {
+            tag: SINONIMOS.get(normalizarTexto(habitual)) || habitual,
+            total: dato.total,
+            variantes: Array.from(dato.variantes.keys())
+        };
+    });
+}
+
+function seleccionarTagDesdeNube(tag) {
+    tagsActivos = [tag];
+    document.getElementById('buscador').value = '';
+    cambiarVista('mapa');
+    aplicarFiltros();
+}
+
+function renderizarNubeTags() {
+    const contenedor = document.getElementById('nubeTags');
+
+    if (!contenedor) {
+        return;
+    }
+
+    const frecuentes = contarTags()
+        .sort((a, b) => b.total - a.total || a.tag.localeCompare(b.tag, 'es'))
+        .slice(0, MAX_TAGS_NUBE);
+
+    if (frecuentes.length === 0) {
+        contenedor.textContent = 'No hay tags para mostrar.';
+        return;
+    }
+
+    const maximo = frecuentes[0].total;
+    const minimo = frecuentes[frecuentes.length - 1].total;
+
+    frecuentes
+        .sort((a, b) => a.tag.localeCompare(b.tag, 'es'))
+        .forEach(({ tag, total, variantes }) => {
+            // Raíz cuadrada para que los tags dominantes no aplasten al resto
+            const peso = maximo === minimo
+                ? 0.5
+                : (Math.sqrt(total) - Math.sqrt(minimo)) / (Math.sqrt(maximo) - Math.sqrt(minimo));
+
+            const boton = document.createElement('button');
+            boton.type = 'button';
+            boton.className = 'tag-nube';
+            boton.textContent = tag;
+            boton.title = `${total} ${total === 1 ? 'empresa' : 'empresas'}`;
+            boton.setAttribute('aria-label', `${tag}: ${boton.title}`);
+
+            if (variantes.length > 1) {
+                boton.title += ` (incluye: ${variantes.join(', ')})`;
+            }
+
+            boton.style.fontSize = `${Math.round(14 + peso * 34)}px`;
+            boton.style.color = obtenerColorTag(tag);
+            boton.addEventListener('click', () => seleccionarTagDesdeNube(tag));
+
+            contenedor.appendChild(boton);
+        });
+}
+
 function activarTabsVista() {
     document.querySelectorAll('.tab-vista').forEach(boton => {
         boton.addEventListener('click', () => {
@@ -1845,6 +2034,7 @@ document.addEventListener('DOMContentLoaded', () => {
     activarBusquedaSemantica();
     aplicarFiltros();
     renderizarListaPorFecha();
+    renderizarNubeTags();
 
     setTimeout(() => {
         mapa.invalidateSize();
@@ -1918,6 +2108,7 @@ def generar_html_completo(empresas):
         <button class="tab-vista activo" data-vista="mapa">🗺️ Mapa</button>
         <button class="tab-vista" data-vista="fecha">🕒 Por fecha de inclusión</button>
         <button class="tab-vista" data-vista="semantica">🔍 Buscar por texto</button>
+        <button class="tab-vista" data-vista="nube">☁️ Nube de tags</button>
     </nav>
 
     <main class="layout" id="vistaMapa">
@@ -1996,6 +2187,18 @@ def generar_html_completo(empresas):
             <div id="resultadosSemanticos" class="resultados-semanticos">
                 <p class="aviso-semantico">Escribe una descripción para encontrar empresas relacionadas.</p>
             </div>
+        </div>
+    </main>
+
+    <main class="vista-nube vista-oculta" id="vistaNube">
+        <div class="contenedor-nube">
+            <h2>Tags más frecuentes</h2>
+            <p class="subtitulo-nube">
+                Cuanto más grande es un tag, más empresas lo tienen.
+                Pulsa uno para verlas en el mapa.
+            </p>
+
+            <div id="nubeTags" class="nube-tags"></div>
         </div>
     </main>
 
