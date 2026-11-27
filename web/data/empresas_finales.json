@@ -3563,5 +3563,41 @@
         "estado_agente": "ok",
         "fuentes": "https://zilon.es/ ; https://www.cylex.es/zaragoza/zilon-informática-para-empresas-13272808.html",
         "fecha_inclusion": "2026-11-26"
+    },
+    {
+        "nombre": "Deveco (Deveco Tecnologías de la Información)",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
+        "descripcion": "Consultora tecnológica con sede en Zaragoza especializada en inteligencia artificial aplicada, desarrollo de software a medida y automatización de procesos para empresas industriales y pymes.",
+        "tags": [
+            "inteligencia artificial",
+            "software a medida",
+            "automatización",
+            "consultoría it"
+        ],
+        "ciclo": "IA y Big Data",
+        "estado_agente": "ok",
+        "fuentes": "https://devecotech.com/, https://es.linkedin.com/company/deveco.tech, https://www.informa.es/directorio-empresas/Empresa_DEVECO-TECNOLOGIAS-INFORMACION.html",
+        "fecha_inclusion": "2026-11-27"
+    },
+    {
+        "nombre": "Alerce Informática Aplicada",
+        "latitud": "",
+        "longitud": "",
+        "direccion": "",
+        "sin_ubicacion": true,
+        "descripcion": "Empresa con sede en Zaragoza dedicada a la prestación de servicios informáticos generales: programación a medida, análisis, proceso de datos y soluciones de software para empresas.",
+        "tags": [
+            "software a medida",
+            "programación",
+            "proceso de datos",
+            "informática empresarial"
+        ],
+        "ciclo": "DAM",
+        "estado_agente": "ok",
+        "fuentes": "https://www.einforma.com/informacion-empresa/alerce-informatica-aplicada, https://www.iberinform.es/empresa/361436/alerce-informatica-aplicada",
+        "fecha_inclusion": "2026-11-27"
     }
 ]
